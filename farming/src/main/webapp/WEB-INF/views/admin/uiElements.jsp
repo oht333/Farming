@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>admin</title>
 <link href="<c:url value='/resources/admin_css/bootstrap.css'/>" rel="stylesheet" />
      <!-- FontAwesome Styles-->
     <link href="<c:url value='/resources/admin_css/font-awesome.css'/>" rel="stylesheet" />
