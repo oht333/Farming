@@ -44,8 +44,7 @@ public class AdminController {
 		
 		return "admin/uiElements";
 	}
-	
-	
+
 	@RequestMapping("/form")
 	public String form() {
 		
