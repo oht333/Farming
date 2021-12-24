@@ -10,6 +10,21 @@
 		insert into category(category_No,main,detail)
 		values(#{categoryNo},#{main},#{detail})
 	</insert>
+	
+	<select id="select" resultType="categoryVo">
+		select * from category order by category_no desc
+	</select>
+	
+	<select id="selectByNo" parameterType="int" resultType="categoryVo">
+		select * from category
+		where category_No=#{categoryNo}
+	</select>
+	
+	<update id="update" parameterType="categoryVo">
+		update category
+		set main=#{main}, detail=#{detail}
+		where category_no=#{categoryNo}
+	</update>
 </mapper>
 
 
