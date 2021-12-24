@@ -13,7 +13,7 @@
 	</insert>
 	
 	<select id="">
-	
+		select
 	</select>
 </mapper>
 
