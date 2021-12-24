@@ -12,8 +12,14 @@
 		value(#{memberNo}, #{name}, #{email}, #{pwd}, #{address1}, #{address2}, #{zipcode})
 	</insert>
 	
-	<select id="">
-		select
+	<select id="duplicatedId" parameterType="string" resultType="int">
+		select count(*) from member
+		where email=#{email}
+	</select>
+	
+	<select id="selectPwd" parameterType="string" resultType="string">
+		select pwd from member
+		where email=#{email}
 	</select>
 </mapper>
 
