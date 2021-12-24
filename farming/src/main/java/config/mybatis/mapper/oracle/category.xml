@@ -7,8 +7,8 @@
 		<selectKey keyProperty="categoryNo" resultType="int" order="BEFORE">
 			select category_seq.nextval from dual
 		</selectKey>
-		insert into category
-		value(#{categoryNo},#{main},#{detail})
+		insert into category(category_No,main,detail)
+		values(#{categoryNo},#{main},#{detail})
 	</insert>
 </mapper>
 
