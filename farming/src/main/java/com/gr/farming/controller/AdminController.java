@@ -46,25 +46,7 @@ public class AdminController {
 	}
 	
 	
-	@RequestMapping(value="/empty", method = RequestMethod.GET)
-	public String empty_get() {
-		logger.info("카테고리 등록");
-		return "admin/empty";
-	}
-	
-	@RequestMapping(value="/empty", method = RequestMethod.POST)
-	public String empty_post(@ModelAttribute CategoryVO vo) {
-		logger.info("카테고리 등록 처리 파라미터 vo={}",vo);
-		int cnt = service.insert(vo);
-		logger.info("카테고리 등록 처리결과 cnt={}",cnt);
-		return "redirect:/admin/list";
-	}
-	
-	@RequestMapping("/list")
-	public String list() {
-		
-		return "admin/list";
-	}
+
 	
 	
 	@RequestMapping("/form")
