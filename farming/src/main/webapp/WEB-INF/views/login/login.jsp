@@ -39,7 +39,7 @@
             <div class="mb-5"><img class="img-fluid mb-3" src="${pageContext.request.contextPath }/resources/img/logo-square.svg" alt="..." style="max-width: 4rem;">
               <h2>Welcome back</h2>
             </div>
-            <form class="form-validate">
+            <form class="form-validate" method="post" action="<c:url value='index'/>">
               <div class="mb-4">
                 <label class="form-label" for="loginUsername"> Email Address</label>
                 <input class="form-control" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
