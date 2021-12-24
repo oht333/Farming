@@ -322,14 +322,18 @@
                         <h1 class="page-header">
                             카테고리 목록
                         </h1>
-						<ol class="breadcrumb" sytle="float:right;">
-					  		<li><a href="<c:url value='/admin/empty'/>">입력</a></li>
-					    </ol> 
+						<ol class="breadcrumb"">
+					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
+					  	
+					  			<a href="<c:url value='/admin/empty'/>" class="btn btn-success">success</a>
+					  		
+					  		
+					   </ol>
 					
 		</div>
 		<div class="panel panel-default">
                         <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
-                            카테고리 목록
+                            
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
