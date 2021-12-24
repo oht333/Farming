@@ -329,7 +329,35 @@
 					</ol> 
 					
 		</div>
-		
+		<div class="panel panel-default">
+                        <div class="panel-heading">
+                            Hover Rows
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>MAIN</th>
+                                            <th>DETAIL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    	<c:forEach var="vo" items="${list }">
+	                                        <tr>
+	                                            <td><a href="<c:url value='/admin/cateUpdate?categoryNo=${vo.categoryNo }'/>">
+	                                            	${vo.categoryNo }
+	                                            </a></td>
+	                                            <td>${vo.main }</td>
+	                                            <td>${vo.detail }</td>
+	                                        </tr>
+										</c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
             <div id="page-inner"> 
 				 <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>
 				</div>
