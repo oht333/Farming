@@ -348,7 +348,7 @@
             <input type = "Button" id="btList" value="글목록" />         
         </div>
     </fieldset>
-</form>
+</form> 
             <div id="page-inner"> 
 				 <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>
 				</div>
