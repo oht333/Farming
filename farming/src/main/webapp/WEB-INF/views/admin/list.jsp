@@ -320,18 +320,20 @@
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
-                            Empty Page <small>Create new page.</small>
+                            카테고리 목록
                         </h1>
-						<ol class="breadcrumb">
-					  <li><a href="#">Home</a></li>
-					  <li><a href="#">Empty</a></li>
-					  <li class="active">Data</li>
-					</ol> 
+						<ol class="breadcrumb"">
+					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
+					  	
+					  			<a href="<c:url value='/admin/empty'/>" class="btn btn-success">success</a>
+					  		
+					  		
+					   </ol>
 					
 		</div>
 		<div class="panel panel-default">
-                        <div class="panel-heading">
-                            Hover Rows
+                        <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
+                            
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -358,9 +360,7 @@
                             </div>
                         </div>
                     </div>
-            <div id="page-inner"> 
-				 <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>
-				</div>
+            
              <!-- /. PAGE INNER  -->
              
             </div>

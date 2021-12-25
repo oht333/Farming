@@ -71,6 +71,6 @@ public class CategoryController {
 		int cnt = service.update(vo);
 		logger.info("수정처리 결과 cnt={}",cnt);
 		
-		return "redirect:/admin/cateUpdate";
+		return "redirect:/admin/list";
 	}
 }

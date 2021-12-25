@@ -1,5 +1,6 @@
 package com.gr.farming.knowhow.model;
 
-public interface KnowHowDAO {
+import java.util.List;
 
+public interface KnowHowDAO {
 }
