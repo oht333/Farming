@@ -1,13 +1,17 @@
 package com.gr.farming.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.gr.farming.member.model.MemberService;
 
 @Controller
 public class IndexController {
-	
-	@RequestMapping("/index")
-	public String index() {
+
+	@GetMapping("/index")
+	public String index_() {
 		return "index";
 	}
 }
