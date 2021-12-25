@@ -10,4 +10,5 @@ public interface CategoryDAO {
 	public List<CategoryVO> select();
 	public CategoryVO selectByNo(int categoryNo);
 	public int update(CategoryVO vo);
+	public int delete(int categoryNo);
 }
