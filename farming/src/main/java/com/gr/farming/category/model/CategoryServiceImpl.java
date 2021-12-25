@@ -22,7 +22,7 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 	public CategoryVO selectByNo(int categoryNo) {
 		return dao.selectByNo(categoryNo);
-	}
+	} 
 	public int update(CategoryVO vo) {
 		return dao.update(vo);
 	}

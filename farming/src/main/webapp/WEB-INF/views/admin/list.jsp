@@ -338,7 +338,7 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-hover">
-                                    <thead>
+                                     <thead>
                                         <tr>
                                             <th>NO</th>
                                             <th>MAIN</th>

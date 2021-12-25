@@ -342,7 +342,7 @@
 				        	<a href='<c:url value="/admin/list"/>'>목록</a>			
 						</div>
                     </div>
-            
+             
              <!-- /. PAGE INNER  -->
              
             </div>

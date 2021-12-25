@@ -26,7 +26,7 @@
 		where category_No=#{categoryNo}
 	</update>
 	
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="int"> 
 		delete category where category_No=#{categoryNo}
 	</delete>
 </mapper>
