@@ -16,7 +16,7 @@ import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admin/category")
 public class CategoryController {
 	private final CategoryService service;
 	
@@ -27,18 +27,18 @@ public class CategoryController {
 	private static final Logger logger
 	=LoggerFactory.getLogger(CategoryController.class);
 	
-	@RequestMapping(value="/empty", method = RequestMethod.GET)
-	public String empty_get() {
+	@RequestMapping(value="/write", method = RequestMethod.GET)
+	public String write_get() {
 		logger.info("카테고리 등록");
-		return "admin/empty";
+		return "admin/category/write";
 	}
 	
-	@RequestMapping(value="/empty", method = RequestMethod.POST)
-	public String empty_post(@ModelAttribute CategoryVO vo) {
+	@RequestMapping(value="/write", method = RequestMethod.POST)
+	public String write_post(@ModelAttribute CategoryVO vo) {
 		logger.info("카테고리 등록 처리 파라미터 vo={}",vo);
 		int cnt = service.insert(vo);
 		logger.info("카테고리 등록 처리결과 cnt={}",cnt);
-		return "redirect:/admin/list";
+		return "redirect:/admin/category/list";
 	}
 	
 	@RequestMapping("/list")
@@ -49,7 +49,7 @@ public class CategoryController {
 		logger.info("목록 페이지 list.size={}",list.size());
 		
 		model.addAttribute("list", list);
-		return "admin/list";
+		return "admin/category/list";
 	}
 	
 	@RequestMapping("/detail")
@@ -61,7 +61,7 @@ public class CategoryController {
 		
 		model.addAttribute("vo", vo);
 		
-		return "admin/detail";
+		return "admin/category/detail";
 		
 	}
 	
@@ -74,7 +74,7 @@ public class CategoryController {
 		logger.info("수정 페이지 상세조회 vo={}",vo);
 		model.addAttribute("vo", vo);
 		
-		return "admin/cateUpdate";
+		return "admin/category/cateUpdate";
 	}
 	
 	@RequestMapping(value="/cateUpdate", method = RequestMethod.POST)
@@ -84,7 +84,7 @@ public class CategoryController {
 		int cnt = service.update(vo);
 		logger.info("수정처리 결과 cnt={}",cnt);
 		
-		return "redirect:/admin/detail?categoryNo="+vo.getCategoryNo();
+		return "redirect:/admin/category/detail?categoryNo="+vo.getCategoryNo();
 	}
 	
 	@RequestMapping(value="/delete", method = RequestMethod.GET)
@@ -92,7 +92,7 @@ public class CategoryController {
 			Model model) {
 		logger.info("글 삭제 화면, 파라미터 no={}", categoryNo);
 		
-		return "admin/delete";
+		return "admin/category/delete";
 		
 	}
 	
@@ -104,7 +104,7 @@ public class CategoryController {
 		int cnt=service.delete(vo.getCategoryNo());
 		if(cnt>0) {
 			msg="글삭제되었습니다.";
-			url="/admin/list";
+			url="/admin/category/list";
 		}
 		 
 		model.addAttribute("msg", msg);

@@ -320,36 +320,29 @@
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
-                            카테고리 목록
+                            
                         </h1>
-						<ol class="breadcrumb"">
-					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
+						<%-- <ol class="breadcrumb"">
+					  		<li><a href="<c:url value='/admin/empty'/>">입력</a></li>
 					  	
-					  			<a href="<c:url value='/admin/empty'/>" class="btn btn-success">success</a>
+					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-success">success</a>
 					  		
 					  		
-					   </ol>
+					   </ol> --%>
 					
 		</div>
 		<div class="panel panel-default">
-                        <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
-                            
-                        </div>
-                        <!-- 수정시 no가 필요하므로 히든 필드에 담아서 넘겨준다 -->
-						<input type="hidden" name="categoryNo" value="${vo.categoryNo}">
-						<div> 
-							<span class="sp1">MAIN</span> <span>${vo.main }</span>
-						</div>
-						<div>
-							<span class="sp1">DETAIL</span> <span>${vo.detail }</span>
-						</div>
+                        <form name="frmDelete" method="post" action="<c:url value='/admin/category/delete'/>" >
+						<input type="hidden" name="categoryNo" value="${param.categoryNo}">
+                        <div>           
+				        	<span class="sp">${param.categoryNo }번 글을 삭제하시겠습니까?</span>                        
+				        </div>
                         <div class="center">
-							<a href='<c:url value="/admin/cateUpdate?categoryNo=${vo.categoryNo }"/>'>수정</a> |
-				        	<a href='<c:url value="/admin/delete?categoryNo=${vo.categoryNo }"/>'>삭제</a> |
-				        	<a href='<c:url value="/admin/list"/>'>목록</a>			
+							<input type ="submit" value="삭제" />
+				        	<a href='<c:url value="/admin/category/list"/>'>목록</a>			
 						</div>
                     </div>
-            
+             
              <!-- /. PAGE INNER  -->
              
             </div>
