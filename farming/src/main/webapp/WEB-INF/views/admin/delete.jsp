@@ -333,9 +333,9 @@
 		</div>
 		<div class="panel panel-default">
                         <form name="frmDelete" method="post" action="<c:url value='/admin/delete'/>" >
-						<input type="hidden" name="categoryNo" value="${vo.categoryNo}">\
+						<input type="hidden" name="categoryNo" value="${param.categoryNo}">
                         <div>           
-				        	<span class="sp">${vo.categoryNo }번 글을 삭제하시겠습니까?</span>                        
+				        	<span class="sp">${param.categoryNo }번 글을 삭제하시겠습니까?</span>                        
 				        </div>
                         <div class="center">
 							<input type ="submit" value="삭제" />
