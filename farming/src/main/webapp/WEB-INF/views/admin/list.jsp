@@ -348,7 +348,7 @@
                                     <tbody>
                                     	<c:forEach var="vo" items="${list }">
 	                                        <tr>
-	                                            <td><a href="<c:url value='/admin/cateUpdate?categoryNo=${vo.categoryNo }'/>">
+	                                            <td><a href="<c:url value='/admin/detail?categoryNo=${vo.categoryNo }'/>">
 	                                            	${vo.categoryNo }
 	                                            </a></td>
 	                                            <td>${vo.main }</td>

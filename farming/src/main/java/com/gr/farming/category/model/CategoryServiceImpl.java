@@ -26,5 +26,9 @@ public class CategoryServiceImpl implements CategoryService{
 	public int update(CategoryVO vo) {
 		return dao.update(vo);
 	}
+
+	public int delete(int categoryNo) {
+		return dao.delete(categoryNo);
+	}
 	
 }
