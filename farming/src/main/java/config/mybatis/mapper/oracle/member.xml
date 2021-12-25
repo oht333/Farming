@@ -21,6 +21,11 @@
 		select pwd from member
 		where email=#{email}
 	</select>
+	
+	<select id="selectByEmail" parameterType="string" resultType="memberVo">
+		select * from member
+		where email=#{email}
+	</select>
 </mapper>
 
 
