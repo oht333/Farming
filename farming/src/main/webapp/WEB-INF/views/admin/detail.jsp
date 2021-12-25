@@ -337,7 +337,7 @@
                         </div>
                         <!-- 수정시 no가 필요하므로 히든 필드에 담아서 넘겨준다 -->
 						<input type="hidden" name="categoryNo" value="${vo.categoryNo}">
-						<div>
+						<div> 
 							<span class="sp1">MAIN</span> <span>${vo.main }</span>
 						</div>
 						<div>

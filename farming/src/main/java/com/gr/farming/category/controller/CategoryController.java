@@ -106,7 +106,7 @@ public class CategoryController {
 			msg="글삭제되었습니다.";
 			url="/admin/list";
 		}
-		
+		 
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 				
