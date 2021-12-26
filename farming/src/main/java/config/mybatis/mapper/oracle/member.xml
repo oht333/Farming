@@ -25,6 +25,10 @@
 		select * from member
 		where email=#{email}
 	</select>
+	
+	<select id="selectAll" resultType="memberVo">
+		select * from member order by member_no desc
+	</select>
 </mapper>
 
 
