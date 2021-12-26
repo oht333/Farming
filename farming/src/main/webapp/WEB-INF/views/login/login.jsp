@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     
     <!-- 카카오로그인 -->
-
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </head>
   <body>
     <div class="container-fluid px-3">
@@ -69,6 +69,9 @@
               </div>
               <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
               <div class="d-grid gap-2">
+              	<a href="<c:url value='/member/kakaojoin'/>">kakao</a>
+            <!-- kauth.kakao.com/oauth/authorize?client_id=1036628c40962a9f65fae188105a4731
+            &redirect_uri=http://localhost:9091/farming/login/kakao&response_type=code -->
                 <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
                 <button class="btn btn btn-outline-muted btn-social"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
               </div>

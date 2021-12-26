@@ -13,13 +13,16 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	
-	public int insertMember(MemberVO vo) {
-		int cnt=memberDao.insertMember(vo);
+	public int insert(MemberVO vo) {
+		vo.setAddress1("");
+		vo.setAddress2("");
+		vo.setZipcode("");
+		int cnt=memberDao.insert(vo);
 		return cnt;
 	}
 	
-	public int duplicateId(String email) {
-		int count=memberDao.duplicateId(email);
+	public int duplicatedId(String email) {
+		int count=memberDao.duplicatedId(email);
 		
 		int result=0;
 		if(count>0) {  //해당 아이디가 이미 존재함
