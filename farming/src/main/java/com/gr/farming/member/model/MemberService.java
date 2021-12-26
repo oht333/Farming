@@ -10,8 +10,8 @@ public interface MemberService {
 	public static final int DISAGREE_PWD=2; //비번 불일치
 	int USERID_NONE=3; //아이디 존재하지 않음
 
-	public int insertMember(MemberVO vo);
-	public int duplicateId(String email);
+	public int insert(MemberVO vo);
+	public int duplicatedId(String email);
 	public int loginCheck(String email, String pwd);
 	public MemberVO selectByEmail(String email);
 	public int updateMember(MemberVO vo);
