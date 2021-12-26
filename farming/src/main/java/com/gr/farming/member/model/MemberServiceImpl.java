@@ -68,4 +68,15 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.selectAll();
 	}
 
+	@Override
+	public boolean checkPwd(MemberVO vo) {
+		String mPwd = memberDao.selectPwd(vo.getPwd());
+		
+		if(mPwd.equals(vo.getPwd())) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 }

@@ -29,6 +29,13 @@
 	<select id="selectAll" resultType="memberVo">
 		select * from member order by member_no desc
 	</select>
+	
+	<update id="updateMember" parameterType="memberVo">
+		update member
+		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zipcode=#{zipcode}
+		where email=#{email}
+	</update>
+	
 </mapper>
 
 
