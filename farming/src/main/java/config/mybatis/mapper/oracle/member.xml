@@ -8,19 +8,34 @@
 		<selectKey keyProperty="memberNo" resultType="int" order="BEFORE">
 			select member_seq.nextval from dual
 		</selectKey>
-		insert into member(memberNo, name, email, pwd, address1, address2, zipcode)
-		value(#{memberNo}, #{name}, #{email}, #{pwd}, #{address1}, #{address2}, #{zipcode})
+		insert into member(member_no, name, email, pwd, address1, address2, zipcode)
+		values(#{memberNo}, #{name}, #{email}, #{pwd}, #{address1}, #{address2}, #{zipcode})
 	</insert>
 	
 	<select id="duplicatedId" parameterType="string" resultType="int">
-		select count(*) from member
-		where email=#{email}
+		select count(*) from member where email=#{email}
 	</select>
 	
 	<select id="selectPwd" parameterType="string" resultType="string">
 		select pwd from member
 		where email=#{email}
 	</select>
+	
+	<select id="selectByEmail" parameterType="string" resultType="memberVo">
+		select * from member
+		where email=#{email}
+	</select>
+	
+	<select id="selectAll" resultType="memberVo">
+		select * from member order by member_no desc
+	</select>
+	
+	<update id="updateMember" parameterType="memberVo">
+		update member
+		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zipcode=#{zipcode}
+		where email=#{email}
+	</update>
+	
 </mapper>
 
 

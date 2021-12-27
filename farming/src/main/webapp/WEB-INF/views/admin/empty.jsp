@@ -329,35 +329,15 @@
 					</ol> 
 					
 		</div>
-		<form name="frmWrite" method="post" 
-	action="<c:url value='/admin/empty'/>" >
- <fieldset>
-	<legend>글쓰기</legend>
-		<div>
-            <label for="main">대분류</label>
-            <input type="text" id="main" name="main" />
-        </div>
-        <div>
-            <label for="detail">분야</label>
-            <input type="text" id="detail" name="detail" />
-        </div>
-        <div class="center">
-            <input type = "submit" value="등록"/>
-            <input type = "Button" id="btList" value="글목록" />         
-        </div>
-    </fieldset>
-</form>
             <div id="page-inner"> 
 				 <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>
 				</div>
              <!-- /. PAGE INNER  -->
-             
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>
      <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
-    <!-- jQuery Js -->
     <script src="<c:url value='/resources/admin_js/jquery-1.10.2.js'/>"></script>
       <!-- Bootstrap Js -->
     <script src="<c:url value='/resources/admin_js/bootstrap.min.js'/>"></script>

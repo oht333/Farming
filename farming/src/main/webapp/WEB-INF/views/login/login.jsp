@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,6 +31,15 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
+    <!-- 카카오로그인 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+		function facebook(){
+			location.href="<c:url value='/member/facebookjoin'/>";
+		}
+			
+	</script>
   </head>
   <body>
     <div class="container-fluid px-3">
@@ -39,24 +49,24 @@
             <div class="mb-5"><img class="img-fluid mb-3" src="${pageContext.request.contextPath }/resources/img/logo-square.svg" alt="..." style="max-width: 4rem;">
               <h2>Welcome back</h2>
             </div>
-            <form class="form-validate" method="post" action="<c:url value='index'/>">
+            <form class="form-validate" method="post" action="<c:url value='/login/login'/>">
               <div class="mb-4">
-                <label class="form-label" for="loginUsername"> Email Address</label>
-                <input class="form-control" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
+                <label class="form-label" for="email"> Email Address</label>
+                <input class="form-control" name="email" id="email" type="email" placeholder="name@address.com" required data-msg="Please enter your email">
               </div>
               <div class="mb-4">
                 <div class="row">
                   <div class="col">
-                    <label class="form-label" for="loginPassword"> Password</label>
+                    <label class="form-label" for="pwd"> Password</label>
                   </div>
                   <div class="col-auto"><a class="form-text small text-primary" href="#">Forgot password?</a></div>
                 </div>
-                <input class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Please enter your password">
+                <input class="form-control" name="pwd" id="pwd" placeholder="Password" type="password" required data-msg="Please enter your password">
               </div>
               <div class="mb-4">
                 <div class="form-check">
-                  <input class="form-check-input" id="loginRemember" type="checkbox">
-                  <label class="form-check-label text-muted" for="loginRemember"> <span class="text-sm">Remember me for 30 days</span></label>
+                  <input class="form-check-input" id="chkSave" type="checkbox">
+                  <label class="form-check-label text-muted" for="chkSave" name="chkSave"> <span class="text-sm">Remember me for 30 days</span></label>
                 </div>
               </div>
               <!-- Submit-->
@@ -65,8 +75,11 @@
               </div>
               <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
               <div class="d-grid gap-2">
-                <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
-                <button class="btn btn btn-outline-muted btn-social"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
+              	<a href="<c:url value='/member/kakaojoin'/>">kakao</a>
+            <!-- kauth.kakao.com/oauth/authorize?client_id=1036628c40962a9f65fae188105a4731
+            &redirect_uri=http://localhost:9091/farming/login/kakao&response_type=code -->
+                <button class="btn btn btn-outline-primary btn-social facebook" onclick="facebook()"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect with Facebook</button>
+                <button class="btn btn btn-outline-muted btn-social"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect with Google</button>
               </div>
               <hr class="my-4">
               <p class="text-center"><small class="text-muted text-center">Don't have an account yet? <a href="signup.html">Sign Up                </a></small></p>
