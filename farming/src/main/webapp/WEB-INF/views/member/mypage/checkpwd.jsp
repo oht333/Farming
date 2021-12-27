@@ -17,19 +17,16 @@
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
             <form name="frmCheck" method="post" 
-					action="<c:url value='/admin/mypage/checkpwd'/>" >
+					action="<c:url value='/member/mypage/checkpwd'/>" >
 					<input type="hidden" name="email" value="${param.email}">
               <div class="mb-4">
                 <label class="form-label" for="pwd"> Password</label>
-                <input class="form-control" name="pwd" id="pwd" type="password" required data-msg="Please enter your password">
+                <input class="form-control" name="pwd" id="pwd" type="password">
               </div>
               <div class="col-lg-2 d-grid">
-                    <button class="btn btn-primary rounded-pill h-100" type="submit">확인 </button>
+                    <button class="btn btn-primary rounded-pill h-100" id="submit" value="submit">확인 </button>
               </div>
-              <div class="col-lg-2 d-grid">
-                     <button class="btn btn-primary rounded-pill h-100" type="button">뒤로가기 </button>
-              </div>
-            
+              </form>
             </div>
           </div>
         </div>
@@ -59,20 +56,6 @@
       // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg
       //- injectSvgSprite('${path}icons/orion-svg-sprite.svg'); 
       injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg'); 
-      
-      $(function(){
-  		$('form[name=frmCheck]').submit(function(){
-  			if($('#pwd').val().length<1){
-  				alert('비밀번호를 입력하세요');
-  				$('#pwd').focus();
-  				event.preventDefault();
-  			}else{
-  				if(!confirm('멘트 고민중...')){
-  					event.preventDefault();
-  				}
-  			}
-  		});
-  	});	
       
   	});
       
