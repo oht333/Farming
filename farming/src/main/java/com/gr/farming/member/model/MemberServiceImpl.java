@@ -1,5 +1,7 @@
 package com.gr.farming.member.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +62,21 @@ public class MemberServiceImpl implements MemberService{
 	
 	public int withdrawMember(String email) {
 		return memberDao.withdrawMember(email);
+	}
+
+	public List<MemberVO> selectAll() {
+		return memberDao.selectAll();
+	}
+
+	@Override
+	public boolean checkPwd(MemberVO vo) {
+		String mPwd = memberDao.selectPwd(vo.getPwd());
+		
+		if(mPwd.equals(vo.getPwd())) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

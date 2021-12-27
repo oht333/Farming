@@ -34,6 +34,12 @@
     
     <!-- 카카오로그인 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+		function facebook(){
+			location.href="<c:url value='/member/facebookjoin'/>";
+		}
+			
+	</script>
   </head>
   <body>
     <div class="container-fluid px-3">
@@ -72,8 +78,8 @@
               	<a href="<c:url value='/member/kakaojoin'/>">kakao</a>
             <!-- kauth.kakao.com/oauth/authorize?client_id=1036628c40962a9f65fae188105a4731
             &redirect_uri=http://localhost:9091/farming/login/kakao&response_type=code -->
-                <button class="btn btn btn-outline-primary btn-social"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
-                <button class="btn btn btn-outline-muted btn-social"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
+                <button class="btn btn btn-outline-primary btn-social facebook" onclick="facebook()"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect with Facebook</button>
+                <button class="btn btn btn-outline-muted btn-social"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect with Google</button>
               </div>
               <hr class="my-4">
               <p class="text-center"><small class="text-muted text-center">Don't have an account yet? <a href="signup.html">Sign Up                </a></small></p>

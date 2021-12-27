@@ -94,6 +94,7 @@
     </script>
     <!-- jQuery-->
     <script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
     <script src="${pageContext.request.contextPath }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
