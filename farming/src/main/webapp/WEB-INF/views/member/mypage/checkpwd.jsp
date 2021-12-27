@@ -16,35 +16,15 @@
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
-            <form name="frmEdit" method="post" 
-					action="<c:url value='/admin/mypage/profile'/>" >
-              <div class="mb-4">
-                <label class="form-label" for="name"> name</label>
-                <input class="form-control" name="name" id="name" type="text" placeholder="${vo.name}" autocomplete="off">
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="email"> Email Address</label>
-                <input class="form-control" name="email" id="email" type="email" placeholder="${vo.email}" autocomplete="off">
-                <!-- <span class="invalidText"></span> -->
-              </div>
+            <form name="frmCheck" method="post" 
+					action="<c:url value='/admin/mypage/checkpwd${email }'/>" >
+					<input type="hidden" name="email" value="${param.email}">
               <div class="mb-4">
                 <label class="form-label" for="pwd"> Password</label>
                 <input class="form-control" name="pwd" id="pwd" placeholder="${vo.pwd}" type="password" required data-msg="Please enter your password">
               </div>
-              <div class="mb-4">
-                <label class="form-label" for="address1"> Address</label>
-                <input class="form-control" name="address1" id="address1" type="address1" placeholder="${vo.address1}" autocomplete="off">
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="address2"> Detail Address</label>
-                <input class="form-control" name="address2" id="address2" type="address2" placeholder="${vo.address2}" autocomplete="off">
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="zipcode"> Zipcode </label>
-                <input class="form-control" name="zipcode" id="zipcode" type="zipcode" placeholder="${vo.zipcode}" autocomplete="off" >
-              </div>
               <div class="col-lg-2 d-grid">
-                    <button class="btn btn-primary rounded-pill h-100" type="submit">수정 </button>
+                    <button class="btn btn-primary rounded-pill h-100" type="submit">확인 </button>
               </div>
               <div class="col-lg-2 d-grid">
                      <button class="btn btn-primary rounded-pill h-100" type="button">뒤로가기 </button>
@@ -79,6 +59,20 @@
       // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg
       //- injectSvgSprite('${path}icons/orion-svg-sprite.svg'); 
       injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg'); 
+      
+      $(function(){
+  		$('form[name=frmCheck]').submit(function(){
+  			if($('#pwd').val().length<1){
+  				alert('비밀번호를 입력하세요');
+  				$('#pwd').focus();
+  				event.preventDefault();
+  			}else{
+  				if(!confirm('삭제하시겠습니까?')){
+  					event.preventDefault();
+  				}
+  			}
+  		});
+  	});
       
     </script>
     <!-- jQuery-->

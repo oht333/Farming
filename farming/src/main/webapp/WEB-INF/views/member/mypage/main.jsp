@@ -33,7 +33,7 @@
                     <use xlink:href="#password-1"> </use>
                   </svg>
                 </div>
-                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/member/mypage/profile'/>">Login &amp; security</a></h5>
+                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/member/mypage/profile?email=${vo.email }'/>">Login &amp; security</a></h5>
                 <p class="text-muted card-text text-sm">Update your password and secure your account</p>
               </div>
             </div>
@@ -117,6 +117,8 @@
       // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg
       //- injectSvgSprite('${path}icons/orion-svg-sprite.svg'); 
       injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg'); 
+      
+      
       
     </script>
     <!-- jQuery-->
