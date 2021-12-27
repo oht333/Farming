@@ -1,6 +1,5 @@
 package com.gr.farming.member.controller;
 
-import java.util.HashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,11 +24,13 @@ public class MemberController {
 	private final MemberService service;
 	private final OAuthService oservice;
 	
+	
 	@Autowired
 	public MemberController(MemberService service, OAuthService oservice) {
 		this.service = service;
 		this.oservice = oservice;
 	}
+	
 	
 	@RequestMapping("/agreement")
 	public String agreement() {
@@ -127,4 +128,22 @@ public class MemberController {
 		return "common/message";
 
 	}
+	
+	@RequestMapping("/checkemail")
+	public String checkEmail(@RequestParam String email, Model model) {
+		logger.info("중복체크페이지 email={}",email);
+		int result = 0;
+		
+		if(email != null && !email.isEmpty()) {
+			result = service.duplicatedId(email);
+			logger.info("중복확인 결과 result={}",result);
+		}
+		
+		model.addAttribute("result", result);
+		model.addAttribute("EXIST_ID", service.EXIST_ID);
+		model.addAttribute("NON_EXIST_ID", service.NON_EXIST_ID);
+		
+		return "member/checkemail";
+	}
+	
 }
