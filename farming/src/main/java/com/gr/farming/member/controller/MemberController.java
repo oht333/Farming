@@ -117,7 +117,7 @@ public class MemberController {
 			int cnt = service.updateMember(vo);
 			if(cnt>0) {
 				msg="글수정되었습니다.";
-				url="/member/mypage/profile?email="+vo.getEmail();
+				url="/member/mypage/profile";
 			} 
 		}else {
 				msg="비밀번호가 일치하지 않습니다.";
@@ -129,6 +129,43 @@ public class MemberController {
 
 	}
 	
+//  회원 비번 확인
+	@RequestMapping(value="/mypage/checkpwd", method=RequestMethod.GET)
+	public String check_get(@RequestParam(defaultValue = "0") String email, 
+			Model model) {
+		
+		if(email==null) {
+			model.addAttribute("msg", "잘못된 url입니다.");
+			model.addAttribute("url", "/member/mypage/main");
+			return "common/message";
+		}
+		
+		MemberVO vo = service.selectByEmail(email);
+		
+		model.addAttribute("vo",vo);
+		
+		return "member/mypage/checkpwd";
+	}
+	
+	@RequestMapping(value="/mypage/checkpwd", method=RequestMethod.POST)
+	public String check_post(@ModelAttribute MemberVO vo, Model model) {
+		logger.info("비번 확인, 파라미터 vo={}", vo);
+		
+		String msg="실패", url="/member/mypage/main";
+		if(service.checkPwd(vo)) {
+			//여기 뭐 더 넣어야하나여?
+				msg="확인되었습니다.";
+				url="/member/mypage/profile";
+			
+		}else {
+				msg="비밀번호가 일치하지 않습니다.";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+			
+		return "common/message";
+
+	}
 	@RequestMapping("/checkemail")
 	public String checkEmail(@RequestParam String email, Model model) {
 		logger.info("중복체크페이지 email={}",email);
