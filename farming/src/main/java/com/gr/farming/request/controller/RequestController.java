@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gr.farming.zipcode.model.ZipcodeService;
+
 @Controller
 @RequestMapping("/sendRequest")
 public class RequestController {
 
 	private static final Logger logger
 		= LoggerFactory.getLogger(RequestController.class);
+	
+	
 	
 	@RequestMapping("/request")
 	public void request() {
@@ -29,8 +33,13 @@ public class RequestController {
 	
 	@PostMapping("/develop/request1")
 	public void request1_post(HttpSession session, Model model) {
+		
 		logger.info("견적서 작성 1 내용입력");
+		
+		//주소선택
+		
 		
 	}
 	
+
 }
