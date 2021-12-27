@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -18,13 +18,13 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -36,7 +36,7 @@
       <!-- Navbar-->
       <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
         <div class="container-fluid">
-          <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="img/logo.svg" alt="Directory logo"></a>
+          <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="${pageContext.request.contextPath }/resources/img/logo.svg" alt="Directory logo"></a>
             <form class="form-inline d-none d-sm-flex" action="#" id="search">
               <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3"> 
                 <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
@@ -225,7 +225,7 @@
         </ol>
         <h1 class="hero-heading">파밍을 이용하면서 궁금한점이 있으신가요?</h1>
         <div class="row">
-          <div class="col-xl-8 mx-auto"><form><p class="text-muted mb-4">Non adipisicing nisi commodo et consectetur est veniam pariatur. Fugiat occaecat nisi incididunt nostrud anim culpa eiusmod excepteur duis elit elit.</p><div class="input-group"><input class="form-control" type="text" placeholder="Search Something ... "><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button></div></form></div>
+          <div class="col-xl-8 mx-auto"><form><p class="text-muted mb-4">파밍을 이용하시면서 궁금하신점들을 언제든지 검색해보세요.</p><div class="input-group"><input class="form-control" type="text" placeholder="이곳에 입력하기 ... "><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button></div></form></div>
         </div>
       </div>
     </section>
@@ -240,8 +240,8 @@
                     <use xlink:href="#destination-map-1"> </use>
                   </svg>
                 </div>
-                <h3 class="h5">Help &amp; Documentation</h3>
-                <p class="text-muted text-sm mb-0">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in</p><a class="stretched-link" href="knowledge-base-topic.html"> <span class="sr-only">See Topic</span></a>
+                <h3 class="h5">파밍의 첫걸음</h3>
+                <p class="text-muted text-sm mb-0">파밍을 처음 이용하시는 분들을 위한 안내 가이드맵!</p><a class="stretched-link" href="knowledge-base-topic.html"> <span class="sr-only">See Topic</span></a>
               </div>
             </div>
           </div>
@@ -253,8 +253,8 @@
                     <use xlink:href="#laptop-screen-1"> </use>
                   </svg>
                 </div>
-                <h3 class="h5">Developer Resources</h3>
-                <p class="text-muted text-sm mb-0">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pit</p><a class="stretched-link" href="knowledge-base-topic.html"> <span class="sr-only">See Topic</span></a>
+                <h3 class="h5">IT전문가 가이드</h3>
+                <p class="text-muted text-sm mb-0">IT전문가분들의 파밍사이트 이용관련 안내 가이드! </p><a class="stretched-link" href="knowledge-base-topic.html"> <span class="sr-only">See Topic</span></a>
               </div>
             </div>
           </div>
@@ -266,8 +266,8 @@
                     <use xlink:href="#chat-app-1"> </use>
                   </svg>
                 </div>
-                <h3 class="h5">Chat With Us</h3>
-                <p class="text-muted text-sm mb-0">His room, a proper human room although a little too small, lay peacefully between its four familiar </p><a class="stretched-link" href="knowledge-base-topic.html"> <span class="sr-only">See Topic</span></a>
+                <h3 class="h5">고객 가이드</h3>
+                <p class="text-muted text-sm mb-0"> 전문가찾기 서비스를 처음이용하시는 고객분들을 위한 가이드! </p><a class="stretched-link" href="knowledge-base-topic.html"> <span class="sr-only">See Topic</span></a>
               </div>
             </div>
           </div>
