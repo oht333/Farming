@@ -87,7 +87,7 @@ public class MemberController {
 		String facebookurl = oservice.getAuthorizationUrl();
         System.out.println("facebookurl : "+facebookurl);
         return "redirect:"+facebookurl;
-
+	}
 	
 //   회원 정보 수정
 	@RequestMapping(value="/mypage/profile", method=RequestMethod.GET)
