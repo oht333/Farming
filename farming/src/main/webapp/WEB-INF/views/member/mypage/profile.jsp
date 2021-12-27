@@ -20,16 +20,16 @@
 					action="<c:url value='/admin/mypage/profile'/>" >
               <div class="mb-4">
                 <label class="form-label" for="name"> name</label>
-                <input class="form-control" name="name" id="name" type="text" placeholder="${vo.name}" autocomplete="off">
+                <input class="form-control" name="name" id="name" type="text" placeholder="${name}" autocomplete="off">
               </div>
               <div class="mb-4">
                 <label class="form-label" for="email"> Email Address</label>
-                <input class="form-control" name="email" id="email" type="email" placeholder="${vo.email}" autocomplete="off">
+                <input class="form-control" name="email" id="email" type="email" placeholder="${email}" autocomplete="off" readonly="readonly">
                 <!-- <span class="invalidText"></span> -->
               </div>
               <div class="mb-4">
                 <label class="form-label" for="pwd"> Password</label>
-                <input class="form-control" name="pwd" id="pwd" placeholder="${vo.pwd}" type="password" required data-msg="Please enter your password">
+                <input class="form-control" name="pwd" id="pwd" placeholder="${pwd}" type="password">
               </div>
               <div class="mb-4">
                 <label class="form-label" for="address1"> Address</label>
@@ -49,7 +49,7 @@
               <div class="col-lg-2 d-grid">
                      <button class="btn btn-primary rounded-pill h-100" type="button">뒤로가기 </button>
               </div>
-            
+            </form>
             </div>
           </div>
         </div>

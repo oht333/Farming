@@ -220,9 +220,9 @@
               </c:if>
               <c:if test="${!empty email }">
               		<li class="nav-item"><a class="nav-link" href="<c:url value='/login/logout'/>">LogOut</a></li>
-  	                <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="<c:url value='/member/userinfo'/>">${name }님</a></li>
+  	                <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="<c:url value='/member/mypage/main?email=${email }'/>">${name }님</a></li>
               </c:if>
-              <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="<c:url value='/member/mypage/main?email=${email }'/>">${name }님</a></li>
+              
 
             </ul>
           </div>

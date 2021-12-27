@@ -151,7 +151,7 @@ public class MemberController {
 	public String check_post(@ModelAttribute MemberVO vo, Model model) {
 		logger.info("비번 확인, 파라미터 vo={}", vo);
 		
-		String msg="실패", url="/member/mypage/main";
+		String msg="실패", url="/member/mypage/checkpwd";
 		if(service.checkPwd(vo)) {
 			//여기 뭐 더 넣어야하나여?
 				msg="확인되었습니다.";
