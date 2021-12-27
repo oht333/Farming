@@ -1,5 +1,7 @@
 package com.gr.farming.request.model;
 
+import java.sql.Timestamp;
+
 public class RequestDevelopVO {
 
 	private int requestDevelopNo;
@@ -8,6 +10,8 @@ public class RequestDevelopVO {
 	private String career;
 	private String step;
 	private String reference;
+	private Timestamp deadline;
+	private String worktype;
 	private String location1;
 	private String location2;
 	
@@ -47,6 +51,18 @@ public class RequestDevelopVO {
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
+	public Timestamp getDeadline() {
+		return deadline;
+	}
+	public void setDeadline(Timestamp deadline) {
+		this.deadline = deadline;
+	}
+	public String getWorktype() {
+		return worktype;
+	}
+	public void setWorktype(String worktype) {
+		this.worktype = worktype;
+	}
 	public String getLocation1() {
 		return location1;
 	}
@@ -63,8 +79,8 @@ public class RequestDevelopVO {
 	@Override
 	public String toString() {
 		return "RequestDevelopVO [requestDevelopNo=" + requestDevelopNo + ", platform=" + platform + ", type=" + type
-				+ ", career=" + career + ", step=" + step + ", reference=" + reference + ", location1=" + location1
-				+ ", location2=" + location2 + "]";
+				+ ", career=" + career + ", step=" + step + ", reference=" + reference + ", deadline=" + deadline
+				+ ", worktype=" + worktype + ", location1=" + location1 + ", location2=" + location2 + "]";
 	}
 	
 	

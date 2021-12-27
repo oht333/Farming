@@ -18,5 +18,5 @@ public class ZipcodeServiceImpl implements ZipcodeService{
 	public List<ZipcodeVO> selectZipcode(String dong) {
 		return zipcodeDao.selectZipcode(dong);
 	}
-	
+
 }
