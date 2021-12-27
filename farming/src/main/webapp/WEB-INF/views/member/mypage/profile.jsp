@@ -17,7 +17,8 @@
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
             <form name="frmEdit" method="post" 
-					action="<c:url value='/admin/mypage/profile'/>" >
+					action="<c:url value='/member/mypage/profile'/>" >
+			<%-- <input type="hidden" name="email" value="${param.email}"> --%>
               <div class="mb-4">
                 <label class="form-label" for="name"> name</label>
                 <input class="form-control" name="name" id="name" type="text" placeholder="${name}" autocomplete="off">
@@ -29,7 +30,7 @@
               </div>
               <div class="mb-4">
                 <label class="form-label" for="pwd"> Password</label>
-                <input class="form-control" name="pwd" id="pwd" placeholder="${pwd}" type="password">
+                <input class="form-control" name="pwd" id="pwd" type="password">
               </div>
               <div class="mb-4">
                 <label class="form-label" for="address1"> Address</label>

@@ -113,14 +113,10 @@ public class MemberController {
 		logger.info("글수정 처리, 파라미터 vo={}", vo);
 		
 		String msg="글수정 실패", url="/member/mypage/main";
-		if(service.checkPwd(vo)) {
-			int cnt = service.updateMember(vo);
-			if(cnt>0) {
-				msg="글수정되었습니다.";
-				url="/member/mypage/profile";
-			} 
-		}else {
-				msg="비밀번호가 일치하지 않습니다.";
+		int cnt = service.updateMember(vo);
+		if(cnt>0) {
+			msg="글수정되었습니다.";
+			url="/member/mypage/profile";
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
@@ -153,7 +149,6 @@ public class MemberController {
 		
 		String msg="실패", url="/member/mypage/checkpwd";
 		if(service.checkPwd(vo)) {
-			//여기 뭐 더 넣어야하나여?
 				msg="확인되었습니다.";
 				url="/member/mypage/profile";
 			
