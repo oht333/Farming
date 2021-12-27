@@ -11,4 +11,14 @@ public class QnaController {
 	public String qnaMain() {
 		return "qna/qnaMain";
 	}
+	
+	@RequestMapping("/qnaGuest")
+	public String qnaGuest() {
+		return "qna/qnaGuest";
+	}
+	
+	@RequestMapping("/qnaDeveloper")
+	public String qnaDeveloper() {
+		return "qna/qnaDeveloper";
+	}
 }
