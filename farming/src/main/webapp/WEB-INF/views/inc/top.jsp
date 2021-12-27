@@ -136,8 +136,13 @@
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-account.html">Account   </a></li>
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-personal.html">Personal info - forms   </a></li>
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-security.html">Password & security - forms   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="login.html">Sign in   </a></li>
-                            <li class="megamenu-list-item"><a class="megamenu-list-link" href="signup.html">Sign up   </a></li>
+                            <c:if test="${empty email }">
+                            	<li class="megamenu-list-item"><a class="megamenu-list-link" href="<c:url value='/login/login'/>">Sign in   </a></li>
+                            	<li class="megamenu-list-item"><a class="megamenu-list-link" href="<c:url value='/login/signup'/>">Sign up   </a></li>
+                            </c:if>
+                            <c:if test="${!empty email }">
+                            	<li class="megamenu-list-item"><a class="megamenu-list-link" href="<c:url value='/login/logout'/>">LogOut   </a></li>
+                            </c:if>
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-1.html">Booking process - 4 pages   </a></li>
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-grid.html">Bookings &mdash; grid view   </a></li>
                             <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-detail.html">Booking detail   </a></li>
@@ -209,9 +214,16 @@
                   <h6 class="dropdown-header fw-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
                 </div>
               </li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value='/login/login'/>">Sign in</a></li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value='/signup/signup'/>">Sign up</a></li>
-              <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="user-add-0.html">Add a listing</a></li>
+              <c:if test="${empty email }">
+              		<li class="nav-item"><a class="nav-link" href="<c:url value='/login/login'/>">Sign in</a></li>
+              		<li class="nav-item"><a class="nav-link" href="<c:url value='/signup/signup'/>">Sign up</a></li>
+              </c:if>
+              <c:if test="${!empty email }">
+              		<li class="nav-item"><a class="nav-link" href="<c:url value='/login/logout'/>">LogOut</a></li>
+  	                <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="<c:url value='/member/mypage/main?email=${email }'/>">${name }님</a></li>
+              </c:if>
+              
+
             </ul>
           </div>
         </div>
