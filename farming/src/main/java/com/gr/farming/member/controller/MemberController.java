@@ -23,10 +23,12 @@ public class MemberController {
 	=LoggerFactory.getLogger(MemberController.class);
 	
 	private final MemberService service;
+	private final OAuthService oservice;
 	
 	@Autowired
-	public MemberController(MemberService service) {
+	public MemberController(MemberService service, OAuthService oservice) {
 		this.service = service;
+		this.oservice = oservice;
 	}
 	
 	@RequestMapping("/agreement")
@@ -77,6 +79,15 @@ public class MemberController {
         
         return "redirect:"+loginUrl.toString();
 	}
+
+
+//	페이스북 로그인 or 회원가입
+	@RequestMapping("facebookjoin")
+	public String facebookjoin() {
+		String facebookurl = oservice.getAuthorizationUrl();
+        System.out.println("facebookurl : "+facebookurl);
+        return "redirect:"+facebookurl;
+
 	
 //   회원 정보 수정
 	@RequestMapping(value="/mypage/profile", method=RequestMethod.GET)
@@ -114,5 +125,6 @@ public class MemberController {
 		model.addAttribute("url", url);
 			
 		return "common/message";
+
 	}
 }
