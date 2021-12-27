@@ -10,89 +10,46 @@
           <li class="breadcrumb-item"><a href="user-account.html">Account</a></li>
           <li class="breadcrumb-item active">Login &amp; security   </li>
         </ol>
-        <h1 class="hero-heading mb-0">Login &amp; security</h1>
+        <h1 class="hero-heading mb-0">내 정보 수정</h1>
         <p class="text-muted mb-5">Manage your Login & security and settings here.</p>
+        
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
-              <h3 class="mb-4">Login</h3>
-              <div class="row">
-                <div class="col-sm-8">
-                  <h6>Password</h6>
-                  <p class="text-sm text-muted">Last updated 3 years ago</p>
-                </div>
-                <div class="col text-end">
-                  <button class="btn btn-link ps-0 text-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#updatePassword" aria-expanded="false" aria-controls="updatePassword">Update</button>
-                </div>
+            <form name="frmWrite" method="post" 
+					action="<c:url value='/admin/mypage/profile'/>" >
+              <div class="mb-4">
+                <label class="form-label" for="name"> name</label>
+                <input class="form-control" name="name" id="name" type="text" placeholder="${vo.name}" autocomplete="off" required data-msg="Please enter your name">
               </div>
-              <div class="collapse" id="updatePassword">
-                <div class="row mt-4">
-                  <div class="mb-4 col-12">
-                    <label class="form-label" for="password-current">Current Password</label>
-                    <input class="form-control" type="password" name="password-current" id="password-current">
-                  </div>
-                  <div class="mb-4 col-md-6">
-                    <label class="form-label" for="password-new">New Password</label>
-                    <input class="form-control" type="password" name="password-new" id="password-new">
-                  </div>
-                  <div class="mb-4 col-md-6">
-                    <label class="form-label" for="password-confirm">Confirm Password</label>
-                    <input class="form-control" type="password" name="password-confirm" id="password-confirm">
-                  </div>
-                </div>
-                <button class="btn btn-outline-primary">Update Password</button>
+              <div class="mb-4">
+                <label class="form-label" for="email"> Email Address</label>
+                <input class="form-control" name="email" id="email" type="email" placeholder="${vo.email}" autocomplete="off" required data-msg="Please enter your email">
+                <!-- <span class="invalidText"></span> -->
               </div>
-            </div>
-            <div class="text-block"> 
-              <h3 class="mb-4">Social accounts</h3>
-              <div class="row">
-                <div class="col-sm-8">
-                  <h6>Facebook</h6>
-                  <p class="text-sm text-muted">Not connected</p>
-                </div>
-                <div class="col text-end"><a class="btn btn-link text-primary ps-0" href="#">Connect</a></div>
+              <div class="mb-4">
+                <label class="form-label" for="pwd"> Password</label>
+                <input class="form-control" name="pwd" id="pwd" placeholder="${vo.pwd}" type="password" required data-msg="Please enter your password">
               </div>
-              <div class="row">
-                <div class="col-sm-8">
-                  <h6>Google</h6>
-                  <p class="text-sm">Connected</p>
-                </div>
-                <div class="col text-end"><a class="btn btn-link text-primary ps-0" href="#">Disconnect</a></div>
+              <div class="mb-4">
+                <label class="form-label" for="address1"> Address</label>
+                <input class="form-control" name="address1" id="address1" type="address1" placeholder="${vo.address1}" autocomplete="off" required data-msg="Please enter your address1">
               </div>
-            </div>
-            <div class="text-block">
-              <h3 class="mb-4">Device history</h3>
-              <div class="d-flex">
-                <div class="icon-rounded bg-secondary-light flex-shrink-0">
-                  <svg class="svg-icon text-secondary w-2rem h-2rem">
-                    <use xlink:href="#imac-screen-1"> </use>
-                  </svg>
-                </div>
-                <div class="pt-2 ms-3"><strong>Windows 10.0 </strong>· Chrome
-                  <div class="badge badge-secondary-light text-uppercase">Current  Session</div>
-                  <p class="text-sm text-muted">Ostrava, Moravskoslezsky kraj · April 6, 2020 at 01:51pm</p><a class="btn btn-link text-primary ps-0" href="#">Log out device</a>
-                </div>
+              <div class="mb-4">
+                <label class="form-label" for="address2"> Detail Address</label>
+                <input class="form-control" name="address2" id="address2" type="address2" placeholder="${vo.address2}" autocomplete="off" required data-msg="Please enter your address2">
               </div>
-            </div>
-          </div>
-          <div class="col-md-8 col-lg-4 ms-lg-auto">
-            <div class="card border-0 shadow">
-              <div class="card-header bg-primary-light py-4 border-0">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <h4 class="h6 subtitle text-sm text-primary">Let's make your account more secure</h4>
-                  </div>
-                  <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-primary flex-shrink-0">
-                    <use xlink:href="#shield-security-1"> </use>
-                  </svg>
-                </div>
+              <div class="mb-4">
+                <label class="form-label" for="zipcode"> Zipcode </label>
+                <input class="form-control" name="zipcode" id="zipcode" type="zipcode" placeholder="${vo.zipcode}" autocomplete="off" required data-msg="Please enter your zipcode">
               </div>
-              <div class="card-body p-4">
-                <h6 class="card-text">Your account security: </h6>
-                <p class="card-text mb-4"><span class="badge badge-info-light">Medium</span></p>
-                <p class="text-muted card-text">We’re always working on ways to increase safety in our community. </p>
-                <p class="text-muted card-text">That’s why we look at every account to make sure it’s as secure as possible.</p>
+              <div class="col-lg-2 d-grid">
+                    <button class="btn btn-primary rounded-pill h-100" type="submit">수정 </button>
               </div>
+              <div class="col-lg-2 d-grid">
+                     <button class="btn btn-primary rounded-pill h-100" type="button">뒤로가기 </button>
+              </div>
+            
             </div>
           </div>
         </div>
