@@ -19,4 +19,5 @@ public interface MemberService {
 	public int updateMember(MemberVO vo);
 	public int withdrawMember(String email);
 	public List<MemberVO> selectAll();
+	public boolean checkPwd(MemberVO vo);
 }
