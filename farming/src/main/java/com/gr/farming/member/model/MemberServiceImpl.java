@@ -1,5 +1,7 @@
 package com.gr.farming.member.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +15,16 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	
-	public int insertMember(MemberVO vo) {
-		int cnt=memberDao.insertMember(vo);
+	public int insert(MemberVO vo) {
+		vo.setAddress1("");
+		vo.setAddress2("");
+		vo.setZipcode("");
+		int cnt=memberDao.insert(vo);
 		return cnt;
 	}
 	
-	public int duplicateId(String email) {
-		int count=memberDao.duplicateId(email);
+	public int duplicatedId(String email) {
+		int count=memberDao.duplicatedId(email);
 		
 		int result=0;
 		if(count>0) {  //해당 아이디가 이미 존재함
@@ -57,6 +62,21 @@ public class MemberServiceImpl implements MemberService{
 	
 	public int withdrawMember(String email) {
 		return memberDao.withdrawMember(email);
+	}
+
+	public List<MemberVO> selectAll() {
+		return memberDao.selectAll();
+	}
+
+	@Override
+	public boolean checkPwd(MemberVO vo) {
+		String mPwd = memberDao.selectPwd(vo.getPwd());
+		
+		if(mPwd.equals(vo.getPwd())) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

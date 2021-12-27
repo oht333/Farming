@@ -25,7 +25,9 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
+
     <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
+    <script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->

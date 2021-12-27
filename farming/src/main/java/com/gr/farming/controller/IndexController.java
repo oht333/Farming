@@ -11,7 +11,14 @@ import com.gr.farming.member.model.MemberService;
 public class IndexController {
 
 	@GetMapping("/index")
-	public String index_() {
+	public String index() {
 		return "index";
 	}
+	
+	@GetMapping("/kakaoInfo")
+	public String kakaoInfo() {
+		return "kakaoInfo";
+	}
+	
+	
 }
