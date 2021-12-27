@@ -17,11 +17,11 @@
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
             <form name="frmCheck" method="post" 
-					action="<c:url value='/admin/mypage/checkpwd${email }'/>" >
+					action="<c:url value='/admin/mypage/checkpwd'/>" >
 					<input type="hidden" name="email" value="${param.email}">
               <div class="mb-4">
                 <label class="form-label" for="pwd"> Password</label>
-                <input class="form-control" name="pwd" id="pwd" placeholder="${vo.pwd}" type="password" required data-msg="Please enter your password">
+                <input class="form-control" name="pwd" id="pwd" type="password" required data-msg="Please enter your password">
               </div>
               <div class="col-lg-2 d-grid">
                     <button class="btn btn-primary rounded-pill h-100" type="submit">확인 </button>
@@ -67,11 +67,13 @@
   				$('#pwd').focus();
   				event.preventDefault();
   			}else{
-  				if(!confirm('삭제하시겠습니까?')){
+  				if(!confirm('멘트 고민중...')){
   					event.preventDefault();
   				}
   			}
   		});
+  	});	
+      
   	});
       
     </script>
