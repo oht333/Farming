@@ -12,7 +12,7 @@
       <div class="container">
         <p class="subtitle text-primary">Let's Farming</p>
         <h1 class="h2 mb-5"> 소프트웨어 개발 <span class="text-muted float-end">Step 1</span>      </h1>
-        <form name="frm1" method="post" action="<c:url value='/sendRequest/develop/request_success'/>">
+        <form name="frm1" method="post" action="<c:url value='/request/develop/request1'/>">
           <div class="row form-block">
             <div class="col-lg-4">
               <h4>어떤 플랫폼을 원하시나요?</h4>
@@ -24,37 +24,37 @@
                 <ul class="list-inline mb-0">
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="windows" name="PLATFORM">
-                      <label class="form-check-label text-muted" for="windows">Windows   </label>
+                      <input class="form-check-input" type="checkbox" id="windows" name="PLATFORM" value="Windows">
+                      <label class="form-check-label text-muted" for="windows" >Windows</label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="Mac" name="PLATFORM">
-                      <label class="form-check-label text-muted" for="Mac">Mac    </label>
+                      <input class="form-check-input" type="checkbox" id="Mac" name="PLATFORM" value="Mac">
+                      <label class="form-check-label text-muted" for="Mac">Mac</label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="Linux" name="PLATFORM">
+                      <input class="form-check-input" type="checkbox" id="Linux" name="PLATFORM" value="Linux">
                       <label class="form-check-label text-muted" for="Linux">Linux    </label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="iOS" name="PLATFORM">
+                      <input class="form-check-input" type="checkbox" id="iOS" name="PLATFORM" value="iOS">
                       <label class="form-check-label text-muted" for="iOS">iOS    </label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="Android" name="PLATFORM">
+                      <input class="form-check-input" type="checkbox" id="Android" name="PLATFORM" value="Android">
                       <label class="form-check-label text-muted" for="Android">Android    </label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="Counseling" name="PLATFORM">
+                      <input class="form-check-input" type="checkbox" id="Counseling" name="PLATFORM" value="Counseling">
                       <label class="form-check-label text-muted" for="Counseling">전문가와 상담 후 결정할게요.   </label>
                     </div>
                   </li><br>
@@ -197,7 +197,7 @@
 	                  <label class="form-check-label" for="DEADLINE_2">일주일 이내로 진행하고 싶어요.</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="DEADLINE_2" name="gueDEADLINEsts">
+	                  <input class="form-check-input" type="radio" id="DEADLINE_2" name="DEADLINE">
 	                  <label class="form-check-label" for="DEADLINE_2">원하는 날짜가 있어요.</label>
 	                </div>
 	                <div class="form-check chk">
@@ -276,7 +276,7 @@
           </div>
           <!-- 버튼 -->
           <div class="row form-block flex-column flex-sm-row">
-            <div class="col text-center text-sm-end"><a class="btn btn-primary px-3" type="submit"> FINISH<i class="fa-chevron-right fa ms-2"></i></a></div>
+            <div class="col text-center text-sm-end"><button type="submit" class="btn btn-primary px-3"> FINISH<i class="fa-chevron-right fa ms-2"></i></button></div>
           </div>
         </form>
       </div>

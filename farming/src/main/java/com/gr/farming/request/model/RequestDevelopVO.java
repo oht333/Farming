@@ -4,84 +4,83 @@ import java.sql.Timestamp;
 
 public class RequestDevelopVO {
 
-	private int requestDevelopNo;
-	private String platform;
-	private String type;
-	private String career;
-	private String step;
-	private String reference;
-	private Timestamp deadline;
-	private String worktype;
-	private String location1;
-	private String location2;
-	
-	public int getRequestDevelopNo() {
-		return requestDevelopNo;
+	private int REQUEST_DEVELOP_NO;
+	private String PLATFORM;
+	private String TYPE;
+	private String CAREER;
+	private String STEP;
+	private String REFERENCE;
+	private String DEADLINE;
+	private String WORKTYPE;
+	private String LOCATION1;
+	private String LOCATION2;
+	public int getREQUEST_DEVELOP_NO() {
+		return REQUEST_DEVELOP_NO;
 	}
-	public void setRequestDevelopNo(int requestDevelopNo) {
-		this.requestDevelopNo = requestDevelopNo;
+	public void setREQUEST_DEVELOP_NO(int rEQUEST_DEVELOP_NO) {
+		REQUEST_DEVELOP_NO = rEQUEST_DEVELOP_NO;
 	}
-	public String getPlatform() {
-		return platform;
+	public String getPLATFORM() {
+		return PLATFORM;
 	}
-	public void setPlatform(String platform) {
-		this.platform = platform;
+	public void setPLATFORM(String pLATFORM) {
+		PLATFORM = pLATFORM;
 	}
-	public String getType() {
-		return type;
+	public String getTYPE() {
+		return TYPE;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setTYPE(String tYPE) {
+		TYPE = tYPE;
 	}
-	public String getCareer() {
-		return career;
+	public String getCAREER() {
+		return CAREER;
 	}
-	public void setCareer(String career) {
-		this.career = career;
+	public void setCAREER(String cAREER) {
+		CAREER = cAREER;
 	}
-	public String getStep() {
-		return step;
+	public String getSTEP() {
+		return STEP;
 	}
-	public void setStep(String step) {
-		this.step = step;
+	public void setSTEP(String sTEP) {
+		STEP = sTEP;
 	}
-	public String getReference() {
-		return reference;
+	public String getREFERENCE() {
+		return REFERENCE;
 	}
-	public void setReference(String reference) {
-		this.reference = reference;
+	public void setREFERENCE(String rEFERENCE) {
+		REFERENCE = rEFERENCE;
 	}
-	public Timestamp getDeadline() {
-		return deadline;
+	public String getDEADLINE() {
+		return DEADLINE;
 	}
-	public void setDeadline(Timestamp deadline) {
-		this.deadline = deadline;
+	public void setDEADLINE(String dEADLINE) {
+		DEADLINE = dEADLINE;
 	}
-	public String getWorktype() {
-		return worktype;
+	public String getWORKTYPE() {
+		return WORKTYPE;
 	}
-	public void setWorktype(String worktype) {
-		this.worktype = worktype;
+	public void setWORKTYPE(String wORKTYPE) {
+		WORKTYPE = wORKTYPE;
 	}
-	public String getLocation1() {
-		return location1;
+	public String getLOCATION1() {
+		return LOCATION1;
 	}
-	public void setLocation1(String location1) {
-		this.location1 = location1;
+	public void setLOCATION1(String lOCATION1) {
+		LOCATION1 = lOCATION1;
 	}
-	public String getLocation2() {
-		return location2;
+	public String getLOCATION2() {
+		return LOCATION2;
 	}
-	public void setLocation2(String location2) {
-		this.location2 = location2;
+	public void setLOCATION2(String lOCATION2) {
+		LOCATION2 = lOCATION2;
 	}
-	
 	@Override
 	public String toString() {
-		return "RequestDevelopVO [requestDevelopNo=" + requestDevelopNo + ", platform=" + platform + ", type=" + type
-				+ ", career=" + career + ", step=" + step + ", reference=" + reference + ", deadline=" + deadline
-				+ ", worktype=" + worktype + ", location1=" + location1 + ", location2=" + location2 + "]";
+		return "RequestDevelopVO [REQUEST_DEVELOP_NO=" + REQUEST_DEVELOP_NO + ", PLATFORM=" + PLATFORM + ", TYPE="
+				+ TYPE + ", CAREER=" + CAREER + ", STEP=" + STEP + ", REFERENCE=" + REFERENCE + ", DEADLINE=" + DEADLINE
+				+ ", WORKTYPE=" + WORKTYPE + ", LOCATION1=" + LOCATION1 + ", LOCATION2=" + LOCATION2 + "]";
 	}
+	
 	
 	
 }

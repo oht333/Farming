@@ -1,8 +1,5 @@
 package com.gr.farming.request.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gr.farming.request.model.RequestDevelopVO;
 import com.gr.farming.request.model.RequestService;
-import com.gr.farming.zipcode.model.ZipcodeService;
 
 @Controller
 @RequestMapping("/request")
@@ -38,7 +34,7 @@ public class RequestController {
 	}
 	
 	@GetMapping("/develop/request1")
-	public void request1_get(Model model) {
+	public void request1_get() {
 		logger.info("견적서 작성 1 화면 보여주기");
 	}
 	
@@ -50,10 +46,10 @@ public class RequestController {
 		int cnt=requestService.insertRequestDevelop(vo);
 		logger.info("견적서 처리 결과 cnt={}", cnt);
 		
-		String msg="견적서 보내기 실패", url="/sendRequest/develop/request1";
+		String msg="견적서 보내기 실패", url="request/develop/request1";
 		if(cnt>0) {
 			msg="견적서 작성이 처리되었습니다.";
-			url="/sendRequest/develop/request_seccess";
+			url="/request/develop/request_success";
 		}
 		
 		model.addAttribute("msg", msg);
@@ -65,6 +61,6 @@ public class RequestController {
 	@GetMapping("/develop/request_success")
 	public String request_success() {
 		logger.info("견적서 작성 완료 화면");
-		return "develop/request_success";
+		return "request/develop/request_success";
 	}
 }

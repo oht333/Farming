@@ -8,7 +8,7 @@
       <div class="container text-center">
         <p class="subtitle text-primary">Let's Farming</p>
         <h1 class="h2 mb-5">1분 견적서 작성 완료!</h1>
-        <p class="mb-5"><img class="img-fluid" src="img/illustration/undraw_celebration_0jvk.svg" alt="" style="width: 400px;"></p>
+        <p class="mb-5"><img class="img-fluid" src="${pageContext.request.contextPath }/resources/img/illustration/undraw_celebration_0jvk.svg" alt="" style="width: 400px;"></p>
         <p class="text-muted mb-5">Thank you, Ondrej. Your listing has been saved and will be reviewed shortly.</p>
         <p class="mb-5"><a class="btn btn-primary me-2 mb-2" href="#">Do something</a><a class="btn btn-outline-muted mb-2" href="#">Or something else</a></p>
       </div>
