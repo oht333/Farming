@@ -320,29 +320,36 @@
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
-                            
+                            Empty Page <small>Create new page.</small>
                         </h1>
-						<ol class="breadcrumb"">
-					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
-					  	
-					  			<a href="<c:url value='/admin/empty'/>" class="btn btn-success">success</a>
-					  		
-					  		
-					   </ol>
+						<ol class="breadcrumb">
+					  <li><a href="#">Home</a></li>
+					  <li><a href="#">Empty</a></li>
+					  <li class="active">Data</li>
+					</ol> 
 					
 		</div>
-		<div class="panel panel-default">
-                        <form name="frmDelete" method="post" action="<c:url value='/admin/delete'/>" >
-						<input type="hidden" name="categoryNo" value="${param.categoryNo}">
-                        <div>           
-				        	<span class="sp">${param.categoryNo }번 글을 삭제하시겠습니까?</span>                        
-				        </div>
-                        <div class="center">
-							<input type ="submit" value="삭제" />
-				        	<a href='<c:url value="/admin/list"/>'>목록</a>			
-						</div>
-                    </div>
-             
+		<form name="frmWrite" method="post" 
+	action="<c:url value='/admin/category/write'/>" >
+ <fieldset>
+	<legend>글쓰기</legend>
+		<div>
+            <label for="main">대분류</label>
+            <input type="text" id="main" name="main" />
+        </div>
+        <div>
+            <label for="detail">분야</label>
+            <input type="text" id="detail" name="detail" />
+        </div>
+        <div class="center">
+            <input type = "submit" value="등록"/>
+            <input type = "Button" id="btList" value="글목록" OnClick="location.href='<c:url value="/admin/category/list"/>'" />         
+        </div>
+    </fieldset>
+</form>
+            <div id="page-inner"> 
+				 <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>
+				</div>
              <!-- /. PAGE INNER  -->
              
             </div>

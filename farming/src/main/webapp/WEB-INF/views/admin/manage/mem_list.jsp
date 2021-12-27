@@ -320,34 +320,49 @@
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
-                            카테고리 목록
+                            회원 목록
                         </h1>
-						<ol class="breadcrumb"">
-					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
-					  	
-					  			<a href="<c:url value='/admin/empty'/>" class="btn btn-success">success</a>
-					  		
-					  		
-					   </ol>
 					
 		</div>
 		<div class="panel panel-default">
                         <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
                             
                         </div>
-                        <!-- 수정시 no가 필요하므로 히든 필드에 담아서 넘겨준다 -->
-						<input type="hidden" name="categoryNo" value="${vo.categoryNo}">
-						<div> 
-							<span class="sp1">MAIN</span> <span>${vo.main }</span>
-						</div>
-						<div>
-							<span class="sp1">DETAIL</span> <span>${vo.detail }</span>
-						</div>
-                        <div class="center">
-							<a href='<c:url value="/admin/cateUpdate?categoryNo=${vo.categoryNo }"/>'>수정</a> |
-				        	<a href='<c:url value="/admin/delete?categoryNo=${vo.categoryNo }"/>'>삭제</a> |
-				        	<a href='<c:url value="/admin/list"/>'>목록</a>			
-						</div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                     <thead>
+                                        <tr>
+                                            <th>MEMBER_NO</th>
+                                            <th>NAME</th>
+                                            <th>EMAIL</th>
+                                            <th>ADDRESS1</th>
+                                            <th>ADDRESS2</th>
+                                            <th>ZIPCODE</th>
+                                            <th>REGDATE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    	<c:forEach var="vo" items="${mem_list }">
+	                                        <tr>
+	                                            <td>
+	                                            <%-- <a href="<c:url value='/admin/manage/detail?memberNo=${vo.memberNo }'/>">
+	                                    
+	                                            </a> --%>
+	                                           	 	${vo.memberNo }
+	                                            </td>
+	                                            <td>${vo.name }</td>
+	                                            <td>${vo.email }</td>
+	                                            <td>${vo.address1 }</td>
+	                                            <td>${vo.address2 }</td>
+	                                            <td>${vo.zipcode }</td>
+	                                            <td>${vo.regdate }</td>
+	                                        </tr>
+										</c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
             
              <!-- /. PAGE INNER  -->

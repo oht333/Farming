@@ -320,24 +320,43 @@
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
-                            Empty Page <small>Create new page.</small>
-                        </h1>
-						<ol class="breadcrumb">
-					  <li><a href="#">Home</a></li>
-					  <li><a href="#">Empty</a></li>
-					  <li class="active">Data</li>
-					</ol> 
+                        </h1><%-- 
+						<ol class="breadcrumb"">
+					  		<li><a href="<c:url value='/admin/empty'/>">입력</a></li>
+					  	
+					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-success">success</a>
+					  		
+					  		
+					   </ol> --%>
 					
 		</div>
-            <div id="page-inner"> 
-				 <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>
-				</div>
+		<div class="panel panel-default">
+                        <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
+                            
+                        </div>
+                        <!-- 수정시 no가 필요하므로 히든 필드에 담아서 넘겨준다 -->
+						<input type="hidden" name="categoryNo" value="${vo.categoryNo}">
+						<div> 
+							<span class="sp1">MAIN</span> <span>${vo.main }</span>
+						</div>
+						<div>
+							<span class="sp1">DETAIL</span> <span>${vo.detail }</span>
+						</div>
+                        <div class="center">
+							<a href='<c:url value="/admin/category/cateUpdate?categoryNo=${vo.categoryNo }"/>'>수정</a> |
+				        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>'>삭제</a> |
+				        	<a href='<c:url value="/admin/category/list"/>'>목록</a>			
+						</div>
+                    </div>
+            
              <!-- /. PAGE INNER  -->
+             
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>
      <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
+    <!-- jQuery Js -->
     <script src="<c:url value='/resources/admin_js/jquery-1.10.2.js'/>"></script>
       <!-- Bootstrap Js -->
     <script src="<c:url value='/resources/admin_js/bootstrap.min.js'/>"></script>

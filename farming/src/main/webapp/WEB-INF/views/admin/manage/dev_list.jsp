@@ -320,24 +320,63 @@
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
-                            Empty Page <small>Create new page.</small>
+                            전문가 목록
                         </h1>
-						<ol class="breadcrumb">
-					  <li><a href="#">Home</a></li>
-					  <li><a href="#">Empty</a></li>
-					  <li class="active">Data</li>
-					</ol> 
 					
 		</div>
-            <div id="page-inner"> 
-				 <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>
-				</div>
+		<div class="panel panel-default">
+                        <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
+                            
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                     <thead>
+                                        <tr>
+                                            <th>EXPERT_NO</th>
+                                            <th>CATEGORY_NO</th>
+                                            <th>NAME</th>
+                                            <th>EMAIL</th>
+                                            <th>ADDRESS1</th>
+                                            <th>ADDRESS2</th>
+                                            <th>ZIPCODE</th>
+                                            <th>REGDATE</th>
+                                            <th>HP1-HP2-HP3</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    	<c:forEach var="vo" items="${list }">
+	                                        <tr>
+	                                            <td>
+	                                            <%-- <a href="<c:url value='/admin/manage/detail?expertNo=${vo.expertNo }'/>">
+	                                            	
+	                                            </a> --%>
+	                                            	${vo.expertNo }
+	                                            </td>
+	                                            <td>${vo.categoryNo }</td>
+	                                            <td>${vo.name }</td>
+	                                            <td>${vo.email }</td>
+	                                            <td>${vo.address1 }</td>
+	                                            <td>${vo.address2 }</td>
+	                                            <td>${vo.zipcode }</td>
+	                                            <td>${vo.regdate }</td>
+	                                            <td>${vo.hp1 }-${vo.hp2 }-${vo.hp3 }</td>
+	                                        </tr>
+										</c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            
              <!-- /. PAGE INNER  -->
+             
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>
      <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
+    <!-- jQuery Js -->
     <script src="<c:url value='/resources/admin_js/jquery-1.10.2.js'/>"></script>
       <!-- Bootstrap Js -->
     <script src="<c:url value='/resources/admin_js/bootstrap.min.js'/>"></script>

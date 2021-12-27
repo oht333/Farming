@@ -42,6 +42,11 @@ public class MemberController {
 		logger.info("회원가입 페이지");
 		return "member/memRegister";
 	}
+	@RequestMapping("/mypage/main")
+	public String main() {
+		logger.info("마이페이지");
+		return "member/mypage/main";
+	}
 	
 //	회원가입처리
 	@RequestMapping("/join")
@@ -75,11 +80,51 @@ public class MemberController {
         return "redirect:"+loginUrl.toString();
 	}
 
+
 //	페이스북 로그인 or 회원가입
 	@RequestMapping("facebookjoin")
 	public String facebookjoin() {
 		String facebookurl = oservice.getAuthorizationUrl();
         System.out.println("facebookurl : "+facebookurl);
         return "redirect:"+facebookurl;
+
+	
+//   회원 정보 수정
+	@RequestMapping(value="/mypage/profile", method=RequestMethod.GET)
+	public String edit_get(@RequestParam(defaultValue = "0") String email, 
+			Model model) {
+		
+		if(email==null) {
+			model.addAttribute("msg", "잘못된 url입니다.");
+			model.addAttribute("url", "/member/mypage/main");
+			return "common/message";
+		}
+		
+		MemberVO vo = service.selectByEmail(email);
+		
+		model.addAttribute("vo",vo);
+		
+		return "member/mypage/profile";
+	}
+	
+	@RequestMapping(value="/mypage/profile", method=RequestMethod.POST)
+	public String edit_post(@ModelAttribute MemberVO vo, Model model) {
+		logger.info("글수정 처리, 파라미터 vo={}", vo);
+		
+		String msg="글수정 실패", url="/member/mypage/main";
+		if(service.checkPwd(vo)) {
+			int cnt = service.updateMember(vo);
+			if(cnt>0) {
+				msg="글수정되었습니다.";
+				url="/member/mypage/profile?email="+vo.getEmail();
+			} 
+		}else {
+				msg="비밀번호가 일치하지 않습니다.";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+			
+		return "common/message";
+
 	}
 }
