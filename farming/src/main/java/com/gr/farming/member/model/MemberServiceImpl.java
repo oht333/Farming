@@ -70,7 +70,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public boolean checkPwd(MemberVO vo) {
-		String mPwd = memberDao.selectPwd(vo.getPwd());
+		String mPwd = memberDao.selectPwd(vo.getEmail());
 		
 		if(mPwd.equals(vo.getPwd())) {
 			return true;
