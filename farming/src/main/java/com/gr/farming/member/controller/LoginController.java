@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.member.model.MemberService;
@@ -32,13 +33,13 @@ public class LoginController {
 		this.memberService = memberService;
 	}
 
-	@GetMapping("/login")
+	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login_get() {
 		logger.info("로그인 화면");	
 		return "login/login";
 	}
 	
-	@PostMapping("/login")
+	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String login_post(@ModelAttribute MemberVO vo, 
 			@RequestParam(required = false) String chkSave, 
 			HttpServletRequest request,
@@ -52,11 +53,11 @@ public class LoginController {
 			
 			//[1] 세션에 아이디 저장
 			HttpSession session=request.getSession();
-			session.setAttribute("userid", vo.getEmail());
-			session.setAttribute("userName", memVo.getName());
+			session.setAttribute("email", vo.getEmail());
+			session.setAttribute("name", memVo.getName());
 			
 			//[2] 쿠키에 저장 - 아이디저장하기 체크된 경우만
-			Cookie ck = new Cookie("ck_userid", vo.getEmail());
+			Cookie ck = new Cookie("ck_email", vo.getEmail());
 			ck.setPath("/");
 			if(chkSave != null) {  //체크된 경우
 				ck.setMaxAge(1000*24*60*60);
