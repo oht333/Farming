@@ -7,10 +7,10 @@ public class MemberVO {
 	private String name;
 	private String email;
 	private String pwd;
-	private Timestamp regdate;
+	private Timestamp regDate;
 	private String address1;
 	private String address2;
-	private String zipcode;
+	private String zipCode;
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -36,11 +36,11 @@ public class MemberVO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public Timestamp getRegdate() {
-		return regdate;
+	public Timestamp getRegDate() {
+		return regDate;
 	}
-	public void setRegdate(Timestamp regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Timestamp regDate) {
+		this.regDate = regDate;
 	}
 	public String getAddress1() {
 		return address1;
@@ -54,16 +54,16 @@ public class MemberVO {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-	public String getZipcode() {
-		return zipcode;
+	public String getZipCode() {
+		return zipCode;
 	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
+	public void setZipcode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [memberNo=" + memberNo + ", name=" + name + ", email=" + email + ", pwd=" + pwd + ", regdate="
-				+ regdate + ", address1=" + address1 + ", address2=" + address2 + ", zipcode=" + zipcode + "]";
+		return "MemberVO [memberNo=" + memberNo + ", name=" + name + ", email=" + email + ", pwd=" + pwd + ", regDate="
+				+ regDate + ", address1=" + address1 + ", address2=" + address2 + ", zipCode=" + zipCode + "]";
 	}
 	
 }
