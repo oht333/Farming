@@ -36,6 +36,11 @@
 		where email=#{email}
 	</update>
 	
+	<update id="delete" parameterType="int">
+		delete member 
+		where email=#{email}
+	</update>
+	
 </mapper>
 
 
