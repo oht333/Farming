@@ -15,10 +15,9 @@ public class IndexController {
 		return "index";
 	}
 	
-	@GetMapping("/facebookInfo")
-	public String kakaoInfo() {
-		return "facebookInfo";
+	@GetMapping("/register")
+	public String register() {
+		return "register";
 	}
-	
 	
 }
