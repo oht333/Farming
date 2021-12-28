@@ -1,5 +1,7 @@
 package com.gr.farming.request.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class RequestServiceImpl implements RequestService{
 
 	public int insertRequestDevelop(RequestDevelopVO vo) {
 		return requestDao.insertRequestDevelop(vo);
+	}
+
+	public List<RequestQnaVO> selectByCategoryNo(int categoryNo) {
+		return requestDao.selectByCategoryNo(categoryNo);
 	}
 
 }

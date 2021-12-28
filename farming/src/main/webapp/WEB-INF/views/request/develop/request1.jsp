@@ -13,10 +13,29 @@
         <p class="subtitle text-primary">Let's Farming</p>
         <h1 class="h2 mb-5"> 소프트웨어 개발 <span class="text-muted float-end">Step 1</span>      </h1>
         <form name="frm1" method="post" action="<c:url value='/request/develop/request1'/>">
-          <div class="row form-block">
+        	<div class="col-lg-4">
+              <h4>어떤 플랫폼을 원하시나요?</h4>
+            </div>
+            <div class="col-lg-7 ms-auto">
+              <div class="mb-4">
+                <label class="form-label">원하시는 소프트웨어 개발 플랫폼을 모두 선택하세요.</label>
+                <ul class="list-inline mb-0">
+                
+		      		<c:set var="idx" value="0" />
+		        	<c:forEach var="vo" items="${list }" >
+		        	
+        				<li class="list-inline-item">
+		                    <div class="form-check">
+		                      <input class="form-check-input" type="checkbox" name="reQnaItems[${idx }].REQUEST_ANSWER"
+		                     	 id="${vo.REQUEST_ANSWER }" value="${vo.REQUEST_ANSWER }">
+		                      <label class="form-check-label text-muted" for="${vo.REQUEST_ANSWER }" >${vo.REQUEST_ANSWER }</label>
+		                    </div>
+		                  </li>
+        	
+          <!-- <div class="row form-block">
             <div class="col-lg-4">
               <h4>어떤 플랫폼을 원하시나요?</h4>
-<!--               <p class="text-muted text-sm">원하시는 개발 플랫폼을 선택하세요.</p> -->
+              <p class="text-muted text-sm">원하시는 개발 플랫폼을 선택하세요.</p>
             </div>
             <div class="col-lg-7 ms-auto">
               <div class="mb-4">
@@ -66,11 +85,12 @@
                       	<input class="form-control" type="text" name="PLATFORM" title="직접입력인 경우">
                       </div>
                     </div>
-                  </li>
+                  </li>-->
+		          	<c:set var="idx" value="${idx+1 }" />
+		          </c:forEach>
                 </ul>
               </div>
             </div>
-          </div>
           <div class="row form-block">
             <div class="col-lg-4">
               <h4>어떤 종류의 개발을 원하시나요?</h4>

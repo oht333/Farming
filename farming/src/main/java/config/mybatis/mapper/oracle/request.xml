@@ -12,4 +12,9 @@
 		values(#{REQUEST_DEVELOP_NO}, #{PLATFORM}, #{TYPE}, #{CAREER}, #{STEP}, 
 			#{REFERENCE}, #{DEADLINE}, #{WORKTYPE}, #{LOCATION1}, #{LOCATION2})
 	</insert>
+	
+	<select id="selectByCategoryNo" parameterType="int" resultType="requestQnaVo">
+		select * from REQUEST_QNA
+		where CATEGORY_NO=#{categoryNo}
+	</select>
 </mapper>

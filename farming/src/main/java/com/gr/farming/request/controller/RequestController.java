@@ -1,6 +1,8 @@
 package com.gr.farming.request.controller;
 
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.request.model.RequestDevelopVO;
+import com.gr.farming.request.model.RequestQnaVO;
 import com.gr.farming.request.model.RequestService;
 
 @Controller
@@ -34,8 +38,17 @@ public class RequestController {
 	}
 	
 	@GetMapping("/develop/request1")
-	public void request1_get() {
-		logger.info("견적서 작성 1 화면 보여주기");
+	public String request1_get(@RequestParam int categoryNo, Model model) {
+		
+		logger.info("견적서 작성 1 화면 보여주기, 파라미터 categoryNo={}", categoryNo);
+		
+		List<RequestQnaVO> list=requestService.selectByCategoryNo(categoryNo);
+		logger.info("견적서 작성을 위한 문답 list.size={}", list.size());
+		
+		model.addAttribute("list", list);
+		
+		return "request/develop/request1";
+		
 	}
 	
 	@PostMapping("/develop/request1")
