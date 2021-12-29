@@ -79,4 +79,8 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 
+	public int delete(String email) {
+		return memberDao.delete(email);
+	}
+
 }
