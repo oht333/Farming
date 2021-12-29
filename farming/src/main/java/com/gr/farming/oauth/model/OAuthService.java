@@ -230,5 +230,150 @@ public class OAuthService{
 		}
 		*/
 	}
+	
+	//여기서부터 전문가####################################################
+	public String expGetKakaoAccessToken (String code) {
+		String access_Token = "";
+		String refresh_Token = "";
+		String reqURL = "https://kauth.kakao.com/oauth/token";
 
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+			conn.setRequestMethod("POST");
+			conn.setDoOutput(true);
+
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			StringBuilder sb = new StringBuilder();
+			sb.append("grant_type=authorization_code");
+			sb.append("&client_id=1036628c40962a9f65fae188105a4731"); // TODO REST_API_KEY 입력
+			sb.append("&redirect_uri=http://localhost:9091/farming/login/expkakao"); // TODO 인가코드 받은 redirect_uri 입력
+			sb.append("&code=" + code);
+			bw.write(sb.toString());
+			bw.flush();
+
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode1 : " + responseCode);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line = "";
+			String result = "";
+
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			System.out.println("response body1 : " + result);
+
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+
+			access_Token = element.getAsJsonObject().get("access_token").getAsString();
+			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
+
+			System.out.println("access_token : " + access_Token);
+			System.out.println("refresh_token : " + refresh_Token);
+
+			br.close();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return access_Token;
+	}
+
+	public HashMap<String, Object> expGetUserInfo (String access_Token) {
+
+		HashMap<String, Object> userInfo = new HashMap<>();
+		String reqURL = "https://kapi.kakao.com/v2/user/me";
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+
+			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode2 : " + responseCode);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+			String line = "";
+			String result = "";
+
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			System.out.println("response body2 : " + result);
+
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+
+			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+
+			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+			String img = kakao_account.getAsJsonObject().get("profile").getAsJsonObject().get("profile_image_url").getAsString();
+
+			userInfo.put("nickname", nickname);
+			userInfo.put("email", email);
+			userInfo.put("img", img);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return userInfo;
+	}
+
+	/* facebook */
+
+	public String expGetAuthorizationUrl(){
+		String facebookUrl =
+				"https://www.facebook.com/v2.8/dialog/oauth?"+ "client_id="+F_CLIENT_ID+
+				"&redirect_uri=http://localhost:9091/farming/login/expfacebook&scope=public_profile,email"; 
+		return facebookUrl; 
+	}
+
+	public String expRequesFaceBooktAccesToken(String code) throws Exception {
+
+		String facebookUrl = "https://graph.facebook.com/v2.8/oauth/access_token?"+
+				"client_id=" + F_CLIENT_ID + "&redirect_uri=http://localhost:9091/farming/login/expfacebook"
+						+ "&client_secret=" + F_CLIENT_SECRET + "&code="+code;
+
+		HttpClient client = HttpClientBuilder.create().build(); 
+		HttpGet getRequest = new HttpGet(facebookUrl); 
+		String rawJsonString = client.execute(getRequest, new BasicResponseHandler());
+
+		JSONParser jsonParser = new JSONParser(); JSONObject jsonObject = (JSONObject) jsonParser.parse(rawJsonString); 
+		String faceBookAccessToken = (String) jsonObject.get("access_token");
+		System.out.println("faceBookAccessToken : "+faceBookAccessToken); 
+		
+		return faceBookAccessToken; 
+	}
+
+
+
+	public HashMap<String, Object> expFacebookUserDataLoadAndSave(String accessToken) throws Exception {
+		HashMap<String, Object> userInfo = new HashMap<>();
+		String facebookUrl = "https://graph.facebook.com/me?"+
+				"access_token="+accessToken+
+				"&fields=id,name,email,picture";
+
+		HttpClient client = HttpClientBuilder.create().build();
+		HttpGet getRequest = new HttpGet(facebookUrl);
+		String rawJsonString = client.execute(getRequest, new BasicResponseHandler());
+		System.out.println("rawJsonString : "+rawJsonString);
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(rawJsonString);
+		System.out.println("jsonObject : "+jsonObject);
+		String name = (String)jsonObject.get("name");
+		String email = (String)jsonObject.get("email");
+		
+		userInfo.put("name", name);
+		userInfo.put("email", email);
+		return userInfo;
+		
+	}
 }

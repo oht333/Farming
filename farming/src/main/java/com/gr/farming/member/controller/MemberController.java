@@ -62,10 +62,10 @@ public class MemberController {
 		int cnt = service.insert(vo);
 		logger.info("회원가입 처리 결과 cnt={}",cnt);
 		
-		String msg = "회원가입 실패", url = "/member/register";
+		String msg = "회원가입 실패", url = "/register";
 		if(cnt > 0) {
 			msg = "회원가입 처리되었습니다";
-			url = "/index";
+			url = "/login/login";
 		}
 		
 		model.addAttribute("msg", msg);

@@ -3,6 +3,7 @@ package com.gr.farming.category.model;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,8 +31,12 @@ public class CategoryServiceImpl implements CategoryService{
 	public int delete(int categoryNo) {
 		return dao.delete(categoryNo);
 	}
-	public List<CategoryVO> selectDev(String main){
-		return dao.selectDev(main);
+	public List<CategoryVO> selectByMain(String main){
+		return dao.selectByMain(main);
+	}
+	
+	public int selectByDetail(String detail) {
+		return dao.selectByDetail(detail);
 	}
 	
 }

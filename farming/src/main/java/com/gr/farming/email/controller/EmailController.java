@@ -26,7 +26,7 @@ public class EmailController {
 	private static final Logger logger
 	=LoggerFactory.getLogger(EmailController.class);
 	
-	@RequestMapping(value="/member/certified", method = RequestMethod.GET)
+	@RequestMapping(value="/certified", method = RequestMethod.GET)
 	public String emailPage(@RequestParam String email, Model model) {
 		logger.info("이메일 인증요청 email : {}",email);
 		
@@ -51,7 +51,7 @@ public class EmailController {
 		logger.info("인증코드 : {}",result);
 		model.addAttribute("result", result);
 		
-		return "member/certified";
+		return "certified";
 		
 	}
 	
