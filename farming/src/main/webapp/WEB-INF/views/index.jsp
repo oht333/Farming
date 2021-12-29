@@ -14,8 +14,8 @@
         <div class="row">
           <div class="col-xl-10">
             <div class="text-center text-lg-start">
-              <p class="subtitle letter-spacing-4 mb-2 text-secondary text-shadow">The best holiday experience</p>
-              <h1 class="display-3 fw-bold text-shadow">Stay like a local</h1>
+              <p class="subtitle letter-spacing-4 mb-2 text-primary text-shadow">The best skill-up experience</p>
+              <h1 class="display-3 fw-bold text-shadow">Let's farming!</h1>
             </div>
             <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
               <form action="#">

@@ -8,5 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface RequestDAO {
 
 	public int insertRequestDevelop(RequestDevelopVO vo);
+	public int insertRequestDesign(RequestDesignVO vo);
 	public List<RequestQnaVO> selectByCategoryNo(int categoryNo);
 }
