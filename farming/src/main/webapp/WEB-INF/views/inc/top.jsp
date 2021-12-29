@@ -57,7 +57,7 @@
 				<div class="d-flex align-items-center">
 					<a class="navbar-brand py-1" href="<c:url value='/index'/>"><img
 						src="${pageContext.request.contextPath }/resources/img/farming-logo.png"
-						alt="Directory logo" style="width: 140px; padding: 2px"></a>
+						alt="Directory logo" style="width: 163px; padding: 2px"></a>
 					<form class="form-inline d-none d-sm-flex" action="#" id="search">
 						<div
 							class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
