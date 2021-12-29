@@ -31,6 +31,7 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
+  	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   	<script type="text/javascript">
   	var contextPath = "/farming";
   		$(function(){
@@ -56,6 +57,9 @@
   					event.preventDefault();
   				}else if($('#checkem').val() != 'Y'){
   					alert('이메일중복체크가 완료되지 않았습니다.');
+  					event.preventDefault();
+  				}else if($('#address1').val().length < 1){
+  					alert('주소를 입력하세요');
   					event.preventDefault();
   				}
   			});
@@ -85,6 +89,26 @@
   				}
   			});
   			
+  			/* 주소검색 */
+  			$('#searchAddr').click(function(){
+  				new daum.Postcode({
+  			        oncomplete: function(data) {
+  			        	var addr = ''; // 주소 변수
+  		 
+  		                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+  		                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+  		                    addr = data.roadAddress;
+  		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+  		                    addr = data.jibunAddress;
+  		                }
+  		                document.getElementById('zipcode').value = data.zonecode;
+  		                document.getElementById("address1").value = addr;
+  		                // 커서를 상세주소 필드로 이동한다.
+  		                document.getElementById("address2").focus();
+  			        	
+  			        }
+  			    }).open();
+  			});
   			
   		});
   	</script>
@@ -108,18 +132,38 @@
                 <input class="form-control" name="email" id="email" type="email" placeholder="example@farming.com" autocomplete="off" >
               </div>
               <div class="mb-4">
-                <input class="form-control" name="ckeckemail" id="ckeckemail" type="button" value="이메일중복체크" title="이메일중복체크" autocomplete="off" >
+	              <div class="col-lg-5" style="float: left;">
+	                <input class="form-control" name="ckeckemail" id="ckeckemail" type="button" value="중복체크" title="이메일중복체크" autocomplete="off" >
+	              </div>
+	              <div class="col-lg-5" style="float: right;">
+	                <input class="form-control" name="certified" id="certified" type="button" value="인증요청" title="이메일인증" autocomplete="off" >
+	              </div>
               </div>
-              <div class="mb-4">
-                <input class="form-control" name="certified" id="certified" type="button" value="인증요청" title="이메일인증" autocomplete="off" >
-              </div>
-              <div class="mb-4">
+              <div class="mb-4" style="clear: both;">
                 <label class="form-label" for="pwd"> 비밀번호</label>
                 <input class="form-control" name="pwd" id="pwd" placeholder="비밀번호" type="password">
               </div>
               <div class="mb-4">
                 <label class="form-label" for="pwd2"> 비밀번호확인</label>
                 <input class="form-control" name="pwd2" id="pwd2" placeholder="비밀번호확인" type="password">
+              </div>
+              <div class="mb-4">
+	              <div class="col-lg-7 d-grid" style="float: left;">
+	                <label class="form-label" for="address1"> 주소</label>
+	                <input class="form-control" name="address1" id="address1" placeholder="주소( 경기도 성남시 분당구 불정로 6 )" type="text" readonly="readonly">
+	              </div>
+	               <div class="col-lg-4" style="float: right; margin-top: 3px;">
+	                <label class="form-label" for=""></label>
+	                <input class="form-control" name="searchAddr" id="searchAddr" type="button" value="주소검색" title="주소검색">
+	              </div>
+              </div>
+              <div class="mb-4" style="clear: both;">
+                <label class="form-label" for="address2"> 상세주소</label>
+                <input class="form-control" name="address2" id="address2" placeholder="상세주소( 정자동, NAVER그린팩토리 )" type="text">
+              </div>
+              <div class="mb-4" style="clear: both;">
+                <label class="form-label" for="zipcode"> 우편번호</label>
+                <input class="form-control" name="zipcode" id="zipcode" placeholder="우편번호( 13561 )" type="text">
               </div>
               <div class="d-grid gap-2">
                 <button class="btn btn-lg btn-primary" type="submit" id="signup">회원가입</button>

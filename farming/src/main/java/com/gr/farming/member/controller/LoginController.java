@@ -58,7 +58,7 @@ public class LoginController {
 			session.setAttribute("pwd", vo.getPwd());
 			
 			//[2] 쿠키에 저장 - 아이디저장하기 체크된 경우만
-			Cookie ck = new Cookie("ck_email", vo.getEmail());
+			Cookie ck = new Cookie("ck_email", memVo.getEmail());
 			ck.setPath("/");
 			if(chkSave != null) {  //체크된 경우
 				ck.setMaxAge(1000*24*60*60);

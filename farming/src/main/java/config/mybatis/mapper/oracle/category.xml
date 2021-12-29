@@ -29,6 +29,11 @@
 	<delete id="delete" parameterType="int"> 
 		delete category where category_No=#{categoryNo}
 	</delete>
+	
+	<select id="selectDev" parameterType="String" resultType="categoryVo">
+		select * from category
+		where main=#{main}
+	</select>
 </mapper>
 
 

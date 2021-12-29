@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Directory Theme by Bootstrapious</title>
+    <title>파밍-로그인</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -33,57 +33,83 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     
     <!-- 카카오로그인 -->
+    <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script type="text/javascript">
-		function facebook(){
-			location.href="<c:url value='/member/facebookjoin'/>";
-		}
-			
+		$(function(){
+	  		$('#signin').click(function(){
+	  			if($('#email').val().length<1){
+	  				alert('이메일을 입력하세요');
+	  				$('#email').focus();
+	  				event.preventDefault();
+	  			}else if($('#pwd').val().length<1){
+	  				alert('패스워드를 입력하세요');
+	  				$('#pwd').focus();
+	  				event.preventDefault();
+	  			}
+	  		});
+	  		
+	  		$('#facebook').click(function(){
+	  			location.href="<c:url value='/member/facebookjoin'/>";
+	  		});
+	  		$('#kakao').click(function(){
+	  			location.href="<c:url value='/member/kakaojoin'/>";
+	  		});
+	  	});  	
+		
 	</script>
+	<style type="text/css">
+		#kakao:hover{
+			background-color: #f9e000;
+		}
+		#facebook:hover{
+			background-color: #3b5998;
+		}
+	</style>
   </head>
   <body>
     <div class="container-fluid px-3">
       <div class="row min-vh-100">
         <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
           <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
-            <div class="mb-5"><img class="img-fluid mb-3" src="${pageContext.request.contextPath }/resources/img/logo-square.svg" alt="..." style="max-width: 4rem;">
-              <h2>Welcome back</h2>
+            <div class="mb-5"><img class="img-fluid mb-3" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png" alt="..." style="max-width: 4rem;">
+              <h2>파밍 로그인</h2>
             </div>
             <form class="form-validate" method="post" action="<c:url value='/login/login'/>">
               <div class="mb-4">
-                <label class="form-label" for="email"> Email Address</label>
-                <input class="form-control" name="email" id="email" type="email" placeholder="name@address.com" required data-msg="Please enter your email">
+                <label class="form-label" for="email"> 이메일</label>
+                <input class="form-control" name="email" id="email" type="email" placeholder="example@farming.com" value="${cookie.ck_email.value }">
               </div>
               <div class="mb-4">
                 <div class="row">
                   <div class="col">
-                    <label class="form-label" for="pwd"> Password</label>
+                    <label class="form-label" for="pwd"> 비밀번호</label>
                   </div>
                   <div class="col-auto"><a class="form-text small text-primary" href="#">Forgot password?</a></div>
                 </div>
-                <input class="form-control" name="pwd" id="pwd" placeholder="Password" type="password" required data-msg="Please enter your password">
+                <input class="form-control" name="pwd" id="pwd" placeholder="Password" type="password">
               </div>
               <div class="mb-4">
                 <div class="form-check">
-                  <input class="form-check-input" id="chkSave" type="checkbox">
-                  <label class="form-check-label text-muted" for="chkSave" name="chkSave"> <span class="text-sm">Remember me for 30 days</span></label>
+                  <input class="form-check-input" id="chkSave" name="chkSave" type="checkbox">
+                  <label class="form-check-label text-muted" for="chkSave" name="chkSave"> <span class="text-sm">이메일저장</span></label>
                 </div>
               </div>
               <!-- Submit-->
               <div class="d-grid">
-                <button class="btn btn-lg btn-primary">Sign in</button>
+                <button class="btn btn-lg btn-primary" id="signin">로그인</button>
               </div>
               <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
-              <div class="d-grid gap-2">
-              	<a href="<c:url value='/member/kakaojoin'/>">kakao</a>
-            <!-- kauth.kakao.com/oauth/authorize?client_id=1036628c40962a9f65fae188105a4731
-            &redirect_uri=http://localhost:9091/farming/login/kakao&response_type=code -->
-                <button class="btn btn btn-outline-primary btn-social btn-facebook" onclick="facebook()"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect with Facebook</button>
-                <button class="btn btn btn-outline-muted btn-social"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect with Google</button>
-              </div>
+              
+              <div class="mb-4 kakao">
+	                <input class="form-control" name="kakao" id="kakao" type="button" value="Connect with Kakaotalk" title="카카오톡로그인">
+	          </div>
+	          <div class="mb-4 facebook">
+	                <input class="form-control" name="facebook" id="facebook" type="button" value="Connect with Facebook" title="페이스북로그인">
+	          </div>
               <hr class="my-4">
               <p class="text-center">
-              <small class="text-muted text-center">Don't have an account yet?<a href="<c:url value='/member/memRegister'/>">Sign Up</a></small>
+              <small class="text-muted text-center">아직 회원이 아니세요? <a href="<c:url value='/member/agreement'/>">회원가입</a></small>
               </p>
             </form>
             <a class="close-absolute me-md-5 me-xl-6 pt-5" href="<c:url value='/index'/>"> 

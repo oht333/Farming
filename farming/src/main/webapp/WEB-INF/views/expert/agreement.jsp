@@ -28,7 +28,7 @@
 		<div class="row">
 			<div class="col-xl-8 col-lg-10 mx-auto">
 				<div class="text-content">
-					<h2 style="margin-top: 50px;">회원약관</h2>
+					<h2 style="margin-top: 50px;">전문가 회원약관</h2>
 					<hr>
 				</div>
 
@@ -204,9 +204,9 @@
 
 				</div>
 				<form name="frmAgree" method="post"
-					action="<c:url value='/member/memRegister' />">
+					action="<c:url value='/expert/expRegister1' />">
 					<fieldset>
-						<legend style="visibility: hidden;">회원 약관</legend>
+						<legend style="visibility: hidden;">전문가 회원 약관</legend>
 						<div style="text-align: right">
 							<input class="form-check-input" type="checkbox" name="chkAgree"
 								id="chkAgree"><label for="chkAgree">약관에 동의합니다.</label>
