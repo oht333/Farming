@@ -19,11 +19,11 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/custom.css">
     <!-- Favicon-->
 
     <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
@@ -215,7 +215,7 @@
                 </div>
               </li>
               <c:if test="${empty email }">
-              		<li class="nav-item"><a class="nav-link" href="<c:url value='/login/login'/>">로그인</a></li>
+              		<li class="nav-item"><a class="nav-link" href="<c:url value='/login/loginType'/>">로그인</a></li>
               		<li class="nav-item"><a class="nav-link" href="<c:url value='/register'/>">회원가입</a></li>
               </c:if>
               <c:if test="${!empty email }">

@@ -54,7 +54,7 @@
   					event.preventDefault();
   				} else {
   					var email=$('#email').val();
-  	  				open(contextPath+'/member/checkemail?email='+email,'dup',
+  	  				open(contextPath+'/expert/checkemail?email='+email,'dup',
   	  				 'width=500,height=500,left=0,top=0,location=yes,resizable=yes');
   				}
   			});
@@ -71,7 +71,7 @@
   		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
   		                    addr = data.jibunAddress;
   		                }
-  		                document.getElementById('zipcode').value = data.zonecode;
+  		                document.getElementById('zipCode').value = data.zonecode;
   		                document.getElementById("address1").value = addr;
   		                // 커서를 상세주소 필드로 이동한다.
   		                document.getElementById("address2").focus();
@@ -82,17 +82,18 @@
   			
   		});
   	</script>
-  </head>
-  <body>
+  
+  	<div class="progress rounded-0 sticky-top" style="height: 8px; top: 72px;">
+      <div class="progress-bar" role="progressbar" style="width: 1000%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
     <div class="container-fluid px-3">
       <div class="row min-vh-100">
         <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
           <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
             <div class="mb-4"><img class="img-fluid mb-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png" alt="..." style="max-width: 4rem;">
-              <h2>회원가입</h2>
-              <p class="text-muted">파밍에 오신 것을 환영합니다.</p>
+              <h2>전문가 회원가입</h2>
             </div>
-            <form class="form-validate" method="post" action="<c:url value='/member/join'/>">
+            <form class="form-validate" method="post" action="<c:url value='/expert/join'/>">
               <div class="mb-4">
                 <label class="form-label" for="name"> 이름</label>
                 <input class="form-control" name="name" id="name" type="text" placeholder="이름(실명)" autocomplete="off">
@@ -132,8 +133,8 @@
                 <input class="form-control" name="address2" id="address2" placeholder="상세주소( 정자동, NAVER그린팩토리 )" type="text">
               </div>
               <div class="mb-4" style="clear: both;">
-                <label class="form-label" for="zipcode"> 우편번호</label>
-                <input class="form-control" name="zipcode" id="zipcode" placeholder="우편번호( 13561 )" type="text">
+                <label class="form-label" for="zipCode"> 우편번호</label>
+                <input class="form-control" name="zipCode" id="zipCode" placeholder="우편번호( 13561 )" type="text">
               </div>
               <div class="d-grid gap-2">
                 <button class="btn btn-lg btn-primary" type="submit" id="signup">회원가입</button>
@@ -141,17 +142,17 @@
               <hr class="my-4">
               <input type="hidden" name="chkEmail" id="chkEmail">
               <input type="hidden" name="checkem" id="checkem">
-              <p class="text-sm text-muted"><a href="<c:url value='/member/agreement'/>">이용약관</a></p>
+              <p class="text-sm text-muted"><a href="<c:url value='/expert/agreement'/>">이용약관</a></p>
             </form><a class="close-absolute me-md-5 me-xl-6 pt-5" href="<c:url value='/index'/>"> 
               <svg class="svg-icon w-3rem h-3rem">
                 <use xlink:href="#close-1"></use>
               </svg></a>
           </div>
         </div>
-        <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
+       	<div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
           <!-- Image-->
           <div class="bg-cover h-100 me-n3" style="background-image: url(${pageContext.request.contextPath }/resources/img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
         </div>
       </div>
     </div>
-  <%@ include file="../inc/bottom.jsp" %>
+    <%@ include file="../inc/bottom.jsp" %>

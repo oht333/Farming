@@ -11,5 +11,5 @@ public interface CategoryDAO {
 	public CategoryVO selectByNo(int categoryNo);
 	public int update(CategoryVO vo);
 	public int delete(int categoryNo); 
-	public List<CategoryVO> selectDev(String main);
+	public List<CategoryVO> selectByMain(String main);
 }

@@ -13,7 +13,7 @@
 	});
 </script>
     <div class="progress rounded-0 sticky-top" style="height: 8px; top: 72px;">
-      <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <section class="py-5">
       <div class="container">
@@ -40,6 +40,7 @@
           <div class="row form-block flex-column flex-sm-row">
             <div class="col text-center text-sm-start">
             </div>
+            
             <div class="col text-center text-sm-end" id="submit"><input type="submit" value="다음" class="btn btn-primary px-3"></div>
           	
           </div>

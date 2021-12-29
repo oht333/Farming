@@ -54,7 +54,7 @@ public class OAuthController {
 		System.out.println("result = "+result);
 		if(result == 1) {
 			System.out.println("회원");
-			msg = "로그인 성공";
+			msg = "카카오톡 로그인 성공";
 			url = "/index";
 		} else if(result == 2){
 			System.out.println("비회원");
@@ -62,7 +62,7 @@ public class OAuthController {
 			int cnt = mservice.insert(vo);
 			if(cnt > 0) {
 				System.out.println("회원가입 성공");
-				msg = "로그인 성공";
+				msg = "카카오톡 로그인 성공";
 				url = "/index";
 			}
 		}
@@ -96,7 +96,7 @@ public class OAuthController {
 		System.out.println("result = "+result);
 		if(result == 1) {
 			System.out.println("회원");
-			msg = "로그인 성공";
+			msg = "페이스북 로그인 성공";
 			url = "/index";
 		} else if(result == 2){
 			System.out.println("비회원");
@@ -104,7 +104,7 @@ public class OAuthController {
 			int cnt = mservice.insert(vo);
 			if(cnt > 0) {
 				System.out.println("회원가입 성공");
-				msg = "로그인 성공";
+				msg = "페이스북 로그인 성공";
 				url = "/index";
 			}
 		}

@@ -203,7 +203,7 @@
 					</p>
 
 				</div>
-				<form name="frmAgree" method="post"
+				<form name="frmAgree" method="get"
 					action="<c:url value='/expert/expRegister1' />">
 					<fieldset>
 						<legend style="visibility: hidden;">전문가 회원 약관</legend>

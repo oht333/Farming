@@ -73,12 +73,12 @@
         <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
           <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
             <div class="mb-5"><img class="img-fluid mb-3" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png" alt="..." style="max-width: 4rem;">
-              <h2>파밍 로그인</h2>
+              <h2>일반회원 로그인</h2>
             </div>
             <form class="form-validate" method="post" action="<c:url value='/login/login'/>">
               <div class="mb-4">
                 <label class="form-label" for="email"> 이메일</label>
-                <input class="form-control" name="email" id="email" type="email" placeholder="example@farming.com" value="${cookie.ck_email.value }">
+                <input class="form-control" name="email" id="email" type="email" placeholder="example@farming.com" value="${cookie.mCk_email.value }">
               </div>
               <div class="mb-4">
                 <div class="row">
