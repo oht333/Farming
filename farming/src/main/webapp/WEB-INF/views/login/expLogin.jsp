@@ -50,10 +50,10 @@
 	  		});
 	  		
 	  		$('#facebook').click(function(){
-	  			location.href="<c:url value='/expert/facebookjoin'/>";
+	  			location.href="<c:url value='/expert/expfacebookjoin'/>";
 	  		});
 	  		$('#kakao').click(function(){
-	  			location.href="<c:url value='/expert/kakaojoin'/>";
+	  			location.href="<c:url value='/expert/expkakaojoin'/>";
 	  		});
 	  	});  	
 		

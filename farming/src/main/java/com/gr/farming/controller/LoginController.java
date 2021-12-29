@@ -102,7 +102,7 @@ public class LoginController {
 		logger.info("전문가로그인 처리, 파라미터 eVo={}, chkSave={}", eVo, chkSave);
 		
 		String msg="로그인 처리 실패!", url="/login/expLogin";
-		int result=memberService.loginCheck(eVo.getEmail(), eVo.getPwd());		
+		int result=expertService.loginCheck(eVo.getEmail(), eVo.getPwd());		
 		if(result==MemberService.LOGIN_OK) {
 			ExpertVO expVo=expertService.selectByEmail(eVo.getEmail());
 			
@@ -125,9 +125,9 @@ public class LoginController {
 			
 			msg=expVo.getName() + "님 로그인되었습니다.";
 			url="/index";
-		}else if(result==MemberService.DISAGREE_PWD) {
+		}else if(result==expertService.DISAGREE_PWD) {
 			msg="비밀번호가 일치하지 않습니다.";			
-		}else if(result==MemberService.USERID_NONE) {
+		}else if(result==expertService.USERID_NONE) {
 			msg="해당 아이디가 존재하지 않습니다.";			
 		}
 		

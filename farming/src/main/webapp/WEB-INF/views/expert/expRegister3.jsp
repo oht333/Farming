@@ -94,6 +94,11 @@
               <h2>전문가 회원가입</h2>
             </div>
             <form class="form-validate" method="post" action="<c:url value='/expert/join'/>">
+              <c:set var="idx" value="0"/>
+              <c:forEach var="str" items="${strList }">
+              	  <input type=hidden name="str" id="str[${idx }]" value="${str }" >
+              	  <c:set var="idx" value="${idx+1 }"/>
+              </c:forEach>
               <div class="mb-4">
                 <label class="form-label" for="name"> 이름</label>
                 <input class="form-control" name="name" id="name" type="text" placeholder="이름(실명)" autocomplete="off">
