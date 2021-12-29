@@ -22,7 +22,7 @@
 			기획부터 디자인까지 차별화된 프레젠테이션 디자인 서비스를 받아보실 수 있어요.
 			지금 바로 요청서를 작성하시고, 쉽고 편하게 프레젠테이션 디자인 고수님을 만나보세요!
             </p>
-            <p class="mb-5 mb-lg-0"> <a class="btn btn-primary" href="${pageContext.request.contextPath }/request/develop/request1">1분 견적서 작성하기</a></p>
+            <p class="mb-5 mb-lg-0"> <a class="btn btn-primary" href="<c:url value='/request/requestWrite/design'/>">1분 견적서 작성하기</a></p>
           </div>
           <div class="col-lg-5 ms-auto d-flex align-items-center"><img class="img-fluid" src="${pageContext.request.contextPath }/resources/img/illustration/undraw_celebration_0jvk.svg" alt="" style="width: 400px;"></div>
         </div>

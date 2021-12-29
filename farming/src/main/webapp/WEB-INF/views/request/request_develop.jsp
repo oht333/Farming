@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../../inc/top.jsp"%>
+<%@ include file="../inc/top.jsp"%>
 <style type="text/css">
     .chk #etc:checked ~ .etc_box{display:block}
     .chk .etc_box{display:none}
 </style>
+
 <div class="progress rounded-0 sticky-top" style="height: 8px; top: 66px;">
       <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
@@ -12,27 +13,31 @@
       <div class="container">
         <p class="subtitle text-primary">Let's Farming</p>
         <h1 class="h2 mb-5"> 소프트웨어 개발 <span class="text-muted float-end">Step 1</span>      </h1>
-        <form name="frm1" method="post" action="<c:url value='/request/develop/request1'/>">
-        	<div class="col-lg-4">
+        <form name="frm1" method="post" action="<c:url value='/request/requestWrite/develop'/>">
+        	 <%--<div class="col-lg-4">
               <h4>어떤 플랫폼을 원하시나요?</h4>
             </div>
             <div class="col-lg-7 ms-auto">
               <div class="mb-4">
                 <label class="form-label">원하시는 소프트웨어 개발 플랫폼을 모두 선택하세요.</label>
-                <ul class="list-inline mb-0">
+                 <ul class="list-inline mb-0">
                 
 		      		<c:set var="idx" value="0" />
 		        	<c:forEach var="vo" items="${list }" >
 		        	
         				<li class="list-inline-item">
 		                    <div class="form-check">
-		                      <input class="form-check-input" type="checkbox" name="reQnaItems[${idx }].REQUEST_ANSWER"
-		                     	 id="${vo.REQUEST_ANSWER }" value="${vo.REQUEST_ANSWER }">
-		                      <label class="form-check-label text-muted" for="${vo.REQUEST_ANSWER }" >${vo.REQUEST_ANSWER }</label>
+		                      <input class="form-check-input" type="checkbox" name="REQUEST_ANSWER"
+		                     	 id="REQUEST_ANSWER[${idx }]" value="${vo.REQUEST_ANSWER }">
+		                      <label class="form-check-label text-muted" for="REQUEST_ANSWER[${idx }]" >${vo.REQUEST_ANSWER }</label>
 		                    </div>
-		                  </li>
-        	
-          <!-- <div class="row form-block">
+		                  </li> 
+		                  
+		                  <c:set var="idx" value="${idx+1 }" />
+		          </c:forEach> --%>
+		                  
+ 	
+          <div class="row form-block">
             <div class="col-lg-4">
               <h4>어떤 플랫폼을 원하시나요?</h4>
               <p class="text-muted text-sm">원하시는 개발 플랫폼을 선택하세요.</p>
@@ -85,9 +90,7 @@
                       	<input class="form-control" type="text" name="PLATFORM" title="직접입력인 경우">
                       </div>
                     </div>
-                  </li>-->
-		          	<c:set var="idx" value="${idx+1 }" />
-		          </c:forEach>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -99,19 +102,19 @@
 	            <div class="mb-4">
 	                <label class="form-label">원하시는 종류의 개발을 선택하세요.</label>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="TYPE_0" name="TYPE">
+	                  <input class="form-check-input" type="radio" id="TYPE_0" name="TYPE" value="일반 프로그램">
 	                  <label class="form-check-label" for="TYPE_0">일반 프로그램</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="TYPE_1" name="TYPE">
+	                  <input class="form-check-input" type="radio" id="TYPE_1" name="TYPE" value="게임">
 	                  <label class="form-check-label" for="TYPE_1">게임</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="TYPE_2" name="TYPE">
+	                  <input class="form-check-input" type="radio" id="TYPE_2" name="TYPE" value="임베디드">
 	                  <label class="form-check-label" for="TYPE_2">임베디드</label>
 	                </div>
 	                <div class="form-check chk">
-	                  <input class="form-check-input" type="radio" id="etc" name="TYPE">
+	                  <input class="form-check-input" type="radio" id="etc" name="TYPE" value="기타">
 	                  <label class="form-check-label text-muted" for="etc">기타    </label>
 	                  <div class="etc_box">
 	                  	<input class="form-control" type="text" name="TYPE" title="직접입력인 경우">
@@ -128,23 +131,23 @@
               <div class="mb-4">
 	                <label class="form-label">원하시는 숙련도의 개발자를 선택하세요.</label>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="CAREER_0" name="CAREER">
+	                  <input class="form-check-input" type="radio" id="CAREER_0" name="CAREER" value="상담 후 결정">
 	                  <label class="form-check-label" for="CAREER_0">상담 후 결정</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="CAREER_1" name="CAREER">
+	                  <input class="form-check-input" type="radio" id="CAREER_1" name="CAREER" value="주니어(3년 이하)">
 	                  <label class="form-check-label" for="CAREER_1">주니어(3년 이하)</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="CAREER_2" name="CAREER">
+	                  <input class="form-check-input" type="radio" id="CAREER_2" name="CAREER" value="미드(4~9년)">
 	                  <label class="form-check-label" for="CAREER_2">미드(4~9년)</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="CAREER_3" name="CAREER">
+	                  <input class="form-check-input" type="radio" id="CAREER_3" name="CAREER" value="시니어(10년 이상)">
 	                  <label class="form-check-label" for="CAREER_3">시니어(10년 이상)</label>
 	                </div>
 	                <div class="form-check chk">
-	                  <input class="form-check-input" type="radio" id="etc" name="CAREER">
+	                  <input class="form-check-input" type="radio" id="etc" name="CAREER" value="기타">
 	                  <label class="form-check-label text-muted" for="etc">기타    </label>
 	                  <div class="etc_box">
 	                  	<input class="form-control" type="text" name="CAREER" title="직접입력인 경우">
@@ -161,23 +164,23 @@
               <div class="mb-4">
 	                <label class="form-label">준비하는 프로젝트의 기획 단계를 선택하세요.</label>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="STEP_0" name="STEP">
+	                  <input class="form-check-input" type="radio" id="STEP_0" name="STEP" value="아이디어만 있음">
 	                  <label class="form-check-label" for="STEP_0">아이디어만 있음</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="STEP_1" name="STEP">
+	                  <input class="form-check-input" type="radio" id="STEP_1" name="STEP" value="필요 내용 정리되어 있음">
 	                  <label class="form-check-label" for="STEP_1">필요 내용 정리되어 있음</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="STEP_2" name="STEP">
+	                  <input class="form-check-input" type="radio" id="STEP_2" name="STEP" value="상세한 기획 문서 있음">
 	                  <label class="form-check-label" for="STEP_2">상세한 기획 문서 있음</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="STEP_3" name="STEP">
+	                  <input class="form-check-input" type="radio" id="STEP_3" name="STEP" value="레이아웃, 디자인 등 구성 완료됨">
 	                  <label class="form-check-label" for="STEP_3">레이아웃, 디자인 등 구성 완료됨</label>
 	                </div>
 	                <div class="form-check chk">
-	                  <input class="form-check-input" type="radio" id="etc" name="STEP">
+	                  <input class="form-check-input" type="radio" id="etc" name="STEP" value="기타">
 	                  <label class="form-check-label text-muted" for="etc">기타    </label>
 	                  <div class="etc_box">
 	                  	<input class="form-control" type="text" name="STEP" title="직접입력인 경우">
@@ -205,23 +208,23 @@
               <div class="mb-4">
 	                <label class="form-label">준비하는 프로젝트의 작업 완료 기간을 선택하세요.</label>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="DEADLINE_0" name="DEADLINE">
+	                  <input class="form-check-input" type="radio" id="DEADLINE_0" name="DEADLINE" value="협의 가능해요.">
 	                  <label class="form-check-label" for="DEADLINE_0">협의 가능해요.</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="DEADLINE_1" name="DEADLINE">
+	                  <input class="form-check-input" type="radio" id="DEADLINE_1" name="DEADLINE" value="가능한 빨리 진행하고 싶어요.">
 	                  <label class="form-check-label" for="DEADLINE_1">가능한 빨리 진행하고 싶어요.</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="DEADLINE_2" name="DEADLINE">
+	                  <input class="form-check-input" type="radio" id="DEADLINE_2" name="DEADLINE" value="일주일 이내로 진행하고 싶어요.">
 	                  <label class="form-check-label" for="DEADLINE_2">일주일 이내로 진행하고 싶어요.</label>
 	                </div>
 	                <div class="form-check">
-	                  <input class="form-check-input" type="radio" id="DEADLINE_2" name="DEADLINE">
+	                  <input class="form-check-input" type="radio" id="DEADLINE_2" name="DEADLINE" value="원하는 날짜가 있어요">
 	                  <label class="form-check-label" for="DEADLINE_2">원하는 날짜가 있어요.</label>
 	                </div>
 	                <div class="form-check chk">
-	                  <input class="form-check-input" type="radio" id="etc" name="DEADLINE">
+	                  <input class="form-check-input" type="radio" id="etc" name="DEADLINE" value="기타">
 	                  <label class="form-check-label text-muted" for="etc">기타    </label>
 	                  <div class="etc_box">
 	                  	<input class="form-control" type="text" name="DEADLINE" title="직접입력인 경우">
@@ -240,25 +243,25 @@
                 <ul class="list-inline mb-0">
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="WORKTYPE_0" name="WORKTYPE">
+                      <input class="form-check-input" type="checkbox" id="WORKTYPE_0" name="WORKTYPE" value="어떤 방식이든 상관없어요.">
                       <label class="form-check-label text-muted" for="WORKTYPE_0">어떤 방식이든 상관없어요.   </label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="WORKTYPE_1" name="WORKTYPE">
+                      <input class="form-check-input" type="checkbox" id="WORKTYPE_1" name="WORKTYPE" value="온라인 진행 원해요. ">
                       <label class="form-check-label text-muted" for="WORKTYPE_1">온라인 진행 원해요.   </label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="WORKTYPE_2" name="WORKTYPE">
+                      <input class="form-check-input" type="checkbox" id="WORKTYPE_2" name="WORKTYPE" value="제가 있는 곳으로 와주세요. ">
                       <label class="form-check-label text-muted" for="WORKTYPE_2">제가 있는 곳으로 와주세요.  </label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="WORKTYPE_3" name="WORKTYPE">
+                      <input class="form-check-input" type="checkbox" id="WORKTYPE_3" name="WORKTYPE" value="전문가가 있는 곳으로 갈게요.">
                       <label class="form-check-label text-muted" for="WORKTYPE_3">전문가가 있는 곳으로 갈게요.   </label>
                     </div>
                   </li>
@@ -322,4 +325,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/address1.js"></script>
 
-<%@ include file="../../inc/bottom.jsp"%>
+<%@ include file="../inc/bottom.jsp"%>

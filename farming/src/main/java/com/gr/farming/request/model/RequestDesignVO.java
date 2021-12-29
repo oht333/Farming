@@ -4,76 +4,68 @@ import java.sql.Timestamp;
 
 public class RequestDesignVO {
 
-	private int requestDesignNo;
-	private String type;
-	private String range;
-	private String scale;
-	private String develop;
-	private Timestamp deadline;
-	private String location1;
-	private String location2;
-	private String question;
+	private int REQUEST_DESIGN_NO;
+	private String TYPE;
+	private String RANGE;
+	private String SCALE;
+	private String DEADLINE;
+	private String LOCATION1;
+	private String LOCATION2;
+	private String QUESTION;
 	
-	public int getRequestDesignNo() {
-		return requestDesignNo;
+	public int getREQUEST_DESIGN_NO() {
+		return REQUEST_DESIGN_NO;
 	}
-	public void setRequestDesignNo(int requestDesignNo) {
-		this.requestDesignNo = requestDesignNo;
+	public void setREQUEST_DESIGN_NO(int rEQUEST_DESIGN_NO) {
+		REQUEST_DESIGN_NO = rEQUEST_DESIGN_NO;
 	}
-	public String getType() {
-		return type;
+	public String getTYPE() {
+		return TYPE;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setTYPE(String tYPE) {
+		TYPE = tYPE;
 	}
-	public String getRange() {
-		return range;
+	public String getRANGE() {
+		return RANGE;
 	}
-	public void setRange(String range) {
-		this.range = range;
+	public void setRANGE(String rANGE) {
+		RANGE = rANGE;
 	}
-	public String getScale() {
-		return scale;
+	public String getSCALE() {
+		return SCALE;
 	}
-	public void setScale(String scale) {
-		this.scale = scale;
+	public void setSCALE(String sCALE) {
+		SCALE = sCALE;
 	}
-	public String getDevelop() {
-		return develop;
+	public String getDEADLINE() {
+		return DEADLINE;
 	}
-	public void setDevelop(String develop) {
-		this.develop = develop;
+	public void setDEADLINE(String dEADLINE) {
+		DEADLINE = dEADLINE;
 	}
-	public Timestamp getDeadline() {
-		return deadline;
+	public String getLOCATION1() {
+		return LOCATION1;
 	}
-	public void setDeadline(Timestamp deadline) {
-		this.deadline = deadline;
+	public void setLOCATION1(String lOCATION1) {
+		LOCATION1 = lOCATION1;
 	}
-	public String getLocation1() {
-		return location1;
+	public String getLOCATION2() {
+		return LOCATION2;
 	}
-	public void setLocation1(String location1) {
-		this.location1 = location1;
+	public void setLOCATION2(String lOCATION2) {
+		LOCATION2 = lOCATION2;
 	}
-	public String getLocation2() {
-		return location2;
+	public String getQUESTION() {
+		return QUESTION;
 	}
-	public void setLocation2(String location2) {
-		this.location2 = location2;
+	public void setQUESTION(String qUESTION) {
+		QUESTION = qUESTION;
 	}
-	public String getQuestion() {
-		return question;
-	}
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-	
 	@Override
 	public String toString() {
-		return "RequestDesignVO [requestDesignNo=" + requestDesignNo + ", type=" + type + ", range=" + range
-				+ ", scale=" + scale + ", develop=" + develop + ", deadline=" + deadline + ", location1=" + location1
-				+ ", location2=" + location2 + ", question=" + question + "]";
+		return "RequestDesignVO [REQUEST_DESIGN_NO=" + REQUEST_DESIGN_NO + ", TYPE=" + TYPE + ", RANGE=" + RANGE
+				+ ", SCALE=" + SCALE + ", DEADLINE=" + DEADLINE + ", LOCATION1=" + LOCATION1 + ", LOCATION2="
+				+ LOCATION2 + ", QUESTION=" + QUESTION + "]";
 	}
 	
 	
