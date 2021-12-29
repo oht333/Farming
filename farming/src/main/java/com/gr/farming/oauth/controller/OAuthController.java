@@ -67,7 +67,9 @@ public class OAuthController {
 			}
 		}
 		
-		session.setAttribute("vo", vo);
+		session.setAttribute("name", vo.getName());
+		session.setAttribute("email", vo.getEmail());
+		session.setAttribute("pwd", vo.getPwd());		
 		session.setAttribute("token", access_Token);
 		
 		model.addAttribute("msg", msg);
@@ -107,7 +109,10 @@ public class OAuthController {
 			}
 		}
 		
-		session.setAttribute("vo", vo);
+		session.setAttribute("name", vo.getName());
+		session.setAttribute("email", vo.getEmail());
+		session.setAttribute("pwd", vo.getPwd());
+		session.setAttribute("token", accessToken);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);

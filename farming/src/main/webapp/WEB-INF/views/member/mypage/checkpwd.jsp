@@ -16,40 +16,17 @@
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
-            <form name="frmEdit" method="post" 
-					action="<c:url value='/admin/mypage/profile'/>" >
-              <div class="mb-4">
-                <label class="form-label" for="name"> name</label>
-                <input class="form-control" name="name" id="name" type="text" placeholder="${name}" autocomplete="off">
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="email"> Email Address</label>
-                <input class="form-control" name="email" id="email" type="email" placeholder="${email}" autocomplete="off" readonly="readonly">
-                <!-- <span class="invalidText"></span> -->
-              </div>
+            <form name="frmCheck" method="post" 
+					action="<c:url value='/member/mypage/checkpwd'/>" >
+					<input type="hidden" name="email" value="${param.email}">
               <div class="mb-4">
                 <label class="form-label" for="pwd"> Password</label>
-                <input class="form-control" name="pwd" id="pwd" placeholder="${pwd}" type="password">
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="address1"> Address</label>
-                <input class="form-control" name="address1" id="address1" type="address1" placeholder="${vo.address1}" autocomplete="off">
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="address2"> Detail Address</label>
-                <input class="form-control" name="address2" id="address2" type="address2" placeholder="${vo.address2}" autocomplete="off">
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="zipcode"> Zipcode </label>
-                <input class="form-control" name="zipcode" id="zipcode" type="zipcode" placeholder="${vo.zipcode}" autocomplete="off" >
+                <input class="form-control" name="pwd" id="pwd" type="password">
               </div>
               <div class="col-lg-2 d-grid">
-                    <button class="btn btn-primary rounded-pill h-100" type="submit">수정 </button>
+                    <button class="btn btn-primary rounded-pill h-100" id="submit" value="submit">확인 </button>
               </div>
-              <div class="col-lg-2 d-grid">
-                     <button class="btn btn-primary rounded-pill h-100" type="button">뒤로가기 </button>
-              </div>
-            </form>
+              </form>
             </div>
           </div>
         </div>
@@ -79,6 +56,8 @@
       // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg
       //- injectSvgSprite('${path}icons/orion-svg-sprite.svg'); 
       injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg'); 
+      
+  	});
       
     </script>
     <!-- jQuery-->
