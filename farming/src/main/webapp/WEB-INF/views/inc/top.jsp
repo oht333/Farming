@@ -39,7 +39,7 @@
       <!-- Navbar-->
       <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
         <div class="container-fluid">
-          <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="index.html"><img src="${pageContext.request.contextPath }/resources/img/farming-logo.png" alt="Directory logo" style="width:140px;padding:2px"></a>
+          <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="<c:url value='/index'/>"><img src="${pageContext.request.contextPath }/resources/img/farming-logo.png" alt="Directory logo" style="width:140px;padding:2px"></a>
             <form class="form-inline d-none d-sm-flex" action="#" id="search">
               <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3"> 
                 <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
