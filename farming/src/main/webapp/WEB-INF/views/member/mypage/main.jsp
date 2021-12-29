@@ -7,9 +7,9 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Your account   </li>
+          <li class="breadcrumb-item active">마이페이지   </li>
         </ol>
-        <h1 class="hero-heading mb-0">Your account</h1>
+        <h1 class="hero-heading mb-0">마이페이지</h1>
         <p class="text-muted mb-5">Manage your account and settings here.</p>
         <div class="row">
           <div class="col-6 col-md-4 mb-30px">
@@ -33,8 +33,8 @@
                     <use xlink:href="#password-1"> </use>
                   </svg>
                 </div>
-                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/member/mypage/profile'/>">Login &amp; security</a></h5>
-                <p class="text-muted card-text text-sm">Update your password and secure your account</p>
+                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/member/mypage/checkpwd?email=${email }'/>">회원정보 수정</a></h5>
+                <p class="text-muted card-text text-sm">Update your personal information</p>
               </div>
             </div>
           </div>
@@ -117,6 +117,8 @@
       // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg
       //- injectSvgSprite('${path}icons/orion-svg-sprite.svg'); 
       injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg'); 
+      
+      
       
     </script>
     <!-- jQuery-->

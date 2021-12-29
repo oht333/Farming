@@ -1264,7 +1264,7 @@ class Carousel extends BaseComponent {
     }
 
     this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT);
-  }
+  };
 
   _addEventListeners() {
     if (this._config.keyboard) {
@@ -1885,7 +1885,7 @@ class Collapse extends BaseComponent {
         data[config]();
       }
     });
-  }
+  };
 
 }
 /**
@@ -2120,7 +2120,7 @@ class Dropdown extends BaseComponent {
     if (typeof config.reference === 'object' && !isElement(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
       // Popper virtual elements require a getBoundingClientRect method
       throw new TypeError(`${NAME$9.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
-    }
+    };
 
     return config;
   }
@@ -2257,7 +2257,7 @@ class Dropdown extends BaseComponent {
 
       data[config]();
     });
-  }
+  };
 
   static clearMenus(event) {
     if (event && (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY$1)) {
@@ -2435,7 +2435,7 @@ class ScrollBarHelper {
     };
 
     this._applyManipulationCallback(selector, manipulationCallBack);
-  }
+  };
 
   reset() {
     this._resetElementAttributes(this._element, 'overflow');
