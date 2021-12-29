@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../../inc/top.jsp"%>
+<%@ include file="../inc/top.jsp"%>
 <style type="text/css">
     .chk #etc:checked ~ .etc_box{display:block}
     .chk .etc_box{display:none}
@@ -13,30 +13,30 @@
       <div class="container">
         <p class="subtitle text-primary">Let's Farming</p>
         <h1 class="h2 mb-5"> 소프트웨어 개발 <span class="text-muted float-end">Step 1</span>      </h1>
-        <form name="frm1" method="post" action="<c:url value='/request/develop/request1'/>">
-        	<%-- <div class="col-lg-4">
+        <form name="frm1" method="post" action="<c:url value='/request/requestWrite/develop'/>">
+        	 <%--<div class="col-lg-4">
               <h4>어떤 플랫폼을 원하시나요?</h4>
             </div>
             <div class="col-lg-7 ms-auto">
               <div class="mb-4">
                 <label class="form-label">원하시는 소프트웨어 개발 플랫폼을 모두 선택하세요.</label>
-                <ul class="list-inline mb-0">
+                 <ul class="list-inline mb-0">
                 
 		      		<c:set var="idx" value="0" />
 		        	<c:forEach var="vo" items="${list }" >
 		        	
         				<li class="list-inline-item">
 		                    <div class="form-check">
-		                      <input class="form-check-input" type="checkbox" name="reQnaItems[${idx }].REQUEST_ANSWER"
-		                     	 id="${vo.REQUEST_ANSWER }" value="${vo.REQUEST_ANSWER }">
-		                      <label class="form-check-label text-muted" for="${vo.REQUEST_ANSWER }" >${vo.REQUEST_ANSWER }</label>
+		                      <input class="form-check-input" type="checkbox" name="REQUEST_ANSWER"
+		                     	 id="REQUEST_ANSWER[${idx }]" value="${vo.REQUEST_ANSWER }">
+		                      <label class="form-check-label text-muted" for="REQUEST_ANSWER[${idx }]" >${vo.REQUEST_ANSWER }</label>
 		                    </div>
 		                  </li> 
 		                  
 		                  <c:set var="idx" value="${idx+1 }" />
-		          </c:forEach>
-		                  --%>
-        	
+		          </c:forEach> --%>
+		                  
+ 	
           <div class="row form-block">
             <div class="col-lg-4">
               <h4>어떤 플랫폼을 원하시나요?</h4>
@@ -325,4 +325,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/address1.js"></script>
 
-<%@ include file="../../inc/bottom.jsp"%>
+<%@ include file="../inc/bottom.jsp"%>

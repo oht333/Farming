@@ -5,7 +5,7 @@
 <mapper namespace="com.gr.farming.request.model.RequestDAO">	
 	<insert id="insertRequestDevelop" parameterType="requestDevelopVo">
 		<selectKey keyProperty="REQUEST_DEVELOP_NO" resultType="int" order="BEFORE">
-			select request_D_seq.nextval from dual 
+			select REQUEST_DEVELOP_SEQ.nextval from dual 
 		</selectKey>
 		insert into request_develop(REQUEST_DEVELOP_NO, PLATFORM, TYPE, CAREER, STEP,
 			REFERENCE, DEADLINE, WORKTYPE, LOCATION1, LOCATION2)
@@ -13,8 +13,18 @@
 			#{REFERENCE}, #{DEADLINE}, #{WORKTYPE}, #{LOCATION1}, #{LOCATION2})
 	</insert>
 	
+	<insert id="insertRequestDesign" parameterType="requestDesignVo">
+		<selectKey keyProperty="REQUEST_DESIGN_NO" resultType="int" order="BEFORE">
+			select REQUEST_DESIGN_SEQ.nextval from dual 
+		</selectKey>
+		insert into request_design(REQUEST_DESIGN_NO, TYPE, RANGE, SCALE,
+			DEADLINE, LOCATION1, LOCATION2, QUESTION)
+		values(#{REQUEST_DESIGN_NO}, #{TYPE}, #{RANGE}, #{SCALE}, 
+			#{DEADLINE}, #{LOCATION1}, #{LOCATION2}, #{QUESTION})
+	</insert>
+	
 	<select id="selectByCategoryNo" parameterType="int" resultType="requestQnaVo">
-		select * from REQUEST_QNA
-		where CATEGORY_NO=#{categoryNo}
+		select * from request_qna
+		where CATEGORY_NO=#{CATEGORY_NO}
 	</select>
 </mapper>

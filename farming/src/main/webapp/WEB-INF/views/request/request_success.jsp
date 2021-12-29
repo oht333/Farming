@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../../inc/top.jsp"%>
+<%@ include file="../inc/top.jsp"%>
 <div class="progress rounded-0 sticky-top" style="height: 8px; top: 72px;">
       <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
@@ -14,4 +14,4 @@
       </div>
     </section>
     
-<%@ include file="../../inc/bottom.jsp"%>
+<%@ include file="../inc/bottom.jsp"%>

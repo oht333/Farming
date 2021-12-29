@@ -18,9 +18,15 @@ public class RequestServiceImpl implements RequestService{
 	public int insertRequestDevelop(RequestDevelopVO vo) {
 		return requestDao.insertRequestDevelop(vo);
 	}
+	
+	public int insertRequestDesign(RequestDesignVO vo) {
+		return requestDao.insertRequestDesign(vo);
+	}
 
 	public List<RequestQnaVO> selectByCategoryNo(int categoryNo) {
 		return requestDao.selectByCategoryNo(categoryNo);
 	}
+
+
 
 }
