@@ -1,12 +1,18 @@
 package com.gr.farming.member.controller;
 
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,37 +97,38 @@ public class MemberController {
 	}
 	
 //   회원 정보 수정
-	@RequestMapping(value="/mypage/profile", method=RequestMethod.GET)
-	public String edit_get(@RequestParam(defaultValue = "0") String email, 
-			Model model) {
+	@GetMapping("/mypage/profile")
+	public String edit_get(HttpSession session, Model model) {
+		String email=(String) session.getAttribute("email");
+		logger.info("회원정보 수정 화면, 파라미터 email={}", email);
 		
-		if(email==null) {
-			model.addAttribute("msg", "잘못된 url입니다.");
-			model.addAttribute("url", "/member/mypage/main");
-			return "common/message";
-		}
+		MemberVO vo= service.selectByEmail(email);
+		logger.info("회원수정 - 조회 결과 vo={}", vo);
 		
-		MemberVO vo = service.selectByEmail(email);
-		
-		model.addAttribute("vo",vo);
-		
+		model.addAttribute("vo", vo);
 		return "member/mypage/profile";
 	}
 	
-	@RequestMapping(value="/mypage/profile", method=RequestMethod.POST)
-	public String edit_post(@ModelAttribute MemberVO vo, Model model) {
-		logger.info("글수정 처리, 파라미터 vo={}", vo);
+	@PostMapping("/mypage/profile")
+	public String edit_post(@ModelAttribute MemberVO vo,
+			HttpSession session, Model model) {
+		String email=(String) session.getAttribute("email");
+		vo.setEmail(email);
+		String name=(String) session.getAttribute("name");
+		vo.setName(name);
+		logger.info("회원수정 처리, 파라미터 vo={}", vo);
 		
-		String msg="글수정 실패", url="/member/mypage/main";
-		if(service.checkPwd(vo)) {
-			int cnt = service.updateMember(vo);
-			if(cnt>0) {
-				msg="글수정되었습니다.";
-				url="/member/mypage/profile";
-			} 
+		String msg="", url="/mypage/profile";
+		
+		int cnt=service.updateMember(vo);
+		logger.info("회원수정 결과, cnt={}", cnt);
+		
+		if(cnt>0) {
+			msg="회원정보 수정되었습니다.";
+			url="/member/mypage/main";
 		}else {
-				msg="비밀번호가 일치하지 않습니다.";
-		}
+			msg="회원정보 수정 실패!";
+		}		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 			
@@ -153,12 +160,12 @@ public class MemberController {
 		
 		String msg="실패", url="/member/mypage/checkpwd";
 		if(service.checkPwd(vo)) {
-			//여기 뭐 더 넣어야하나여?
 				msg="확인되었습니다.";
 				url="/member/mypage/profile";
 			
 		}else {
 				msg="비밀번호가 일치하지 않습니다.";
+				url="/member/mypage/checkpwd?email="+vo.getEmail();
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
@@ -166,6 +173,45 @@ public class MemberController {
 		return "common/message";
 
 	}
+	
+// 회원 탈퇴
+	@GetMapping("/mypage/out")
+	public void out_get() {
+		logger.info("회원탈퇴 화면");			
+	}
+	
+	@PostMapping("/mypage/out")
+	public String out_post(@RequestParam String pwd, HttpSession session,
+			HttpServletResponse response, Model model) {
+		String email=(String) session.getAttribute("email");
+		logger.info("회원탈퇴 처리, 파라미터 email={}, pwd={}", email,pwd);
+		
+		String msg="비밀번호 체크 실패", url="/mypage/out";
+		int result = service.loginCheck(email, pwd);
+		if(result==service.LOGIN_OK) {
+			int cnt = service.delete(email);
+			if(cnt>0) {
+				msg="확인되었습니다.";
+				url="/index";
+				session.invalidate();
+				
+				Cookie ck = new Cookie("ck_email", email);
+				ck.setMaxAge(0);
+				ck.setPath("/");
+				response.addCookie(ck);
+			}else {
+				msg="회원탈퇴 처리 실패";									
+			}
+		}else if(result==service.DISAGREE_PWD) {
+				msg="비밀번호가 일치하지 않습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
 	@RequestMapping("/checkemail")
 	public String checkEmail(@RequestParam String email, Model model) {
 		logger.info("중복체크페이지 email={}",email);

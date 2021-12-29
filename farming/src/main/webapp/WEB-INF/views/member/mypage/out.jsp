@@ -8,25 +8,29 @@
         <ol class="breadcrumb ps-0  justify-content-start">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item"><a href="user-account.html">마이페이지</a></li>
-          <li class="breadcrumb-item active">비밀번호 확인</li>
+          <li class="breadcrumb-item active">탈퇴</li>
         </ol>
-        <h1 class="hero-heading mb-0">비밀번호 확인</h1>
-        <p class="text-muted mb-5">Check the password here.</p>
+        <h1 class="hero-heading mb-0">탈퇴 확인</h1>
+        <p class="text-muted mb-5">Please check if you want to withdraw.</p>
         
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
-            <form name="frmCheck" method="post" 
-					action="<c:url value='/member/mypage/checkpwd'/>" >
-					<input type="hidden" name="email" value="${param.email}">
-              <div class="mb-4">
-                <label class="form-label" for="pwd"> Password</label>
-                <input class="form-control" name="pwd" id="pwd" type="password">
-              </div>
-              <div class="col-lg-2 d-grid">
-                    <button class="btn btn-primary rounded-pill h-100" id="submit" value="submit">확인 </button>
-              </div>
-              </form>
+            <form name="frmOut" method="post" 
+				action="<c:url value='/member/mypage/out'/>" >
+				<fieldset>	<legend>회원 탈퇴</legend>
+					<p class="p">회원탈퇴하시겠습니까?</p>
+					<div class="mb-4">
+		                <label class="form-label" for="pwd"> Password</label>
+		                <input class="form-control" name="pwd" id="pwd" type="password">
+		              </div>
+					<div class="align_center">
+						<!-- <input type="submit" id="submit" value="회원탈퇴"> -->
+						<button class="btn btn-outline-success" type="submit">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</button>
+						<input type="reset" value="취소">
+					</div>
+				</fieldset>	
+			</form>
             </div>
           </div>
         </div>

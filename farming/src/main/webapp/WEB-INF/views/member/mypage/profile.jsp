@@ -7,17 +7,18 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item"><a href="user-account.html">Account</a></li>
-          <li class="breadcrumb-item active">Login &amp; security   </li>
+          <li class="breadcrumb-item"><a href="user-account.html">마이페이지</a></li>
+          <li class="breadcrumb-item active">내 정보 수정   </li>
         </ol>
         <h1 class="hero-heading mb-0">내 정보 수정</h1>
-        <p class="text-muted mb-5">Manage your Login & security and settings here.</p>
+        <p class="text-muted mb-5">Update your personal information</p>
         
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
             <form name="frmEdit" method="post" 
-					action="<c:url value='/admin/mypage/profile'/>" >
+					action="<c:url value='/member/mypage/profile'/>" >
+			<%-- <input type="hidden" name="email" value="${param.email}"> --%>
               <div class="mb-4">
                 <label class="form-label" for="name"> name</label>
                 <input class="form-control" name="name" id="name" type="text" placeholder="${name}" autocomplete="off">
@@ -29,7 +30,7 @@
               </div>
               <div class="mb-4">
                 <label class="form-label" for="pwd"> Password</label>
-                <input class="form-control" name="pwd" id="pwd" placeholder="${pwd}" type="password">
+                <input class="form-control" name="pwd" id="pwd" type="password">
               </div>
               <div class="mb-4">
                 <label class="form-label" for="address1"> Address</label>
@@ -43,17 +44,15 @@
                 <label class="form-label" for="zipcode"> Zipcode </label>
                 <input class="form-control" name="zipcode" id="zipcode" type="zipcode" placeholder="${vo.zipcode}" autocomplete="off" >
               </div>
-              <div class="col-lg-2 d-grid">
-                    <button class="btn btn-primary rounded-pill h-100" type="submit">수정 </button>
-              </div>
-              <div class="col-lg-2 d-grid">
-                     <button class="btn btn-primary rounded-pill h-100" type="button">뒤로가기 </button>
+              <div class="mb-4">
+                    <button class="btn btn-outline-success" type="submit">&nbsp;&nbsp;&nbsp;수정&nbsp;&nbsp;&nbsp;</button>
+                    <a style="float:right;" class="btn btn-outline-success" href="<c:url value='/member/mypage/main'/>">&nbsp;&nbsp;뒤로가기&nbsp;&nbsp;</a>
               </div>
             </form>
             </div>
           </div>
         </div>
-      </div>
+      </div>	
     </section>
     <!-- JavaScript files-->
     <script>
