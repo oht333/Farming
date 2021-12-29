@@ -112,4 +112,5 @@ public class CategoryController {
 				
 		return "common/message";
 	}
+	
 }

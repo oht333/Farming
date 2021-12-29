@@ -15,10 +15,9 @@ public class IndexController {
 		return "index";
 	}
 	
-	@GetMapping("/kakaoInfo")
-	public String kakaoInfo() {
-		return "kakaoInfo";
+	@GetMapping("/register")
+	public String register() {
+		return "register";
 	}
-	
 	
 }

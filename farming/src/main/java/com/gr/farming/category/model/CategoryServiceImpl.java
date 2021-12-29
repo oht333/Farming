@@ -30,5 +30,8 @@ public class CategoryServiceImpl implements CategoryService{
 	public int delete(int categoryNo) {
 		return dao.delete(categoryNo);
 	}
+	public List<CategoryVO> selectByMain(String main){
+		return dao.selectByMain(main);
+	}
 	
 }

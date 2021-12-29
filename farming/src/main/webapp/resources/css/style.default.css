@@ -13484,7 +13484,10 @@ fieldset:disabled .btn {
 /*
      Search bars on the homepage
     ------------------------
+
 */
+
+
 .search-bar {
   border-radius: 10rem;
   background: #fff;
@@ -13710,7 +13713,9 @@ fieldset:disabled .btn {
 * ===================================================
 *     Custom form controls
 * ===================================================
+
 */
+
 .form-label {
   color: #6c757d;
   font-size: 0.8rem;
@@ -13947,11 +13952,13 @@ fieldset:disabled .btn {
   border-bottom: none;
 }
 
+
 /*
 * ===================================================
 *    Maps
 * ===================================================
 */
+
 .map-wrapper-450 {
   height: 450px;
 }
@@ -14182,6 +14189,7 @@ fieldset:disabled .btn {
   border-top-color: #2CCE8D;
 }
 
+
 /*
 * ===================================================
 *    Icons + Badges
@@ -14318,6 +14326,7 @@ fieldset:disabled .btn {
 *    Custom Nav Pills
 * ===================================================
 */
+
 .nav-pills-custom {
   flex-wrap: wrap;
 }
@@ -14338,11 +14347,13 @@ fieldset:disabled .btn {
   margin-left: 0;
 }
 
+
 /*
 * ===================================================
 *     Testimonials
 * ===================================================
 */
+
 .testimonial-quote {
   margin-bottom: 10px;
   color: #2CCE8D;
@@ -14383,11 +14394,13 @@ fieldset:disabled .btn {
   }
 }
 
+
 /*
 * ===================================================
 *     RIBBONS
 * ===================================================
 */
+
 .ribbon {
   position: absolute;
   top: 10px;
@@ -14494,6 +14507,7 @@ fieldset:disabled .btn {
 *     Typography
 * ===================================================
 */
+
 .subtitle {
   margin-bottom: 0;
   letter-spacing: 0.2em;
@@ -14652,6 +14666,7 @@ p.lead strong {
 *    Booking
 * ===================================================
 */
+
 .date-tile {
   display: flex;
   width: 4.5rem;
@@ -14783,6 +14798,7 @@ body {
 *     Daterange Picker
 * ===================================================
 */
+
 .datepicker-container-left,
 .datepicker-container-right {
   position: relative;
@@ -16156,7 +16172,9 @@ button.mfp-close {
 * ===================================================
 *     NoUI Slider theming
 * ===================================================
+
 */
+
 .noUi-target {
   background: #ddd;
   border-radius: 0;
@@ -16209,6 +16227,10 @@ button.mfp-close {
 *     Swiper theming
 * ===================================================
 */
+
+
+
+
 .swiper-container-mx-negative {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
@@ -16331,6 +16353,7 @@ button.mfp-close {
      Colours and backgrounds
     ------------------------
 */
+
 .bg-gray-100 {
   background: #f8f9fa !important;
 }
@@ -16486,6 +16509,7 @@ button.mfp-close {
 .table-hover tbody tr.no-hover:hover {
   background-color: transparent !important;
 }
+
 
 /*
      Transparent overlays
