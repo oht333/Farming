@@ -175,6 +175,7 @@ public class ExpertController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
 
 //  회원 정보 수정
 	@GetMapping("/mypage/profile")
