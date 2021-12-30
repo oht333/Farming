@@ -2,17 +2,18 @@ package com.gr.farming.request.model;
 
 public class RequestQnaVO {
 
-	private int qnaNo;
+	private int qNo;
 	private int categoryNo; 
-	private String requestClass;
-	private String requestQuestion;
-	private String requestInfo;
-	private String requestAnswer;
-	public int getQnaNo() {
-		return qnaNo;
+	private String qClass;
+	private String question;
+	private String info;
+	private String type;
+	private String answer;
+	public int getqNo() {
+		return qNo;
 	}
-	public void setQnaNo(int qnaNo) {
-		this.qnaNo = qnaNo;
+	public void setqNo(int qNo) {
+		this.qNo = qNo;
 	}
 	public int getCategoryNo() {
 		return categoryNo;
@@ -20,35 +21,42 @@ public class RequestQnaVO {
 	public void setCategoryNo(int categoryNo) {
 		this.categoryNo = categoryNo;
 	}
-	public String getRequestClass() {
-		return requestClass;
+	public String getqClass() {
+		return qClass;
 	}
-	public void setRequestClass(String requestClass) {
-		this.requestClass = requestClass;
+	public void setqClass(String qClass) {
+		this.qClass = qClass;
 	}
-	public String getRequestQuestion() {
-		return requestQuestion;
+	public String getQuestion() {
+		return question;
 	}
-	public void setRequestQuestion(String requestQuestion) {
-		this.requestQuestion = requestQuestion;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
-	public String getRequestInfo() {
-		return requestInfo;
+	public String getInfo() {
+		return info;
 	}
-	public void setRequestInfo(String requestInfo) {
-		this.requestInfo = requestInfo;
+	public void setInfo(String info) {
+		this.info = info;
 	}
-	public String getRequestAnswer() {
-		return requestAnswer;
+	public String getType() {
+		return type;
 	}
-	public void setRequestAnswer(String requestAnswer) {
-		this.requestAnswer = requestAnswer;
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	@Override
 	public String toString() {
-		return "RequestQnaVO [qnaNo=" + qnaNo + ", categoryNo=" + categoryNo + ", requestClass=" + requestClass
-				+ ", requestQuestion=" + requestQuestion + ", requestInfo=" + requestInfo + ", requestAnswer="
-				+ requestAnswer + "]";
+		return "RequestQnaVO [qNo=" + qNo + ", categoryNo=" + categoryNo + ", qClass=" + qClass + ", question="
+				+ question + ", info=" + info + ", type=" + type + ", answer=" + answer + "]";
 	}
+	
+	
 	
 }
