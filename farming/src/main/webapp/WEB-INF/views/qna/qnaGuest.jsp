@@ -8,7 +8,7 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-center">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item"><a href="<c:url value='/qna/qnaMain'/>">자주하는 질문</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/qna/qnaMain'/>">메인</a></li>
           <li class="breadcrumb-item active">파밍의 첫걸음</li>
         </ol>
         <h1 class="hero-heading">처음 이용하시는 고객님을 위한 파밍 이용팁</h1>
@@ -74,6 +74,7 @@
               
               </blockquote>
             </div>
+            
             <div class="row my-5">
               <div class="col-lg-6 mx-auto">
                 <div class="card shadow border-0 text-center">
@@ -81,28 +82,87 @@
                     <h4 class="h5 card-text">파밍 첫 이용에 도움이 되셨나요 ?</h4>
                   </div>
                   <div class="card-body py-4">
-                    <button class="btn btn-success text-white"><i class="fa fa-thumbs-up me-2"></i>Yes</button>
-                    <button class="btn btn-danger"><i class="fa fa-thumbs-down me-2"></i>No</button>
+                  	<button type="button" class="btn btn-success text-white" 
+                  		onclick="alert('감사합니다 고객님 . 즐거운 파밍생활 되세요 ! ')"><i class="fa fa-thumbs-up me-2"></i>좋아요</button>
+                    <button type="button" class="btn btn-danger"
+                    	onclick="alert('죄송합니다 . 지금 바로 1:1 문의게시판을 이용해보세요 ! ')"><i class="fa fa-thumbs-down me-2"></i>아니요</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+           <div class="col-lg-4">
             <div class="ps-xl-4">
+              <!-- Opening Hours      -->
               <div class="card border-0 shadow mb-5">
-                <div class="card-header bg-primary-100 py-4 border-0">
+                <div class="card-header bg-gray-100 py-4 border-0">
                   <div class="d-flex align-items-center justify-content-between">
                     <div>
-                      <p class="subtitle text-sm text-primary">Need more help?</p>
-                      <h4 class="mb-0">Similar Topics</h4>
+                      <p class="subtitle text-sm text-primary">더 궁금하신 점 있으신가요?</p>
+                      <h4 class="mb-0">고객센터 운영시간</h4>
                     </div>
-                    <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-primary flex-shrink-0">
-                      <use xlink:href="#screwdriver-1"> </use>
+                    <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
+                      <use xlink:href="#wall-clock-1"> </use>
                     </svg>
                   </div>
                 </div>
-                <div class="list-group list-group-flush rounded-0 text-sm my-3"><a class="list-group-item list-group-item-action text-muted" href="knowledge-base-topic.html"> <i class="far fa-file me-2"></i>Sint consequat aliquip?                                </a><a class="list-group-item list-group-item-action text-muted" href="knowledge-base-topic.html"> <i class="far fa-file me-2"></i>Adipisicing voluptate magna quis sunt dolor velit.                                </a><a class="list-group-item list-group-item-action text-muted" href="knowledge-base-topic.html"> <i class="far fa-file me-2"></i>Ad pariatur anim magna?                                </a><a class="list-group-item list-group-item-action text-muted" href="knowledge-base-topic.html"> <i class="far fa-file me-2"></i>officia aliqua fugiat ex?                                </a><a class="list-group-item list-group-item-action text-muted" href="knowledge-base-topic.html"> <i class="far fa-file me-2"></i>Sint consequat aliquip?                                </a><a class="list-group-item list-group-item-action text-muted" href="knowledge-base-topic.html"> <i class="far fa-file me-2"></i>Adipisicing voluptate magna quis sunt dolor velit.                                </a><a class="list-group-item list-group-item-action text-muted" href="knowledge-base-topic.html"> <i class="far fa-file me-2"></i>Ad pariatur anim magna?                                </a><a class="list-group-item list-group-item-action text-muted" href="knowledge-base-topic.html"> <i class="far fa-file me-2"></i>officia aliqua fugiat ex?                                </a>
+                <div class="card-body">
+                  <table class="table text-sm mb-0">
+                    <tr>
+                      <th class="ps-0 border-0">월요일</th>
+                      <td class="pe-0 text-end border-0">8:00 am - 6:00 pm</td>
+                    </tr>
+                    <tr>
+                      <th class="ps-0">화요일</th>
+                      <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                    </tr>
+                    <tr>
+                      <th class="ps-0">수요일</th>
+                      <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                    </tr>
+                    <tr>
+                      <th class="ps-0">목요일</th>
+                      <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                    </tr>
+                    <tr>
+                      <th class="ps-0">금요일</th>
+                      <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                    </tr>
+                    <tr>
+                      <th class="ps-0">토요일</th>
+                      <td class="pe-0 text-end">8:00 am - 1:00 pm</td>
+                    </tr>
+                    <tr>
+                      <th class="ps-0">일요일</th>
+                      <td class="pe-0 text-end">Closed</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <!-- Contact-->
+              <div class="card border-0 shadow mb-5">
+                <div class="card-header bg-gray-100 py-4 border-0">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                      <p class="subtitle text-sm text-primary">의견을 들려주세요</p>
+                      <h4 class="mb-0">고객센터</h4>
+                    </div>
+                    <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
+                      <use xlink:href="#fountain-pen-1"> </use>
+                    </svg>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <ul class="list-unstyled mb-4">
+                    <li class="mb-2"> <a class="text-gray-00 text-sm text-decoration-none" href="#"><i class="fa fa-phone me-3"></i><span class="text-muted">(020) 123 456 789</span></a></li>
+                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fa fa-envelope me-3"></i><span class="text-muted">info@example.com</span></a></li>
+                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fa fa-globe me-3"></i><span class="text-muted">www.example.com</span></a></li>
+                    <li class="mb-2"> <a class="text-blue text-sm text-decoration-none" href="#"><i class="fab fa-facebook me-3"></i><span class="text-muted">Facebook</span></a></li>
+                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fab fa-twitter me-3"></i><span class="text-muted">Twitter</span></a></li>
+                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fab fa-instagram me-3"></i><span class="text-muted">Instagram</span></a></li>
+                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fab fa-google-plus me-3"></i><span class="text-muted">Google+</span></a></li>
+                  </ul>
+                  <div class="d-grid text-center"><a class="btn btn-outline-primary" href="#"> <i class="far fa-paper-plane me-2"></i>1:1 문의하기</a></div>
                 </div>
               </div>
             </div>
@@ -110,7 +170,6 @@
         </div>
       </div>
     </section>
-    
    
 
 <%@ include file="../inc/bottom.jsp" %>
