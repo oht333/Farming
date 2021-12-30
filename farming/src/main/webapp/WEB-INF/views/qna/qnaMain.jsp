@@ -6,7 +6,7 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-center">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">자주하는 질문</li>
+          <li class="breadcrumb-item active">메인</li>
         </ol>
         <h1 class="hero-heading">파밍을 이용하면서 궁금하신 점이 있으신가요 ?</h1>
         <div class="row">
@@ -66,7 +66,7 @@
                 </div>
                 <h3 class="h5">질문 게시판</h3>
                 <p class="text-muted text-sm mb-0"> 더 많은 궁금한점을 게시판에 남겨주세요! </p>
-                <a class="stretched-link" href="knowledge-base-topic.html"> 
+                <a class="stretched-link" href="<c:url value='/qna/qnaList'/>"> 
                 <span class="sr-only">See Topic</span>
                 </a>
               </div>

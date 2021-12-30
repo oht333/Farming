@@ -139,6 +139,7 @@ public class ExpertController {
         loginUrl.append("http://localhost:9091/farming/login/expkakao"); 
         loginUrl.append("&response_type=code");
         
+        System.out.println("loginUrl : "+loginUrl.toString());
         return "redirect:"+loginUrl.toString();
 	}
 
@@ -146,7 +147,7 @@ public class ExpertController {
 //	페이스북 로그인 or 회원가입
 	@RequestMapping("expfacebookjoin")
 	public String facebookjoin() {
-		String facebookurl = o_service.getAuthorizationUrl();
+		String facebookurl = o_service.expGetAuthorizationUrl();
         System.out.println("facebookurl : "+facebookurl);
         return "redirect:"+facebookurl;
 	}

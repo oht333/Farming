@@ -134,11 +134,11 @@ public class OAuthController {
 		int result = eservice.duplicatedId(vo.getEmail());
 		System.out.println("result = "+result);
 		if(result == 1) {
-			System.out.println("회원");
+			System.out.println("전문가 회원");
 			msg = "전문가 카카오톡 로그인 성공";
 			url = "/index";
 		} else if(result == 2){
-			System.out.println("비회원");
+			System.out.println("전문가 비회원");
 			vo.setPwd("11");
 			int cnt = eservice.insert(vo);
 			if(cnt > 0) {
@@ -179,7 +179,7 @@ public class OAuthController {
 			msg = "전문가 페이스북 로그인 성공";
 			url = "/index";
 		} else if(result == 2){
-			System.out.println("비회원");
+			System.out.println("전문가 비회원");
 			vo.setPwd("11");
 			int cnt = eservice.insert(vo);
 			if(cnt > 0) {

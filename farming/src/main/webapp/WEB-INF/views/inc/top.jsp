@@ -127,13 +127,17 @@
 									<a class="dropdown-item" href="<c:url value='/member/mypage/main?email=${email }'/>l">마이페이지</a>
 									<div class="dropdown-divider"></div>
 									<h6 class="dropdown-header fw-normal">설정</h6>
-									<a class="dropdown-item" href="docs/components-bootstrap.html">전문가로 가입하기</a>
+									<c:if test="${user eq '사용자' }">
+										<a class="dropdown-item" href="docs/components-bootstrap.html">전문가로 전환하기</a>
+									</c:if>
+									<c:if test="${expert eq '전문가' }">
+										<a class="dropdown-item" href="docs/components-bootstrap.html">사용자로 전환하기</a>
+									</c:if>
 									<a class="dropdown-item" href="docs/components-directory.html">설정</a>
 									<a class="dropdown-item" href="<c:url value='/login/logout'/>">로그아웃</a>
 								</div>
 							</li>
 						</c:if>
-
 
 					</ul>
 				</div>
