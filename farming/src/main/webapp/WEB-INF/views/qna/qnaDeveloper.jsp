@@ -160,7 +160,7 @@
                     <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fab fa-instagram me-3"></i><span class="text-muted">Instagram</span></a></li>
                     <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fab fa-google-plus me-3"></i><span class="text-muted">Google+</span></a></li>
                   </ul>
-                  <div class="d-grid text-center"><a class="btn btn-outline-primary" href="#"> <i class="far fa-paper-plane me-2"></i>1:1 문의하기</a></div>
+                  <div class="d-grid text-center"><a class="btn btn-outline-primary" href="<c:url value='/qna/qnaList'/>"> <i class="far fa-paper-plane me-2"></i>1:1 문의하기</a></div>
                 </div>
               </div>
             </div>
