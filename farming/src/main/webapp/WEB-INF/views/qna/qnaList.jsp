@@ -21,30 +21,37 @@
    
     <div class="container">
       <div class="list-group shadow mb-5">
+      <c:if test="${empty list }">
+      		<p>데이터가 없습니다.</p>
+      </c:if>
+      <c:if test="${!empty list }">
+      	<c:forEach var="vo" items="${list }">
           <div class="list-group-item list-group-item-action p-4">
             <div class="row">
               <div class="col-9 col-lg-4 align-self-center mb-3 mb-lg-0">
                 <div class="d-flex align-items-center mb-1 mb-lg-3">
-                  <h2 class="h5 mb-0">제목</h2>
+                  <h2 class="h5 mb-0">${vo.title }</h2>
                 </div>
-                <p class="text-sm text-muted">이름</p><a class="stretched-link" href="user-messages-detail.html"></a>
+                <p class="text-sm text-muted">${name }</p><a class="stretched-link" href="user-messages-detail.html"></a>
               </div>
               <div class="col-10 ms-auto col-lg-7">
                 <div class="row">
                   <div class="col-md-8 py-3">
-                    <p class="text-sm mb-0">내용</p>
+                    <p class="text-sm mb-0">${vo.content }</p>
                   </div>
                   <div class="col-md-4 text-end py-3">
-                    <p class="text-sm">날짜</p>
+                    <p class="text-sm">${vo.regdate }</p>
                   </div><a class="stretched-link" href="user-messages-detail.html"></a>
                 </div>
               </div>
             </div>
           </div>
+          </c:forEach>
+          </c:if>
  </div>
          
         <div class="divBtn">
-		    <a href='<c:url value="/qna/qnaWrite.do"/>' >글쓰기</a>
+		    <a href='<c:url value="/qna/qnaWrite"/>' >글쓰기</a>
 		</div>
  
  </div>

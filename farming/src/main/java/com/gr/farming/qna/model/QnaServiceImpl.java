@@ -18,14 +18,14 @@ public class QnaServiceImpl implements QnaService{
 		this.qnaDao = qnaDao;
 	}
 
-	@Transactional
-	public int insertQna(QnaVO vo) {
-		return qnaDao.insertQna(vo);
+	
+	public int insert(QnaVO vo) {
+		return qnaDao.insert(vo);
 	}
 
 	@Override
-	public List<QnaVO> selectAll(SearchVO searchVO) {
-		return qnaDao.selectAll(searchVO);
+	public List<QnaVO> select(int no) {
+		return qnaDao.select(no);
 	}
 
 	@Override
@@ -50,8 +50,7 @@ public class QnaServiceImpl implements QnaService{
 		// TODO Auto-generated method stub
 		return qnaDao.selectByNo(no);
 	}
-	
-	
+
 	
 	
 }

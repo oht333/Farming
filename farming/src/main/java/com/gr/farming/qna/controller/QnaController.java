@@ -3,6 +3,7 @@ package com.gr.farming.qna.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +54,11 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/qnaList")
-	public String qnaList() {
+	public String qnaList(HttpSession session, Model model) {
+		
+		List<QnaVO> list = qnaService.select((int)session.getAttribute("memNo"));
+//		List<QnaVO> list = qnaService.select(memberNo);
+		model.addAttribute("list", list);
 		return "qna/qnaList";
 	}
 	
@@ -88,33 +93,38 @@ public class QnaController {
 	 * // 뷰페이지로 리턴 return "qna/qnaList"; }
 	 */
 	
-	@RequestMapping(value="/qnaWrite.do",method = RequestMethod.GET)
+	@RequestMapping(value="/qnaWrite",method = RequestMethod.GET)
 	public String write_get() {
 		logger.info("글쓰기 화면");
 		
 		return "qna/qnaWrite";
 	}
 	
-	@RequestMapping(value="/qnaWrite.do", method = RequestMethod.POST)
+	@RequestMapping(value="/qnaWrite", method = RequestMethod.POST)
 	public String write_post(@ModelAttribute QnaVO vo,
-			HttpServletRequest request) {
+			Model model) {
 		
 		logger.info("글쓰기처리, 파라미터 vo={}",vo);
 		
-		int cnt=qnaService.insertQna(vo);
-		logger.info("글쓰기결과, cnt={}",cnt);
-		
-		return "redirect:/qna/qnaList.do";
+		int cnt=qnaService.insert(vo);
+		String msg = "글쓰기 실패", url = "/qna/qnaWrite";
+		if(cnt > 0) {
+			msg = "성공";
+			url = "/qna/qnaList";
+		}
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		return "common/message";
 		
 	}
 	
-	@GetMapping("/qnaEdit.do")
+	@GetMapping("/qnaEdit")
 	public String edit_get(@RequestParam(defaultValue="0") int no,
 			HttpServletRequest request, Model model) {
 		logger.info("수정화면 파라미터 no={}",no);
 		if(no==0) {
 			model.addAttribute("msg","잘못된 url 입니다.");
-			model.addAttribute("url","/qna/qnaList.do");
+			model.addAttribute("url","/qna/qnaList");
 			
 			return "common/message";
 		}
@@ -127,13 +137,15 @@ public class QnaController {
 		return "qna/qnaEdit";
 	}
 	
-	@PostMapping(value="/qnaEdit.do")
+	@PostMapping(value="/qnaEdit")
 	public String edit_post(@ModelAttribute QnaVO vo,
 			HttpServletRequest request, Model model) {
 		
 		logger.info("글수정 처리, 파라미터 vo={}",vo);
 		
-		String msg="글수정 실패", url="/qna/qnaEdit.do?no="+vo.getNo();
+		String msg="글수정 실패", url="/qna/qnaEdit?no="+vo.getQnaNo();
+		
+		return "";
 		
 	}
 	
