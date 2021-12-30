@@ -6,7 +6,7 @@
             <div class="mb-5"><img class="img-fluid mb-3" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png" alt="..." style="max-width: 4rem;">
               <h2>패스워드 변경</h2>
             </div>
-            <form class="form-validate" method="post" action="<c:url value='/member/change'/>" >
+            <form class="form-validate" method="post" action="<c:url value='/expert/change'/>" >
               <div class="mb-4">
                 <label class="form-label" for="email"> 이메일</label>
                 <input class="form-control" name="email" id="email" type="email" value="${param.email }" readonly="readonly">

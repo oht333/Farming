@@ -24,6 +24,13 @@
 		where email=#{email}
 	</select>
 	
+
+	<update id="updatePwd" parameterType="string">
+		update expert
+		set pwd=#{pwd}
+		where email=#{email}
+	</update>
+
 	<select id="selectAll" resultType="expertVo">
 		select * from expert order by expert_no desc
 	</select>
@@ -33,7 +40,7 @@
 		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zipCode=#{zipCode}
 		where email=#{email}
 	</update>
-	
+
 </mapper>
 
 

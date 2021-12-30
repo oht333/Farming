@@ -160,6 +160,22 @@ public class ExpertController {
         return "redirect:"+facebookurl;
 	}
 	
+
+	@RequestMapping("/change")
+	public String changePwd(@RequestParam String email, String pwd, Model model) {
+		logger.info("이메일 인증 후 비밀번호 변경 처리 파라미터 email = {}, pwd = {}",email, pwd);
+		
+		int cnt = service.updatePwd(email, pwd);
+		String msg = "비밀번호 변경 실패", url = "/login/expfindpwd";
+		if(cnt > 0) {
+			msg = "변경 성공";
+			url = "/login/expLogin";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+
 //  회원 정보 수정
 	@GetMapping("/mypage/profile")
 	public String edit_get(HttpSession session, Model model) {
@@ -237,6 +253,7 @@ public class ExpertController {
 		model.addAttribute("url", url);
 			
 		return "common/message";
+
 
 	}
 }

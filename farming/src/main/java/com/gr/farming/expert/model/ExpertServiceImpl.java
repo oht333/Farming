@@ -59,6 +59,11 @@ public class ExpertServiceImpl implements ExpertService{
 		return dao.selectByEmail(email);
 	}
 
+	public int updatePwd(String email, String pwd) {
+		pwd = pwdEncoder.encode(pwd);
+		return dao.updatePwd(email, pwd);
+
+
 	
 	public List<ExpertVO> selectAll() {
 		return dao.selectAll();
@@ -76,5 +81,6 @@ public class ExpertServiceImpl implements ExpertService{
 		}else {
 			return false;
 		}
+
 	}
 }
