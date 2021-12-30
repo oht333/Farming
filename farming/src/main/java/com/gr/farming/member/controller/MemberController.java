@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,8 @@ public class MemberController {
 	private final MemberService service;
 	private final OAuthService oservice;
 	
+	@Autowired
+	private PasswordEncoder pwdEncoder;
 	
 	
 	@Autowired
@@ -157,10 +160,12 @@ public class MemberController {
 	
 	@RequestMapping(value="/mypage/checkpwd", method=RequestMethod.POST)
 	public String check_post(@ModelAttribute MemberVO vo, Model model) {
+		MemberVO memVo=service.selectByEmail(vo.getEmail());
+		boolean chk = pwdEncoder.matches(vo.getPwd(), memVo.getPwd());
 		logger.info("비번 확인, 파라미터 vo={}", vo);
 		
 		String msg="실패", url="/member/mypage/checkpwd";
-		if(service.checkPwd(vo)) {
+		if(chk || service.checkPwd(vo)) {
 				msg="확인되었습니다.";
 				url="/member/mypage/profile";
 			
@@ -174,6 +179,23 @@ public class MemberController {
 		return "common/message";
 
 	}
+	
+	/*
+	 * @RequestMapping(value="/mypage/checkpwd", method=RequestMethod.POST) public
+	 * String check_post(@ModelAttribute MemberVO vo, Model model) {
+	 * logger.info("비번 확인, 파라미터 vo={}", vo);
+	 * 
+	 * String msg="실패", url="/member/mypage/checkpwd"; if(service.checkPwd(vo)) {
+	 * msg="확인되었습니다."; url="/member/mypage/profile";
+	 * 
+	 * }else { msg="비밀번호가 일치하지 않습니다.";
+	 * url="/member/mypage/checkpwd?email="+vo.getEmail(); }
+	 * model.addAttribute("msg", msg); model.addAttribute("url", url);
+	 * 
+	 * return "common/message";
+	 * 
+	 * }
+	 */
 	
 // 회원 탈퇴
 	@GetMapping("/mypage/out")

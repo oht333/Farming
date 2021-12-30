@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
+import com.gr.farming.expert.model.ExpertService;
+import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.member.model.MemberService;
 import com.gr.farming.member.model.MemberVO;
 
@@ -21,11 +23,13 @@ import com.gr.farming.member.model.MemberVO;
 public class AdminController {
 	private final CategoryService service;
 	private final MemberService mem_service;
+	private final ExpertService exp_service;
 	
 	@Autowired
-	public AdminController(CategoryService service, MemberService mem_service) {
+	public AdminController(CategoryService service, MemberService mem_service, ExpertService exp_service) {
 		this.service = service;
 		this.mem_service = mem_service;
+		this.exp_service = exp_service;
 	}
 	
 	private static final Logger logger
@@ -76,6 +80,17 @@ public class AdminController {
 		
 		model.addAttribute("mem_list", mem_list);
 		return "admin/manage/mem_list";
+	}
+	
+	@RequestMapping("/manage/dev_list")
+	public String dev_list(Model model) {
+		logger.info("전문가 목록 페이지");
+		
+		List<ExpertVO> dev_list = exp_service.selectAll();
+		logger.info("전문가 목록 페이지 dev_list.size={}", dev_list.size());
+		
+		model.addAttribute("dev_list", dev_list);
+		return "admin/manage/dev_list";
 	}
 	
 }

@@ -40,7 +40,7 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
           <li class="breadcrumb-item"><a href="<c:url value='/index'/>">Home</a></li>
-          <li class="breadcrumb-item"><a href="<c:url value='/member/mypage/main'/>">마이페이지</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/expert/mypage/main'/>">마이페이지</a></li>
           <li class="breadcrumb-item active">내 정보 수정   </li>
         </ol>
         <h1 class="hero-heading mb-0">내 정보 수정</h1>
@@ -50,7 +50,7 @@
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
             <form name="frmEdit" method="post" 
-					action="<c:url value='/member/mypage/profile'/>" >
+					action="<c:url value='/expert/mypage/profile'/>" >
 			<%-- <input type="hidden" name="email" value="${param.email}"> --%>
 			<div class="d-flex mb-4" style="margin-left:42%">
 					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
@@ -91,9 +91,9 @@
               
               <div class="mb-4">
                     <button class="btn btn-outline-success" type="submit" id="edit">&nbsp;&nbsp;&nbsp;수정&nbsp;&nbsp;&nbsp;</button>
-                    <a style="float:right;" class="btn btn-outline-success" href="<c:url value='/member/mypage/main'/>">&nbsp;&nbsp;뒤로가기&nbsp;&nbsp;</a>
+                    <a style="float:right;" class="btn btn-outline-success" href="<c:url value='/expert/mypage/main'/>">&nbsp;&nbsp;뒤로가기&nbsp;&nbsp;</a>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <a style="margin-left: 40%;" class="btn btn-outline-success" href="<c:url value='/member/mypage/out'/>">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</a>
+                    <a style="margin-left: 40%;" class="btn btn-outline-success" href="<c:url value='/expert/mypage/out'/>">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</a>
               </div>
             </form>
             </div>
