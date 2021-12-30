@@ -55,6 +55,18 @@
 	  		$('#kakao').click(function(){
 	  			location.href="<c:url value='/expert/expkakaojoin'/>";
 	  		});
+	  		
+	  		$('#forgot').click(function(){
+	  			if($('#email').val().length<1){
+  					alert('패스워드를 찾기 위해 이메일을 입력하세요');
+  					$('#email').focus();
+  					event.preventDefault();
+  				} else {
+  					var email=$('#email').val();
+  	  				open('/farming/expert/forgotpwd?email='+email,'dup',
+  	  				 'width=500,height=500,left=0,top=0,location=yes,resizable=yes');
+  				}	
+	  		});
 	  	});  	
 		
 	</script>
@@ -85,7 +97,7 @@
                   <div class="col">
                     <label class="form-label" for="pwd"> 비밀번호</label>
                   </div>
-                  <div class="col-auto"><a class="form-text small text-primary" href="#">Forgot password?</a></div>
+                  <div class="col-auto" id="forgot"><a class="form-text small text-primary" href="#">Forgot password?</a></div>
                 </div>
                 <input class="form-control" name="pwd" id="pwd" placeholder="Password" type="password">
               </div>

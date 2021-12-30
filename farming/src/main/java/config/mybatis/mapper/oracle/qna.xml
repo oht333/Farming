@@ -9,12 +9,15 @@
 		</if>
 	</sql>
 	
-	<insert id="insertQna" parameterType="qnaVo">
-		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+	<insert id="insert" parameterType="qnaVo">
+		<selectKey keyProperty="qna_no" resultType="int" order="BEFORE">
 			select qna_seq.nextval from dual
 		</selectKey>
-		insert into qna(no, name, pwd, title, email, content,
-			groupNo)
-		values(#{no},#{name},#{pwd},#{title},#{email},#{content},#{no})
+		insert into qna(qna_no, member_no, title, content, 
+			group_no, del_flag)
+		values(#{qna_no}, #{member_no}, #{title}, #{content}, 
+			#{group_no}, #{del_flag})
 	</insert>
+	
+	
 </mapper>

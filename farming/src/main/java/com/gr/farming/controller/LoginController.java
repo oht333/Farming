@@ -61,6 +61,11 @@ public class LoginController {
 		logger.info("비밀번호 찾기");
 		return "login/findpwd";
 	}
+	@RequestMapping("/expfindpwd")
+	public String expfindPwd(@RequestParam String email) {
+		logger.info("비밀번호 찾기");
+		return "login/expfindpwd";
+	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String login_post(@ModelAttribute MemberVO mVo, 
@@ -69,7 +74,7 @@ public class LoginController {
 			HttpServletResponse response, ModelMap model) {
 		MemberVO memVo=memberService.selectByEmail(mVo.getEmail());
 		boolean chk = pwdEncoder.matches(mVo.getPwd(), memVo.getPwd());
-		logger.info("일반로그인 처리, 파라미터 vo={}, chkSave={}", mVo, chkSave);
+		logger.info("일반로그인 처리, 파라미터 vo={}, chkSave={}", memVo, chkSave);
 		String msg="로그인 처리 실패!", url="/login/login";
 		
 		//int result=memberService.loginCheck(mVo.getEmail(), mVo.getPwd());	
@@ -113,9 +118,9 @@ public class LoginController {
 			@RequestParam(required = false) String chkSave, 
 			HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
-		logger.info("전문가로그인 처리, 파라미터 eVo={}, chkSave={}", eVo, chkSave);
 		ExpertVO expVo=expertService.selectByEmail(eVo.getEmail());
 		boolean chk = pwdEncoder.matches(eVo.getPwd(), expVo.getPwd());
+		logger.info("전문가로그인 처리, 파라미터 eVo={}, chkSave={}", expVo, chkSave);
 		String msg="로그인 처리 실패!", url="/login/expLogin";
 		if(chk) {
 			
