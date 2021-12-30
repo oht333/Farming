@@ -16,9 +16,32 @@
         </div>
       </div>
     </section>
-    <section class="py-6">
-      
-    </section>
+    <div class="container">
+      <div class="list-group shadow mb-5">
+          <div class="list-group-item list-group-item-action p-4">
+            <div class="row">
+              
+              <div class="col-9 col-lg-4 align-self-center mb-3 mb-lg-0">
+                <div class="d-flex align-items-center mb-1 mb-lg-3">
+                  <h2 class="h5 mb-0">이름</h2>
+                </div>
+                <p class="text-sm text-muted">제목</p><a class="stretched-link" href="user-messages-detail.html"></a>
+              </div>
+              <div class="col-10 ms-auto col-lg-7">
+                <div class="row">
+                  <div class="col-md-8 py-3">
+                    <p class="text-sm mb-0">내용</p>
+                  </div>
+                  <div class="col-md-4 text-end py-3">
+                    <p class="text-sm">날짜</p>
+                  </div><a class="stretched-link" href="user-messages-detail.html"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+ </div>
+  </div>
    
     
 <%@ include file="../inc/bottom.jsp" %>
