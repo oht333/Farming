@@ -3,11 +3,16 @@ package com.gr.farming.member.model;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MemberServiceImpl implements MemberService{		
 	private final MemberDAO memberDao;
+	
+	@Autowired
+	private PasswordEncoder pwdEncoder;
 	
 	@Autowired
 	public MemberServiceImpl(MemberDAO memberDao) { 
@@ -19,6 +24,9 @@ public class MemberServiceImpl implements MemberService{
 		vo.setAddress1("");
 		vo.setAddress2("");
 		vo.setZipcode("");
+		
+		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
+		
 		int cnt=memberDao.insert(vo);
 		return cnt;
 	}

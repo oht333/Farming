@@ -1,6 +1,5 @@
 package com.gr.farming.member.controller;
 
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,6 +30,7 @@ public class MemberController {
 	private final OAuthService oservice;
 	
 	
+	
 	@Autowired
 	public MemberController(MemberService service, OAuthService oservice) {
 		this.service = service;
@@ -59,6 +59,7 @@ public class MemberController {
 	@RequestMapping("/join")
 	public String join(@ModelAttribute MemberVO vo, Model model) {
 		logger.info("회원가입 처리 파라미터 vo={}",vo);
+		
 		int cnt = service.insert(vo);
 		logger.info("회원가입 처리 결과 cnt={}",cnt);
 		
