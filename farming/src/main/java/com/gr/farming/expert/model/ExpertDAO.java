@@ -9,4 +9,5 @@ public interface ExpertDAO {
 	public int duplicatedId(String email);
 	public String selectPwd(String email);
 	public ExpertVO selectByEmail(String email);
+	public int updatePwd(String email, String pwd);
 }

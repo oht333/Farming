@@ -56,4 +56,8 @@ public class ExpertServiceImpl implements ExpertService{
 	public ExpertVO selectByEmail(String email) {
 		return dao.selectByEmail(email);
 	}
+	public int updatePwd(String email, String pwd) {
+		pwd = pwdEncoder.encode(pwd);
+		return dao.updatePwd(email, pwd);
+	}
 }

@@ -13,4 +13,5 @@ public interface ExpertService {
 	public int duplicatedId(String email);
 	public int loginCheck(String email, String pwd);
 	public ExpertVO selectByEmail(String email);
+	public int updatePwd(String email, String pwd);
 }

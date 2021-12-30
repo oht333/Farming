@@ -24,9 +24,26 @@ public class RequestServiceImpl implements RequestService{
 		return requestDao.insertRequestDesign(vo);
 	}
 
-	public List<RequestQnaVO> selectByCategoryNo(int categoryNo) {
-		return requestDao.selectByCategoryNo(categoryNo);
+	@Override
+	public List<Map<String, Object>> selectQuestion(int categoryNo) {
+		return requestDao.selectQuestion(categoryNo);
 	}
+
+//	@Override
+//	public RequestQnaVO selectRequestQna(int categoryNo) {
+//		return requestDao.selectRequestQna(categoryNo);
+//	}
+	
+	@Override
+	public List<Map<String, Object>> selectAnswer(int qNo) {
+		return requestDao.selectAnswer(qNo);
+	}
+
+	@Override
+	public List<RequestQnaVO> selectRequestQna(int categoryNo) {
+	return requestDao.selectRequestQna(categoryNo);
+}
+
 
 
 	
