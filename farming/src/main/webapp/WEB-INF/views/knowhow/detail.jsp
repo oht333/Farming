@@ -44,7 +44,7 @@
 			<c:if test="${!empty vo.fileName }">
 				<span>
 					<a href
-="<c:url value='/knowledge/download.do?no=${vo.no }&fileName=${vo.fileName }'/>">
+="<c:url value='/knowhow/download?no=${vo.no }&fileName=${vo.fileName }'/>">
 						${fileInfo}</a>				
 					다운 : ${vo.downCount }
 				</span>
@@ -57,12 +57,12 @@
 			<p class="content">${fn:replace(vo.content, newLine, "<br>")}</p>
 		</div>
 		<div class="center">
-			<a href='<c:url value="/knowledge/edit.do?no=${param.no }"/>'>수정</a> |
-        	<a href='<c:url value="/knowledge/delete.do?no=${param.no }&step=${vo.step}&groupNo=${vo.groupNo }&fileName=${vo.fileName}"/>'>
+			<a href='<c:url value="/knowhow/edit?no=${param.no }"/>'>수정</a> |
+        	<a href='<c:url value="/knowhow/delete?no=${param.no }&step=${vo.step}&groupNo=${vo.groupNo }&fileName=${vo.fileName}"/>'>
         	삭제</a> |
-			<a href='<c:url value="/knowledge/reply.do?no=${param.no }"/>'>답변</a> |
+			<a href='<c:url value="/knowhow/reply?no=${param.no }"/>'>답변</a> |
         	
-        	<a href='<c:url value="/knowledge/list.do"/>'>목록</a>			
+        	<a href='<c:url value="/knowhow/list"/>'>목록</a>			
 		</div>
 	</div>
 
