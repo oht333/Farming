@@ -23,15 +23,18 @@
 			#{DEADLINE}, #{LOCATION1}, #{LOCATION2}, #{QUESTION})
 	</insert>
 	
-	<select id="selectByCategoryNo" parameterType="int" resultType="requestQnaVo">
+	<select id="selectRequestQna" parameterType="requestQnaVo" resultType="requestQnaVo">
 		select * from request_qna
+		where category_no=#{categoryNo} and q_no=#{qNo}
+	</select>
+	
+	<select id="selectQuestion" parameterType="int" resultType="map">
+		select * from REQUEST_QUESTION
 		where category_no=#{categoryNo}
 	</select>
 	
-	<select id="selectRequestQuestion" parameterType="int" resultType="map">
-		select REQUEST_QUESTION, REQUEST_INFO, REQUEST_ANSWER
-		from request_qna
-		where category_no=#{categoryNo}
-		order by qna_no
+	<select id="selectAnswer" parameterType="int" resultType="map">
+		select * from request_answer
+		where q_no=#{qNo}
 	</select>
 </mapper>

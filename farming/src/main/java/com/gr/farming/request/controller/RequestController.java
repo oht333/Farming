@@ -49,10 +49,17 @@ public class RequestController {
 		
 		logger.info("견적서 작성 메인화면 보여주기, 파라미터 categoryNo={}", categoryNo);
 	
-		List<RequestQnaVO> list=requestService.selectByCategoryNo(categoryNo);
-		logger.info("견적서 문답 조회 결과, list.size={}", list.size());
+//		RequestQnaVO vo=requestService.selectRequestQna(categoryNo);
+		List<Map<String, Object>> qList=requestService.selectQuestion(categoryNo);
+		logger.info("견적서 질문 조회 결과, qList.size={}", qList.size());
 		
-		model.addAttribute("list", list);
+		List<RequestQnaVO> aList=requestService.selectRequestQna(categoryNo);
+		
+//		List<Map<String, Object>> aList=requestService.selectAnswer(vo.getqNo());
+//		logger.info("견적서 답변 조회 결과, aList.size={}", aList.size());
+		
+		model.addAttribute("qList", qList);
+		model.addAttribute("aList", aList);
 		model.addAttribute("categoryNo",categoryNo);
 		
 		return "request/request_1";
