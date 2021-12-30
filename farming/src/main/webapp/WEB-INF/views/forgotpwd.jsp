@@ -39,9 +39,7 @@
 				$('#certifiedNo').focus(); 
 				event.preventDefault(); 
 			} else if($('#certifiedNo').val() == ${result}){
-				
-				$(opener.document).find('#chkEmail').val('Y'); //중복확인 완료
-				$(opener.document).find('#certified').val('인증완료');
+				opener.parent.location="<c:url value='/login/findpwd?email=${param.email}'/>";
 				self.close();
 			} else{
 				alert('인증코드가 일치하지 않습니다.');
@@ -57,7 +55,7 @@
           <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
             <div class="mb-4"><img class="img-fluid mb-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png" alt="..." style="max-width: 4rem;"></div>
             <p class="text-muted">이메일 인증번호 요청</p>
-            <form class="form-validate" method="post" action="<c:url value='/member/join'/>">
+            <form class="form-validate" method="post" action="<c:url value='/login/findpwd'/>">
               <div class="mb-4">
                 <label class="form-label" for="email"> 이메일</label>
                 <input class="form-control" name="email" id="email" type="email" value="${param.email }" readonly="readonly">
