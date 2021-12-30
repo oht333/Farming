@@ -63,7 +63,7 @@
   					event.preventDefault();
   				} else {
   					var email=$('#email').val();
-  	  				open('/farming/forgotpwd?email='+email,'dup',
+  	  				open('/farming/member/forgotpwd?email='+email,'dup',
   	  				 'width=500,height=500,left=0,top=0,location=yes,resizable=yes');
   				}	
 	  		});

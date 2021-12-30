@@ -24,6 +24,11 @@
 		where email=#{email}
 	</select>
 	
+	<update id="updatePwd" parameterType="string">
+		update expert
+		set pwd=#{pwd}
+		where email=#{email}
+	</update>
 </mapper>
 
 

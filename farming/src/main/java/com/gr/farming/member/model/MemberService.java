@@ -21,4 +21,5 @@ public interface MemberService {
 	public int withdrawMember(String email);
 	public List<MemberVO> selectAll();
 	public boolean checkPwd(MemberVO vo);
+	public int updatePwd(String email, String pwd);
 }
