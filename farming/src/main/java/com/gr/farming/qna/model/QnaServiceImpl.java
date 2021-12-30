@@ -1,6 +1,7 @@
 package com.gr.farming.qna.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,24 @@ public class QnaServiceImpl implements QnaService{
 	@Override
 	public int selectTotalRecord(SearchVO searchVo) {
 		return qnaDao.selectTotalRecord(searchVo);
+	}
+
+	@Override
+	public int updateQna(QnaVO vo) {
+		// TODO Auto-generated method stub
+		return qnaDao.updateQna(vo);
+	}
+
+	@Override
+	public void deleteQna(Map<String, String> map) {
+		qnaDao.deleteQna(map);
+		
+	}
+
+	@Override
+	public QnaVO selectByNo(int no) {
+		// TODO Auto-generated method stub
+		return qnaDao.selectByNo(no);
 	}
 	
 	

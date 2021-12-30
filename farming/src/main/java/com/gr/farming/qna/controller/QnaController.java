@@ -9,9 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.PaginationInfo;
@@ -102,6 +105,35 @@ public class QnaController {
 		logger.info("글쓰기결과, cnt={}",cnt);
 		
 		return "redirect:/qna/qnaList.do";
+		
+	}
+	
+	@GetMapping("/qnaEdit.do")
+	public String edit_get(@RequestParam(defaultValue="0") int no,
+			HttpServletRequest request, Model model) {
+		logger.info("수정화면 파라미터 no={}",no);
+		if(no==0) {
+			model.addAttribute("msg","잘못된 url 입니다.");
+			model.addAttribute("url","/qna/qnaList.do");
+			
+			return "common/message";
+		}
+		
+		QnaVO vo=qnaService.selectByNo(no);
+		logger.info("수정화면, 조회결과 vo={}",vo);
+		
+		model.addAttribute("vo",vo);
+		
+		return "qna/qnaEdit";
+	}
+	
+	@PostMapping(value="/qnaEdit.do")
+	public String edit_post(@ModelAttribute QnaVO vo,
+			HttpServletRequest request, Model model) {
+		
+		logger.info("글수정 처리, 파라미터 vo={}",vo);
+		
+		String msg="글수정 실패", url="/qna/qnaEdit.do?no="+vo.getNo();
 		
 	}
 	

@@ -23,28 +23,18 @@
               <div class="mb-4">
                 <label class="form-label">${map['INFO']}</label>
                 <ul class="list-inline mb-0">
-                
-	                <c:set var="idx" value="0"/>
-		     		<c:forEach var="vo" items="${aList }">
-	                  <li class="list-inline-item">
-	                    <div class="form-check">
-	                      <input class="form-check-input" type="${vo.type}" id="${map['Q_CLASS']}_${idx}" name="${map['Q_CLASS']}">
-	                      <label class="form-check-label text-muted" for="${map['Q_CLASS']}_${idx}" >${vo.answer}</label>
-	                    </div>
-	                  </li>
-	                 <c:set var="idx" value="${idx+1 }"/>
-     			   </c:forEach>
-<%-- 	                <c:set var="idx" value="0"/>
-		     		<c:forEach var="map2" items="${aList }">
-	                  <li class="list-inline-item">
-	                    <div class="form-check">
-	                      <input class="form-check-input" type="${map2['TYPE']}" id="${map['Q_CLASS']}_${idx}" name="${map['Q_CLASS']}" value="${map2['ANSWER']}">
-	                      <label class="form-check-label text-muted" for="${map['Q_CLASS']}_${idx}" >${map2['ANSWER']}</label>
-	                    </div>
-	                  </li>
-	                 <c:set var="idx" value="${idx+1 }"/>
-     			   </c:forEach> --%>
-     			 	
+     			 <c:set var="idx" value="0"/>
+                 <c:forEach var="vo" items="${aList }">
+                   <c:if test="${vo.qNo eq map['Q_NO'] }">
+                     <li class="list-inline-item">
+                       <div class="form-check">
+                         <input class="form-check-input" type="${vo.type}" id="${map['Q_CLASS']}_${idx}" name="${map['Q_CLASS']}" value="${vo.answer }">
+                         <label class="form-check-label text-muted" for="${map['Q_CLASS']}_${idx}" >${vo.answer }</label>
+                       </div>
+                     </li>
+                    </c:if>
+                   <c:set var="idx" value="${idx+1 }"/>
+                 </c:forEach>
                 </ul>
               </div>
             </div>
