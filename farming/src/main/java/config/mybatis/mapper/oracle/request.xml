@@ -29,9 +29,8 @@
 	</select>
 	
 	<select id="selectRequestQuestion" parameterType="int" resultType="map">
-		select REQUEST_QUESTION, REQUEST_INFO, REQUEST_ANSWER
+		select DISTINCT REQUEST_QUESTION, REQUEST_INFO
 		from request_qna
 		where category_no=#{categoryNo}
-		order by qna_no
 	</select>
 </mapper>
