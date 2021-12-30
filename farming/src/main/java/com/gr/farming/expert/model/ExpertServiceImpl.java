@@ -63,7 +63,7 @@ public class ExpertServiceImpl implements ExpertService{
 		pwd = pwdEncoder.encode(pwd);
 		return dao.updatePwd(email, pwd);
 
-
+	}
 	
 	public List<ExpertVO> selectAll() {
 		return dao.selectAll();
