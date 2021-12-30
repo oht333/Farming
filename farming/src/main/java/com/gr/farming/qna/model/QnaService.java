@@ -6,8 +6,8 @@ import java.util.Map;
 import com.gr.farming.common.SearchVO;
 
 public interface QnaService {
-	public int insertQna(QnaVO vo);
-	public List<QnaVO> selectAll(SearchVO searchVO);
+	public int insert(QnaVO vo);
+	public List<QnaVO> select(int no);
 	int selectTotalRecord(SearchVO searchVo);
 	public QnaVO selectByNo(int no);
 	public int updateQna(QnaVO vo);

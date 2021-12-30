@@ -3,7 +3,7 @@ package com.gr.farming.qna.model;
 import java.sql.Timestamp;
 
 public class QnaVO {
-	private int no;
+	private int qnaNo;
 	private int memberNo;
 	private String title;
 	private Timestamp regdate;
@@ -16,12 +16,12 @@ public class QnaVO {
 	private int sortNo;  
 	private String delFlag;
 
-	public int getNo() {
-		return no;
+	public int getQnaNo() {
+		return qnaNo;
 	}
 
-	public void setNo(int no) {
-		this.no = no;
+	public void setQnaNo(int qnaNo) {
+		this.qnaNo = qnaNo;
 	}
 
 	public int getMemberNo() {
@@ -99,7 +99,7 @@ public class QnaVO {
 
 	@Override
 	public String toString() {
-		return "QnaVO [no=" + no + ", memberNo=" + memberNo + ", title=" + title + ", regdate=" + regdate
+		return "QnaVO [qnaNo=" + qnaNo + ", memberNo=" + memberNo + ", title=" + title + ", regdate=" + regdate
 				+ ", readcount=" + readcount + ", content=" + content + ", groupNo=" + groupNo + ", step=" + step
 				+ ", sortNo=" + sortNo + ", delFlag=" + delFlag + "]";
 	}

@@ -5,7 +5,8 @@
 <body>
 <div class="divForm">
 <form name="frmWrite" method="post" enctype="multipart/form-data"
-	action="<c:url value='/qna/qnaWrite.do'/>" >
+	action="<c:url value='/qna/qnaWrite'/>" >
+	<input type="hidden" name="memberNo" id="memberNo" value="${memNo }">
  <fieldset>
 	<legend>글쓰기</legend>
         <div class="firstDiv">
@@ -14,7 +15,7 @@
         </div>
         <div>
             <label for="name">이름</label>
-            <input type="text" id="name" name="name" class="infobox" />
+            <input type="text" id="name" name="name" class="infobox" value="${name }" readonly="readonly"/>
         </div>
         <div>  
         	<label for="content">내용</label>        

@@ -87,8 +87,9 @@ public class LoginController {
 			session.setAttribute("email", memVo.getEmail());
 			session.setAttribute("name", memVo.getName());
 			session.setAttribute("pwd", memVo.getPwd());
+			session.setAttribute("memNo", memVo.getMemberNo());
 			session.setAttribute("user", "사용자");
-			
+
 			//[2] 쿠키에 저장 - 아이디저장하기 체크된 경우만
 			Cookie ck = new Cookie("mCk_email", memVo.getEmail());
 			ck.setPath("/");
