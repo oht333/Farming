@@ -182,28 +182,29 @@ public class MemberController {
 	}
 	
 	@PostMapping("/mypage/out")
-	public String out_post(@RequestParam String pwd, HttpSession session,
+	public String out_post(@ModelAttribute MemberVO vo, HttpSession session,
 			HttpServletResponse response, Model model) {
 		String email=(String) session.getAttribute("email");
-		logger.info("회원탈퇴 처리, 파라미터 email={}, pwd={}", email,pwd);
+		String pwd=(String) session.getAttribute("pwd");
+		logger.info("회원탈퇴 처리, 파라미터 email={}, pwd={}", email, pwd);
 		
 		String msg="비밀번호 체크 실패", url="/mypage/out";
-		int result = service.loginCheck(email, pwd);
-		if(result==service.LOGIN_OK) {
-			int cnt = service.delete(email);
+		if(service.checkPwd(vo)) {
+			int cnt = service.delete(vo.getEmail());
 			if(cnt>0) {
 				msg="확인되었습니다.";
-				url="/index";
+				url="../../login/login";
 				session.invalidate();
 				
 				Cookie ck = new Cookie("ck_email", email);
 				ck.setMaxAge(0);
 				ck.setPath("/");
 				response.addCookie(ck);
+			
 			}else {
-				msg="회원탈퇴 처리 실패";									
+				msg="회원탈퇴 처리 실패";
 			}
-		}else if(result==service.DISAGREE_PWD) {
+		}else {
 				msg="비밀번호가 일치하지 않습니다.";
 		}
 		
@@ -212,6 +213,26 @@ public class MemberController {
 		
 		return "common/message";
 	}
+	
+	/*
+	 * @PostMapping("/mypage/out") public String out_post(@RequestParam String pwd,
+	 * HttpSession session, HttpServletResponse response, Model model) { String
+	 * email=(String) session.getAttribute("email");
+	 * logger.info("회원탈퇴 처리, 파라미터 email={}, pwd={}", email,pwd);
+	 * 
+	 * String msg="비밀번호 체크 실패", url="/mypage/out"; int result =
+	 * service.loginCheck(email, pwd); if(result==service.LOGIN_OK) { int cnt =
+	 * service.delete(email); if(cnt>0) { msg="확인되었습니다."; url="/index";
+	 * session.invalidate();
+	 * 
+	 * Cookie ck = new Cookie("ck_email", email); ck.setMaxAge(0); ck.setPath("/");
+	 * response.addCookie(ck); }else { msg="회원탈퇴 처리 실패"; } }else
+	 * if(result==service.DISAGREE_PWD) { msg="비밀번호가 일치하지 않습니다."; }
+	 * 
+	 * model.addAttribute("msg", msg); model.addAttribute("url", url);
+	 * 
+	 * return "common/message"; }
+	 */
 	
 	@RequestMapping("/checkemail")
 	public String checkEmail(@RequestParam String email, Model model) {
