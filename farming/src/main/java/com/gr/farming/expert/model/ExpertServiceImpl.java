@@ -63,4 +63,18 @@ public class ExpertServiceImpl implements ExpertService{
 	public List<ExpertVO> selectAll() {
 		return dao.selectAll();
 	}
+
+	public int updateExpert(ExpertVO vo) {
+		return dao.updateExpert(vo);
+	}
+
+	public boolean checkPwd(ExpertVO vo) {
+		String ePwd = dao.selectPwd(vo.getEmail());
+		
+		if(ePwd.equals(vo.getPwd())) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

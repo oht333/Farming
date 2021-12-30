@@ -16,4 +16,6 @@ public interface ExpertService {
 	public int loginCheck(String email, String pwd);
 	public ExpertVO selectByEmail(String email);
 	public List<ExpertVO> selectAll();
+	public int updateExpert(ExpertVO vo);
+	public boolean checkPwd(ExpertVO vo);
 }

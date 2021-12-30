@@ -28,6 +28,12 @@
 		select * from expert order by expert_no desc
 	</select>
 	
+	<update id="updateExpert" parameterType="expertVo">
+		update expert
+		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zipCode=#{zipCode}
+		where email=#{email}
+	</update>
+	
 </mapper>
 
 
