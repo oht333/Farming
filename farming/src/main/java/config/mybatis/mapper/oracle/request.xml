@@ -25,7 +25,7 @@
 	
 	<select id="selectRequestQna" parameterType="requestQnaVo" resultType="requestQnaVo">
 		select * from request_qna
-		where category_no=#{categoryNo} and q_no=#{qNo}
+		where category_no=#{categoryNo}
 	</select>
 	
 	<select id="selectQuestion" parameterType="int" resultType="map">

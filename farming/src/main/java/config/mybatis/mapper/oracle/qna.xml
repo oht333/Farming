@@ -10,14 +10,31 @@
 	</sql>
 	
 	<insert id="insert" parameterType="qnaVo">
-		<selectKey keyProperty="qna_no" resultType="int" order="BEFORE">
+		<selectKey keyProperty="qnaNo" resultType="int" order="BEFORE">
 			select qna_seq.nextval from dual
 		</selectKey>
-		insert into qna(qna_no, member_no, title, content, 
-			group_no, del_flag)
-		values(#{qna_no}, #{member_no}, #{title}, #{content}, 
-			#{group_no}, #{del_flag})
+		insert into qna(qna_no, member_no, title, content)	
+		values(#{qnaNo}, #{memberNo}, #{title}, #{content})	
 	</insert>
 	
+	<select id="select" parameterType="int" resultType="qnaVo">
+		select * from qna
+		where member_no=#{memberNo} order by qna_no desc
+	</select>
+	
+	<select id="selectByNo" parameterType="int" resultType="qnaVo">
+		select * from qna 
+		where qna_no=#{qna_no}
+	</select>
+	
+	<update id="updateQna" parameterType="qnaVo">
+		update qna
+		set title=#{title}, content=#{content}
+		where qna_no=#{qna_no}
+	</update>
+	
+	<delete id="deleteQna" parameterType="int">
+		delete qna where qna_no=#{qna_no}
+	</delete>
 	
 </mapper>
