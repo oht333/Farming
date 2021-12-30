@@ -50,37 +50,40 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/qnaList")
-	public String qnaList(@ModelAttribute SearchVO searchVo, Model model) {
-		
-		logger.info("글목록, 파라미터 searchVo={}", searchVo);
-		
-		// 페이지네이션인포 객체 생성 : 계산목적
-		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
-		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
-		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
-		
-		// searchvo에 값 넣기
-		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
-		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		logger.info("값 셋팅 후 searchVo={}", searchVo);
-		
-		List<QnaVO> list = qnaService.selectAll(searchVo);
-		logger.info("전체 조회 결과 list.size={}", list.size());
-		
-		// totalrecord 구하기
-		
-		int totalRecord=qnaService.selectTotalRecord(searchVo);
-		pagingInfo.setTotalRecord(totalRecord);
-		
-		// model에 저장
-		
-		model.addAttribute("list", list);
-		model.addAttribute("pagingInfo", pagingInfo);
-		
-		// 뷰페이지로 리턴
+	public String qnaList() {
 		return "qna/qnaList";
 	}
+	
+	/*
+	 * @RequestMapping("/qnaList") public String qnaList(@ModelAttribute SearchVO
+	 * searchVo, Model model) {
+	 * 
+	 * logger.info("글목록, 파라미터 searchVo={}", searchVo);
+	 * 
+	 * // 페이지네이션인포 객체 생성 : 계산목적 PaginationInfo pagingInfo = new PaginationInfo();
+	 * pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
+	 * pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+	 * pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+	 * 
+	 * // searchvo에 값 넣기 searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+	 * searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+	 * logger.info("값 셋팅 후 searchVo={}", searchVo);
+	 * 
+	 * List<QnaVO> list = qnaService.selectAll(searchVo);
+	 * logger.info("전체 조회 결과 list.size={}", list.size());
+	 * 
+	 * // totalrecord 구하기
+	 * 
+	 * int totalRecord=qnaService.selectTotalRecord(searchVo);
+	 * pagingInfo.setTotalRecord(totalRecord);
+	 * 
+	 * // model에 저장
+	 * 
+	 * model.addAttribute("list", list); model.addAttribute("pagingInfo",
+	 * pagingInfo);
+	 * 
+	 * // 뷰페이지로 리턴 return "qna/qnaList"; }
+	 */
 	
 	@RequestMapping(value="/qnaWrite.do",method = RequestMethod.GET)
 	public String write_get() {
