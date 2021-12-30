@@ -11,7 +11,6 @@ public class ExpertVO {
 	private String address2;
 	private String zipCode;
 	private Timestamp regDate;
-	private int categoryNo;
 	private int resumeCode;
 	
 	public int getExpertNo() {
@@ -62,12 +61,7 @@ public class ExpertVO {
 	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
-	public int getCategoryNo() {
-		return categoryNo;
-	}
-	public void setCategoryNo(int categoryNo) {
-		this.categoryNo = categoryNo;
-	}
+	
 	public int getResumeCode() {
 		return resumeCode;
 	}
@@ -78,6 +72,6 @@ public class ExpertVO {
 	public String toString() {
 		return "ExpertVO [expertNo=" + expertNo + ", name=" + name + ", email=" + email + ", pwd=" + pwd + ", address1="
 				+ address1 + ", address2=" + address2 + ", zipCode=" + zipCode + ", regDate=" + regDate
-				+ ", categoryNo=" + categoryNo + ", resumeCode=" + resumeCode + "]";
+				+ ", resumeCode=" + resumeCode + "]";
 	}
 }

@@ -9,4 +9,9 @@ public interface CategoryService {
 	public int update(CategoryVO vo);
 	public int delete(int categoryNo); 
 	public List<CategoryVO> selectByMain(String main);
+	
+	
+	
+	
+	public int selectByDetail(String detail);
 }

@@ -35,4 +35,8 @@ public class CategoryServiceImpl implements CategoryService{
 		return dao.selectByMain(main);
 	}
 	
+	public int selectByDetail(String detail) {
+		return dao.selectByDetail(detail);
+	}
+	
 }

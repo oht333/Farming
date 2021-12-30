@@ -5,6 +5,14 @@
   	<script type="text/javascript">
   	var contextPath = "/farming";
   		$(function(){
+  			$('#pwd2').keyup(function(){
+  				$.ajax({
+  					url:"<c:url value='/member/ajaxChkPwd'/>",
+  					type:"post",
+  					data:""
+  				});
+  			});
+  			
   			$('#signup').click(function(){
   				if($('#name').val().length<1){
   					alert('이름을 입력하세요');
@@ -117,6 +125,7 @@
                 <label class="form-label" for="pwd2"> 비밀번호확인</label>
                 <input class="form-control" name="pwd2" id="pwd2" placeholder="비밀번호확인" type="password">
               </div>
+              <p id="chkpwd"></p>
               <div class="mb-4">
 	              <div class="col-lg-7 d-grid" style="float: left;">
 	                <label class="form-label" for="address1"> 주소</label>

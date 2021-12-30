@@ -334,12 +334,19 @@
 		<div class="panel panel-default">
                         <form name="frmDelete" method="post" action="<c:url value='/admin/category/delete'/>" >
 						<input type="hidden" name="categoryNo" value="${param.categoryNo}">
-                        <div>           
+                        <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="card-title">
+                                        <div class="title"></div>
+                                    </div>
+                                </div>           
 				        	<span class="sp">${param.categoryNo }번 글을 삭제하시겠습니까?</span>                        
 				        </div>
                         <div class="center">
-							<input type ="submit" value="삭제" />
-				        	<a href='<c:url value="/admin/category/list"/>'>목록</a>			
+				        	<input type = "submit" value="삭제" class="btn btn-default"/> | 
+	            			<input type = "Button" id="btList" class="btn btn-default" value="글목록" OnClick="location.href='<c:url value="/admin/category/list"/>'" />			
 						</div>
                     </div>
              
