@@ -320,22 +320,21 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
 		  <div class="header"> 
-                        <h1 class="page-header">
-                            Empty Page <small>Create new page.</small>
-                        </h1>
-						<ol class="breadcrumb">
+                        <h2 class="page-header">
+                            카테고리 수정
+                        </h2>
+						<!-- <ol class="breadcrumb">
 					  <li><a href="#">Home</a></li>
 					  <li><a href="#">Empty</a></li>
 					  <li class="active">Data</li>
-					</ol> 
+					</ol>  -->
 					
 		</div>
 		<form name="frmWrite" method="post" 
-	action="<c:url value='/admin/category/cateUpdate'/>" >
-	<input type="hidden" name="categoryNo" value="${vo.categoryNo}">
+			action="<c:url value='/admin/category/cateUpdate'/>" >
+		<input type="hidden" name="categoryNo" value="${vo.categoryNo}">
  <fieldset>
-	<legend>수정</legend>
-		<div>
+		<%-- <div>
             <label for="main">대분류</label>
             <input type="text" id="main" name="main" value="${vo.main }"/>
         </div>
@@ -346,7 +345,33 @@
         <div class="center">
             <input type = "submit" value="등록"/>
             <input type = "Button" id="btList" value="글목록" />         
-        </div>
+        </div> --%>
+        
+        <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="card-title">
+                                        <div class="title"></div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="main">분류</label>
+                                            <input type="text" id="main" name="main" value="${vo.main }" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="detail">분야</label>
+                                            <input type="text" id="detail" name="detail" value="${vo.detail }" class="form-control"/>
+                                        </div>
+	                                        <input type = "submit" value="수정" class="btn btn-default"/>
+	            							<input type = "Button" id="btList" class="btn btn-default" value="글목록" OnClick="location.href='<c:url value="/admin/category/list"/>'" />         
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
     </fieldset>
 </form> 
             <div id="page-inner"> 

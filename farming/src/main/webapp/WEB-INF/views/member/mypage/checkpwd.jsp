@@ -7,11 +7,11 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item"><a href="user-account.html">Account</a></li>
-          <li class="breadcrumb-item active">Login &amp; security   </li>
+          <li class="breadcrumb-item"><a href="user-account.html">마이페이지</a></li>
+          <li class="breadcrumb-item active">비밀번호 확인</li>
         </ol>
-        <h1 class="hero-heading mb-0">내 정보 수정</h1>
-        <p class="text-muted mb-5">Manage your Login & security and settings here.</p>
+        <h1 class="hero-heading mb-0">비밀번호 확인</h1>
+        <p class="text-muted mb-5">Check the password here.</p>
         
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0"> 

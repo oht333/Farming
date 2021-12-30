@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gr.farming.request.model.RequestDAO">	
+	<insert id="insertRequestDevelop" parameterType="requestDevelopVo">
+		<selectKey keyProperty="REQUEST_DEVELOP_NO" resultType="int" order="BEFORE">
+			select REQUEST_DEVELOP_SEQ.nextval from dual 
+		</selectKey>
+		insert into request_develop(REQUEST_DEVELOP_NO, PLATFORM, TYPE, CAREER, STEP,
+			REFERENCE, DEADLINE, WORKTYPE, LOCATION1, LOCATION2)
+		values(#{REQUEST_DEVELOP_NO}, #{PLATFORM}, #{TYPE}, #{CAREER}, #{STEP}, 
+			#{REFERENCE}, #{DEADLINE}, #{WORKTYPE}, #{LOCATION1}, #{LOCATION2})
+	</insert>
+	
+	<insert id="insertRequestDesign" parameterType="requestDesignVo">
+		<selectKey keyProperty="REQUEST_DESIGN_NO" resultType="int" order="BEFORE">
+			select REQUEST_DESIGN_SEQ.nextval from dual 
+		</selectKey>
+		insert into request_design(REQUEST_DESIGN_NO, TYPE, RANGE, SCALE,
+			DEADLINE, LOCATION1, LOCATION2, QUESTION)
+		values(#{REQUEST_DESIGN_NO}, #{TYPE}, #{RANGE}, #{SCALE}, 
+			#{DEADLINE}, #{LOCATION1}, #{LOCATION2}, #{QUESTION})
+	</insert>
+	
+	<select id="selectByCategoryNo" parameterType="int" resultType="requestQnaVo">
+		select * from request_qna
+		where category_no=#{categoryNo}
+	</select>
+	
+	<select id="selectRequestQuestion" parameterType="int" resultType="map">
+		select REQUEST_QUESTION, REQUEST_INFO, REQUEST_ANSWER
+		from request_qna
+		where category_no=#{categoryNo}
+		order by qna_no
+	</select>
+</mapper>

@@ -2140,9 +2140,9 @@ progress {
 .form-control:focus {
   color: #212529;
   background-color: #fff;
-  border-color: #a7b3fc;
+  border-color: #46d98c;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(78, 102, 248, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(161, 240, 163, 0.25);
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -3048,21 +3048,21 @@ fieldset:disabled .btn {
   color: #fff;
   background-color: #00b66d;
   border-color: #00b66d;
-  box-shadow: 0 0 0 0.25rem rgba(105, 125, 249, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(161, 240, 163, 0.25);
 }
 
 .btn-check:checked + .btn-primary,
 .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #00b66d;
-  border-color: #3b4dba;
+  background-color: #2CCE8D;
+  border-color: #00b66d;
 }
 
 .btn-check:checked + .btn-primary:focus,
 .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(105, 125, 249, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(161, 240, 163, 0.25);
 }
 
 .btn-primary:disabled, .btn-primary.disabled {
@@ -3356,7 +3356,7 @@ fieldset:disabled .btn {
 }
 
 .btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
-  box-shadow: 0 0 0 0.25rem rgba(78, 102, 248, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(161, 240, 163, 0.25);
 }
 
 .btn-check:checked + .btn-outline-primary,
@@ -3368,7 +3368,7 @@ fieldset:disabled .btn {
 
 .btn-check:checked + .btn-outline-primary:focus,
 .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
-  box-shadow: 0 0 0 0.25rem rgba(78, 102, 248, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(161, 240, 163, 0.25);
 }
 
 .btn-outline-primary:disabled, .btn-outline-primary.disabled {
@@ -14575,7 +14575,7 @@ p.lead strong {
 }
 
 .btn {
-  letter-spacing: .3em;
+  letter-spacing: .1em;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -16435,7 +16435,7 @@ button.mfp-close {
 }
 
 .bg-secondary-light {
-  background-color: #fce2ee;
+  background-color: #eff4ef;
 }
 
 .bg-success-light {
