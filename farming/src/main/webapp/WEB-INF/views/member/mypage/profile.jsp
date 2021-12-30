@@ -52,6 +52,10 @@
             <form name="frmEdit" method="post" 
 					action="<c:url value='/member/mypage/profile'/>" >
 			<%-- <input type="hidden" name="email" value="${param.email}"> --%>
+			<div class="d-flex mb-4" style="margin-left:42%">
+					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
+					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>
+			</div>
               <div class="mb-4">
                 <label class="form-label" for="name"> 이름</label>
                 <input class="form-control" name="name" id="name" type="text" placeholder="${name}" autocomplete="off">

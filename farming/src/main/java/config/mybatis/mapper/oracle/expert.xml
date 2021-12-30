@@ -24,6 +24,10 @@
 		where email=#{email}
 	</select>
 	
+	<select id="selectAll" resultType="expertVo">
+		select * from expert order by expert_no desc
+	</select>
+	
 </mapper>
 
 

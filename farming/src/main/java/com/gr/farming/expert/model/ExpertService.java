@@ -1,5 +1,7 @@
 package com.gr.farming.expert.model;
 
+import java.util.List;
+
 public interface ExpertService {
 	public static final int EXIST_ID=1;  //해당 아이디가 이미 존재함
 	public static final int NON_EXIST_ID=2;  //해당 아이디가 존재하지 않음-사용가능
@@ -13,4 +15,5 @@ public interface ExpertService {
 	public int duplicatedId(String email);
 	public int loginCheck(String email, String pwd);
 	public ExpertVO selectByEmail(String email);
+	public List<ExpertVO> selectAll();
 }

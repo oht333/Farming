@@ -343,7 +343,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	<c:forEach var="vo" items="${mem_list }">
+                                    	<c:forEach var="vo" items="${mem_list}">
 	                                        <tr>
 	                                            <td>
 	                                            <%-- <a href="<c:url value='/admin/manage/detail?memberNo=${vo.memberNo }'/>">
@@ -355,8 +355,8 @@
 	                                            <td>${vo.email }</td>
 	                                            <td>${vo.address1 }</td>
 	                                            <td>${vo.address2 }</td>
-	                                            <td>${vo.zipcode }</td>
-	                                            <td>${vo.regdate }</td>
+	                                            <td>${vo.zipCode }</td>
+	                                            <td>${vo.regDate }</td>
 	                                        </tr>
 										</c:forEach>
                                     </tbody>

@@ -1,5 +1,7 @@
 package com.gr.farming.expert.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -55,5 +57,10 @@ public class ExpertServiceImpl implements ExpertService{
 	}
 	public ExpertVO selectByEmail(String email) {
 		return dao.selectByEmail(email);
+	}
+
+	
+	public List<ExpertVO> selectAll() {
+		return dao.selectAll();
 	}
 }
