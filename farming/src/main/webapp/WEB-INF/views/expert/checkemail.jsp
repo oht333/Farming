@@ -32,22 +32,24 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
   	<script type="text/javascript">
-  	$(function(){
-		$("#btUse").click(function(){	
-			if($('#certifiedNo').val().length<1){ 
-				alert("인증번호를 입력하세요"); 
-				$('#certifiedNo').focus(); 
-				event.preventDefault(); 
-			} else if($('#certifiedNo').val() == ${result}){
-				
-				$(opener.document).find('#chkEmail').val('Y'); //중복확인 완료
-				$(opener.document).find('#certified').val('인증완료');
-				self.close();
-			} else{
-				alert('인증코드가 일치하지 않습니다.');
-			}
-		});
-	});
+  		$(function(){
+  			$("#submit").click(function(){	
+  				if($('#email').val().length<1){ 
+  					alert("이메일을 입력하세요"); 
+  					$('#email').focus(); 
+  					event.preventDefault(); 
+  				}
+  			});
+
+  			$('#btUse').click(function(){
+  				$(opener.document).find('#email').val('${param.email}');
+  				$(opener.document).find('#checkem').val('Y'); //중복확인 완료
+  				$(opener.document).find('#ckeckemail').val('중복체크완료');
+  				self.close();
+  			});
+  			
+  			
+  		});
   	</script>
   </head>
   <body>
@@ -56,20 +58,25 @@
         <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
           <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
             <div class="mb-4"><img class="img-fluid mb-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png" alt="..." style="max-width: 4rem;"></div>
-            <p class="text-muted">이메일 인증번호 요청</p>
-            <form class="form-validate" method="post" action="<c:url value='/member/join'/>">
+            <p class="text-muted">이메일 중복체크</p>
+            <form class="form-validate" method="post" action="<c:url value='/member/checkemail'/>">
               <div class="mb-4">
                 <label class="form-label" for="email"> 이메일</label>
-                <input class="form-control" name="email" id="email" type="email" value="${param.email }" readonly="readonly">
+                <input class="form-control" name="email" id="email" type="email" value="${param.email }">
               </div>
-              <p>이메일로 인증번호가 발송되었습니다.</p>
               <div class="mb-4">
-                <label class="form-label" for="certifiedNo"> 이메일인증번호</label>
-                <input class="form-control" name="certifiedNo" id="certifiedNo" type="certifiedNo" placeholder="인증번호를 입력하세요." autocomplete="off" >
+                <input class="form-control" id="submit" type="submit" value="이메일중복체크" title="이메일중복체크" autocomplete="off" >
               </div>
-              <div class="d-grid gap-2">
-                <button class="btn btn-lg btn-primary" type="button" id="btUse">확인</button>
-              </div>
+              <c:if test="${result == EXIST_ID}">		
+			  	  <p>이미 등록된 아이디입니다. 다른 아이디를 입력하세요</p>
+			  </c:if>		
+			  <c:if test="${result == NON_EXIST_ID}">		
+				  
+		  		  <p>사용가능한 아이디입니다. [사용하기] 버튼을 클릭하세요</p>
+		  		  <div class="d-grid gap-2">
+	                <button class="btn btn-lg btn-primary" type="button" id="btUse">사용하기</button>
+	              </div>
+			  </c:if>
             </form>
           </div>
         </div>

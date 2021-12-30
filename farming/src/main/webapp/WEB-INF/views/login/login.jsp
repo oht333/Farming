@@ -55,7 +55,19 @@
 	  		$('#kakao').click(function(){
 	  			location.href="<c:url value='/member/kakaojoin'/>";
 	  		});
-	  	});  	
+	  		
+	  		$('#forgot').click(function(){
+	  			if($('#email').val().length<1){
+  					alert('패스워드를 찾기 위해 이메일을 입력하세요');
+  					$('#email').focus();
+  					event.preventDefault();
+  				} else {
+  					var email=$('#email').val();
+  	  				open('/farming/forgotpwd?email='+email,'dup',
+  	  				 'width=500,height=500,left=0,top=0,location=yes,resizable=yes');
+  				}	
+	  		});
+	  	});
 		
 	</script>
 	<style type="text/css">
@@ -73,19 +85,19 @@
         <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
           <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
             <div class="mb-5"><img class="img-fluid mb-3" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png" alt="..." style="max-width: 4rem;">
-              <h2>파밍 로그인</h2>
+              <h2>일반회원 로그인</h2>
             </div>
             <form class="form-validate" method="post" action="<c:url value='/login/login'/>">
               <div class="mb-4">
                 <label class="form-label" for="email"> 이메일</label>
-                <input class="form-control" name="email" id="email" type="email" placeholder="example@farming.com" value="${cookie.ck_email.value }">
+                <input class="form-control" name="email" id="email" type="email" placeholder="example@farming.com" value="${cookie.mCk_email.value }">
               </div>
               <div class="mb-4">
                 <div class="row">
                   <div class="col">
                     <label class="form-label" for="pwd"> 비밀번호</label>
                   </div>
-                  <div class="col-auto"><a class="form-text small text-primary" href="#">Forgot password?</a></div>
+                  <div class="col-auto" id="forgot"><a class="form-text small text-primary" href="#">Forgot password?</a></div>
                 </div>
                 <input class="form-control" name="pwd" id="pwd" placeholder="Password" type="password">
               </div>

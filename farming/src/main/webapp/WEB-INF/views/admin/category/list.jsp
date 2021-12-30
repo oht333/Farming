@@ -319,9 +319,9 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
 		  <div class="header"> 
-                        <h1 class="page-header">
+                        <h2 class="page-header">
                             카테고리 목록
-                        </h1>
+                        </h2>
 						<ol class="breadcrumb"">
 					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
 					  	

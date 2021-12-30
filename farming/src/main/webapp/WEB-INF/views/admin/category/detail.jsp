@@ -330,7 +330,7 @@
 					   </ol> --%>
 					
 		</div>
-		<div class="panel panel-default">
+		<%-- <div class="panel panel-default">
                         <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
                             
                         </div>
@@ -347,8 +347,43 @@
 				        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>'>삭제</a> |
 				        	<a href='<c:url value="/admin/category/list"/>'>목록</a>			
 						</div>
-                    </div>
+                    </div> --%>
             
+            
+            <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="card-title">
+                                        <div class="title"></div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="inputEmail3" class="col-sm-2 control-label">분류</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="main" placeholder="${vo.main }" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">분야</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="detail" placeholder="${vo.detail }" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                            	<a href='<c:url value="/admin/category/cateUpdate?categoryNo=${vo.categoryNo }"/>' class="btn btn-default">수정</a> |
+									        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>' class="btn btn-default">삭제</a> |
+									        	<a href='<c:url value="/admin/category/list"/>' class="btn btn-default">목록</a>	
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
              <!-- /. PAGE INNER  -->
              
             </div>

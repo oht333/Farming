@@ -14,8 +14,8 @@
         <div class="row">
           <div class="col-xl-10">
             <div class="text-center text-lg-start">
-              <p class="subtitle letter-spacing-4 mb-2 text-secondary text-shadow">The best holiday experience</p>
-              <h1 class="display-3 fw-bold text-shadow">Stay like a local</h1>
+              <p class="subtitle letter-spacing-4 mb-2 text-primary text-shadow">The best skill-up experience</p>
+              <h1 class="display-3 fw-bold text-shadow">Let's farming!</h1>
             </div>
             <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
               <form action="#">
@@ -105,10 +105,11 @@
           <div class="swiper-wrapper pb-5">
             <!-- Slides-->
             <div class="swiper-slide h-auto px-2">
-              <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" href="category.html"></a><img class="bg-image" src="${pageContext.request.contextPath }/resources/img/photo/new-york.jpg" alt="Card image">
+              <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link" 
+              	href="<c:url value='/request/request?categoryNo=23'/>"></a><img class="bg-image" src="${pageContext.request.contextPath }/resources/img/photo/new-york.jpg" alt="Card image">
                 <div class="card-body overlay-content">
-                  <h6 class="card-title text-shadow text-uppercase">New York</h6>
-                  <p class="card-text text-sm">The big apple</p>
+                  <h6 class="card-title text-shadow text-uppercase">웹 디자인</h6>
+                  <p class="card-text text-sm">Web Design</p>
                 </div>
               </div>
             </div>
