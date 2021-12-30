@@ -21,13 +21,13 @@
 				<fieldset>	<legend>회원 탈퇴</legend>
 					<p class="p">회원탈퇴하시겠습니까?</p>
 					<div class="mb-4">
-		                <label class="form-label" for="pwd"> Password</label>
+		                <label class="form-label" for="pwd"> 비밀번호</label>
 		                <input class="form-control" name="pwd" id="pwd" type="password">
 		              </div>
 					<div class="align_center">
 						<!-- <input type="submit" id="submit" value="회원탈퇴"> -->
 						<button class="btn btn-outline-success" type="submit">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</button>
-						<input type="reset" value="취소">
+						<a style="float:right;" class="btn btn-outline-success" href="<c:url value='/member/mypage/main'/>">&nbsp;&nbsp;취소&nbsp;&nbsp;</a>
 					</div>
 				</fieldset>	
 			</form>

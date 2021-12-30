@@ -1,6 +1,7 @@
 package com.gr.farming.expert.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,11 +9,19 @@ public class ExpertServiceImpl implements ExpertService{
 	private ExpertDAO dao;
 	
 	@Autowired
+	private PasswordEncoder pwdEncoder;
+	
+	@Autowired
 	public ExpertServiceImpl(ExpertDAO dao) {
 		this.dao = dao;
 	}
 	
 	public int insert(ExpertVO vo) {
+		vo.setAddress1("");
+		vo.setAddress2("");
+		vo.setZipCode("");
+		//회원가입시 패스워드 암호화
+		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
 		return dao.insert(vo);
 	}
 	
