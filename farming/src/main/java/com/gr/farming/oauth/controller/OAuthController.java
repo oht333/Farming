@@ -67,7 +67,8 @@ public class OAuthController {
 		
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
-		session.setAttribute("pwd", vo.getPwd());		
+		session.setAttribute("pwd", vo.getPwd());	
+		session.setAttribute("user", "사용자");
 		session.setAttribute("token", access_Token);
 		
 		model.addAttribute("msg", msg);
@@ -110,6 +111,7 @@ public class OAuthController {
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());
+		session.setAttribute("user", "사용자");
 		session.setAttribute("token", accessToken);
 		
 		model.addAttribute("msg", msg);
@@ -150,7 +152,8 @@ public class OAuthController {
 		
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
-		session.setAttribute("pwd", vo.getPwd());		
+		session.setAttribute("pwd", vo.getPwd());	
+		session.setAttribute("expert", "전문가");
 		session.setAttribute("token", access_Token);
 		
 		model.addAttribute("msg", msg);
@@ -192,6 +195,7 @@ public class OAuthController {
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());
+		session.setAttribute("expert", "전문가");
 		session.setAttribute("token", accessToken);
 		
 		model.addAttribute("msg", msg);
