@@ -4,14 +4,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/mainstyle.css'/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/clear.css'/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/formLayout.css'/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/mystyle.css'/>" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta content="" name="description" />
+<meta content="webthemez" name="author" />
 
-<title>노하우 게시판 - 작성</title>
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
+<title>노하우 게시판 - 쓰기</title>
+<%-- <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script> --%>
 <script type="text/javascript">
 	$(function(){
 		$('form[name=frmWrite]').submit(function(){
@@ -26,7 +25,7 @@
 		});
 		
 		$('#btList').click(function(){
-			location.href="<c:url value='/knowledge/list.do'/>";	
+			location.href="<c:url value='/knowhow/list'/>";	
 		});
 		
 	});
@@ -36,7 +35,7 @@
 <body>
 <div class="divForm">
 <form name="frmWrite" method="post" enctype="multipart/form-data"
-	action="<c:url value='/knowledge/write.do'/>" >
+	action="<c:url value='/knowhow/write'/>" >
  <fieldset>
 	<legend>글쓰기</legend>
         <div class="firstDiv">
