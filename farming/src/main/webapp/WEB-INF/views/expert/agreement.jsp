@@ -4,9 +4,13 @@
 <style>
 #submit:hover{
 	background: #2CCE8D;
+	color: white;
+	font: bold;
 }
 #reset:hover{
 	background: #2CCE8D;
+	color: white;
+	font: bold;
 }
 </style>
 <script type="text/javascript">

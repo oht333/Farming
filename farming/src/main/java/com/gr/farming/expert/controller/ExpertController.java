@@ -55,6 +55,12 @@ public class ExpertController {
 		return "expert/agreement";
 	}
 	
+	@RequestMapping("/mypage/main")
+	public String main() {
+		logger.info("마이페이지");
+		return "expert/mypage/main";
+	}
+	
 	@RequestMapping(value="/expRegister1", method = RequestMethod.GET)
 	public String memRegister_get() {
 		logger.info("전문가회원가입 페이지");
@@ -193,10 +199,10 @@ public class ExpertController {
 	@PostMapping("/mypage/profile")
 	public String edit_post(@ModelAttribute ExpertVO vo,
 			HttpSession session, Model model) {
-		String email=(String) session.getAttribute("email");
-		vo.setEmail(email);
-		String name=(String) session.getAttribute("name");
-		vo.setName(name);
+		vo.setEmail((String) session.getAttribute("email"));
+		vo.setName((String) session.getAttribute("name"));
+		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
+		
 		logger.info("회원수정 처리, 파라미터 vo={}", vo);
 		
 		String msg="", url="/mypage/profile";
@@ -241,14 +247,10 @@ public class ExpertController {
 		boolean chk = pwdEncoder.matches(vo.getPwd(), exVo.getPwd());
 		logger.info("비번 확인, 파라미터 vo={}", vo);
 		
-		String msg="실패", url="/expert/mypage/checkpwd";
-		if(chk || service.checkPwd(vo)) {
+		String msg="실패", url="/expert/mypage/checkpwd?email="+vo.getEmail();
+		if(chk) {
 				msg="확인되었습니다.";
 				url="/expert/mypage/profile";
-			
-		}else {
-				msg="비밀번호가 일치하지 않습니다.";
-				url="/expert/mypage/checkpwd?email="+vo.getEmail();
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);

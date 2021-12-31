@@ -116,10 +116,9 @@ public class MemberController {
 	@PostMapping("/mypage/profile")
 	public String edit_post(@ModelAttribute MemberVO vo,
 			HttpSession session, Model model) {
-		String email=(String) session.getAttribute("email");
-		vo.setEmail(email);
-		String name=(String) session.getAttribute("name");
-		vo.setName(name);
+		vo.setEmail((String) session.getAttribute("email"));
+		vo.setName((String) session.getAttribute("name"));
+		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
 		logger.info("회원수정 처리, 파라미터 vo={}", vo);
 		
 		String msg="", url="/mypage/profile";
@@ -164,14 +163,11 @@ public class MemberController {
 		boolean chk = pwdEncoder.matches(vo.getPwd(), memVo.getPwd());
 		logger.info("비번 확인, 파라미터 vo={}", vo);
 		
-		String msg="실패", url="/member/mypage/checkpwd";
-		if(chk || service.checkPwd(vo)) {
+		String msg="실패", url="/member/mypage/checkpwd?email="+vo.getEmail();
+		if(chk) {
 				msg="확인되었습니다.";
 				url="/member/mypage/profile";
 			
-		}else {
-				msg="비밀번호가 일치하지 않습니다.";
-				url="/member/mypage/checkpwd?email="+vo.getEmail();
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);

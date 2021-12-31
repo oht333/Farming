@@ -25,7 +25,7 @@
   		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
   		                    addr = data.jibunAddress;
   		                }
-  		                document.getElementById('zipcode').value = data.zonecode;
+  		                document.getElementById('zipCode').value = data.zonecode;
   		                document.getElementById("address1").value = addr;
   		                // 커서를 상세주소 필드로 이동한다.
   		                document.getElementById("address2").focus();
@@ -85,8 +85,8 @@
                 <input class="form-control" name="address2" id="address2" placeholder="${vo.address2}" type="text">
               </div>
               <div class="mb-4" style="clear: both;">
-                <label class="form-label" for="zipcode"> 우편번호</label>
-                <input class="form-control" name="zipcode" id="zipcode" placeholder="${vo.zipCode}" type="text">
+                <label class="form-label" for="zipCode"> 우편번호</label>
+                <input class="form-control" name="zipCode" id="zipCode" placeholder="${vo.zipCode}" type="text">
               </div>
               
               <div class="mb-4">
