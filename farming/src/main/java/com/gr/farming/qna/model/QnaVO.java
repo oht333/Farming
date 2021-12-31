@@ -3,11 +3,9 @@ package com.gr.farming.qna.model;
 import java.sql.Timestamp;
 
 public class QnaVO {
-	private int no;
-	private String name;	
-	private String pwd;
+	private int qnaNo;
+	private int memberNo;
 	private String title;
-	private String email;
 	private Timestamp regdate;
 	private int readcount;
 	private String content;
@@ -17,32 +15,21 @@ public class QnaVO {
 	private int step; 
 	private int sortNo;  
 	private String delFlag;
-	
-	//24시간 이내의 글인 경우 처리를 위한 변수
-	private float dateTerm;
 
-	public int getNo() {
-		return no;
+	public int getQnaNo() {
+		return qnaNo;
 	}
 
-	public void setNo(int no) {
-		this.no = no;
+	public void setQnaNo(int qnaNo) {
+		this.qnaNo = qnaNo;
 	}
 
-	public String getName() {
-		return name;
+	public int getMemberNo() {
+		return memberNo;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 
 	public String getTitle() {
@@ -51,14 +38,6 @@ public class QnaVO {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Timestamp getRegdate() {
@@ -117,20 +96,15 @@ public class QnaVO {
 		this.delFlag = delFlag;
 	}
 
-	public float getDateTerm() {
-		return dateTerm;
-	}
-
-	public void setDateTerm(float dateTerm) {
-		this.dateTerm = dateTerm;
-	}
 
 	@Override
 	public String toString() {
-		return "QnaVO [no=" + no + ", name=" + name + ", pwd=" + pwd + ", title=" + title + ", email=" + email
-				+ ", regdate=" + regdate + ", readcount=" + readcount + ", content=" + content + ", groupNo=" + groupNo
-				+ ", step=" + step + ", sortNo=" + sortNo + ", delFlag=" + delFlag + ", dateTerm=" + dateTerm + "]";
+		return "QnaVO [qnaNo=" + qnaNo + ", memberNo=" + memberNo + ", title=" + title + ", regdate=" + regdate
+				+ ", readcount=" + readcount + ", content=" + content + ", groupNo=" + groupNo + ", step=" + step
+				+ ", sortNo=" + sortNo + ", delFlag=" + delFlag + "]";
 	}
+
+	
 	
 	
 }

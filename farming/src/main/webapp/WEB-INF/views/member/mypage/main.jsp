@@ -6,7 +6,7 @@
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/index'/>">Home</a></li>
           <li class="breadcrumb-item active">마이페이지   </li>
         </ol>
         <h1 class="hero-heading mb-0">마이페이지</h1>
@@ -134,7 +134,7 @@
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="${pageContext.request.contextPath }/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
-    <script src="${pageContext.request.contextPath }/resources/https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>var basePath = ''</script>
     <!-- Main Theme JS file    -->
     <script src="${pageContext.request.contextPath }/resources/js/theme.js"></script>

@@ -39,8 +39,8 @@
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item"><a href="user-account.html">마이페이지</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/index'/>">Home</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/member/mypage/main'/>">마이페이지</a></li>
           <li class="breadcrumb-item active">내 정보 수정   </li>
         </ol>
         <h1 class="hero-heading mb-0">내 정보 수정</h1>
@@ -52,6 +52,10 @@
             <form name="frmEdit" method="post" 
 					action="<c:url value='/member/mypage/profile'/>" >
 			<%-- <input type="hidden" name="email" value="${param.email}"> --%>
+			<div class="d-flex mb-4" style="margin-left:42%">
+					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
+					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>
+			</div>
               <div class="mb-4">
                 <label class="form-label" for="name"> 이름</label>
                 <input class="form-control" name="name" id="name" type="text" placeholder="${name}" autocomplete="off">

@@ -90,5 +90,10 @@ public class MemberServiceImpl implements MemberService{
 	public int delete(String email) {
 		return memberDao.delete(email);
 	}
+	
+	public int updatePwd(String email, String pwd) {
+		pwd = pwdEncoder.encode(pwd);
+		return memberDao.updatePwd(email, pwd);
+	}
 
 }

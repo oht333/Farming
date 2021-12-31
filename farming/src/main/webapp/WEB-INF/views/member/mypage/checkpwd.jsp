@@ -6,8 +6,8 @@
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item"><a href="user-account.html">마이페이지</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/index'/>">Home</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/member/mypage/main'/>">마이페이지</a></li>
           <li class="breadcrumb-item active">비밀번호 확인</li>
         </ol>
         <h1 class="hero-heading mb-0">비밀번호 확인</h1>
