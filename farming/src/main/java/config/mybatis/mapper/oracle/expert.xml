@@ -37,7 +37,7 @@
 	
 	<update id="updateExpert" parameterType="expertVo">
 		update expert
-		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zipCode=#{zipCode}
+		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zip_code=#{zipCode}
 		where email=#{email}
 	</update>
 

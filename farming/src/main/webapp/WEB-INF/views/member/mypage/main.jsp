@@ -134,7 +134,7 @@
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="${pageContext.request.contextPath }/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
-    <script src="${pageContext.request.contextPath }/resources/https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>var basePath = ''</script>
     <!-- Main Theme JS file    -->
     <script src="${pageContext.request.contextPath }/resources/js/theme.js"></script>
