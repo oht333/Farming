@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gr.farming.request.model.RequestDesignVO;
+import com.gr.farming.request.model.RequestDevelopVO;
 import com.gr.farming.request.model.RequestQnaVO;
 import com.gr.farming.request.model.RequestService;
 
@@ -40,7 +43,7 @@ public class RequestController {
 	@RequestMapping("/request")
 	public void request(@RequestParam int categoryNo, Model model) {
 		logger.info("견적서 작성 메인화면 보여주기, 파라미터 categoryNo={}", categoryNo);
-		
+
 		model.addAttribute("categoryNo",categoryNo);
 	}
 	
@@ -64,7 +67,7 @@ public class RequestController {
 		
 		return "request/request_1";
 	}
-	/*
+	
 	@GetMapping("/requestWrite/develop")
 	public String requestDevelop() {
 		
@@ -121,7 +124,7 @@ public class RequestController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
-	}*/
+	}
 	
 	@GetMapping("/request_success")
 	public String request_success() {

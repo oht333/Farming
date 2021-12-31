@@ -43,7 +43,7 @@
                    
           <!-- 버튼 -->
           <div class="row form-block flex-column flex-sm-row">
-            <div class="col text-center text-sm-end"><button type="submit" class="btn btn-primary px-3"> FINISH<i class="fa-chevron-right fa ms-2"></i></button></div>
+            <div class="col text-center text-sm-end"><button type="submit" class="btn btn-primary px-3"> 작성완료<i class="fa-chevron-right fa ms-2"></i></button></div>
           </div>
         </form>
       </div>
