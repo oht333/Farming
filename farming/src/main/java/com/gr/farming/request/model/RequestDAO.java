@@ -14,4 +14,5 @@ public interface RequestDAO {
 	public List<RequestQnaVO> selectRequestQna(int categoryNo);
 	public List<Map<String, Object>> selectQuestion(int categoryNo);
 	public List<Map<String, Object>> selectAnswer(int qNo);
+	public int insertRequestClient(RequestClientVO vo);
 }

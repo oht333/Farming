@@ -44,6 +44,11 @@ public class RequestServiceImpl implements RequestService{
 	return requestDao.selectRequestQna(categoryNo);
 }
 
+	@Override
+	public int insertRequestClient(RequestClientVO vo) {
+		return requestDao.insertRequestClient(vo);
+	}
+
 
 
 	
