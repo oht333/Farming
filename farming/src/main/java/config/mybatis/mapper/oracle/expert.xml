@@ -40,6 +40,12 @@
 		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zip_code=#{zipCode}
 		where email=#{email}
 	</update>
+	
+	<update id="delete" parameterType="expertVo">
+		delete from expert 
+		where email=#{email}
+		and pwd=#{pwd}
+	</update>
 
 </mapper>
 

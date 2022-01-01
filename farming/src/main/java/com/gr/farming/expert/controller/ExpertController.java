@@ -3,6 +3,7 @@ package com.gr.farming.expert.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -258,5 +259,37 @@ public class ExpertController {
 		return "common/message";
 
 
+	}
+	
+	// 전문가 탈퇴
+	@GetMapping("/mypage/out")
+	public void out_get() {
+		logger.info("전문가 탈퇴 화면");
+	}
+	
+	@PostMapping("/mypage/out")
+	public String out_post(@ModelAttribute ExpertVO vo, HttpSession session,
+			HttpServletResponse response, Model model) {
+		String pwd = (String) session.getAttribute("pwd");
+		
+		String msg="비밀번호 체크 실패", url="/expert/mypage/out";
+		if(pwdEncoder.matches(vo.getPwd(), pwd)) {
+			vo.setEmail(vo.getEmail());
+			vo.setPwd(pwd);
+			int cnt = service.delete(vo);
+			logger.info("cnt : {}",cnt);
+			if(cnt>0) {
+				msg="탈퇴되었습니다.";
+				url="/index";
+				session.invalidate();
+			}else {
+				msg="회원탈퇴 처리 실패";
+			}
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
 }
