@@ -13,7 +13,7 @@ public interface MemberService {
 	int USERID_NONE=3; //아이디 존재하지 않음
 
 	public int insert(MemberVO vo);
-	public int delete(String email);
+	public int delete(MemberVO vo);
 	public int duplicatedId(String email);
 	public int loginCheck(String email, String pwd);
 	public MemberVO selectByEmail(String email);
