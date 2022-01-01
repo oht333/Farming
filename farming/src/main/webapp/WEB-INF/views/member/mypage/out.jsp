@@ -18,8 +18,13 @@
             <div class="text-block"> 
             <form name="frmOut" method="post" 
 				action="<c:url value='/member/mypage/out'/>" >
+				<input type="hidden" name="memberNo" value="${param.memberNo}">
 				<fieldset>	<legend>회원 탈퇴</legend>
 					<p class="p">회원탈퇴하시겠습니까?</p>
+					<div class="mb-4">
+		                <label class="form-label" for="email"> 이메일</label>
+		                <input class="form-control" name="email" id="email" type="text" placeholder="${email}" readonly="readonly">
+		              </div>
 					<div class="mb-4">
 		                <label class="form-label" for="pwd"> 비밀번호</label>
 		                <input class="form-control" name="pwd" id="pwd" type="password">

@@ -87,8 +87,8 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 
-	public int delete(String email) {
-		return memberDao.delete(email);
+	public int delete(MemberVO vo) {
+		return memberDao.delete(vo);
 	}
 	
 	public int updatePwd(String email, String pwd) {
