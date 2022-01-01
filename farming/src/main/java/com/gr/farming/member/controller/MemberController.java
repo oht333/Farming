@@ -199,29 +199,18 @@ public class MemberController {
 	@PostMapping("/mypage/out")
 	public String out_post(@ModelAttribute MemberVO vo, HttpSession session,
 			HttpServletResponse response, Model model) {
-		/*
-		 * vo.setEmail((String) session.getAttribute("email"));
-		 * vo.setPwd(pwdEncoder.encode(vo.getPwd()));
-		 */
-		MemberVO memVo=service.selectByEmail(vo.getEmail());
-		boolean chk = pwdEncoder.matches(vo.getPwd(), memVo.getPwd());
-		logger.info("회원탈퇴 처리, 파라미터 vo={}", memVo);
+		String pwd = (String) session.getAttribute("pwd");
 		
-
-		String msg="비밀번호 체크 실패", url="/member/mypage/out?email=" + vo.getEmail();
-		if(chk) {
+		String msg="비밀번호 체크 실패", url="/member/mypage/out";
+		if(pwdEncoder.matches(vo.getPwd(), pwd)) {
+			vo.setEmail(vo.getEmail());
+			vo.setPwd(pwd);
 			int cnt = service.delete(vo);
-
+			logger.info("cnt : {}",cnt);
 			if(cnt>0) {
 				msg="확인되었습니다.";
-				url="../../login/login";
+				url="/index";
 				session.invalidate();
-				
-				Cookie ck = new Cookie("ck_email", memVo.getEmail());
-				ck.setMaxAge(0);
-				ck.setPath("/");
-				response.addCookie(ck);
-			
 			}else {
 				msg="회원탈퇴 처리 실패";
 			}
