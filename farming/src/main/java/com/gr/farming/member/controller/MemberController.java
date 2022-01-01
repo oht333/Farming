@@ -196,18 +196,20 @@ public class MemberController {
 		logger.info("회원탈퇴 화면");
 	}
 	
-	/* @PostMapping("/mypage/out") */
-	@RequestMapping(value = "/mypage/out", method = RequestMethod.POST)
+	@PostMapping("/mypage/out")
 	public String out_post(@ModelAttribute MemberVO vo, HttpSession session,
 			HttpServletResponse response, Model model) {
-		vo.setEmail((String) session.getAttribute("email"));
+		/*
+		 * vo.setEmail((String) session.getAttribute("email"));
+		 * vo.setPwd(pwdEncoder.encode(vo.getPwd()));
+		 */
 		MemberVO memVo=service.selectByEmail(vo.getEmail());
 		boolean chk = pwdEncoder.matches(vo.getPwd(), memVo.getPwd());
 		logger.info("회원탈퇴 처리, 파라미터 vo={}", memVo);
 		
 		String msg="비밀번호 체크 실패", url="/member/mypage/out?email=" + vo.getEmail();
 		if(chk) {
-			int cnt = service.delete(vo.getEmail());
+			int cnt = service.delete(vo);
 			if(cnt>0) {
 				msg="확인되었습니다.";
 				url="../../login/login";

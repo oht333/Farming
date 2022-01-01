@@ -39,6 +39,7 @@
 	<update id="delete" parameterType="int">
 		delete from member 
 		where email=#{email}
+		and pwd=#{pwd}
 	</update>
 	
 	<update id="updatePwd" parameterType="string">
