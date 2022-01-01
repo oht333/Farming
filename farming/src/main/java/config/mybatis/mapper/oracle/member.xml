@@ -36,9 +36,10 @@
 		where email=#{email}
 	</update>
 	
-	<update id="delete" parameterType="int">
-		delete member 
+	<update id="delete" parameterType="memberVo">
+		delete from member 
 		where email=#{email}
+		and pwd=#{pwd}
 	</update>
 	
 	<update id="updatePwd" parameterType="string">
