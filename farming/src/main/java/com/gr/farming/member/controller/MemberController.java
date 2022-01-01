@@ -207,9 +207,11 @@ public class MemberController {
 		boolean chk = pwdEncoder.matches(vo.getPwd(), memVo.getPwd());
 		logger.info("회원탈퇴 처리, 파라미터 vo={}", memVo);
 		
+
 		String msg="비밀번호 체크 실패", url="/member/mypage/out?email=" + vo.getEmail();
 		if(chk) {
 			int cnt = service.delete(vo);
+
 			if(cnt>0) {
 				msg="확인되었습니다.";
 				url="../../login/login";

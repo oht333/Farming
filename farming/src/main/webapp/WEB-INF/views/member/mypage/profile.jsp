@@ -51,7 +51,7 @@
             <div class="text-block"> 
             <form name="frmEdit" method="post" 
 					action="<c:url value='/member/mypage/profile'/>" >
-			<%-- <input type="hidden" name="email" value="${param.email}"> --%>
+			<input type="hidden" name="email" value="${email}">
 			<div class="d-flex mb-4" style="margin-left:42%">
 					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
 					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>
