@@ -47,10 +47,12 @@ public class MemberServiceImpl implements MemberService{
 	public int loginCheck(String email, String pwd){
 		String dbPwd = memberDao.selectPwd(email);
 		int result=0;
+		System.out.println("dbPwd : "+dbPwd);
+		System.out.println("pwd : "+pwd);
 		if(dbPwd == null || dbPwd.isEmpty()) {
 			result=USERID_NONE;
 		}else {
-			if(dbPwd.equals(pwd)) {
+			if(pwdEncoder.matches(pwd, dbPwd)) {
 				result=LOGIN_OK;
 			}else {
 				result=DISAGREE_PWD;
