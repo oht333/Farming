@@ -7,12 +7,17 @@
     <!-- Hero Section-->
     <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('img/photo/restaurant-1515164783716-8e6920f3e77c.jpg');">
       <div class="container overlay-content">
+      <ol class="breadcrumb ps-0  justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/qna/qnaMain'/>">메인</a></li>
+          <li class="breadcrumb-item active">1 : 1 문의게시판</li>
+        </ol>
         <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end">
           <div class="text-white mb-4 mb-lg-0">
             <div class="badge badge-pill badge-transparent px-3 py-2 mb-4">Q n A</div>
             <h1 class="text-shadow verified">질문 게시판</h1>
           </div>
-          <div class="calltoactions"><a class="btn btn-primary" href="<c:url value='/qna/qnaMain'/>" >Qna 메인페이지로 돌아가기</a></div>
+          <div class="calltoactions"><a class="btn btn-primary" href="<c:url value='/qna/qnaWrite'/>" >문의글 남기기</a></div>
         </div>
       </div>
     </section>
@@ -32,7 +37,7 @@
                 <div class="d-flex align-items-center mb-1 mb-lg-3">
                   <h2 class="h5 mb-0">${vo.title }</h2>
                 </div>
-                <p class="text-sm text-muted">${name }</p><a class="stretched-link" href="user-messages-detail.html"></a>
+                <p class="text-sm text-muted">${name }</p><a class="stretched-link" href="<c:url value='/qna/qnaDetail'/>"></a>
               </div>
               <div class="col-10 ms-auto col-lg-7">
                 <div class="row">
@@ -41,7 +46,7 @@
                   </div>
                   <div class="col-md-4 text-end py-3">
                     <p class="text-sm">${vo.regdate }</p>
-                  </div><a class="stretched-link" href="user-messages-detail.html"></a>
+                  </div><a class="stretched-link" href="<c:url value='/qna/qnaDetail'/>"></a>
                 </div>
               </div>
             </div>
@@ -50,9 +55,7 @@
           </c:if>
  </div>
          
-        <div class="divBtn">
-		    <a href='<c:url value="/qna/qnaWrite"/>' >글쓰기</a>
-		</div>
+     
  
  </div>
 
