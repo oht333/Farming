@@ -206,8 +206,10 @@ public class MemberController {
 		String pwd=(String) session.getAttribute("pwd");
 		logger.info("회원탈퇴 처리, 파라미터 email={}, pwd={}", email, pwd);
 		
+		
+		
 		String msg="비밀번호 체크 실패", url="/mypage/out";
-		if(service.checkPwd(vo)) {
+		if(pwdEncoder.matches(vo.getPwd(), pwd)) {
 			int cnt = service.delete(vo.getEmail());
 			if(cnt>0) {
 				msg="확인되었습니다.";

@@ -18,6 +18,7 @@
             <div class="text-block"> 
             <form name="frmOut" method="post" 
 				action="<c:url value='/member/mypage/out'/>" >
+				<input type="text" name="email" value="${email }">
 				<fieldset>	<legend>회원 탈퇴</legend>
 					<p class="p">회원탈퇴하시겠습니까?</p>
 					<div class="mb-4">
