@@ -71,7 +71,7 @@
                   </div>
                   <div class="col-md-4 text-end py-3">
                     <p class="text-sm">${vo.regdate }</p>
-                  </div><a class="stretched-link" href="<c:url value='/qna/qnaDetail'/>"></a>
+                  </div><a class="stretched-link" href="<c:url value='/qna/qnaDetail?qnaNo=${vo.qnaNo }'/>"></a>
                 </div>
               </div>
             </div>
