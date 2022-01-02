@@ -131,13 +131,10 @@
 										<a class="dropdown-item" href="docs/components-bootstrap.html">전문가로 전환하기</a>
 									</c:if>
 									<c:if test="${expert eq '전문가' }">
-<<<<<<< HEAD
-=======
 										<a class="dropdown-item" href="docs/docs-directory-structure.html">받은요청</a>
 										<a class="dropdown-item" href="docs/docs-introduction.html">파밍페이</a>
 										<a class="dropdown-item" href="<c:url value='/expert/mypage/main?email=${email }'/>l">마이페이지</a>
 										<div class="dropdown-divider"></div>
->>>>>>> branch 'yumi' of https://github.com/ziwooooo/Farming.git
 										<a class="dropdown-item" href="docs/components-bootstrap.html">사용자로 전환하기</a>
 									</c:if>
 									<a class="dropdown-item" href="docs/components-directory.html">설정</a>
