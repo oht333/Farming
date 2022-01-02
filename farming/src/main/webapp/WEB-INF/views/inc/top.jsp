@@ -113,13 +113,13 @@
 								href="<c:url value='/expert/agreement'/>">전문가가입</a>
 						</c:if>
 						<c:if test="${!empty email }">
-						
-							<li class="nav-item"><a class="nav-link" href="#">받은견적</a>
-							<li class="nav-item"><a class="nav-link" href="#">채팅</a>
-							<li class="nav-item dropdown ms-2">
-								<a class="btn btn-primary" id="docsDropdownMenuLink"
-							data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${name } 고객님</a>
-							
+							<c:if test="${user eq '사용자' }">
+								<li class="nav-item"><a class="nav-link" href="#">받은견적</a>
+								<li class="nav-item"><a class="nav-link" href="#">채팅</a>
+								<li class="nav-item dropdown ms-2">
+									<a class="btn btn-primary" id="docsDropdownMenuLink"
+								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${name } 고객님</a>
+								<!-- 프로필 이미지로 변경예정 -->
 								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
 									<h6 class="dropdown-header fw-normal">${name } 고객님</h6>
 									<a class="dropdown-item" href="docs/docs-directory-structure.html">받은견적</a>
@@ -127,22 +127,31 @@
 									<a class="dropdown-item" href="<c:url value='/member/mypage/main?email=${email }'/>l">마이페이지</a>
 									<div class="dropdown-divider"></div>
 									<h6 class="dropdown-header fw-normal">설정</h6>
-									<c:if test="${user eq '사용자' }">
-										<a class="dropdown-item" href="docs/components-bootstrap.html">전문가로 전환하기</a>
-									</c:if>
-									<c:if test="${expert eq '전문가' }">
-										<a class="dropdown-item" href="docs/docs-directory-structure.html">받은요청</a>
-										<a class="dropdown-item" href="docs/docs-introduction.html">파밍페이</a>
-										<a class="dropdown-item" href="<c:url value='/expert/mypage/main?email=${email }'/>l">마이페이지</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="docs/components-bootstrap.html">사용자로 전환하기</a>
-									</c:if>
+									<a class="dropdown-item" href="docs/components-bootstrap.html">전문가로 전환하기</a>
 									<a class="dropdown-item" href="docs/components-directory.html">설정</a>
 									<a class="dropdown-item" href="<c:url value='/login/logout'/>">로그아웃</a>
 								</div>
-							</li>
+							</c:if>
+							<c:if test="${expert eq '전문가' }">
+								<li class="nav-item"><a class="nav-link" href="#">받은요청</a>
+								<li class="nav-item"><a class="nav-link" href="#">채팅</a>
+								<li class="nav-item dropdown ms-2">
+									<a class="btn btn-primary" id="docsDropdownMenuLink"
+								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${name } 고객님</a>
+								<!-- 프로필 이미지로 변경예정 -->
+									<div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
+										<h6 class="dropdown-header fw-normal">${name } 고객님</h6>
+											<a class="dropdown-item" href="docs/docs-directory-structure.html">받은요청</a>
+											<a class="dropdown-item" href="docs/docs-introduction.html">파밍페이</a>
+											<a class="dropdown-item" href="<c:url value='/expert/mypage/main?email=${email }'/>l">마이페이지</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="docs/components-bootstrap.html">사용자로 전환하기</a>
+										<a class="dropdown-item" href="docs/components-directory.html">설정</a>
+										<a class="dropdown-item" href="<c:url value='/login/logout'/>">로그아웃</a>
+									</div>
+								</li>
+							</c:if>
 						</c:if>
-
 					</ul>
 				</div>
 			</div>

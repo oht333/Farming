@@ -5,8 +5,8 @@
 	src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
 
 <style>
-/* .chk .etc:checked ~ .etc_box{display:block}
-.chk .etc_box{display:none} */
+.chk .etc:checked ~ .etc_box{display:block}
+.chk .etc_box{display:none}
 </style>
 <div class="progress rounded-0 sticky-top" style="height: 8px; top: 66px;">
       <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
@@ -41,7 +41,7 @@
 		                    	<c:if test="${field.name == 'FIELD3'}">checked="checked"</c:if>
 		                    </div>
 	                       </div>
-	                       <script type="text/javascript">
+	                       <!-- <script type="text/javascript">
 							$(function(){    
 							    var checkArea = $('.chk');
 							    console.log(${idx});
@@ -59,7 +59,7 @@
 							            }
 							        });
 							    });
-							});
+							}); -->
 							</script>
                          </c:when>
                          <c:otherwise>
