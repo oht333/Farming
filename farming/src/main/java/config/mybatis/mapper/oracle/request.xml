@@ -39,12 +39,4 @@
 		where q_no=#{qNo}
 	</select>
 	
-	<insert id="insertRequestClient" parameterType="requestClientVo">
-		<selectKey keyProperty="requestClientNo" resultType="int" order="BEFORE">
-			select REQUEST_client_SEQ.nextval from dual 
-		</selectKey>
-		insert into REQUEST_CLIENT
-		values(#{requestClientNo}, #{memberNo}, #{answer1}, #{answer2}, #{answer3}, 
-		#{answer4}, #{answer5}, #{answer6}, #{answer7}, #{answer8}, #{answer9}, #{answer10})
-	</insert>
 </mapper>

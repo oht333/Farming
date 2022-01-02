@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
-import com.gr.farming.request.model.RequestClientVO;
 import com.gr.farming.request.model.RequestDesignVO;
 import com.gr.farming.request.model.RequestDevelopVO;
 import com.gr.farming.request.model.RequestQnaVO;
