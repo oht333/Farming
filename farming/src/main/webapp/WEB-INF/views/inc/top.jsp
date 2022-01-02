@@ -137,7 +137,7 @@
 									<c:if test="${expert eq '전문가' }">
 										<a class="dropdown-item" href="docs/docs-directory-structure.html">받은요청</a>
 										<a class="dropdown-item" href="docs/docs-introduction.html">파밍페이</a>
-										<a class="dropdown-item" href="<c:url value='/member/mypage/main?email=${email }'/>l">마이페이지</a>
+										<a class="dropdown-item" href="<c:url value='/expert/mypage/main?email=${email }'/>l">마이페이지</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="docs/components-bootstrap.html">사용자로 전환하기</a>
 									</c:if>

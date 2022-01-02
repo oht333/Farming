@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MemberDAO {
 	public int insert(MemberVO vo);
-	public int delete(String email);
+	public int delete(MemberVO vo);
 	public int duplicatedId(String email);
 	public String selectPwd(String email);
 	public MemberVO selectByEmail(String email);

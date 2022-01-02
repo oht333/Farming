@@ -1,5 +1,7 @@
 package com.gr.farming.expert.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -41,10 +43,12 @@ public class ExpertServiceImpl implements ExpertService{
 	public int loginCheck(String email, String pwd){
 		String dbPwd = dao.selectPwd(email);
 		int result=0;
+		System.out.println("dbPwd : "+dbPwd);
+		System.out.println("pwd : "+pwd);
 		if(dbPwd == null || dbPwd.isEmpty()) {
 			result=USERID_NONE;
 		}else {
-			if(dbPwd.equals(pwd)) {
+			if(pwdEncoder.matches(pwd, dbPwd)) {
 				result=LOGIN_OK;
 			}else {
 				result=DISAGREE_PWD;
@@ -53,11 +57,33 @@ public class ExpertServiceImpl implements ExpertService{
 		
 		return result;
 	}
+	
 	public ExpertVO selectByEmail(String email) {
 		return dao.selectByEmail(email);
 	}
+
 	public int updatePwd(String email, String pwd) {
 		pwd = pwdEncoder.encode(pwd);
 		return dao.updatePwd(email, pwd);
+
+	}
+	
+	public List<ExpertVO> selectAll() {
+		return dao.selectAll();
+	}
+
+	public int updateExpert(ExpertVO vo) {
+		return dao.updateExpert(vo);
+	}
+
+	public boolean checkPwd(ExpertVO vo) {
+		String ePwd = dao.selectPwd(vo.getEmail());
+		
+		if(ePwd.equals(vo.getPwd())) {
+			return true;
+		}else {
+			return false;
+		}
+
 	}
 }

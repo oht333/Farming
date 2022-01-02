@@ -3,12 +3,17 @@ package com.gr.farming.expert.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +35,9 @@ public class ExpertController {
 	private final OAuthService o_service;
 	private final FieldService f_service;
 	
+	@Autowired
+	private PasswordEncoder pwdEncoder;
+	
 	private static final Logger logger
 	=LoggerFactory.getLogger(ExpertController.class);
 
@@ -45,6 +53,12 @@ public class ExpertController {
 	public String agreement() {
 		logger.info("약관페이지");
 		return "expert/agreement";
+	}
+	
+	@RequestMapping("/mypage/main")
+	public String main() {
+		logger.info("마이페이지");
+		return "expert/mypage/main";
 	}
 	
 	@RequestMapping(value="/expRegister1", method = RequestMethod.GET)
@@ -152,6 +166,7 @@ public class ExpertController {
         return "redirect:"+facebookurl;
 	}
 	
+
 	@RequestMapping("/change")
 	public String changePwd(@RequestParam String email, String pwd, Model model) {
 		logger.info("이메일 인증 후 비밀번호 변경 처리 파라미터 email = {}, pwd = {}",email, pwd);
@@ -166,5 +181,82 @@ public class ExpertController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+
+//  회원 정보 수정
+	@GetMapping("/mypage/profile")
+	public String edit_get(HttpSession session, Model model) {
+		String email=(String) session.getAttribute("email");
+		logger.info("회원정보 수정 화면, 파라미터 email={}", email);
+		
+		ExpertVO vo= service.selectByEmail(email);
+		logger.info("회원수정 - 조회 결과 vo={}", vo);
+		
+		model.addAttribute("vo", vo);
+		return "expert/mypage/profile";
+	}
+	
+	@PostMapping("/mypage/profile")
+	public String edit_post(@ModelAttribute ExpertVO vo,
+			HttpSession session, Model model) {
+		vo.setEmail((String) session.getAttribute("email"));
+		vo.setName((String) session.getAttribute("name"));
+		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
+		
+		logger.info("회원수정 처리, 파라미터 vo={}", vo);
+		
+		String msg="", url="/mypage/profile";
+		
+		int cnt=service.updateExpert(vo);
+		logger.info("회원수정 결과, cnt={}", cnt);
+		
+		if(cnt>0) {
+			msg="회원정보 수정되었습니다.";
+			url="/expert/mypage/main";
+		}else {
+			msg="회원정보 수정 실패!";
+		}		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+			
+		return "common/message";
+
+	}
+	
+//  회원 비번 확인
+	@RequestMapping(value="/mypage/checkpwd", method=RequestMethod.GET)
+	public String check_get(@RequestParam(defaultValue = "0") String email, 
+			Model model) {
+		
+		if(email==null) {
+			model.addAttribute("msg", "잘못된 url입니다.");
+			model.addAttribute("url", "/expert/mypage/main");
+			return "common/message";
+		}
+		
+		ExpertVO vo = service.selectByEmail(email);
+		
+		model.addAttribute("vo",vo);
+		
+		return "expert/mypage/checkpwd";
+	}
+	
+	@RequestMapping(value="/mypage/checkpwd", method=RequestMethod.POST)
+	public String check_post(@ModelAttribute ExpertVO vo, Model model) {
+		ExpertVO exVo=service.selectByEmail(vo.getEmail());
+		boolean chk = pwdEncoder.matches(vo.getPwd(), exVo.getPwd());
+		logger.info("비번 확인, 파라미터 vo={}", vo);
+		
+		String msg="실패", url="/expert/mypage/checkpwd?email="+vo.getEmail();
+		if(chk) {
+				msg="확인되었습니다.";
+				url="/expert/mypage/profile";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+			
+		return "common/message";
+
+
 	}
 }
