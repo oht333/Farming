@@ -67,7 +67,7 @@ public class OAuthController {
 				url = "/member/addInfo";
 			}
 		}
-		
+		session.setAttribute("memNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());	
@@ -112,6 +112,7 @@ public class OAuthController {
 			}
 		}
 		
+		session.setAttribute("memNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());
@@ -154,6 +155,7 @@ public class OAuthController {
 			}
 		}
 		
+		session.setAttribute("expNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());	
@@ -196,6 +198,7 @@ public class OAuthController {
 			}
 		}
 		
+		session.setAttribute("expNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());
