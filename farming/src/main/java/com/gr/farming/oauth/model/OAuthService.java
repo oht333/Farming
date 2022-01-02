@@ -119,10 +119,12 @@ public class OAuthService{
 
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-
+			
+			
+			
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
-			String img = kakao_account.getAsJsonObject().get("profile").getAsJsonObject().get("profile_image_url").getAsString();
+			String img = kakao_account.getAsJsonObject().get("profile").getAsJsonObject().get("thumbnail_image_url").getAsString();
 
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);

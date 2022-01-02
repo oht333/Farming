@@ -118,6 +118,8 @@ public class QnaController {
 		
 	}
 	
+	
+	
 	@GetMapping("/qnaEdit")
 	public String edit_get(@RequestParam(defaultValue="0") int no,
 			HttpServletRequest request, Model model) {
@@ -143,7 +145,7 @@ public class QnaController {
 		
 		logger.info("글수정 처리, 파라미터 vo={}",vo);
 		
-		String msg="글수정 실패", url="/qna/qnaEdit?no="+vo.getQnaNo();
+		String msg="글수정 실패", url="/qna/qnaEdit?qnaNo="+vo.getQnaNo();
 		
 		return "";
 		
