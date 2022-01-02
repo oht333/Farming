@@ -43,10 +43,12 @@ public class ExpertServiceImpl implements ExpertService{
 	public int loginCheck(String email, String pwd){
 		String dbPwd = dao.selectPwd(email);
 		int result=0;
+		System.out.println("dbPwd : "+dbPwd);
+		System.out.println("pwd : "+pwd);
 		if(dbPwd == null || dbPwd.isEmpty()) {
 			result=USERID_NONE;
 		}else {
-			if(dbPwd.equals(pwd)) {
+			if(pwdEncoder.matches(pwd, dbPwd)) {
 				result=LOGIN_OK;
 			}else {
 				result=DISAGREE_PWD;
@@ -55,6 +57,7 @@ public class ExpertServiceImpl implements ExpertService{
 		
 		return result;
 	}
+	
 	public ExpertVO selectByEmail(String email) {
 		return dao.selectByEmail(email);
 	}
