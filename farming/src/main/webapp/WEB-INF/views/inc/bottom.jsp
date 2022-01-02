@@ -6,8 +6,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-4 mb-5 mb-lg-0">
-              <div class="fw-bold text-uppercase text-dark mb-3">Directory</div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+              <div class="fw-bold text-uppercase text-dark mb-3">1588-9780</div>
+              <p>평일 10:00 - 18:00 <br>
+              		(점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)</p>
               <ul class="list-inline">
                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
@@ -17,32 +18,32 @@
               </ul>
             </div>
             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-              <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
+              <h6 class="text-uppercase text-dark mb-3">파밍소개</h6>
               <ul class="list-unstyled">
-                <li><a class="text-muted" href="index.html">Rooms</a></li>
-                <li><a class="text-muted" href="category-rooms.html">Map on top</a></li>
-                <li><a class="text-muted" href="category-2-rooms.html">Side map</a></li>
-                <li><a class="text-muted" href="category-3-rooms.html">No map</a></li>
-                <li><a class="text-muted" href="detail-rooms.html">Room detail</a></li>
+                <li><a class="text-muted" href="<c:url value='/introduce/company'/>">회사소개</a></li>
               </ul>
             </div>
             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-              <h6 class="text-uppercase text-dark mb-3">Pages</h6>
+              <h6 class="text-uppercase text-dark mb-3">고객안내</h6>
               <ul class="list-unstyled">
-                <li><a class="text-muted" href="compare.html">Comparison                                   </a></li>
-                <li><a class="text-muted" href="team.html">Team                                   </a></li>
-                <li><a class="text-muted" href="contact.html">Contact                                   </a></li>
+                <li><a class="text-muted" href="compare.html">이용안내</a></li>
+                <li><a class="text-muted" href="team.html">전문가찾기</a></li>
               </ul>
             </div>
-            <div class="col-lg-4">
-              <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-              <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-              <form action="#" id="newsletter-form">
-                <div class="input-group mb-3">
-                  <input class="form-control bg-transparent border-dark border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
-                  <button class="btn btn-outline-dark border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
-                </div>
-              </form>
+            <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+              <h6 class="text-uppercase text-dark mb-3">전문가안내</h6>
+              <ul class="list-unstyled">
+                <li><a class="text-muted" href="compare.html">이용안내</a></li>
+                <li><a class="text-muted" href="<c:url value='/expert/agreement'/>">전문가가입</a></li>
+                <li><a class="text-muted" href="team.html">전문가센터</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+              <h6 class="text-uppercase text-dark mb-3">고객센터</h6>
+              <ul class="list-unstyled">
+                <li><a class="text-muted" href="<c:url value='/qna/qnaList'/>">공지사항</a></li>
+                <li><a class="text-muted" href="<c:url value='/qna/qnaMain'/>">자주묻는질문</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -52,7 +53,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start">
-              <p class="text-sm mb-md-0">&copy; 2021, Your company.  All rights reserved.</p>
+              <p class="text-sm mb-md-0">&copy; 2022, gr.farming.  All rights reserved.</p>
             </div>
             <div class="col-md-6">
               <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
