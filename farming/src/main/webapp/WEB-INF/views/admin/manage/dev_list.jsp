@@ -334,18 +334,17 @@
                                      <thead>
                                         <tr>
                                             <th>EXPERT_NO</th>
-                                            <th>CATEGORY_NO</th>
                                             <th>NAME</th>
                                             <th>EMAIL</th>
                                             <th>ADDRESS1</th>
                                             <th>ADDRESS2</th>
                                             <th>ZIPCODE</th>
                                             <th>REGDATE</th>
-                                            <th>HP1-HP2-HP3</th>
+                                            <th>RESUMECODE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	<c:forEach var="vo" items="${list }">
+                                    	<c:forEach var="vo" items="${dev_list }">
 	                                        <tr>
 	                                            <td>
 	                                            <%-- <a href="<c:url value='/admin/manage/detail?expertNo=${vo.expertNo }'/>">
@@ -353,14 +352,13 @@
 	                                            </a> --%>
 	                                            	${vo.expertNo }
 	                                            </td>
-	                                            <td>${vo.categoryNo }</td>
 	                                            <td>${vo.name }</td>
 	                                            <td>${vo.email }</td>
 	                                            <td>${vo.address1 }</td>
 	                                            <td>${vo.address2 }</td>
-	                                            <td>${vo.zipcode }</td>
-	                                            <td>${vo.regdate }</td>
-	                                            <td>${vo.hp1 }-${vo.hp2 }-${vo.hp3 }</td>
+	                                            <td>${vo.zipCode }</td>
+	                                            <td>${vo.regDate }</td>
+	                                            <td>${vo.resumeCode }</td>
 	                                        </tr>
 										</c:forEach>
                                     </tbody>

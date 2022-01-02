@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,29 +62,32 @@ public class LoginController {
 		logger.info("비밀번호 찾기");
 		return "login/findpwd";
 	}
+	@RequestMapping("/expfindpwd")
+	public String expfindPwd(@RequestParam String email) {
+		logger.info("비밀번호 찾기");
+		return "login/expfindpwd";
+	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String login_post(@ModelAttribute MemberVO mVo, 
 			@RequestParam(required = false) String chkSave, 
 			HttpServletRequest request,
-			HttpServletResponse response, ModelMap model) {
-		MemberVO memVo=memberService.selectByEmail(mVo.getEmail());
-		boolean chk = pwdEncoder.matches(mVo.getPwd(), memVo.getPwd());
-		logger.info("일반로그인 처리, 파라미터 vo={}, chkSave={}", mVo, chkSave);
+			HttpServletResponse response, Model model) {
+		
+		int result = memberService.loginCheck(mVo.getEmail(), mVo.getPwd());
 		String msg="로그인 처리 실패!", url="/login/login";
-		
-		//int result=memberService.loginCheck(mVo.getEmail(), mVo.getPwd());	
-		
-		if(chk) {
-			//MemberVO memVo=memberService.selectByEmail(mVo.getEmail());
-			
+		if(result == memberService.USERID_NONE) {
+			msg="회원이 아닙니다.";
+		} else if(result == memberService.LOGIN_OK){
+			MemberVO memVo = memberService.selectByEmail(mVo.getEmail());
 			//[1] 세션에 아이디 저장
 			HttpSession session=request.getSession();
 			session.setAttribute("email", memVo.getEmail());
 			session.setAttribute("name", memVo.getName());
 			session.setAttribute("pwd", memVo.getPwd());
+			session.setAttribute("memNo", memVo.getMemberNo());
 			session.setAttribute("user", "사용자");
-			
+
 			//[2] 쿠키에 저장 - 아이디저장하기 체크된 경우만
 			Cookie ck = new Cookie("mCk_email", memVo.getEmail());
 			ck.setPath("/");
@@ -97,27 +101,28 @@ public class LoginController {
 			
 			msg=memVo.getName() + "님 로그인되었습니다.";
 			url="/index";
+		} else if(result == memberService.DISAGREE_PWD) {
+			msg = "패스워드를 확인하세요";
 		}
-		/*
-		 * else if(result==MemberService.DISAGREE_PWD) { msg="비밀번호가 일치하지 않습니다."; }else
-		 * if(result==MemberService.USERID_NONE) { msg="해당 아이디가 존재하지 않습니다."; }
-		 */
-		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
-		return "common/message";		
+		return "common/message";
 	}
+		
+				
 	@RequestMapping(value="/expLogin", method = RequestMethod.POST)
 	public String expLogin_post(@ModelAttribute ExpertVO eVo, 
 			@RequestParam(required = false) String chkSave, 
 			HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
-		logger.info("전문가로그인 처리, 파라미터 eVo={}, chkSave={}", eVo, chkSave);
-		ExpertVO expVo=expertService.selectByEmail(eVo.getEmail());
-		boolean chk = pwdEncoder.matches(eVo.getPwd(), expVo.getPwd());
+		int result = expertService.loginCheck(eVo.getEmail(), eVo.getPwd());
+		
 		String msg="로그인 처리 실패!", url="/login/expLogin";
-		if(chk) {
+		if(result == expertService.USERID_NONE) {
+			msg="회원이 아닙니다.";
+		} else if(result == expertService.LOGIN_OK) {
+			ExpertVO expVo=expertService.selectByEmail(eVo.getEmail());
 			
 			//[1] 세션에 아이디 저장
 			HttpSession session=request.getSession();
@@ -139,6 +144,9 @@ public class LoginController {
 			
 			msg=expVo.getName() + "님 로그인되었습니다.";
 			url="/index";
+		
+		} else if(result == expertService.DISAGREE_PWD) {
+			msg = "패스워드를 확인하세요";
 		}
 		
 		model.addAttribute("msg", msg);
