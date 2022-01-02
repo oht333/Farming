@@ -40,11 +40,14 @@ public class OAuthController {
 		System.out.println("code : "+code);
 		String access_Token = service.getKakaoAccessToken(code);
 		HashMap<String, Object> userInfo = service.getUserInfo(access_Token);
-		System.out.println("컨트롤러 출력"+userInfo.get("nickname")+userInfo.get("email")+userInfo.get("profile_image"));
+		System.out.println("컨트롤러 출력 : "+userInfo.get("nickname")+", "+userInfo.get("email")+", "+userInfo.get("img"));
 		
 		MemberVO vo = new MemberVO();
 		vo.setName((String)userInfo.get("nickname"));
 		vo.setEmail((String)userInfo.get("email"));
+		
+		String img = (String) userInfo.get("img");
+		
 		System.out.println("vo = "+vo);
 		
 		String msg = "로그인 실패", url = "/login/login";
@@ -61,7 +64,7 @@ public class OAuthController {
 			if(cnt > 0) {
 				System.out.println("회원가입 성공");
 				msg = "카카오톡 로그인 성공";
-				url = "/index";
+				url = "/member/addInfo";
 			}
 		}
 		
@@ -70,6 +73,7 @@ public class OAuthController {
 		session.setAttribute("pwd", vo.getPwd());	
 		session.setAttribute("user", "사용자");
 		session.setAttribute("token", access_Token);
+		session.setAttribute("img", img);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
