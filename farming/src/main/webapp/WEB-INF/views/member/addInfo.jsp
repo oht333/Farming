@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../../inc/top.jsp" %>
+<%@ include file="../inc/top.jsp" %>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -37,23 +37,16 @@
 </script>
     <section class="py-5">
       <div class="container">
-        <!-- Breadcrumbs -->
-        <ol class="breadcrumb ps-0  justify-content-start">
-          <li class="breadcrumb-item"><a href="<c:url value='/index'/>">Home</a></li>
-          <li class="breadcrumb-item"><a href="<c:url value='/member/mypage/main'/>">마이페이지</a></li>
-          <li class="breadcrumb-item active">내 정보 수정   </li>
-        </ol>
-        <h1 class="hero-heading mb-0">내 정보 수정</h1>
-        <p class="text-muted mb-5">Update your personal information</p>
+        <h1 class="hero-heading mb-0">SNS로그인 정보추가</h1>
+        <p class="text-muted mb-5">Add your personal information</p>
         
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
             <form name="frmEdit" method="post" 
 					action="<c:url value='/member/mypage/profile'/>" >
-			<input type="hidden" name="email" value="${email}">
 			<div class="d-flex mb-4" style="margin-left:42%">
-					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
+					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${img }">
 					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>
 			</div>
               <div class="mb-4">
@@ -73,7 +66,7 @@
               <div class="mb-4">
               	<div class="col-lg-7 d-grid" style="float: left;">
 	                <label class="form-label" for="address1"> 주소</label>
-	                <input class="form-control" name="address1" id="address1" placeholder="${vo.address1}" type="text" readonly="readonly">
+	                <input class="form-control" name="address1" id="address1" type="text" readonly="readonly">
 	              </div>
 	              <div class="col-lg-4" style="float: right; margin-top: 3px;">
 	                <label class="form-label" for=""></label>
@@ -82,18 +75,15 @@
               </div>
               <div class="mb-4" style="clear: both;">
                 <label class="form-label" for="address2"> 상세주소</label>
-                <input class="form-control" name="address2" id="address2" placeholder="${vo.address2}" type="text">
+                <input class="form-control" name="address2" id="address2" type="text">
               </div>
               <div class="mb-4" style="clear: both;">
                 <label class="form-label" for="zipcode"> 우편번호</label>
-                <input class="form-control" name="zipcode" id="zipcode" placeholder="${vo.zipCode}" type="text">
+                <input class="form-control" name="zipcode" id="zipcode" type="text">
               </div>
               
-              <div class="mb-4">
-                    <button class="btn btn-outline-success" type="submit" id="edit">&nbsp;&nbsp;&nbsp;수정&nbsp;&nbsp;&nbsp;</button>
-                    <a style="float:right;" class="btn btn-outline-success" href="<c:url value='/member/mypage/main'/>">&nbsp;&nbsp;뒤로가기&nbsp;&nbsp;</a>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <a style="margin-left: 40%;" class="btn btn-outline-success" href="<c:url value='/member/mypage/out'/>">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</a>
+              <div class="mb-4" style="text-align: right;">
+                    <button class="btn btn-outline-success" type="submit" id="edit">수정</button>
               </div>
             </form>
             </div>
@@ -102,4 +92,4 @@
       </div>	
     </section>
 
-<%@ include file="../../inc/bottom.jsp" %>
+<%@ include file="../inc/bottom.jsp" %>
