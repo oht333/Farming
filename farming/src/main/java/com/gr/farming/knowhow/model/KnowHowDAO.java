@@ -6,10 +6,14 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.gr.farming.common.SearchVO;
+import com.gr.farming.qna.model.QnaVO;
 
 @Mapper
 public interface KnowHowDAO {
-	List<KnowHowVO> selectKnowhowAll();
+	public List<KnowHowVO> selectKnowhowAll();
 	public int insertKnowhow(KnowHowVO vo);
-
+	int selectTotalRecord(SearchVO searchVo);
+	public KnowHowVO selectByNo(int no);
+	public int updateKnowhow(KnowHowVO vo);
+	public void deleteKnowhow(Map<String, String> map);
 }

@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-<!DOCTYPE HTML>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<title>노하우 게시판 - 상세보기</title>
+<%@ include file="../inc/top.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/mainstyle.css'/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/clear.css'/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/formLayout.css'/>" />
@@ -23,9 +16,25 @@
 		width: 500px;
 		}
 </style>  
-</head>
-<body>
-	<h2>글 상세보기</h2>
+<body style="padding-top: 72px;">
+    
+    <!-- Hero Section-->
+    <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('img/photo/restaurant-1515164783716-8e6920f3e77c.jpg');">
+      <div class="container overlay-content">
+      <ol class="breadcrumb ps-0  justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">노하우 게시판</li>
+        </ol>
+        <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end">
+          <div class="text-white mb-4 mb-lg-0">
+            <div class="badge badge-pill badge-transparent px-3 py-2 mb-4">Knowledge</div>
+            <h1 class="text-shadow verified">노하우 게시판</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <h2>글 상세보기</h2>
 	<div class="divForm">
 		<div class="firstDiv">
 			<span class="sp1">제목</span> <span>${vo.title}</span>
@@ -36,36 +45,18 @@
 		<div>
 			<span class="sp1">등록일</span> <span>${vo.regdate}</span>
 		</div>
-		<div>
-			<span class="sp1">조회수</span> <span>${vo.readcount}</span>
-		</div>
-		<div>
-			<span class="sp1">첨부파일</span> 
-			<c:if test="${!empty vo.fileName }">
-				<span>
-					<a href
-="<c:url value='/knowhow/download?no=${vo.no }&fileName=${vo.fileName }'/>">
-						${fileInfo}</a>				
-					다운 : ${vo.downCount }
-				</span>
-			</c:if>
-		</div>
 		
 		<% pageContext.setAttribute("newLine", "\r\n"); %>
 		
 		<div class="lastDiv">			
 			<p class="content">${fn:replace(vo.content, newLine, "<br>")}</p>
 		</div>
+		
 		<div class="center">
-			<a href='<c:url value="/knowhow/edit?no=${param.no }"/>'>수정</a> |
-        	<a href='<c:url value="/knowhow/delete?no=${param.no }&step=${vo.step}&groupNo=${vo.groupNo }&fileName=${vo.fileName}"/>'>
-        	삭제</a> |
-			<a href='<c:url value="/knowhow/reply?no=${param.no }"/>'>답변</a> |
-        	
-        	<a href='<c:url value="/knowhow/list"/>'>목록</a>			
+			<a class="btn btn-primary" href='<c:url value="/qna/qnaEdit?no=${param.no }"/>'>수정</a>
+        	<a class="btn btn-primary" href='<c:url value="/qna/qnaDelete?no=${param.no }"/>'>삭제</a>
+        	<a class="btn btn-primary" href='<c:url value="/qna/qnaList"/>'>목록</a>			
 		</div>
 	</div>
-
-	
-</body>
-</html>
+    
+<%@ include file="../inc/bottom.jsp" %>  
