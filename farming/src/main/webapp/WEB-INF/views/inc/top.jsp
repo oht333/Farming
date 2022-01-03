@@ -47,6 +47,7 @@
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
+
 </head>
 <body style="padding-top: 72px;">
 	<header class="header">
@@ -57,7 +58,7 @@
 				<div class="d-flex align-items-center">
 					<a class="navbar-brand py-1" href="<c:url value='/index'/>"><img
 						src="${pageContext.request.contextPath }/resources/img/farming-logo.png"
-						alt="Directory logo" style="width: 163px; padding: 2px"></a>
+						alt="Directory logo" style="width: 160px; padding: 2px"></a>
 					<form class="form-inline d-none d-sm-flex" action="#" id="search">
 						<div
 							class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
@@ -98,7 +99,7 @@
 								<a class="dropdown-item" href="index.html">파밍소개</a>
 								<a class="dropdown-item" href="index.html">카테고리 검색</a>
 								<a class="dropdown-item" href="index-2.html">인기서비스</a>
-								<a class="dropdown-item" href="index-3.html">지도로 파밍<span class="badge badge-info-light ms-1 mt-n1"></a>
+								<a class="dropdown-item" href="<c:url value='/hiddenExp/findByMap'/>">지도로 파밍<span class="badge badge-info-light ms-1 mt-n1"></a>
 							</div>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="contact.html">전문가의 노하우</a></li>
