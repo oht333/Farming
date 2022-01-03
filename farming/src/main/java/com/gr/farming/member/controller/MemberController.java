@@ -299,4 +299,13 @@ public class MemberController {
 
 		return "common/message";
 	}
+	
+	@RequestMapping("/addInfo")
+	public String addInfoSNS(HttpSession session) {
+		logger.info("SNS로그인 추가정보입력");
+		String email = (String) session.getAttribute("email");
+		String name = (String) session.getAttribute("neme");
+		String img = (String) session.getAttribute("img");
+		return "member/addInfo";
+	}
 }

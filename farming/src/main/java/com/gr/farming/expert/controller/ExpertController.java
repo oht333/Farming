@@ -144,6 +144,15 @@ public class ExpertController {
 		return "member/checkemail";
 	}
 	
+	@RequestMapping("/addInfo")
+	public String addInfoSNS(HttpSession session) {
+		logger.info("SNS로그인 추가정보입력");
+		String email = (String) session.getAttribute("email");
+		String name = (String) session.getAttribute("neme");
+		String img = (String) session.getAttribute("img");
+		return "expert/addInfo";
+	}
+	
 //	카카오 로그인 or 회원가입
 	@RequestMapping("expkakaojoin")
 	public String kakaoJoin() {
