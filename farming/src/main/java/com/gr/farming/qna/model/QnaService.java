@@ -12,4 +12,5 @@ public interface QnaService {
 	public QnaVO selectByNo(int no);
 	public int updateQna(QnaVO vo);
 	public void deleteQna(Map<String, String> map);
+	int reply(QnaVO vo);
 }
