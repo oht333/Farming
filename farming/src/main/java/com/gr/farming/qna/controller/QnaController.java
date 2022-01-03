@@ -203,7 +203,7 @@ public class QnaController {
 		
 		Map<String, String> map = new HashMap<>();
 		map.put("step", vo.getStep()+"");
-		map.put("no", vo.getQnaNo()+"");
+		map.put("qnaNo", vo.getQnaNo()+"");
 		map.put("groupNo", vo.getGroupNo()+"");
 		
 		qnaService.deleteQna(map);
@@ -242,6 +242,9 @@ public class QnaController {
 		logger.info("답변하기, 파라미터 vo={}",vo);
 		
 		int cnt=qnaService.reply(vo);
+		logger.info("답변하기 결과 cnt={}",cnt);
+		
+		return "redirect:/qna/qnaList";
 	}
 	
 }
