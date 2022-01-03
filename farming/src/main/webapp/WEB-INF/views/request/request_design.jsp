@@ -1,11 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp"%>
-<style type="text/css">
-    .chk #etc:checked ~ .etc_box{display:block}
+ <style type="text/css">
+    /* .chk #etc:checked ~ .etc_box{display:block}
     .chk .etc_box{display:none}
-</style>
+    .chk .etc_box input{display:none} */
+</style> 
 
+
+<script type="text/javascript">
+$(function(){    
+    var checkArea = $('.chk');
+
+    $(checkArea).each(function(idx , item){            
+        $(item).find('.etc').on('click' , function(){
+            var check = true,
+                inputArea = $(this).siblings('.etc_box');    
+
+            if($(this).is(':checked') == check){
+                $(inputArea).html("<input type='text' name='' value='' class='form-control' placeholder='기타입력'>");
+            }else {
+                $(inputArea).html(" ");
+            }
+          
+        })
+    })
+});
+
+
+</script>
 <div class="progress rounded-0 sticky-top" style="height: 8px; top: 66px;">
       <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
@@ -45,14 +68,12 @@
                       <input class="form-check-input" type="checkbox" id="TYPE_3" name="TYPE" value="광고용 랜딩페이지">
                       <label class="form-check-label text-muted" for="TYPE_3">광고용 랜딩페이지</label>
                     </div>
-                  </li>
+                  </li><br>
                   <li class="list-inline-item">
                     <div class="form-check chk">
-                      <input class="form-check-input" type="checkbox" id="etc" name="TYPE">
-                      <label class="form-check-label text-muted" for="etc">기타    </label>
-                      <div class="etc_box">
-                      	<input class="form-control" type="text" name="TYPE" title="직접입력인 경우">
-                      </div>
+                      <input class="form-check-input etc" type="checkbox" id="etc1" name="TYPE">
+                      <label class="form-check-label text-muted" for="etc1">기타</label>
+                       <div class="etc_box"></div>
                     </div>
                   </li>
                 </ul>
@@ -82,7 +103,7 @@
 	                  <input class="form-check-input" type="radio" id="etc" name="RANGE" value="기타">
 	                  <label class="form-check-label text-muted" for="etc">기타    </label>
 	                  <div class="etc_box">
-	                  	<input class="form-control" type="text" name="SCALE" title="직접입력인 경우">
+	                  	<input class="form-control chk_etc" type="text" name="RANGE">
 	                  </div>
 	                </div>
               </div>
@@ -116,10 +137,9 @@
 	                  <label class="form-check-label" for="SCALE_4">30페이지 이상</label>
 	                </div>
 	                <div class="form-check chk">
-	                  <input class="form-check-input" type="radio" id="etc" name="SCALE" value="기타">
-	                  <label class="form-check-label text-muted" for="etc">기타    </label>
+	                  <input class="form-check-input etc" type="radio" id="etc5" name="SCALE" value="기타">
+	                  <label class="form-check-label text-muted" for="etc5">기타    </label>
 	                  <div class="etc_box">
-	                  	<input class="form-control" type="text" name="SCALE" title="직접입력인 경우">
 	                  </div>
 	                </div>
                 </div>
@@ -152,7 +172,7 @@
 	                  <input class="form-check-input" type="radio" id="etc" name="DEADLINE" value="기타">
 	                  <label class="form-check-label text-muted" for="etc">기타    </label>
 	                  <div class="etc_box">
-	                  	<input class="form-control" type="text" name="DEADLINE" title="직접입력인 경우">
+	                  	<input class="form-control chk_etc" type="text" name="DEADLINE" title="직접입력인 경우">
 	                  </div>
 	                </div>
                </div>

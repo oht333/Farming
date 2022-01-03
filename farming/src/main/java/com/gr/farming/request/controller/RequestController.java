@@ -10,10 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gr.farming.category.model.CategoryService;
+import com.gr.farming.category.model.CategoryVO;
+import com.gr.farming.request.model.RequestDesignVO;
+import com.gr.farming.request.model.RequestDevelopVO;
 import com.gr.farming.request.model.RequestQnaVO;
 import com.gr.farming.request.model.RequestService;
 
@@ -25,46 +30,42 @@ public class RequestController {
 		= LoggerFactory.getLogger(RequestController.class);
 	
 	private final RequestService requestService;
-	
+	private final CategoryService categoryService;
+
 	@Autowired
-	public RequestController(RequestService requestService) {
+	public RequestController(RequestService requestService, CategoryService categoryService) {
 		this.requestService = requestService;
+		this.categoryService = categoryService;
 	}
-	/*
-	@RequestMapping("/request")
-	public void request() {
-		logger.info("견적서 작성 메인화면 보여주기");
-	}
-	*/
 	
 	@RequestMapping("/request")
 	public void request(@RequestParam int categoryNo, Model model) {
 		logger.info("견적서 작성 메인화면 보여주기, 파라미터 categoryNo={}", categoryNo);
-		
+
 		model.addAttribute("categoryNo",categoryNo);
 	}
 	
 	@GetMapping("/requestWrite")
-	public String request_post(@RequestParam int categoryNo, Model model) {
+	public String request_get(@RequestParam int categoryNo, Model model) {
 		
 		logger.info("견적서 작성 메인화면 보여주기, 파라미터 categoryNo={}", categoryNo);
-	
-//		RequestQnaVO vo=requestService.selectRequestQna(categoryNo);
+		CategoryVO categoryVo=categoryService.selectByNo(categoryNo);
+
+		String main=categoryVo.getMain();
+		
 		List<Map<String, Object>> qList=requestService.selectQuestion(categoryNo);
 		logger.info("견적서 질문 조회 결과, qList.size={}", qList.size());
 		
 		List<RequestQnaVO> aList=requestService.selectRequestQna(categoryNo);
 		
-//		List<Map<String, Object>> aList=requestService.selectAnswer(vo.getqNo());
-//		logger.info("견적서 답변 조회 결과, aList.size={}", aList.size());
-		
 		model.addAttribute("qList", qList);
 		model.addAttribute("aList", aList);
 		model.addAttribute("categoryNo",categoryNo);
+		model.addAttribute("main", main);
 		
 		return "request/request_1";
 	}
-	/*
+	
 	@GetMapping("/requestWrite/develop")
 	public String requestDevelop() {
 		
@@ -121,7 +122,7 @@ public class RequestController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
-	}*/
+	}
 	
 	@GetMapping("/request_success")
 	public String request_success() {
