@@ -86,4 +86,8 @@ public class ExpertServiceImpl implements ExpertService{
 		}
 
 	}
+
+	public int delete(ExpertVO vo) {
+		return dao.delete(vo);
+	}
 }

@@ -208,7 +208,7 @@ public class MemberController {
 			int cnt = service.delete(vo);
 			logger.info("cnt : {}",cnt);
 			if(cnt>0) {
-				msg="확인되었습니다.";
+				msg="탈퇴되었습니다.";
 				url="/index";
 				session.invalidate();
 			}else {
