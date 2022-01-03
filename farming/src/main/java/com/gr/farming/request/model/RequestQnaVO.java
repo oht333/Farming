@@ -9,6 +9,7 @@ public class RequestQnaVO {
 	private String info;
 	private String type;
 	private String answer;
+	
 	public int getqNo() {
 		return qNo;
 	}

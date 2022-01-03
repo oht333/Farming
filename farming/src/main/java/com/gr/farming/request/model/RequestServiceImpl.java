@@ -28,11 +28,6 @@ public class RequestServiceImpl implements RequestService{
 	public List<Map<String, Object>> selectQuestion(int categoryNo) {
 		return requestDao.selectQuestion(categoryNo);
 	}
-
-//	@Override
-//	public RequestQnaVO selectRequestQna(int categoryNo) {
-//		return requestDao.selectRequestQna(categoryNo);
-//	}
 	
 	@Override
 	public List<Map<String, Object>> selectAnswer(int qNo) {
@@ -43,6 +38,7 @@ public class RequestServiceImpl implements RequestService{
 	public List<RequestQnaVO> selectRequestQna(int categoryNo) {
 	return requestDao.selectRequestQna(categoryNo);
 }
+
 
 
 
