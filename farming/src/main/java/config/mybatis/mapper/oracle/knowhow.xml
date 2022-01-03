@@ -8,9 +8,18 @@
 	       	where ${searchCondition} like '%' || #{searchKeyword} || '%'
 		</if>		
 	</sql>
+
+	<insert id="insert" parameterType="knowhowVo">
+		<selectKey keyProperty="knowhowNo" resultType="int" order="BEFORE">
+			select knowhow_seq.nextval from dual
+		</selectKey>
+		insert into knowhow(knowhow_no, member_no, title, content)	
+		values(#{knowhowNo}, #{memberNo}, #{title}, #{content})	
+	</insert>
 	
 	<select id="selectKnowhowAll" resultType="knowhowVo">
-		select * from knowhow order by no
+		select * from knowhow
+		order by knowhow_no desc
 <!-- 		select *
 		from
 		(
@@ -31,13 +40,11 @@
 	</select>
 	
 	<insert id="insertKnowhow" parameterType="knowhowVo">
-		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		<selectKey keyProperty="knowhowNo" resultType="int" order="BEFORE">
 			select knowhow_seq.nextval from dual
 		</selectKey>
-		insert into knowhow(no, name, pwd, title, email, content, 
-				group_No,file_Name,file_Size,original_File_Name)
-		values(#{no}, #{name}, #{pwd}, #{title}, #{email}, #{content},
-				#{groupNo},#{fileName},#{fileSize},#{originalFileName})
+		insert into knowhow(knowhow_no, member_no, title, content)	
+		values(#{knowhowNo}, #{memberNo}, #{title}, #{content})	
 	</insert>
 
 </mapper>

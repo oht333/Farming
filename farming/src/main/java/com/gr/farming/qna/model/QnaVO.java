@@ -15,6 +15,8 @@ public class QnaVO {
 	private int step; 
 	private int sortNo;  
 	private String delFlag;
+	
+	
 
 	public int getQnaNo() {
 		return qnaNo;

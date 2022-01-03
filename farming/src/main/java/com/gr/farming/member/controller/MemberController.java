@@ -208,7 +208,7 @@ public class MemberController {
 			int cnt = service.delete(vo);
 			logger.info("cnt : {}",cnt);
 			if(cnt>0) {
-				msg="확인되었습니다.";
+				msg="탈퇴되었습니다.";
 				url="/index";
 				session.invalidate();
 			}else {
@@ -298,5 +298,14 @@ public class MemberController {
 		model.addAttribute("url", url);
 
 		return "common/message";
+	}
+	
+	@RequestMapping("/addInfo")
+	public String addInfoSNS(HttpSession session) {
+		logger.info("SNS로그인 추가정보입력");
+		String email = (String) session.getAttribute("email");
+		String name = (String) session.getAttribute("neme");
+		String img = (String) session.getAttribute("img");
+		return "member/addInfo";
 	}
 }
