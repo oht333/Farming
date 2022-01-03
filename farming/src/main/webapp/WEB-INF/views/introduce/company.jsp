@@ -135,21 +135,4 @@
               <p class="text-h2 text-center">
               <small class="text-muted text-center">아직 회원이 아니세요?&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/member/agreement'/>">회원가입</a></small>
               </p><br><br>          
-    <!-- jQuery-->
-    <script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
-    <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="${pageContext.request.contextPath }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="${pageContext.request.contextPath }/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <!-- Smooth scroll-->
-    <script src="${pageContext.request.contextPath }/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
-    <!-- Bootstrap Select-->
-    <script src="${pageContext.request.contextPath }/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
-    <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="${pageContext.request.contextPath }/resources/vendor/object-fit-images/ofi.min.js"></script>
-    <!-- Swiper Carousel                       -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
-    <script>var basePath = ''</script>
-    <!-- Main Theme JS file    -->
-    <script src="${pageContext.request.contextPath }/resources/js/theme.js"></script>
 <%@ include file="../inc/bottom.jsp" %>
