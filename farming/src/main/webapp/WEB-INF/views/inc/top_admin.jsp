@@ -68,7 +68,7 @@
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -103,11 +103,11 @@
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
-                    </ul>
+                    </ul> -->
                     <!-- /.dropdown-messages -->
-                </li>
+                <!-- </li> -->
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -183,9 +183,9 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-tasks -->
+                    /.dropdown-tasks
                 </li>
-                <!-- /.dropdown -->
+                /.dropdown
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -243,20 +243,24 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
+                    /.dropdown-alerts
+                </li> -->
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="<c:url value='/admin/category/list'/>"><i class="fa fa-user fa-fw"></i>카테고리</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="<c:url value='/admin/manage/mem_list'/>"><i class="fa fa-gear fa-fw"></i>회원관리</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Q&A</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>견적서관리</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i>로그아웃</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
