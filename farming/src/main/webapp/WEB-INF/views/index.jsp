@@ -341,7 +341,9 @@
     <section class="py-7 position-relative dark-overlay"><img class="bg-image" src="${pageContext.request.contextPath }/resources/img/photo/photo-1497436072909-60f360e1d4b1.jpg" alt="">
       <div class="container">
         <div class="overlay-content text-white py-lg-5">
-          <h3 class="display-3 fw-bold text-serif text-shadow mb-5">Ready for your next holidays?</h3><a class="btn btn-light" href="category-rooms.html">Get started</a>
+          <p class="subtitle text-primary">Finding a hidden expert on a map</p>
+          <h5 class="display-5 fw-bold text-shadow mb-5">내가 있는 지역에 숨은 전문가 찾기!</h5>
+          <a class="btn btn-light" href="<c:url value='/hiddenExp/findByMap'/>">Get started</a>
         </div>
       </div>
     </section>
