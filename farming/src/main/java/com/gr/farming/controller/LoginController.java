@@ -129,6 +129,7 @@ public class LoginController {
 			session.setAttribute("email", expVo.getEmail());
 			session.setAttribute("name", expVo.getName());
 			session.setAttribute("pwd", expVo.getPwd());
+			session.setAttribute("expNo", expVo.getExpertNo());
 			session.setAttribute("expert", "전문가");
 			
 			//[2] 쿠키에 저장 - 아이디저장하기 체크된 경우만
