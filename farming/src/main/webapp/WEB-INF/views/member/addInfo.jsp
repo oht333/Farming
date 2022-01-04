@@ -43,8 +43,7 @@
         <div class="row">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
-            <form name="frmEdit" method="post" 
-					action="<c:url value='/member/mypage/profile'/>" >
+            <form name="frmEdit" method="post" action="<c:url value='/member/mypage/profile'/>" >
 			<div class="d-flex mb-4" style="margin-left:42%">
 					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${img }">
 					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>

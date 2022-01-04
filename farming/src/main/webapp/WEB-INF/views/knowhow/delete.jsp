@@ -43,7 +43,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		$('form[name=frmDelete]').submit(function(){
+		$('#delete').click(function(){
 			if($('#pwd').val().length<1){
 				alert('비밀번호를 입력하세요');
 				$('#pwd').focus();
@@ -67,19 +67,20 @@
 	<input type="text" name="fileName" value="${param.fileName}">
 	
 		<fieldset>
-		<legend>글 삭제</legend>
-	        <div>           
-	        	<span class="sp">${param.no}번 글을 삭제하시겠습니까?</span>                        
-	        </div>
-	        <div>           
-	            <label for="pwd">비밀번호</label>
-	            <input type="password" id="pwd" name="pwd" />   
-	        </div>
-	        <div class="center">
-	            <input type ="submit"  value="삭제" />
-	            <input type = "Button" value="글목록" 
-                	OnClick="location.href='<c:url value="/knowhow/list"/>'" />
-	        </div>
+			<section class="hero py-5 py-lg-7">
+				<div class="container position-relative">
+					<h1 class="hero-heading">글 삭제</h1>
+		        <div class="row">
+		        	<div class="col-xl-8 mx-auto">
+		        		<p class="text-lg text-muted mb-5">${param.knowhowNo}번 글을 삭제하시겠습니까?</p>
+						<p class="mb-0">
+							<a class="btn btn-primary"><input type ="Button"  value="삭제" id="delete" /></a>
+							<a class="btn btn-primary" href='<c:url value="/knowhow/list"/>'>글목록</a>
+						</p>
+					</div>
+				</div>
+				</div>
+			</section>
 	    </fieldset>
     </form>
 </div>

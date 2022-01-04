@@ -1,6 +1,8 @@
 package com.gr.farming.qna.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -143,10 +145,106 @@ public class QnaController {
 		
 		logger.info("글수정 처리, 파라미터 vo={}",vo);
 		
-		String msg="글수정 실패", url="/qna/qnaEdit?no="+vo.getQnaNo();
+		String msg="글수정 실패", url="/qna/qnaEdit?qnaNo="+vo.getQnaNo();
+		int cnt = qnaService.updateQna(vo);
+		if(cnt>0) {
+			msg="게시글이 수정 되었습니다.";
+			url="/qna/qnaDetail?no="+vo.getQnaNo();
+		}
 		
-		return "";
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
 		
+		
+		return "common/message";
+		
+	}
+	
+	@RequestMapping("/qnaDetail")
+	public String detail(@RequestParam(defaultValue="0") int no,
+			HttpServletRequest request, Model model) {
+		logger.info("글 상세보기 파라미터 no={}", no);
+		
+		if(no==0) {
+			model.addAttribute("msg","잘못된 url입니다.");
+			model.addAttribute("url","/qna/qnaList");
+			
+			return "common/message";
+		}
+		
+		QnaVO vo = qnaService.selectByNo(no);
+		logger.info("상세보기 결과 vo={}",vo);
+		
+		model.addAttribute("vo",vo);
+		
+		return "qna/qnaDetail";
+	}
+	
+	@RequestMapping(value="qnaDelete", method = RequestMethod.GET)
+	public String delete_get(@RequestParam(defaultValue="0") int no,
+			Model model) {
+		logger.info("글 삭제 화면, 파라미터 no={}",no);
+		if(no==0) {
+			model.addAttribute("msg","잘못된 url 입니다.");
+			model.addAttribute("url","/qna/qnaList");
+			return "common/message";
+		}
+		
+		return "qna/qnaDelete";
+	}
+	
+	@RequestMapping(value="qnaDelete", method = RequestMethod.POST)
+	public String delete_post(@ModelAttribute QnaVO vo,
+			HttpServletRequest request, Model model) {
+		logger.info("글 삭제 처리, 파라미터 vo={}",vo);
+		
+		String msg="글삭제 실패", url="qna/qnaDelte?no"+vo.getQnaNo()+"&step="+vo.getStep()
+			+"&groupNo="+vo.getGroupNo();
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("step", vo.getStep()+"");
+		map.put("qnaNo", vo.getQnaNo()+"");
+		map.put("groupNo", vo.getGroupNo()+"");
+		
+		qnaService.deleteQna(map);
+		msg="게시글이 삭제되었습니다.";
+		url="/qna/qnaList";
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
+	
+	@GetMapping("/qnaReply")
+	public String reply_get(@RequestParam(defaultValue="0") int no,
+			Model model) {
+		logger.info("답변화면 , 파라미터 no={}",no);
+		
+		if(no==0) {
+			model.addAttribute("msg","잘못된 url 입니다.");
+			model.addAttribute("url","/qna/qnaList");
+			
+			return "common/message";
+		}
+		
+		QnaVO vo = qnaService.selectByNo(no);
+		logger.info("답변화면 조회결과 vo={}",vo);
+		
+		model.addAttribute("vo",vo);
+		
+		return "qna/qnaReply";
+		
+	}
+	
+	@PostMapping("/qnaReply")
+	public String reply_post(@ModelAttribute QnaVO vo) {
+		logger.info("답변하기, 파라미터 vo={}",vo);
+		
+		int cnt=qnaService.reply(vo);
+		logger.info("답변하기 결과 cnt={}",cnt);
+		
+		return "redirect:/qna/qnaList";
 	}
 	
 }

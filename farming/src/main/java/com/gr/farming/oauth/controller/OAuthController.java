@@ -67,7 +67,7 @@ public class OAuthController {
 				url = "/member/addInfo";
 			}
 		}
-		
+		session.setAttribute("memNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());	
@@ -108,10 +108,11 @@ public class OAuthController {
 			if(cnt > 0) {
 				System.out.println("회원가입 성공");
 				msg = "페이스북 로그인 성공";
-				url = "/index";
+				url = "/member/addInfo";
 			}
 		}
 		
+		session.setAttribute("memNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());
@@ -134,6 +135,8 @@ public class OAuthController {
 		ExpertVO vo = new ExpertVO();
 		vo.setName((String)userInfo.get("nickname"));
 		vo.setEmail((String)userInfo.get("email"));
+		
+		String img = (String) userInfo.get("img");
 		System.out.println("vo = "+vo);
 		
 		String msg = "로그인 실패", url = "/login/expLogin";
@@ -150,15 +153,17 @@ public class OAuthController {
 			if(cnt > 0) {
 				System.out.println("회원가입 성공");
 				msg = "전문가 카카오톡 로그인 성공";
-				url = "/index";
+				url = "/expert/addInfo";
 			}
 		}
 		
+		session.setAttribute("expNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());	
 		session.setAttribute("expert", "전문가");
 		session.setAttribute("token", access_Token);
+		session.setAttribute("img", img);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
@@ -192,10 +197,11 @@ public class OAuthController {
 			if(cnt > 0) {
 				System.out.println("회원가입 성공");
 				msg = "전문가 페이스북 로그인 성공";
-				url = "/index";
+				url = "/expert/addInfo";
 			}
 		}
 		
+		session.setAttribute("expNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());
