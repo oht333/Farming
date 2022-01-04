@@ -46,7 +46,7 @@
         <h1 class="hero-heading mb-0">내 정보 수정</h1>
         <p class="text-muted mb-5">Update your personal information</p>
         
-        <div class="row">
+        <div class="row" style="margin-left: 330px;">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
             <form name="frmEdit" method="post" 
@@ -88,12 +88,12 @@
                 <label class="form-label" for="zipcode"> 우편번호</label>
                 <input class="form-control" name="zipcode" id="zipcode" placeholder="${vo.zipCode}" type="text">
               </div>
-              
-              <div class="mb-4">
-                    <button class="btn btn-outline-success" type="submit" id="edit">&nbsp;&nbsp;&nbsp;수정&nbsp;&nbsp;&nbsp;</button>
-                    <a style="float:right;" class="btn btn-outline-success" href="<c:url value='/member/mypage/main'/>">&nbsp;&nbsp;뒤로가기&nbsp;&nbsp;</a>
+         
+              <div class="col-lg-2 d-grid">
+                    <button class="btn btn-primary rounded-pill h-100" type="submit" id="edit">&nbsp;&nbsp;&nbsp;수정&nbsp;&nbsp;&nbsp;</button>
+                    <a style="float:right;" class="btn btn-primary rounded-pill h-100" href="<c:url value='/member/mypage/main'/>">&nbsp;&nbsp;뒤로가기&nbsp;&nbsp;</a>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <a style="margin-left: 40%;" class="btn btn-outline-success" href="<c:url value='/member/mypage/out'/>">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</a>
+                    <a style="margin-left: 40%;" class="btn btn-primary rounded-pill h-100" href="<c:url value='/member/mypage/out'/>">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</a>
               </div>
             </form>
             </div>

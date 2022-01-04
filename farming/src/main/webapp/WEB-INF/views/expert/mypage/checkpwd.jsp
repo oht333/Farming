@@ -14,7 +14,7 @@
         <p class="text-muted mb-5">Check the password here.</p>
         
         <div class="row">
-          <div class="col-lg-7 mb-5 mb-lg-0"> 
+          <div class="col-lg-7 mb-5 mb-lg-0" style="margin-left:250px;">  
             <div class="text-block"> 
             <form name="frmCheck" method="post" 
 					action="<c:url value='/expert/mypage/checkpwd'/>" >

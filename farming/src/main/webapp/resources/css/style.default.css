@@ -16764,3 +16764,6 @@ STYLE SWITCHER FOR DEMO
 #style-switch h4, #style-switch .h4 {
   color: #495057;
 }
+
+.box1 input {float:left;}
+.box1::after{ clear:both; content:''; display:block;}
