@@ -41,23 +41,8 @@
         </ul>
       </div>
     </section>
-    <section class="py-5">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
-          <div class="me-3">
-            <p class="mb-3 mb-md-0"><strong>12</strong> results found</p>
-          </div>
-          <div>
-            <label class="form-label me-2" for="form_sort">Sort by</label>
-            <select class="selectpicker" name="sort" id="city" data-style="btn-selectpicker" title="">
-              <option value="sortBy_0">서울   </option>
-              <option value="sortBy_1">세종   </option>
-              <option value="sortBy_2">강원   </option>
-            </select>
-          </div>
-        </div>
-        <c:import url="/hiddenExp/hiddenExpList?keyword=act"></c:import>
-      </div>
-    </section>
+    
+    <c:import url="/hiddenExp/hiddenExpList?keyword=act"></c:import>
+      
 
 <%@ include file="../inc/bottom.jsp"%>
