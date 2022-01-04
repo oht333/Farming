@@ -28,7 +28,7 @@ function save(){
         </div><br>
     <label for="content"><strong>내용</strong>&nbsp;&nbsp;&nbsp;</label>        
         <div>  
- 			<textarea id="content" name="content" rows="10" cols="50" style="width: 50%;"></textarea>
+ 			<textarea id="content" name="content" rows="10" cols="50" style="width: 50%;">
  			<script id="smartEditor" type="text/javascript"> 
 				var oEditors = [];
 				nhn.husky.EZCreator.createInIFrame({
@@ -47,6 +47,7 @@ function save(){
 					}
 				});
 			</script>
+			</textarea>
         </div>
         <div id="se2_sample" style="margin:10px 0;">
 			<input type="submit" class="btn btn-primary" onclick="save();" value="SUBMIT">
