@@ -39,14 +39,14 @@
 		<parameter property="groupNo" javaType="string" jdbcType="VARCHAR" mode="IN"/>
 	</parameterMap>
 	
-	<delete id="deleteQna" parameterType="int">
-		delete qna where qna_no=#{qnaNo}
+	<delete id="deleteQna" parameterMap="qnaDeleteParam">
+		{call DELETEREBOARD(?,?,?)}
 	</delete>
 	
 	<update id="updateSortNo" parameterType="qnaVo">
  		update qna
-		set sortno=sortno+1
-		where groupno=#{groupNo} and sortno>#{sortNo}
+		set sortNo=sortNo+1
+		where groupNo=#{groupNo} and sortno>#{sortNo}
  	</update>
  	
  	<insert id="reply" parameterType="qnaVo">

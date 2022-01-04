@@ -37,11 +37,9 @@
     
     <h2>글 상세보기</h2>
 	<div class="divForm">
+		
 		<div class="firstDiv">
 			<span class="sp1">제목</span> <span>${vo.title}</span>
-		</div>
-		<div>
-			<span class="sp1">작성자</span> <span>${vo.name}</span>
 		</div>
 		<div>
 			<span class="sp1">등록일</span> <span>${vo.regdate}</span>
@@ -53,8 +51,9 @@
 			<p class="content">${fn:replace(vo.content, newLine, "<br>")}</p>
 		</div>
 		<div class="center">
-			<a class="btn btn-primary" href='<c:url value="/qna/qnaEdit?no=${param.qnaNo }"/>'>게시글 수정</a>
-        	<a class="btn btn-primary" href='<c:url value="/qna/qnaDelete?no=${param.qnaNno }"/>'>게시글 삭제</a>
+			<a class="btn btn-primary" href='<c:url value="/qna/qnaEdit?qnaNo=${param.qnaNo }"/>'>게시글 수정</a>
+        	<a class="btn btn-primary" href='<c:url value="/qna/qnaDelete?qnaNo=${param.qnaNo }"/>'>게시글 삭제</a>
+        	<a class="btn btn-primary" href='<c:url value="/qna/qnaReply?qnaNo=${param.qnaNo }"/>'>답변</a>
         	<a class="btn btn-primary" href='<c:url value="/qna/qnaList"/>'>게시글 목록</a>			
 		</div>
 	</div>

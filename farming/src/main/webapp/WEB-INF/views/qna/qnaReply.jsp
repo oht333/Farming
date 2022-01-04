@@ -45,7 +45,7 @@ function save(){
  <fieldset>
 	<legend>답변하기</legend>
 		<div class="form-floating mb-3">
-		  <label for="title">제목</label>
+		  <label for="title"></label>
 		  <input type="text" class="form-control" id="floatingInput" name="title" placeholder="제목입력"
 		  	value="Re : ${vo.title}" />
 		</div>
