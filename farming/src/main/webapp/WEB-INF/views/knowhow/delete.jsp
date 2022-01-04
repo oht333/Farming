@@ -43,7 +43,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		$('form[name=frmDelete]').submit(function(){
+		$('#delete').click(function(){
 			if($('#pwd').val().length<1){
 				alert('비밀번호를 입력하세요');
 				$('#pwd').focus();
@@ -74,7 +74,7 @@
 		        	<div class="col-xl-8 mx-auto">
 		        		<p class="text-lg text-muted mb-5">${param.knowhowNo}번 글을 삭제하시겠습니까?</p>
 						<p class="mb-0">
-							<a class="btn btn-primary"><input type ="submit"  value="삭제" /></a>
+							<a class="btn btn-primary"><input type ="Button"  value="삭제" id="delete" /></a>
 							<a class="btn btn-primary" href='<c:url value="/knowhow/list"/>'>글목록</a>
 						</p>
 					</div>

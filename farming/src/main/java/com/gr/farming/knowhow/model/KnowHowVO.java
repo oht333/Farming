@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class KnowHowVO {
 	private int knowhowNo;
-	private int memberNo;
+	private int expertNo;
 	private String title;
 	private Timestamp regdate;
 	private int readcount;
@@ -23,11 +23,11 @@ public class KnowHowVO {
 	public void setKnowhowNo(int knowhowNo) {
 		this.knowhowNo = knowhowNo;
 	}
-	public int getMemberNo() {
-		return memberNo;
+	public int getExpertNo() {
+		return expertNo;
 	}
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
+	public void setExpertNo(int expertNo) {
+		this.expertNo = expertNo;
 	}
 	public String getTitle() {
 		return title;
@@ -80,7 +80,7 @@ public class KnowHowVO {
 	
 	@Override
 	public String toString() {
-		return "KnowHowVO [knowhowNo=" + knowhowNo + ", memberNo=" + memberNo + ", title=" + title + ", regdate="
+		return "KnowHowVO [knowhowNo=" + knowhowNo + ", expertNo=" + expertNo + ", title=" + title + ", regdate="
 				+ regdate + ", readcount=" + readcount + ", content=" + content + ", groupNo=" + groupNo + ", step="
 				+ step + ", sortNo=" + sortNo + ", delFlag=" + delFlag + "]";
 	}

@@ -24,17 +24,39 @@
 	
 	<select id="selectByNo" parameterType="int" resultType="qnaVo">
 		select * from qna 
-		where qna_no=#{qna_no}
+		where qna_no=#{qnaNo}
 	</select>
 	
 	<update id="updateQna" parameterType="qnaVo">
 		update qna
 		set title=#{title}, content=#{content}
-		where qna_no=#{qna_no}
+		where qna_no=#{qnaNo}
 	</update>
 	
+	<parameterMap type="map" id="qnaDeleteParam">
+		<parameter property="qnaNo" javaType="string" jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="step" javaType="string" jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="groupNo" javaType="string" jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+	
 	<delete id="deleteQna" parameterType="int">
-		delete qna where qna_no=#{qna_no}
+		delete qna where qna_no=#{qnaNo}
 	</delete>
+	
+	<update id="updateSortNo" parameterType="qnaVo">
+ 		update qna
+		set sortno=sortno+1
+		where groupno=#{groupNo} and sortno>#{sortNo}
+ 	</update>
+ 	
+ 	<insert id="reply" parameterType="qnaVo">
+ 		<selectKey keyProperty="qnaNo" resultType="int" order="BEFORE">
+			select qna_seq.nextval from dual
+		</selectKey>
+		insert into qna(qna_no, name, title, content, 
+				groupNo,sortNo, step)
+		values(#{qnaNo}, #{name}, #{title}, #{content},
+				#{groupNo}, #{sortNo}+1, #{step}+1)
+ 	</insert>
 	
 </mapper>

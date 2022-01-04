@@ -51,6 +51,16 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDao.selectByNo(no);
 	}
 
+
+	@Transactional
+	@Override
+	public int reply(QnaVO vo) {
+		// TODO Auto-generated method stub
+		int cnt=qnaDao.updateSortNo(vo);
+		cnt=qnaDao.reply(vo);
+		return cnt;
+	}
+
 	
 	
 }

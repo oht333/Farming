@@ -25,10 +25,14 @@ public class KnowHowServiceImpl implements KnowHowService {
 	public List<KnowHowVO> selectKnowhowAll() {
 		return knowhowDao.selectKnowhowAll();
 	}
-	
-	@Transactional
+
 	public int insertKnowhow(KnowHowVO vo) {
 		return knowhowDao.insertKnowhow(vo);
+	}
+	
+	@Override
+	public KnowHowVO selectByNo(int no) {
+		return knowhowDao.selectByNo(no);
 	}
 
 	@Override
@@ -38,19 +42,12 @@ public class KnowHowServiceImpl implements KnowHowService {
 
 	@Override
 	public int updateKnowhow(KnowHowVO vo) {
-		// TODO Auto-generated method stub
 		return knowhowDao.updateKnowhow(vo);
 	}
 
 	@Override
 	public void deleteKnowhow(Map<String, String> map) {
-		knowhowDao.deleteKnowhow(map);
-		
+		knowhowDao.deleteKnowhow(map);		
 	}
 
-	@Override
-	public KnowHowVO selectByNo(int no) {
-		// TODO Auto-generated method stub
-		return knowhowDao.selectByNo(no);
-	}
 }

@@ -99,6 +99,14 @@
 								<a class="dropdown-item" href="index.html">카테고리 검색</a>
 								<a class="dropdown-item" href="index-2.html">인기서비스</a>
 								<a class="dropdown-item" href="index-3.html">지도로 파밍<span class="badge badge-info-light ms-1 mt-n1"></a>
+								<c:if test="${user eq '사용자' }">
+									<a class="dropdown-item" href="<c:url value='/findexp/findexpList'/>">전문가찾기</a>
+                  <a class="dropdown-item" href="<c:url value='/hiddenExp/findByMap'/>">지도로 파밍<span class="badge badge-info-light ms-1 mt-n1"></a>
+								</c:if>
+								<c:if test="${user eq '전문가' }">
+									<!-- 전문가찾기에 등록될 글 -->
+									<a class="dropdown-item" href="<c:url value='/findexp/findexpWrite'/>">홍보글작성</a>
+								</c:if>
 							</div>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="contact.html">전문가의 노하우</a></li>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gr.farming.hiddenExp.model.HiddenExpDAO">	
+	<select id="selectByAddress" parameterType="string" resultType="expertVo">
+		select expert_no, name, email,address1, address2, zip_code  
+		from expert
+		where address1 like '%' || #{keyword} || '%'
+	</select>
+</mapper>

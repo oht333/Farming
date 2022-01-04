@@ -21,7 +21,7 @@
               </div>
               <!-- Submit-->
               <div class="d-grid">
-                <button class="btn btn-lg btn-primary" id="signin">로그인</button>
+                <button class="btn btn-lg btn-primary" id="signin">비밀번호변경</button>
               </div>
               <hr class="my-4">
             </form>

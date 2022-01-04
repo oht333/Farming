@@ -42,7 +42,12 @@ public class RequestController {
 	public void request(@RequestParam int categoryNo, Model model) {
 		logger.info("견적서 작성 메인화면 보여주기, 파라미터 categoryNo={}", categoryNo);
 
+		CategoryVO categoryVo=categoryService.selectByNo(categoryNo);
+		String detail=categoryVo.getDetail();
+		
 		model.addAttribute("categoryNo",categoryNo);
+		model.addAttribute("detail", detail);
+		
 	}
 	
 	@GetMapping("/requestWrite")
