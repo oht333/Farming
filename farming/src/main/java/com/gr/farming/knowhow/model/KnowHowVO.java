@@ -4,46 +4,30 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class KnowHowVO {
-	private int no;
-	private int adminNo;
-	private String name;
-	private int pwd;
+	private int knowhowNo;
+	private int expertNo;
 	private String title;
-	private String content;
-	private String email;
-	private int readcount;
-	private int groupNo;
-	private String delflag;
-	private String fileName;
-	private long fileSize;
-	private int downcount;
-	private String originalFileName;
 	private Timestamp regdate;
-	private int boardType;
+	private int readcount;
+	private String content;
 	
-	public int getNo() {
-		return no;
+	//답변형 게시판 필드
+	private int groupNo;
+	private int step; 
+	private int sortNo;  
+	private String delFlag;
+	
+	public int getKnowhowNo() {
+		return knowhowNo;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setKnowhowNo(int knowhowNo) {
+		this.knowhowNo = knowhowNo;
 	}
-	public int getAdminNo() {
-		return adminNo;
+	public int getExpertNo() {
+		return expertNo;
 	}
-	public void setAdminNo(int adminNo) {
-		this.adminNo = adminNo;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getPwd() {
-		return pwd;
-	}
-	public void setPwd(int pwd) {
-		this.pwd = pwd;
+	public void setExpertNo(int expertNo) {
+		this.expertNo = expertNo;
 	}
 	public String getTitle() {
 		return title;
@@ -51,17 +35,11 @@ public class KnowHowVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
+	public Timestamp getRegdate() {
+		return regdate;
 	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
 	}
 	public int getReadcount() {
 		return readcount;
@@ -69,63 +47,42 @@ public class KnowHowVO {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public int getGroupNo() {
 		return groupNo;
 	}
 	public void setGroupNo(int groupNo) {
 		this.groupNo = groupNo;
 	}
-	
-	public String getDelflag() {
-		return delflag;
+	public int getStep() {
+		return step;
 	}
-	public void setDelflag(String delflag) {
-		this.delflag = delflag;
+	public void setStep(int step) {
+		this.step = step;
 	}
-	public String getFileName() {
-		return fileName;
+	public int getSortNo() {
+		return sortNo;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setSortNo(int sortNo) {
+		this.sortNo = sortNo;
 	}
-	public long getFileSize() {
-		return fileSize;
+	public String getDelFlag() {
+		return delFlag;
 	}
-	public void setFileSize(long fileSize) {
-		this.fileSize = fileSize;
-	}
-	public int getDowncount() {
-		return downcount;
-	}
-	public void setDowncount(int downcount) {
-		this.downcount = downcount;
-	}
-	public String getOriginalFileName() {
-		return originalFileName;
-	}
-	public void setOriginalFileName(String originalFileName) {
-		this.originalFileName = originalFileName;
-	}
-	public Timestamp getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Timestamp regdate) {
-		this.regdate = regdate;
-	}
-	public int getBoardType() {
-		return boardType;
-	}
-	public void setBoardType(int boardType) {
-		this.boardType = boardType;
+	public void setDelFlag(String delFlag) {
+		this.delFlag = delFlag;
 	}
 	
 	@Override
 	public String toString() {
-		return "KnowHowVO [no=" + no + ", adminNo=" + adminNo + ", name=" + name + ", pwd=" + pwd + ", title=" + title
-				+ ", content=" + content + ", email=" + email + ", readcount=" + readcount + ", groupNo=" + groupNo
-				+ ", delflag=" + delflag + ", fileName=" + fileName + ", fileSize=" + fileSize + ", downcount="
-				+ downcount + ", originalFileName=" + originalFileName + ", regdate=" + regdate + ", boardType="
-				+ boardType + "]";
+		return "KnowHowVO [knowhowNo=" + knowhowNo + ", expertNo=" + expertNo + ", title=" + title + ", regdate="
+				+ regdate + ", readcount=" + readcount + ", content=" + content + ", groupNo=" + groupNo + ", step="
+				+ step + ", sortNo=" + sortNo + ", delFlag=" + delFlag + "]";
 	}
 	
 }

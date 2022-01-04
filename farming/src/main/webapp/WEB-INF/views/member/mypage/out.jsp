@@ -2,6 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../inc/top.jsp" %>
+<script type="text/javascript">
+var contextPath = "/farming";
+$(function(){
+	$('#edit').click(function(){
+		if($('#pwd').val().length<1){
+				alert('비밀번호를 입력하세요');
+				$('#pwd').focus();
+				event.preventDefault();
+		}
+	});
+});
+</script>
     <section class="py-5">
       <div class="container">
         <!-- Breadcrumbs -->

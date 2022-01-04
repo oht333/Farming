@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gr.farming.common.SearchVO;
+import com.gr.farming.qna.model.QnaVO;
 
 @Service
 public class KnowHowServiceImpl implements KnowHowService {
@@ -20,12 +21,33 @@ public class KnowHowServiceImpl implements KnowHowService {
 		this.knowhowDao = knowhowDao;
 	}
 
+	@Override
 	public List<KnowHowVO> selectKnowhowAll() {
 		return knowhowDao.selectKnowhowAll();
 	}
-	
-	@Transactional
+
 	public int insertKnowhow(KnowHowVO vo) {
 		return knowhowDao.insertKnowhow(vo);
 	}
+	
+	@Override
+	public KnowHowVO selectByNo(int no) {
+		return knowhowDao.selectByNo(no);
+	}
+
+	@Override
+	public int selectTotalRecord(SearchVO searchVo) {
+		return knowhowDao.selectTotalRecord(searchVo);
+	}
+
+	@Override
+	public int updateKnowhow(KnowHowVO vo) {
+		return knowhowDao.updateKnowhow(vo);
+	}
+
+	@Override
+	public void deleteKnowhow(Map<String, String> map) {
+		knowhowDao.deleteKnowhow(map);		
+	}
+
 }
