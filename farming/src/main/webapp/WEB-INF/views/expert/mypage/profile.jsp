@@ -46,7 +46,7 @@
         <h1 class="hero-heading mb-0">내 정보 수정</h1>
         <p class="text-muted mb-5">Update your personal information</p>
         
-        <div class="row" style="margin-left:330px;">
+        <div class="row" style="margin-left:340px;">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
             <form name="frmEdit" method="post" 

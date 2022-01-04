@@ -9,7 +9,7 @@
 						<ol class="breadcrumb"">
 					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
 					  	
-					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-success">등록</a>
+					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-default">등록</a>
 					  		
 					  		
 					   </ol>

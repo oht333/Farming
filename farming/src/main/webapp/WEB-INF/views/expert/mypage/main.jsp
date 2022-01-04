@@ -16,7 +16,7 @@
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-secondary w-2rem h-2rem">
+                  <svg class="svg-icon text-primary w-2rem h-2rem">
                     <use xlink:href="#identity-1"> </use>
                   </svg>
                 </div>
@@ -31,7 +31,7 @@
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-secondary w-2rem h-2rem">
+                  <svg class="svg-icon text-primary w-2rem h-2rem">
                     <use xlink:href="#diary-1"> </use>
                   </svg>
                 </div>
@@ -44,7 +44,7 @@
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-secondary w-2rem h-2rem">
+                  <svg class="svg-icon text-primary w-2rem h-2rem">
                     <use xlink:href="#pay-by-card-1"> </use>
                   </svg>
                 </div>
@@ -57,7 +57,7 @@
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-secondary w-2rem h-2rem">
+                  <svg class="svg-icon text-primary w-2rem h-2rem">
                     <use xlink:href="#chat-app-1"> </use>
                   </svg>
                 </div>
@@ -70,7 +70,7 @@
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-secondary w-2rem h-2rem">
+                  <svg class="svg-icon text-primary w-2rem h-2rem">
                     <use xlink:href="#mix-1"> </use>
                   </svg>
                 </div>

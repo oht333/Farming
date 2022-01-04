@@ -25,7 +25,7 @@ $(function(){
         <h1 class="hero-heading mb-0">탈퇴 확인</h1>
         <p class="text-muted mb-5">Please check if you want to withdraw.</p>
         
-        <div class="row" style="margin-left:330px;">
+        <div class="row" style="margin-left:340px;">
           <div class="col-lg-7 mb-5 mb-lg-0" > 
             <div class="text-block"> 
             <form name="frmOut" method="post" 
