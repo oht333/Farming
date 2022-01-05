@@ -1,18 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../inc/top.jsp" %>
+<%@ include file="../../inc/top.jsp" %>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 	var contextPath = "/farming";
 		$(function(){
-			$('#edit').click(function(){
+			$('#submit').click(function(){
 				if($('#pwd').val().length<1){
   					alert('비밀번호를 입력하세요');
   					$('#pwd').focus();
   					event.preventDefault();
-				}
+				}else if($('#address1').val().length < 1){
+  					alert('주소를 입력하세요');
+  					event.preventDefault();
+  				}else if($('#address2').val().length < 1){
+  					alert('상세주소를 입력하세요');
+  					event.preventDefault();
+  				}
 			});
 			$('#searchAddr').click(function(){
   				new daum.Postcode({
@@ -35,26 +40,29 @@
   			});
 		});
 </script>
+<div class="progress rounded-0 sticky-top" style="height: 8px; top: 72px;">
+      <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
     <section class="py-5">
       <div class="container">
         <h1 class="hero-heading mb-0">SNS로그인 정보추가</h1>
         <p class="text-muted mb-5">Add your personal information</p>
         
-        <div class="row">
-          <div class="col-lg-7 mb-5 mb-lg-0"> 
+        <div>
+          <div class="col-lg-7 mb-5" style="padding: 0; margin: 0 auto;"> 
             <div class="text-block"> 
-            <form name="frmEdit" method="post" action="<c:url value='/expert/mypage/profile'/>" >
+            <form name="frmEdit" method="post" action="<c:url value='/expert/addExp/post'/>" >
 			<div class="d-flex mb-4" style="margin-left:42%">
 					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${img }">
 					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>
 			</div>
               <div class="mb-4">
                 <label class="form-label" for="name"> 이름</label>
-                <input class="form-control" name="name" id="name" type="text" placeholder="${name}" autocomplete="off">
+                <input class="form-control" name="name" id="name" type="text" value="${name}" autocomplete="off">
               </div>
               <div class="mb-4">
                 <label class="form-label" for="email"> 이메일</label>
-                <input class="form-control" name="email" id="email" type="email" placeholder="${email}" autocomplete="off" readonly="readonly">
+                <input class="form-control" name="email" id="email" type="email" value="${email}" autocomplete="off" readonly="readonly">
                 <!-- <span class="invalidText"></span> -->
               </div>
               <div class="mb-4">
@@ -81,9 +89,9 @@
                 <input class="form-control" name="zipCode" id="zipCode" type="text">
               </div>
               
-              <div class="mb-4" style="text-align: right;">
-                    <button class="btn btn-outline-success" type="submit" id="edit">수정</button>
-              </div>
+              <div class="row form-block flex-column flex-sm-row">
+	            <div class="col text-center text-sm-end" id="submit"><input type="submit" value="다음" class="btn btn-primary px-3"></div>
+         	 </div>
             </form>
             </div>
           </div>
@@ -91,4 +99,4 @@
       </div>	
     </section>
 
-<%@ include file="../inc/bottom.jsp" %>
+<%@ include file="../../inc/bottom.jsp" %>
