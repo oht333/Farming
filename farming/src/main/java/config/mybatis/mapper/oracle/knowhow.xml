@@ -9,42 +9,32 @@
 		</if>		
 	</sql>
 
-	<insert id="insert" parameterType="knowhowVo">
+	<insert id="insertKnowhow" parameterType="knowhowVo">
 		<selectKey keyProperty="knowhowNo" resultType="int" order="BEFORE">
 			select knowhow_seq.nextval from dual
 		</selectKey>
-		insert into knowhow(knowhow_no, member_no, title, content)	
-		values(#{knowhowNo}, #{memberNo}, #{title}, #{content})	
+		insert into knowhow(knowhow_no, expert_no, title, content)	
+		values(#{knowhowNo}, #{expertNo}, #{title}, #{content})	
 	</insert>
 	
 	<select id="selectKnowhowAll" resultType="knowhowVo">
 		select * from knowhow
 		order by knowhow_no desc
-<!-- 		select *
-		from
-		(
-		    select rownum as RNUM, A.*
-		    from
-		    (
-		        select no,name,pwd,title, email, regdate, readcount,content,
-				groupno, step, sortno, delflag, filename, filesize, downcount,
-				originalfilename, (sysdate-regdate)*24 as dateTerm 
-				from knowhow
-		        <include refid="searchWhere"></include>
-		        order by groupno desc, sortNo
-		    )A
-		)
-		<![CDATA[
-		where RNUM>#{firstRecordIndex} 
-			and RNUM<=#{firstRecordIndex}+ #{recordCountPerPage}]]> -->
 	</select>
-	
-	<insert id="insertKnowhow" parameterType="knowhowVo">
-		<selectKey keyProperty="knowhowNo" resultType="int" order="BEFORE">
-			select knowhow_seq.nextval from dual
-		</selectKey>
-		insert into knowhow(knowhow_no, member_no, title, content)	
-		values(#{knowhowNo}, #{memberNo}, #{title}, #{content})	
-	</insert>
 
+	<select id="selectByNo" parameterType="int" resultType="knowhowVo">
+		select * from knowhow 
+		where knowhow_no=#{knowhow_no}
+	</select>
+
+	<update id="updateKnowhow" parameterType="knowhowVo">
+		update knowhow
+		set title=#{title}, content=#{content}
+		where knowhow_no=#{knowhow_no}
+	</update>
+	
+	<delete id="deleteKnowhow" parameterType="int">
+		delete knowhow where knowhow_no=#{knowhow_no}
+	</delete>		
+	
 </mapper>
