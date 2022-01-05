@@ -46,6 +46,24 @@
 		where email=#{email}
 		and pwd=#{pwd}
 	</update>
+	
+	<select id="selectMain" parameterType="int" resultType="string">
+		select c.main 
+		from field f join category c
+		on c.category_no = f.category_no
+		join expert e
+		on f.expert_no = e.expert_no
+		<![CDATA[where e.expert_no=#{expertNo} and rownum <= 1]]>
+	</select>
+	<!-- 사정이 있습니다..... -->
+	<select id="selectCategory" parameterType="int" resultType="int">
+		select f.category_no 
+		from field f join category c
+		on c.category_no = f.category_no
+		join expert e
+		on f.expert_no = e.expert_no
+		<![CDATA[where e.expert_no=#{expertNo} and rownum <= 1]]>
+	</select>
 
 </mapper>
 

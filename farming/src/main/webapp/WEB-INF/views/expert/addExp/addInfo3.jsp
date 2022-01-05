@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jsp"%>
+<%@ include file="../../inc/top.jsp" %>
 <style>
 	input[type=checkbox]:checked + label { 
 		background: #2CCE8D;
@@ -15,22 +15,26 @@
 			if($('#main').val()=='type'){
 				alert('서비스타입을 선택하세요');
 				event.preventDefault();
+			} else if($("input:checkbox[name='detail']").is(":checked") == false){
+				alert('하나이상의 서비스를 선택하세요');
+				event.preventDefault();
 			}
+			
 		});
 		$('#prev').click(function(){
-			location.href="<c:url value='/expert/expRegister1'/>";
+			location.href="<c:url value='/expert/addExp/addInfo2'/>";
 		});
 		
 	});
 </script>
     <div class="progress rounded-0 sticky-top" style="height: 8px; top: 72px;">
-      <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <section class="py-5">
       <div class="container">
-        <p class="subtitle text-primary">SignUp Expert!</p>
-        <h1 class="h2 mb-5">Information <span class="text-muted float-end">Step 2</span></h1>
-        <form action="<c:url value='/expert/expRegister3'/>" method="post">
+        <p class="subtitle text-primary">추가정보 입력</p>
+        <h1 class="h2 mb-5">Information <span class="text-muted float-end">Step 3</span></h1>
+        <form action="<c:url value='/expert/addExp/post2'/>" method="post">
           <input type="hidden" name="main" id="main" value="${param.main }">
           <div class="row form-block">
             <div class="col-lg-4">
@@ -78,11 +82,11 @@
           <div class="row form-block flex-column flex-sm-row">
             <div class="col text-center text-sm-start"><input type="button" value="이전" class="btn btn-primary px-3" id="prev"></div>
             
-            <div class="col text-center text-sm-end" id="submit"><input type="submit" value="다음" class="btn btn-primary px-3"></div>
+            <div class="col text-center text-sm-end" id="submit"><input type="submit" value="저장" class="btn btn-primary px-3"></div>
+            <div id="a">aa</div>
           	
           </div>
         </form>
       </div>
     </section>
-<%@ include file="../inc/bottom.jsp"%>
-
+<%@ include file="../../inc/bottom.jsp" %>

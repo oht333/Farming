@@ -2,6 +2,7 @@ package com.gr.farming.expert.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,8 @@ import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.field.model.FieldService;
 import com.gr.farming.field.model.FieldVO;
 import com.gr.farming.oauth.model.OAuthService;
+import com.gr.farming.resume.model.ResumeService;
+import com.gr.farming.resume.model.ResumeVO;
 
 @Controller
 @RequestMapping("/expert")
@@ -35,6 +38,8 @@ public class ExpertController {
 	private final CategoryService c_service;
 	private final OAuthService o_service;
 	private final FieldService f_service;
+	private final ResumeService r_service;
+	
 	
 	@Autowired
 	private PasswordEncoder pwdEncoder;
@@ -43,11 +48,12 @@ public class ExpertController {
 	=LoggerFactory.getLogger(ExpertController.class);
 
 	@Autowired
-	public ExpertController(ExpertService service, CategoryService c_service, OAuthService o_service, FieldService f_service) {
+	public ExpertController(ExpertService service, CategoryService c_service, OAuthService o_service, FieldService f_service, ResumeService r_service) {
 		this.service = service;
 		this.c_service = c_service;
 		this.o_service = o_service;
 		this.f_service = f_service;
+		this.r_service = r_service;
 	}
 	
 	@RequestMapping("/agreement")
@@ -114,7 +120,7 @@ public class ExpertController {
 					msg = "회원가입 및 분야 등록 성공";
 					url = "/login/expLogin";
 				} else {
-					msg = "회원가입만 처리되었습니다";
+					msg = "분야 등록 실패";
 					url = "/login/expLogin";
 				}
 			}
@@ -144,13 +150,76 @@ public class ExpertController {
 		return "member/checkemail";
 	}
 	
-	@RequestMapping("/addInfo")
-	public String addInfoSNS(HttpSession session) {
-		logger.info("SNS로그인 추가정보입력");
+	//
+	@RequestMapping("/addExp/addInfo")
+	public String addInfo1(HttpSession session) {
+		logger.info("전문가 추가정보 입력페이지1");
 		String email = (String) session.getAttribute("email");
 		String name = (String) session.getAttribute("neme");
 		String img = (String) session.getAttribute("img");
-		return "expert/addInfo";
+		return "expert/addExp/addInfo";
+	}
+	
+	@RequestMapping("/addExp/post")
+	public String update_addExp(@ModelAttribute ExpertVO vo) {
+		logger.info("주소, 비밀번호 업데이트 처리페이지 vo = {}",vo);
+		int cnt = service.updateExpert(vo);
+		if(cnt > 0) {
+			logger.info("업데이트 성공");
+		} else {
+			logger.info("실패");
+		}
+		return "redirect:/expert/addExp/addInfo2";
+	}
+	
+	@RequestMapping("/addExp/addInfo2")
+	public String addInfo2() {
+		logger.info("전문가 추가정보 입력페이지2");
+		
+		return "expert/addExp/addInfo2";
+	}
+	
+	@RequestMapping("/addExp/addInfo3")
+	public String addInfo3_get(@RequestParam(value="main", required = false) String main, Model model) {
+		logger.info("전문가 추가정보 입력페이지3 main = {}", main);
+		
+		List<CategoryVO> list = c_service.selectByMain(main);
+		model.addAttribute("main", main);
+		model.addAttribute("clist", list);
+		return "expert/addExp/addInfo3";
+	}
+	
+	@RequestMapping("addExp/post2")
+	public String addInfo3_post(HttpSession session, @RequestParam String main, String[] detail, Model model) {
+		int expNo = (int) session.getAttribute("expNo");
+		logger.info("전문가 추가정보 등록처리 페이지 expNo = {}",expNo);
+		
+		int[] arr = new int[detail.length];
+		FieldVO f_vo = new FieldVO();
+		String msg = "추가정보 등록실패", url = "/expert/addExp/addInfo2";
+		for(int i = 0; i < detail.length; i++) {
+			logger.info("전문가 추가정보 등록처리 페이지 detail={}",detail[i]);
+			arr[i] = c_service.selectByDetail(detail[i]);
+			
+			if(arr[i] > 0) {
+				f_vo.setCategoryNo(arr[i]);
+				f_vo.setExpertNo(expNo);
+				int res = f_service.insert(f_vo);
+				if(res > 0) {
+					msg = "추가정보 등록";
+					url = "/index";
+				} else {
+					msg = "추가정보 등록실패";
+				}
+			} else {
+				msg = "분야 검색실패";				
+			}
+			
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+				
+		return "common/message";
 	}
 	
 //	카카오 로그인 or 회원가입
@@ -294,6 +363,35 @@ public class ExpertController {
 			}else {
 				msg="회원탈퇴 처리 실패";
 			}
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	//전문가 홍보를 위한 추가정보 입력페이지
+	@RequestMapping("/addExp/addExp")
+	public String addExp1(HttpSession session) {
+		int expNo = (int) session.getAttribute("expNo");
+		logger.info("추가정보입력페이지 expNo={}",expNo);
+		
+		String main = service.selectMain(expNo);
+		int categoryNo = service.selectCategory(expNo);
+		logger.info("main = {}, category = {}", main, categoryNo);
+		
+		return "expert/addExp/addExp";
+	}
+	
+	@RequestMapping("/addExp/addExpPost")
+	public String addExp2(@ModelAttribute ResumeVO rVo, Model model) {
+		logger.info("추가정보입력처리페이지 rVo = {}",rVo);			
+		int cnt = r_service.insert(rVo);
+		String msg = "추가정보 등록 실패", url = "/expert/addExp/addExp";
+		if(cnt > 0) {
+			msg = "추가정보 등록";
+			url = "/index";
 		}
 		
 		model.addAttribute("msg", msg);

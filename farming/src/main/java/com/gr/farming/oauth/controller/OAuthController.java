@@ -153,17 +153,23 @@ public class OAuthController {
 			if(cnt > 0) {
 				System.out.println("회원가입 성공");
 				msg = "전문가 카카오톡 로그인 성공";
-				url = "/expert/addInfo";
+				url = "/expert/addExp/addInfo";
 			}
 		}
+		ExpertVO vo2 = eservice.selectByEmail(vo.getEmail());
+		vo.setExpertNo(vo2.getExpertNo());
+		String main = eservice.selectMain(vo.getExpertNo());
+		int categoryNo = eservice.selectCategory(vo.getExpertNo());
 		
 		session.setAttribute("expNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());	
-		session.setAttribute("expert", "전문가");
+		session.setAttribute("user", "전문가");
 		session.setAttribute("token", access_Token);
 		session.setAttribute("img", img);
+		session.setAttribute("main", main);
+		session.setAttribute("categoryNo", categoryNo);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
@@ -197,16 +203,22 @@ public class OAuthController {
 			if(cnt > 0) {
 				System.out.println("회원가입 성공");
 				msg = "전문가 페이스북 로그인 성공";
-				url = "/expert/addInfo";
+				url = "/expert/addExp/addInfo";
 			}
 		}
+		ExpertVO vo2 = eservice.selectByEmail(vo.getEmail());
+		vo.setExpertNo(vo2.getExpertNo());
+		String main = eservice.selectMain(vo.getExpertNo());
+		int categoryNo = eservice.selectCategory(vo.getExpertNo());
 		
 		session.setAttribute("expNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());
-		session.setAttribute("expert", "전문가");
+		session.setAttribute("user", "전문가");
 		session.setAttribute("token", accessToken);
+		session.setAttribute("main", main);
+		session.setAttribute("categoryNo", categoryNo);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
