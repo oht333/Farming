@@ -1,6 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top_admin.jsp" %>
+<style>
+.btn-primary {
+  color: #fff;
+  background-color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+.rounded-pill {
+  border-radius: 50rem !important;
+}
+.h-100 {
+  height: 100% !important;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #00b66d;
+  border-color: #00b66d;
+}
+</style>
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
@@ -46,8 +64,10 @@
                                             <label for="detail">분야</label>
                                             <input type="text" class="form-control" id="detail" name="detail">
                                         </div>
-	                                        <input type = "submit" value="등록" class="btn btn-default"/>
-	            							<input type = "Button" id="btList" class="btn btn-default" value="글목록" OnClick="location.href='<c:url value="/admin/category/list"/>'" />         
+                                        <div>
+	                                        <input type = "submit" value="&nbsp;&nbsp;&nbsp;&nbsp;등록&nbsp;&nbsp;&nbsp;&nbsp;" style="margin-left:45%; " class="btn btn-primary rounded-pill h-100"/>
+	            							<input type = "Button" id="btList" class="btn btn-primary rounded-pill h-100" value="&nbsp;&nbsp;글목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/category/list"/>'" />         
+                                    	</div>
                                     </form>
                                 </div>
                             </div>

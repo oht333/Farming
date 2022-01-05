@@ -1,6 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top_admin.jsp" %>
+<style>
+.btn-primary {
+  color: #fff;
+  background-color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+.rounded-pill {
+  border-radius: 50rem !important;
+}
+.h-100 {
+  height: 100% !important;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #00b66d;
+  border-color: #00b66d;
+}
+</style>
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
@@ -57,10 +75,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                            	<a href='<c:url value="/admin/category/cateUpdate?categoryNo=${vo.categoryNo }"/>' class="btn btn-default">수정</a> |
-									        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>' class="btn btn-default">삭제</a> |
-									        	<a href='<c:url value="/admin/category/list"/>' class="btn btn-default">목록</a>	
+                                            <div class="col-sm-offset-2 col-sm-10" style="margin-left:45%;">
+                                            	<a href='<c:url value="/admin/category/cateUpdate?categoryNo=${vo.categoryNo }"/>' class="btn btn-primary rounded-pill h-100">&nbsp;&nbsp;수정&nbsp;&nbsp;</a> |
+									        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>' class="btn btn-primary rounded-pill h-100">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a> |
+									        	<a href='<c:url value="/admin/category/list"/>' class="btn btn-primary rounded-pill h-100">&nbsp;&nbsp;목록&nbsp;&nbsp;</a>	
                                             </div>
                                         </div>
                                     </form>
