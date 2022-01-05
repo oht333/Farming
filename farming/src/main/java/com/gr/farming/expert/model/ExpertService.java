@@ -1,6 +1,7 @@
 package com.gr.farming.expert.model;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ExpertService {
 	public static final int EXIST_ID=1;  //해당 아이디가 이미 존재함
@@ -21,5 +22,8 @@ public interface ExpertService {
 	public List<ExpertVO> selectAll();
 	public int updateExpert(ExpertVO vo);
 	public boolean checkPwd(ExpertVO vo);
+	
+	public String selectMain(int expertNo);
+	public int selectCategory(int expNo);
 
 }

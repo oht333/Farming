@@ -123,14 +123,17 @@ public class LoginController {
 			msg="회원이 아닙니다.";
 		} else if(result == expertService.LOGIN_OK) {
 			ExpertVO expVo=expertService.selectByEmail(eVo.getEmail());
-			
+			String main = expertService.selectMain(expVo.getExpertNo());
+			int categoryNo = expertService.selectCategory(expVo.getExpertNo());
 			//[1] 세션에 아이디 저장
 			HttpSession session=request.getSession();
 			session.setAttribute("email", expVo.getEmail());
 			session.setAttribute("name", expVo.getName());
 			session.setAttribute("pwd", expVo.getPwd());
 			session.setAttribute("expNo", expVo.getExpertNo());
-			session.setAttribute("expert", "전문가");
+			session.setAttribute("user", "전문가");
+			session.setAttribute("main", main);
+			session.setAttribute("categoryNo", categoryNo);
 			
 			//[2] 쿠키에 저장 - 아이디저장하기 체크된 경우만
 			Cookie ck = new Cookie("eCk_email", expVo.getEmail());
