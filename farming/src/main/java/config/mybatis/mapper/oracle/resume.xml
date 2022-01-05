@@ -11,4 +11,8 @@
 		values(#{resumeCode},#{categoryNo},#{expertNo},#{intro},#{detailIntro},#{career},#{certificate},#{staff})
 	</insert>
 	
+	<select id="selectCareer" parameterType="int" resultType="string">
+		select career from resume
+		where expert_no=#{expertNo}
+	</select>
 </mapper>

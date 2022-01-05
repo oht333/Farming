@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ include file="../../inc/top_admin.jsp" %>
+<style>
+.btn-primary {
+  color: #fff;
+  background-color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+.rounded-pill {
+  border-radius: 50rem !important;
+}
+.h-100 {
+  height: 100% !important;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #00b66d;
+  border-color: #00b66d;
+}
+</style>
         <div id="page-wrapper">
 		  <div class="header"> 
                         <h2 class="page-header">
@@ -9,8 +28,8 @@
 						<ol class="breadcrumb"">
 					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
 					  	
-					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-default">등록</a>
-					  		
+					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-primary rounded-pill h-100">&nbsp;&nbsp;등록&nbsp;&nbsp;</a>
+					  		<!-- btn btn-primary rounded-pill h-100 -->
 					  		
 					   </ol>
 					
