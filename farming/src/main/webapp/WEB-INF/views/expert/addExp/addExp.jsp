@@ -11,21 +11,23 @@ input[type=radio]:checked+label {
 </style>
 <script type="text/javascript">
 	$(function() {
-		var text = $('#chk').val();
-		$('#prev').click(function(){
-			location.href="<c:url value='/index'/>";
-		});
-		$('#div1').each(function(idx, item){
-			$(item).find('#OS6').on('click', function(){
-				var check = true,
-					inputArea = $('#div1').siblings('#div');
-				if($(this).is(':checked')==check){
-					$(inputArea).html("<input class='form-control' id='etc' type='text' placeholder='기타' name='os'>");
-				} else{
-					$(inputArea).html(" ");
-				}
-			})			
-		}) 
+		$('#sub').click(function(){
+			if($('#intro').val().length < 1){
+				alert('한줄소개를 입력하세요');
+				$('#intro').focus();
+				event.preventDefault();
+			} else if($('#detailIntro').val().length < 1){
+				alert('상세소개를 입력하세요');
+				$('#detailIntro').focus();
+				event.preventDefault();
+			} else if($("input:radio[name='staff']").is(":checked") == false){
+				alert('직원수를 선택하세요');
+				event.preventDefault();
+			} else if($("input:radio[name='career']").is(":checked") == false){
+				alert('경력을 선택하세요');
+				event.preventDefault();
+			}
+		})
 	});
 </script>
 <div class="progress rounded-0 sticky-top" style="height: 8px; top: 72px;">
@@ -39,7 +41,6 @@ input[type=radio]:checked+label {
 		</h1>
 		<form action="<c:url value='/expert/addExp/addExpPost'/>" method="post">
 			<input type="hidden" name="expertNo" value="${expNo }">
-			<input type="hidden" name="categoryNo" value="${categoryNo }">
 			<div class="row form-block">
 				<div class="col-lg-4">
 					<h4>간편 소개</h4>
@@ -72,7 +73,7 @@ input[type=radio]:checked+label {
 				<div class="col-lg-7 ms-auto">
 					<div class="mb-4">
 		                <label class="form-label" for="intro">하나의 자격증을 입력하세요</label>
-		                <input class="form-control" name="certificate" id="certificate" placeholder="자격증" type="text">
+		                <input class="form-control" name="certificate" id="certificate" placeholder="자격증(선택)" type="text">
 		            </div>
 				</div>
 			</div>
@@ -136,7 +137,7 @@ input[type=radio]:checked+label {
 			</div>
 			<div class="row form-block flex-column flex-sm-row">
 				<div class="col text-center text-sm-end" id="submit">
-					<input type="submit" value="완료" class="btn btn-primary px-3">
+					<input type="submit" id="sub" value="완료" class="btn btn-primary px-3">
 				</div>
 			</div>
 		</form>
