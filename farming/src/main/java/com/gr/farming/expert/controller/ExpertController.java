@@ -385,7 +385,12 @@ public class ExpertController {
 	}
 	
 	@RequestMapping("/addExp/addExpPost")
-	public String addExp2(@ModelAttribute ResumeVO rVo, Model model) {
+	public String addExp2(@ModelAttribute ResumeVO rVo, Model model, HttpSession session) {
+		if(rVo.getCertificate() == null && rVo.getCertificate().isEmpty()) {
+			rVo.setCertificate("0");
+		}
+		int categoryNo = service.selectCategory(rVo.getExpertNo());
+		rVo.setCategoryNo(categoryNo);
 		logger.info("추가정보입력처리페이지 rVo = {}",rVo);			
 		int cnt = r_service.insert(rVo);
 		String msg = "추가정보 등록 실패", url = "/expert/addExp/addExp";
@@ -394,6 +399,7 @@ public class ExpertController {
 			url = "/index";
 		}
 		
+		session.setAttribute("career", rVo.getCareer());
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
