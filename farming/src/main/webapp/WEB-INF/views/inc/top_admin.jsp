@@ -22,30 +22,30 @@
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- favicon -->
-	<link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
-	   <script src="<c:url value='/resources/admin_js/jquery-1.10.2.js'/>"></script>
+   <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
+      <script src="<c:url value='/resources/admin_js/jquery-1.10.2.js'/>"></script>
     <!-- Bootstrap Js -->
     <script src="<c:url value='/resources/admin_js/bootstrap.min.js'/>"></script>
-	 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Metis Menu Js -->
     <script src="<c:url value='/resources/admin_js/jquery.metisMenu.js'/>"></script>
     <!-- Morris Chart Js -->
     <script src="<c:url value='/resources/admin_js/morris/raphael-2.1.0.min.js'/>"></script>
     <script src="<c:url value='/resources/admin_js/morris/morris.js'/>"></script>
-	
-	
-	<script src="<c:url value='/resources/admin_js/easypiechart.js'/>"></script>
-	<script src="<c:url value='/resources/admin_js/easypiechart-data.js'/>"></script>
-	
-	 <script src="<c:url value='/resources/admin_js/Lightweight-Chart/jquery.chart.js'/>"></script>
-	
+   
+   
+   <script src="<c:url value='/resources/admin_js/easypiechart.js'/>"></script>
+   <script src="<c:url value='/resources/admin_js/easypiechart-data.js'/>"></script>
+   
+    <script src="<c:url value='/resources/admin_js/Lightweight-Chart/jquery.chart.js'/>"></script>
+   
     <!-- Custom Js -->
     <script src="<c:url value='/resources/admin_js/custom-scripts.js'/>"></script>
 
       
     <!-- Chart Js -->
     <script type="text/javascript" src="<c:url value='/resources/admin_js/Chart.min.js'/>"></script>  
-    <script type="text/javascript" src="<c:url value='/resources/admin_js/chartjs.js'/>"></script>	
+    <script type="text/javascript" src="<c:url value='/resources/admin_js/chartjs.js'/>"></script>   
 </head>
 <body>
     <div id="wrapper">
@@ -59,8 +59,8 @@
                 </button>
                 <a class="navbar-brand" href="<c:url value='/admin/main'/>">
                 <img src="${pageContext.request.contextPath }/resources/img/farming-logo-w.png"
-					alt="Directory logo" style="width: 120px; padding: 2px; display:inline-block;">
-					<span style="font-size:16px;font-weight:400;padding-left:4px;">관리자모드</span>
+               alt="Directory logo" style="width: 120px; padding: 2px; display:inline-block;">
+               <span style="font-size:16px;font-weight:400;padding-left:4px;">관리자모드</span>
                 </a>
             <div id="sideNav" href="#">
       <i class="fa fa-bars icon"></i> 
@@ -345,10 +345,10 @@
                             <li>
                                 <a href="<c:url value='/admin/manage/dev_list'/>">전문가회원</a>
                             </li>
-						</ul>
+                  </ul>
                     </li> 
                     <li>
-                        <a href="<c:url value='/admin/uiElements'/>"><i class="fa fa-desktop"></i>카테고리</a>
+                        <a href="<c:url value='/admin/category/list'/>"><i class="fa fa-desktop"></i>카테고리</a>
                     </li> 
                     <li>
                         <a href="<c:url value='/admin/uiElements'/>"><i class="fa fa-desktop"></i>Q&A</a>
@@ -359,8 +359,8 @@
                     <li>
                         <a href="<c:url value='/admin/uiElements'/>"><i class="fa fa-desktop"></i> UI Elements</a>
                     </li> 
-					 
-					 <li>
+                
+                <li>
                         <a href="#"><i class="fa fa-sitemap"></i> Charts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -369,9 +369,9 @@
                             <li>
                                 <a href="<c:url value='morris_chart'/>">Morris Chart</a>
                             </li>
-							</ul>
-						</li>	
-							
+                     </ul>
+                  </li>   
+                     
                     <li>
                         <a href="<c:url value='/admin/tabPanel'/>"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
                     </li>
