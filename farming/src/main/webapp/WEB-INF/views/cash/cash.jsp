@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../inc/top.jsp" %>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script type="text/javascript">
+<script>
 $('#cash').click(function () {
 	let IMP = window.IMP;
 	IMP.init('imp46523158');
@@ -49,6 +50,11 @@ $('#cash').click(function () {
 	});
 }
 </script>
+<style>
+.box1{margin-top: 3px;display: flex;flex-direction: row;flex-wrap: wrap;}
+.box1 input{width:31%; margin-bottom:20px; margin-right:20px;}
+
+</style>
     <section class="py-5">
       <div class="container">
         <!-- Breadcrumbs -->
@@ -58,22 +64,35 @@ $('#cash').click(function () {
         </ol>
         <h1 class="hero-heading mb-0">파밍캐시 &amp; 페이 충전</h1>
         <p class="text-muted mb-5">Manage your account and settings here.</p>
-        <input type="hidden" name="email" value="${param.memberNo}">
+        <input type="hidden" name="memberNo" value="${param.memberNo}">
        <p style="font-weight: bold">캐시 충전 금액 선택</p>
-        <div class="table-responsive">
+        <!-- <div class="table-responsive">
           <table class="table text-gray-700 table-striped table-hover">
         <tr class="no-hover no-stripe">
               <th></th>
-              <td class="text-center"><input type="radio" name="cp_item" value="5000" class="btn btn-outline-muted">5,000</td>
-              <td class="text-center"><input type="radio" name="cp_item" value="10000" class="btn btn-outline-muted">10,000</td>
-              <td class="text-center"><input type="radio" name="cp_item" value="15000" class="btn btn-outline-muted">15,000</td>
-              <td class="text-center"><input type="radio" name="cp_item" value="20000" class="btn btn-outline-muted">20,000</td>
-              <td class="text-center"><input type="radio" name="cp_item" value="30000" class="btn btn-outline-muted">30,000</td>
-              <td class="text-center"><input type="radio" name="cp_item" value="50000" class="btn btn-outline-muted">50,000</td>
+              <td class="text-center"><input type="button" name="cp_item" value="5,000" class="btn btn-outline-muted"></td>
+              <td class="text-center"><input type="button" name="cp_item" value="10,000" class="btn btn-outline-muted"></td>
+              <td class="text-center"><input type="button" name="cp_item" value="15,000" class="btn btn-outline-muted"></td>
+              <td class="text-center"><input type="button" name="cp_item" value="20,000" class="btn btn-outline-muted"></td>
+              <td class="text-center"><input type="button" name="cp_item" value="30,000" class="btn btn-outline-muted"></td>
+              <td class="text-center"><input type="button" name="cp_item" value="50,000" class="btn btn-outline-muted"></td>
             </tr>
             </table>
-        </div>
-        <button type="button" class="btn btn-primary rounded-pill h-100" id="cash">충전하기</button>
+        </div> -->
+        <div class="box1" style=" margin-top: 3px; ">
+	      <label class="form-label" for="cash1"></label>
+	      <input class="form-control" name="cash1" id="cash" type="button" value="5,000" title="5,000" >
+	      <label class="form-label" for="cash2"></label>
+	      <input class="form-control" name="cash2" id="cash" type="button" value="10,000" title="10,000">
+	      <label class="form-label" for="cash3"></label>
+	      <input class="form-control" name="cash3" id="cash" type="button" value="15,000" title="15,000">
+	      <label class="form-label" for="cash4"></label>
+	      <input class="form-control" name="cash4" id="cash" type="button" value="20,000" title="20,000">
+	      <label class="form-label" for="cash5"></label>
+	      <input class="form-control" name="cash5" id="cash" type="button" value="30,000" title="30,000">
+	      <label class="form-label" for="cash6"></label>
+	      <input class="form-control" name="cash6" id="cash" type="button" value="50,000" title="50,000">
+	    </div>
       </div>
     </section>
    

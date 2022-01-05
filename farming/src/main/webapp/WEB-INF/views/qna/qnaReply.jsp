@@ -25,10 +25,10 @@
 <script>
 
 function save(){
-	oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);  
     		//스마트 에디터 값을 텍스트컨텐츠로 전달
 	var content = document.getElementById("smartEditor").value;
-	alert(document.getElementById("txtContent").value); 
+	alert(document.getElementById("content").value); 
     		// 값을 불러올 땐 document.get으로 받아오기
 	return; 
 }
