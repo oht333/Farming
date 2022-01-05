@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<script type="text/javascript" src="<c:url value='/resources/libs/js/service/HuskyEZCreator.js" charset="utf-8'/>"></script>
 
 <script type="text/javascript">
 	$(function(){
@@ -46,8 +47,8 @@ function save(){
 	<legend>답변하기</legend>
 		<div class="form-floating mb-3">
 		  <label for="title"></label>
-		  <input type="text" class="form-control" id="floatingInput" name="title" placeholder="제목입력"
-		  	value="Re : ${vo.title}" />
+		  <input type="text" class="form-control" id="floatingInput" name="title"
+		  	value="<답변완료> Re : ${vo.title}" />
 		</div>
         <div>
             <label for="name">작성자</label>
