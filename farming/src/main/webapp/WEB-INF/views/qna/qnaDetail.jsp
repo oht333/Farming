@@ -9,12 +9,13 @@
 
 <style type="text/css">
 	body{
-		padding:5px;
-		margin:5px;
+		padding-top: 70px;
+		padding-bottom: 30px;
 	 }
 	.divForm {
 		width: 500px;
 		}
+
 </style>  
 <body style="padding-top: 72px;">
     
@@ -33,31 +34,34 @@
           </div>
         </div>
       </div>
-    </section>
-    
-    <h2>글 상세보기</h2>
-	<div class="divForm">
-		<div class="firstDiv">
-			<span class="sp1">제목</span> <span>${vo.title}</span>
-		</div>
+    </section><br>
+    <article>
+		<div class="container" role="main">
+    		<h2>1 : 1 질문 내역</h2><br>
+		
+			<div class="bg-white rounded shadow-sm">
+				<label for="exampleFormControlInput1" class="form-label">[문의글 제목] : </label>
+				<span> ${vo.title}</span> 
+			
 		<div>
-			<span class="sp1">작성자</span> <span>${vo.name}</span>
-		</div>
-		<div>
-			<span class="sp1">등록일</span> <span>${vo.regdate}</span>
+			<label for="exampleFormControlInput1" class="form-label">[등록 날짜] : </label> 
+			<span>${vo.regdate}</span>
 		</div>
 		
 		<% pageContext.setAttribute("newLine", "\r\n"); %>
 		
-		<div class="lastDiv">			
+		<div class="lastDiv">	
+			<label for="exampleFormControlInput1" class="form-label">[문의 내용]</label>		
 			<p class="content">${fn:replace(vo.content, newLine, "<br>")}</p>
 		</div>
+	</div><br>
 		<div class="center">
-			<a class="btn btn-primary" href='<c:url value="/qna/qnaEdit?no=${param.qnaNo }"/>'>게시글 수정</a>
-        	<a class="btn btn-primary" href='<c:url value="/qna/qnaDelete?no=${param.qnaNno }"/>'>게시글 삭제</a>
+			<a class="btn btn-primary" href='<c:url value="/qna/qnaEdit?qnaNo=${param.qnaNo }"/>'>게시글 수정</a>
+        	<a class="btn btn-primary" href='<c:url value="/qna/qnaDelete?qnaNo=${param.qnaNo }"/>'>게시글 삭제</a>
+        	<a class="btn btn-primary" href='<c:url value="/qna/qnaReply?qnaNo=${param.qnaNo }"/>'>답변하기</a>
         	<a class="btn btn-primary" href='<c:url value="/qna/qnaList"/>'>게시글 목록</a>			
-		</div>
-	</div>
+		</div><br>
+	</article>
     
 <%@ include file="../inc/bottom.jsp" %>  
     

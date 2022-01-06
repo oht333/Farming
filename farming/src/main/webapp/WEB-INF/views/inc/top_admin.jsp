@@ -28,7 +28,6 @@
     <!-- Bootstrap Js -->
     <script src="<c:url value='/resources/admin_js/bootstrap.min.js'/>"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.7.0/css/bootstrap.min.css">
 
     <!-- Metis Menu Js -->
     <script src="<c:url value='/resources/admin_js/jquery.metisMenu.js'/>"></script>
@@ -47,8 +46,10 @@
 
       
     <!-- Chart Js -->
-    <script type="text/javascript" src="<c:url value='/resources/admin_js/Chart.min.js'/>"></script>  
-    <script type="text/javascript" src="<c:url value='/resources/admin_js/chartjs.js'/>"></script>   
+    <script type="text/javascript" src="<c:url value='/resources/admin_js/chart.min.js'/>"></script>  
+    <script type="text/javascript">
+		$('.dr').hide();
+	</script>
 </head>
 <body>
     <div id="wrapper">
@@ -288,9 +289,10 @@
                   </ul>
                     </li>  --%>
                     
+                    
                     <li>
                         <a href="#"><i class="fa fa-sitemap"></i> 회원관리<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
+                        <ul class="nav nav-second-level dr">
                             <li>
                                <a href="<c:url value='/admin/manage/mem_list'/>">일반회원</a>
                             </li>

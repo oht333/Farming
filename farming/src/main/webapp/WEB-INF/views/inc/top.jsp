@@ -123,7 +123,7 @@
 						<c:if test="${!empty email }">
 							<c:if test="${user eq '사용자' }">
 								<li class="nav-item"><a class="nav-link" href="#">받은견적</a>
-								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat'/>">채팅</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/room?name=${name }'/>">채팅</a>
 								<li class="nav-item dropdown ms-2">
 									<a class="btn btn-primary" id="docsDropdownMenuLink"
 								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${name } 고객님</a>
@@ -142,7 +142,7 @@
 							</c:if>
 							<c:if test="${user eq '전문가' }">
 								<li class="nav-item"><a class="nav-link" href="#">받은요청</a>
-								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat'/>">채팅</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/room'/>">채팅</a>
 								<li class="nav-item dropdown ms-2">
 									<a class="btn btn-primary" id="docsDropdownMenuLink"
 								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${name } 고객님</a>
