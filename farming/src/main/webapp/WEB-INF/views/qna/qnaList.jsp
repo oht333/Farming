@@ -61,7 +61,7 @@
                   	</c:if>
                 </div>
                 <p class="text-sm text-muted">
-          		${name }
+          		작성자 : ${name }
                 </p>
               </div>
               <div class="col-10 ms-auto col-lg-7">
@@ -70,7 +70,7 @@
                     <p class="text-sm mb-0">${vo.content }</p>
                   </div>
                   <div class="col-md-4 text-end py-3">
-                    <p class="text-sm">${vo.regdate }</p>
+                    <p class="text-sm">등록 날짜<br>${vo.regdate }</p>
                   </div><a class="stretched-link" href="<c:url value='/qna/qnaDetail?qnaNo=${vo.qnaNo }'/>"></a>
                 </div>
               </div>
