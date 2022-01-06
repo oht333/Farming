@@ -7,16 +7,16 @@
       <div class="container">
         <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
           <div class="me-3">
-            <p class="mb-3 mb-md-0">${keyword } 지역에는 <strong>${fn:length(expList) }</strong> 명의 전문가가 활동 중 입니다.</p>
+            <p class="mb-3 mb-md-0"><strong>${fn:length(expList) }</strong> results found</p>
           </div>
-          <!-- <div>
+          <div>
             <label class="form-label me-2" for="form_sort">도시선택</label>
             <select class="selectpicker" name="sort" id="city" data-style="btn-selectpicker" title="">
               <option value="sortBy_0">서울   </option>
               <option value="sortBy_1">세종   </option>
               <option value="sortBy_2">강원   </option>
             </select>
-          </div> -->
+          </div>
         </div>
 	<div class="row">
 	<c:if test="${empty expList }">
@@ -58,7 +58,7 @@
 	          </div>
             </c:forEach>
 		  </c:if>
-
+        <!-- Pagination -->
         <nav aria-label="Page navigation example">
           <ul class="pagination pagination-template d-flex justify-content-center">
           	<c:if test="${pagingInfo.firstPage>1 }">

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Directory Theme by Bootstrapious</title>
+<title>파밍 - 가장 빠르게 스킬업하는 방법! 프리랜서, 레슨 전문가매칭서비스</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">

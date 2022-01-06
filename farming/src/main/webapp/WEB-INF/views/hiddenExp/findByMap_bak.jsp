@@ -1,18 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../inc/top.jsp"%>
 <script src="${pageContext.request.contextPath }/resources/js/address1.js"></script>
-<script type="text/javascript">
-$(function(){
-	$('#mapList li a:first').addClass('active');
-    $('#mapList li a').click(function(){
-		$(this).addClass('active');
-		$('#mapList li a').not(this).removeClass('active');
-	});
-});
-</script>
 <section>
       <div class="map-wrapper-300">
         <div class="h-100 " id="map"></div>
@@ -21,12 +10,15 @@ $(function(){
 			var container = document.getElementById('map');
 			var options = {
 				center: new kakao.maps.LatLng(37.56667 , 126.97806),
-				level: 5
+				level: 3
 			};
 	
 			var map = new kakao.maps.Map(container, options);
 			
-			
+			$(function(){
+				var act=$('#mapList li a').hasClass("active").html();
+				
+			});
 		</script>
       </div>
     </section>
@@ -39,11 +31,6 @@ $(function(){
         </ul>
       </div>
     </section>
-    <form id="listBox">
-    	<input type="text" name="keyword" id="keyword">
-    </form>
-    <button>검색</button>
-   		<c:import url="/hiddenExp/hiddenExpList?keyword=${keyword }" />
-    
+    <c:import url="/hiddenExp/hiddenExpList?keyword=" />
 
 <%@ include file="../inc/bottom.jsp"%>

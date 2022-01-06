@@ -8,11 +8,8 @@
     areaSelectMaker('#addressDo1' , '#addressSiGunGu1');
     areaList('#mapList');
     
-    $('#mapList li a:first').addClass('active');
-    $('#mapList li a').click(function(){
-		$(this).addClass('active');
-		$('#mapList li a').not(this).removeClass('active');
-	});
+    
+	
 });
 
 var area = {
@@ -37,13 +34,65 @@ var area = {
         "울산" : [ "남구", "동구", "북구", "중구", "울주군" ],
         "제주" : [ "서귀포시", "제주시" ],        
     };
-
+    
+var area2 = {
+        
+        "서울" : [37.56667, 126.97806],
+        "경기" : [37.27514552530648, 127.00912572494974],
+        "인천" : [37.4475714832663, 126.45236411585978],                
+        "강원" : [36.94126412725216, 127.9179639588506],                
+        "충북" : [36.995972, 127.926178],
+        "충남" : [36.66010065903739, 126.67227809794845],
+        "대전" : [36.35111, 127.38500],
+        "세종" : [36.48073333118746, 127.28926381021259],                
+        "전북" : [35.95133, 126.951141],
+        "전남" : [34.57185898674381, 126.5945503373769],
+        "광주" : [35.15972, 126.85306],        
+        "경북" : [36.416862, 128.162384],
+        "경남" : [34.87833068797938, 128.63324545159796],
+        "부산" : [35.15902150, 129.16032340],
+        "대구" : [35.87222, 128.60250],
+        "울산" : [35.53889, 129.31667],
+        "제주" : [33.50028042675381, 126.53185064504751]        
+    };
 
 var areaList = function(a1){
-	var areaKey = Object.keys(area);
-	areaKey.forEach(function(Region){
-        $(a1).append('<li class="nav-item"><a class="nav-link" onclick="panTo()" href="#">'+Region+'</a></li>');
+	var areaKey = Object.keys(area2);
+	areaKey.forEach(function(Region, idx){
+        $(a1).append('<li class="nav-item" onclick="panTo('+idx+')"><a class="nav-link" onclick="test(this)" href="#">'+Region+'</a></li>');
     });
+}
+
+function test(ths){
+	var key = $(ths).text();
+	$('#keyword').val(key);
+}
+
+/*var areaList = function(a1){
+	var areaKey = Object.keys(area2);
+	areaKey.forEach(function(Region, idx){
+        $(a1).append('<li class="nav-item" onclick="panTo('+idx+')"><a class="nav-link" href=\'/farming/hiddenExp/findByMap?keyword='+Region+'\'>'+Region+'</a></li>');
+    });
+}
+*/
+
+function panTo(idx) {
+	
+	var city = Object.keys(area2)[idx];
+	//console.log(city);
+	var key1 = area2[city][0];
+	var key2 = area2[city][1];
+	//console.log(key1);
+	//console.log(key2);
+
+	
+    // 이동할 위도 경도 위치를 생성합니다 
+    var moveLatLon = new kakao.maps.LatLng(key1, key2);
+    
+    // 지도 중심을 부드럽게 이동시킵니다
+    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+    map.panTo(moveLatLon);     
+    
 }
 
 var areaSelectMaker = function(a1, a2){

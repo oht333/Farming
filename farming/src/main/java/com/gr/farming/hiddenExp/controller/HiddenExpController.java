@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,42 +36,31 @@ public class HiddenExpController {
 		this.expService = expService;
 	}
 
-	
 	@RequestMapping("/findByMap")
 	public void findByMap() {
-		logger.info("지도로 찾기 화면 보여주기");
 		
+		logger.info("지도로 찾기 화면 보여주기");
 		
 	}
 	
+	
 	@RequestMapping("/hiddenExpList")
-	public String hiddenExpList(@RequestParam String keyword,
-			@ModelAttribute SearchVO searchVo, Model model) {
-
-		keyword=searchVo.getSearchKeyword();
+	public String hiddenExpList(@RequestParam(defaultValue="") String keyword,
+			 Model model) {
 		
-		if(keyword==null || keyword.isEmpty()) {
+		if(keyword==null || keyword.isEmpty() ) {
 			keyword = "서울";
 		}
 		
+		logger.info("리스트 조회, 파라미터 keyword={}", keyword);
+		
 		List<ExpertVO> expList=HEService.selectByAddress(keyword);
+		logger.info("검색 조회 결과, expList.size={}", expList.size());
+		logger.info("검색 조회 결과, expList={}", expList);
 		
-		
-		//[1] paginationInfo
-		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
-		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
-		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
-		
-		//[2] dateSearchVo에 페이징에 필요한 값 세팅
-		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
-
 		model.addAttribute("expList", expList);
-		model.addAttribute("pagingInfo", pagingInfo);
-
+		
 		return "/hiddenExp/hiddenExpList";
 	}
-	
 
 }
