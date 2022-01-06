@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gr.farming.resume.model.ResumeDAO">	
+	<insert id="insert" parameterType="resumeVo">
+		<selectKey keyProperty="resumeCode" resultType="int" order="BEFORE">
+			select resume_seq.nextval from dual
+		</selectKey>
+		insert into resume(resume_code, category_no, expert_no, intro, detail_intro, career, certificate, staff)
+		values(#{resumeCode},#{categoryNo},#{expertNo},#{intro},#{detailIntro},#{career},#{certificate},#{staff})
+	</insert>
+	
+	<select id="selectCareer" parameterType="int" resultType="string">
+		select career from resume
+		where expert_no=#{expertNo}
+	</select>
+</mapper>

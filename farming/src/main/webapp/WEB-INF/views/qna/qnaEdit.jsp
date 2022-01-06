@@ -5,10 +5,10 @@
 <script>
 
 function save(){
-	oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);  
     		//스마트 에디터 값을 텍스트컨텐츠로 전달
 	var content = document.getElementById("smartEditor").value;
-	alert(document.getElementById("txtContent").value); 
+	alert(document.getElementById("content").value); 
     		// 값을 불러올 땐 document.get으로 받아오기
 	return; 
 }
@@ -26,10 +26,6 @@ function save(){
         <div class="firstDiv">
             <label for="title">제목</label>
             <input type="text" id="title" name="title" value="${vo.title}" />
-        </div>
-        <div>
-            <label for="name">이름</label>
-            <input type="text" id="name" name="name" value="${vo.name}" />
         </div>
         <div>  
         	<label for="content">내용</label>        
@@ -52,6 +48,8 @@ function save(){
 						fOnBeforeUnload : function(){}
 					}
 				});
+				
+				
 			</script>
         </div>
         <div class="center">

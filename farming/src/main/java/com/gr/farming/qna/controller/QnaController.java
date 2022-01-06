@@ -121,17 +121,17 @@ public class QnaController {
 	}
 	
 	@GetMapping("/qnaEdit")
-	public String edit_get(@RequestParam(defaultValue="0") int no,
+	public String edit_get(@RequestParam(defaultValue="0") int qnaNo,
 			HttpServletRequest request, Model model) {
-		logger.info("수정화면 파라미터 no={}",no);
-		if(no==0) {
+		logger.info("수정화면 파라미터 no={}",qnaNo);
+		if(qnaNo==0) {
 			model.addAttribute("msg","잘못된 url 입니다.");
 			model.addAttribute("url","/qna/qnaList");
 			
 			return "common/message";
 		}
 		
-		QnaVO vo=qnaService.selectByNo(no);
+		QnaVO vo=qnaService.selectByNo(qnaNo);
 		logger.info("수정화면, 조회결과 vo={}",vo);
 		
 		model.addAttribute("vo",vo);
@@ -161,18 +161,18 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/qnaDetail")
-	public String detail(@RequestParam(defaultValue="0") int no,
+	public String detail(@RequestParam(defaultValue="0") int qnaNo,
 			HttpServletRequest request, Model model) {
-		logger.info("글 상세보기 파라미터 no={}", no);
+		logger.info("글 상세보기 파라미터 no={}", qnaNo);
 		
-		if(no==0) {
+		if(qnaNo==0) {
 			model.addAttribute("msg","잘못된 url입니다.");
 			model.addAttribute("url","/qna/qnaList");
 			
 			return "common/message";
 		}
 		
-		QnaVO vo = qnaService.selectByNo(no);
+		QnaVO vo = qnaService.selectByNo(qnaNo);
 		logger.info("상세보기 결과 vo={}",vo);
 		
 		model.addAttribute("vo",vo);
@@ -181,10 +181,10 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="qnaDelete", method = RequestMethod.GET)
-	public String delete_get(@RequestParam(defaultValue="0") int no,
+	public String delete_get(@RequestParam(defaultValue="0") int qnaNo,
 			Model model) {
-		logger.info("글 삭제 화면, 파라미터 no={}",no);
-		if(no==0) {
+		logger.info("글 삭제 화면, 파라미터 no={}",qnaNo);
+		if(qnaNo==0) {
 			model.addAttribute("msg","잘못된 url 입니다.");
 			model.addAttribute("url","/qna/qnaList");
 			return "common/message";
@@ -217,18 +217,18 @@ public class QnaController {
 	}
 	
 	@GetMapping("/qnaReply")
-	public String reply_get(@RequestParam(defaultValue="0") int no,
+	public String reply_get(@RequestParam(defaultValue="0") int qnaNo,
 			Model model) {
-		logger.info("답변화면 , 파라미터 no={}",no);
+		logger.info("답변화면 , 파라미터 no={}",qnaNo);
 		
-		if(no==0) {
+		if(qnaNo==0) {
 			model.addAttribute("msg","잘못된 url 입니다.");
 			model.addAttribute("url","/qna/qnaList");
 			
 			return "common/message";
 		}
 		
-		QnaVO vo = qnaService.selectByNo(no);
+		QnaVO vo = qnaService.selectByNo(qnaNo);
 		logger.info("답변화면 조회결과 vo={}",vo);
 		
 		model.addAttribute("vo",vo);

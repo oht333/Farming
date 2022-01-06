@@ -33,15 +33,11 @@
 <script type="text/javascript">
 	$(function(){
 		$('form[name=frmDelete]').submit(function(){
-			if($('#pwd').val().length<1){
-				alert('비밀번호를 입력하세요');
-				$('#pwd').focus();
-				event.preventDefault();
-			}else{
+			
 				if(!confirm('삭제하시겠습니까?')){
 					event.preventDefault();
 				}
-			}
+			
 		});
 	});	
 </script>
@@ -58,10 +54,7 @@
 	        <div>           
 	        	<span class="sp">${param.qnaNo}번 글을 삭제하시겠습니까?</span>                        
 	        </div>
-	        <div>           
-	            <label for="pwd">비밀번호</label>
-	            <input type="password" id="pwd" name="pwd" />   
-	        </div>
+	       
 	        <div class="center">
 	            <input type ="submit" class="btn btn-primary" value="삭제" />
 	            <input type = "Button" class="btn btn-primary" value="글목록" 
