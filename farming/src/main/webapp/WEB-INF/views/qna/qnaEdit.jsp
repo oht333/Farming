@@ -27,10 +27,6 @@ function save(){
             <label for="title">제목</label>
             <input type="text" id="title" name="title" value="${vo.title}" />
         </div>
-        <div>
-            <label for="name">이름</label>
-            <input type="text" id="name" name="name" value="${vo.name}" />
-        </div>
         <div>  
         	<label for="content">내용</label>        
  			<textarea id="content" name="content" rows="12" cols="40">${vo.content}</textarea>
@@ -52,6 +48,8 @@ function save(){
 						fOnBeforeUnload : function(){}
 					}
 				});
+				
+				
 			</script>
         </div>
         <div class="center">

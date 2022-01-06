@@ -5,7 +5,7 @@
       <div class="container position-relative">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='index.html'/>">Home</a></li>
           <li class="breadcrumb-item active">메인</li>
         </ol>
         <h1 class="hero-heading">파밍을 이용하면서 궁금하신 점이 있으신가요 ?</h1>
