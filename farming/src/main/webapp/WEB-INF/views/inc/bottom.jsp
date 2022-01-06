@@ -9,13 +9,7 @@
               <div class="fw-bold text-uppercase text-dark mb-3">1588-9780</div>
               <p>평일 10:00 - 18:00 <br>
               		(점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)</p>
-              <ul class="list-inline">
-                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
-                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a></li>
-                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
-                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
-              </ul>
+              
             </div>
             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
               <h6 class="text-uppercase text-dark mb-3">파밍소개</h6>
@@ -43,6 +37,30 @@
               <ul class="list-unstyled">
                 <li><a class="text-muted" href="<c:url value='/qna/qnaList'/>">공지사항</a></li>
                 <li><a class="text-muted" href="<c:url value='/qna/qnaMain'/>">자주묻는질문</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+          	<div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
+              <a style="font-size: 12px;" href="<c:url value='/member/agreement'/>">이용약관</a>
+            </div>
+             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+              <a style="font-size: 12px;" href="#">개인정보처리방침</a>
+             </div>
+          </div>
+          <div class="row">
+          	<div class="col-lg-8 col-md-6 mb-5 mb-lg-0" style="margin-bottom: 0; padding-bottom: 0;">
+              <p style="font-size: 12px;">(주)파밍은 통신판매중개자로서 통신판매의 당사자가 아니며 개별 판매자가 제공하는 서비스에 대한 이행, 계약사항 등과 관련한 의무와 책임은 거래당사자에게 있습니다.<br>
+					상호명:(주)그린파밍 · 대표이사:오지문 · 개인정보책임관리자:양명숙 · <a href="#">주소:경기도 성남시 분당구 북정로 6(정자동 178-1)</a><br>
+					사업자등록번호:000-00-00000 · 고객센터:1588-1818 · 이메일green@farming.com</p>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0" style="text-align: center;">
+              <ul class="list-inline">
+                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
+                <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
               </ul>
             </div>
           </div>
