@@ -1,6 +1,7 @@
 package com.gr.farming.expert.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -73,6 +74,7 @@ public class ExpertServiceImpl implements ExpertService{
 	}
 
 	public int updateExpert(ExpertVO vo) {
+		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
 		return dao.updateExpert(vo);
 	}
 
@@ -89,5 +91,12 @@ public class ExpertServiceImpl implements ExpertService{
 
 	public int delete(ExpertVO vo) {
 		return dao.delete(vo);
+	}
+	
+	public String selectMain(int expertNo){
+		return dao.selectMain(expertNo);
+	}
+	public int selectCategory(int expertNo) {
+		return dao.selectCategory(expertNo);
 	}
 }
