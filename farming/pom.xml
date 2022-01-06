@@ -125,6 +125,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		 
+		 <!-- 채팅 (웹소켓) -->
+		 <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-websocket</artifactId>
+		 </dependency>
 	</dependencies>
 
 	<build>

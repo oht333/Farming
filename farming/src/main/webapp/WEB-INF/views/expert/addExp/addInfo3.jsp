@@ -83,7 +83,6 @@
             <div class="col text-center text-sm-start"><input type="button" value="이전" class="btn btn-primary px-3" id="prev"></div>
             
             <div class="col text-center text-sm-end" id="submit"><input type="submit" value="저장" class="btn btn-primary px-3"></div>
-            <div id="a">aa</div>
           	
           </div>
         </form>
