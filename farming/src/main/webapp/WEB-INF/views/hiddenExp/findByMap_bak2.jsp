@@ -17,7 +17,7 @@ $(function(){
       <div class="map-wrapper-300">
         <div class="h-100 " id="map"></div>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff1949cec1418c92938f079cf57f3c3e"></script>
-		<script type="text/javascript">
+		<script>
 			var container = document.getElementById('map');
 			var options = {
 				center: new kakao.maps.LatLng(37.56667 , 126.97806),
@@ -26,35 +26,7 @@ $(function(){
 	
 			var map = new kakao.maps.Map(container, options);
 			
-			//화면 로딩시 "서울"에 해당하는 리스트 조회
-			$.ajax({
-				url:'<c:url value="/hiddenExp/hiddenExpList"/>',
-				type: "GET",
-				data: "keyword="+$(this).text(),
-				success:function(res){
-					$('#listBox').html(res);
-				},
-				error:function(xhr, status, error){
-					alert("error발생:"+ error);
-				}
-			});
 			
-			//각 지역 키워드 클릭시 해당하는 리스트 조회
-			$(function(){
-				$('li.nav-item a').click(function(){
-					$.ajax({
-						url:'<c:url value="/hiddenExp/hiddenExpList"/>',
-						type: "GET",
-						data: "keyword="+$(this).text(),
-						success:function(res){
-							$('#listBox').html(res);
-						},
-						error:function(xhr, status, error){
-							alert("error발생:"+ error);
-						}
-					});
-				});
-			});
 		</script>
       </div>
     </section>
@@ -67,8 +39,11 @@ $(function(){
         </ul>
       </div>
     </section>
-    <div id="listBox"></div>
-   	<%-- <c:import url="/hiddenExp/hiddenExpList?keyword=${keyword }" /> --%>
+    <form id="listBox" >
+    	<input type="text" name="keyword" id="keyword">
+    </form>
+    <button>검색</button>
+   	<c:import url="/hiddenExp/hiddenExpList?keyword=${keyword }" />
     
 
 <%@ include file="../inc/bottom.jsp"%>

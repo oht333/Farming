@@ -59,6 +59,7 @@ var area2 = {
 var areaList = function(a1){
 	var areaKey = Object.keys(area2);
 	areaKey.forEach(function(Region, idx){
+        //$(a1).append('<li class="nav-item"><a class="nav-link" onclick="test(this)" href="#">'+Region+'</a></li>');
         $(a1).append('<li class="nav-item" onclick="panTo('+idx+')"><a class="nav-link" onclick="test(this)" href="#">'+Region+'</a></li>');
     });
 }
@@ -82,8 +83,8 @@ function panTo(idx) {
 	//console.log(city);
 	var key1 = area2[city][0];
 	var key2 = area2[city][1];
-	//console.log(key1);
-	//console.log(key2);
+	console.log(key1);
+	console.log(key2);
 
 	
     // 이동할 위도 경도 위치를 생성합니다 

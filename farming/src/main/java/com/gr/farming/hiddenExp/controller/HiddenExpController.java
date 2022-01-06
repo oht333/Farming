@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.PaginationInfo;
@@ -43,7 +45,6 @@ public class HiddenExpController {
 		
 	}
 	
-	
 	@RequestMapping("/hiddenExpList")
 	public String hiddenExpList(@RequestParam(defaultValue="") String keyword,
 			 Model model) {
@@ -59,6 +60,8 @@ public class HiddenExpController {
 		logger.info("검색 조회 결과, expList={}", expList);
 		
 		model.addAttribute("expList", expList);
+		
+		//String result= "<c:url value='/hiddenExp/hiddenExpList?keyword="+keyword+"'/>";
 		
 		return "/hiddenExp/hiddenExpList";
 	}
