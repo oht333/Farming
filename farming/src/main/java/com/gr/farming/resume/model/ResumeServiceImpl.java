@@ -16,5 +16,9 @@ public class ResumeServiceImpl implements ResumeService{
 	public int insert(ResumeVO vo) {
 		return dao.insert(vo);
 	}
+
+	public String selectCareer(int expertNo) {
+		return dao.selectCareer(expertNo);
+	}
 	
 }

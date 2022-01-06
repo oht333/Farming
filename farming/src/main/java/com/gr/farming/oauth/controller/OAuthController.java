@@ -17,6 +17,9 @@ import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.member.model.MemberService;
 import com.gr.farming.member.model.MemberVO;
 import com.gr.farming.oauth.model.OAuthService;
+import com.gr.farming.resume.model.ResumeService;
+
+import ch.qos.logback.classic.Logger;
 
 @Controller
 @RequestMapping("/login")
@@ -28,11 +31,14 @@ public class OAuthController {
 	
 	private ExpertService eservice;
 	
+	private ResumeService rservice;
+	
 	@Autowired
-	public OAuthController(OAuthService service, MemberService mservice, ExpertService eservice) {
+	public OAuthController(OAuthService service, MemberService mservice, ExpertService eservice, ResumeService rservice) {
 		this.service = service;
 		this.mservice = mservice;
 		this.eservice = eservice;
+		this.rservice = rservice;
 	}
 	
 	@RequestMapping("/kakao")
@@ -111,7 +117,6 @@ public class OAuthController {
 				url = "/member/addInfo";
 			}
 		}
-		
 		session.setAttribute("memNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
@@ -159,8 +164,13 @@ public class OAuthController {
 		ExpertVO vo2 = eservice.selectByEmail(vo.getEmail());
 		vo.setExpertNo(vo2.getExpertNo());
 		String main = eservice.selectMain(vo.getExpertNo());
-		int categoryNo = eservice.selectCategory(vo.getExpertNo());
+		String career = rservice.selectCareer(vo.getExpertNo());
 		
+		if(career != null && !career.isEmpty()) {
+			session.setAttribute("career", career);			
+		} else {
+			System.out.println("추가정보x");
+		}
 		session.setAttribute("expNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
@@ -169,7 +179,6 @@ public class OAuthController {
 		session.setAttribute("token", access_Token);
 		session.setAttribute("img", img);
 		session.setAttribute("main", main);
-		session.setAttribute("categoryNo", categoryNo);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
@@ -209,7 +218,13 @@ public class OAuthController {
 		ExpertVO vo2 = eservice.selectByEmail(vo.getEmail());
 		vo.setExpertNo(vo2.getExpertNo());
 		String main = eservice.selectMain(vo.getExpertNo());
-		int categoryNo = eservice.selectCategory(vo.getExpertNo());
+		String career = rservice.selectCareer(vo.getExpertNo());
+		
+		if(career != null && !career.isEmpty()) {
+			session.setAttribute("career", career);			
+		} else {
+			System.out.println("추가정보x");
+		}
 		
 		session.setAttribute("expNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
@@ -218,7 +233,6 @@ public class OAuthController {
 		session.setAttribute("user", "전문가");
 		session.setAttribute("token", accessToken);
 		session.setAttribute("main", main);
-		session.setAttribute("categoryNo", categoryNo);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
