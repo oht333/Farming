@@ -23,7 +23,7 @@
                 <label class="form-label" for="pwd"> Password</label>
                 <input class="form-control" name="pwd" id="pwd" type="password">
               </div>
-              <div class="col-lg-2 d-grid">
+              <div class="col-lg-2 d-grid" style="float:right;">
                     <button class="btn btn-primary rounded-pill h-100" id="submit" value="submit">확인 </button>
               </div>
               </form>

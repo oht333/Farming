@@ -33,7 +33,7 @@ $(function(){
 
 
 				<fieldset>	<legend>전문가 탈퇴</legend>
-					<p class="p">회원탈퇴하시겠습니까?</p>
+					<p class="p">전문가 탈퇴하시겠습니까?</p>
 					<div class="mb-4">
 		                <label class="form-label" for="email"> 이메일</label>
 		                <input class="form-control" name="email" id="email" type="text" value="${email}" readonly="readonly">
