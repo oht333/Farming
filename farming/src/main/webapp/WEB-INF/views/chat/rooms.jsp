@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+<%@ include file="../inc/top.jsp" %>
+
 
 <head>
 	<meta charset="UTF-8" />
@@ -27,7 +26,6 @@
             <input type="text" name="name" class="form-control">
             <button class="btn btn-secondary btn-create">상대와 채팅방 개설하기</button>
         </form>
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -48,5 +46,5 @@ $(document).ready(function(){
 
 });
 </script>
-</body>
-</html>
+
+<%@ include file="../inc/bottom.jsp" %>
