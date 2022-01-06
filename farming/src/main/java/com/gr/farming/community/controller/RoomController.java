@@ -17,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(value = "/chat")
 @Log4j2
+
 public class RoomController {
 
     private final ChatRoomRepository repository;
