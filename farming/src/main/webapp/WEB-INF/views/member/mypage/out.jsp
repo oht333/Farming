@@ -22,7 +22,7 @@ $(function(){
           <li class="breadcrumb-item"><a href="<c:url value='/member/mypage/main'/>">마이페이지</a></li>
           <li class="breadcrumb-item active">탈퇴</li>
         </ol>
-        <h1 class="hero-heading mb-0">탈퇴 확인</h1>
+        <h1 class="hero-heading mb-0">회원 탈퇴</h1>
         <p class="text-muted mb-5">Please check if you want to withdraw.</p>
         
         <div class="row" style="margin-left:340px;">
@@ -42,11 +42,10 @@ $(function(){
 		                <label class="form-label" for="pwd"> 비밀번호</label>
 		                <input class="form-control" name="pwd" id="pwd" type="password">
 		              </div>
-					<div class="align_center">
-						<!-- <input type="submit" id="submit" value="회원탈퇴"> -->
-						<button class="btn btn-outline-success" type="submit">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</button>
-						<a style="float:right;" class="btn btn-outline-success" href="<c:url value='/member/mypage/main'/>">&nbsp;&nbsp;취소&nbsp;&nbsp;</a>
-					</div>
+					<div class="row form-block flex-column flex-sm-row">
+		            	<div class="col text-center text-sm-start"><a href="<c:url value='/member/mypage/main'/>" value="취소" class="btn btn-primary px-3" id="prev">&nbsp;&nbsp;&nbsp;&nbsp;취소&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+		            	<div class="col text-center text-sm-end" id="submit"><input type="submit" value="    탈퇴    " class="btn btn-primary px-3"></div>
+			         </div>
 				</fieldset>	
 			</form>
             </div>

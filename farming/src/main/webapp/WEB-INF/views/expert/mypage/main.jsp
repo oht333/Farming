@@ -79,6 +79,19 @@
               </div>
             </div>
           </div>
+          <div class="col-6 col-md-4 mb-30px">
+            <div class="card h-100 border-0 shadow hover-animate">
+              <div class="card-body">
+                <div class="icon-rounded bg-secondary-light mb-3">
+                  <svg class="svg-icon text-primary w-2rem h-2rem">
+                    <use xlink:href="#password-1"> </use>
+                  </svg>
+                </div>
+                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/expert/mypage/out?email=${email }'/>">회원 탈퇴</a></h5>
+                <p class="text-muted card-text text-sm">Check out the farming announcement</p>
+              </div>
+            </div>
+          </div>
           <!-- <div class="col-6 col-md-4 mb-30px">
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
