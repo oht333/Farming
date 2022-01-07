@@ -2,6 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../inc/top.jsp" %>
+<style>
+.btn-outline-mute {
+  color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+
+.btn-outline-mute:hover {
+  color: #fff;
+  background-color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+</style>
 <script type="text/javascript">
 var contextPath = "/farming";
 $(function(){
@@ -43,7 +55,7 @@ $(function(){
 		                <input class="form-control" name="pwd" id="pwd" type="password">
 		              </div>
 					<div class="row form-block flex-column flex-sm-row">
-		            	<div class="col text-center text-sm-start"><a href="<c:url value='/member/mypage/main'/>" value="취소" class="btn btn-primary px-3" id="prev">&nbsp;&nbsp;&nbsp;&nbsp;취소&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+		            	<div class="col text-center text-sm-start"><a href="<c:url value='/member/mypage/main'/>" value="취소" class="btn btn-outline-mute" id="prev">&nbsp;&nbsp;&nbsp;&nbsp;취소&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
 		            	<div class="col text-center text-sm-end" id="submit"><input type="submit" value="    탈퇴    " class="btn btn-primary px-3"></div>
 			         </div>
 				</fieldset>	

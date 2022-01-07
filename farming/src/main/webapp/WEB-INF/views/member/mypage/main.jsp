@@ -56,7 +56,7 @@
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
                   <svg class="svg-icon text-primary w-2rem h-2rem">
-                    <use xlink:href="#chat-app-1"> </use>
+                    <use xlink:href="#password-1"> </use>
                   </svg>
                 </div>
                 <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/member/mypage/out?email=${email }'/>">회원 탈퇴</a></h5>
@@ -82,7 +82,7 @@
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
                   <svg class="svg-icon text-primary w-2rem h-2rem">
-                    <use xlink:href="#password-1"> </use>
+                    <use xlink:href="#chat-app-1"> </use>
                   </svg>
                 </div>
                 <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="#">이용후기</a></h5>
