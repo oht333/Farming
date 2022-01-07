@@ -1181,6 +1181,7 @@ progress {
 
   .col-md-9 {
     flex: 0 0 auto;
+    justify-content: space-between;
     width: 75%;
   }
 
