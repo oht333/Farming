@@ -3,10 +3,28 @@
 <%@ include file="../inc/top.jsp"%>
 <script type="text/javascript" 
 	src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
+<script type="text/javascript">
+	/* $(function(){    
+	    var checkArea = $('.chk');
+	    $(checkArea).each(function(i , item){            
+	        $(item).find('.etc').on('click' , function(){
+	        	
+	            var check = true,
+	                inputArea = $(this).siblings('.etc_box');    
+	
+	            if($(this).is(':checked') == check && $(i==${idx})){
+	                $(inputArea).html("<input type='text' name='${map['Q_CLASS']}' value='' class='etc_box form-control' placeholder='기타입력'>");
+	            } else {
+	                $(inputArea).find('.etc_box').remove();
+	            }
+	        });
+	    });
+	});  */
 
-<style>
-.chk .etc:checked ~ .etc_box{display:block}
-.chk .etc_box{display:none}
+</script>
+<style type="text/css">
+.chk .etc:checked ~ .etc_box input{display:block}
+.chk .etc_box input{display:none}
 </style>
 <div class="progress rounded-0 sticky-top" style="height: 8px; top: 66px;">
       <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
@@ -37,30 +55,10 @@
 	                       <div class="form-check chk" id="${map['Q_CLASS']}">
 	                         <input class="form-check-input etc" type="${vo.type}" id="${map['Q_CLASS']}_${idx}" name="${map['Q_CLASS']}" value="${vo.answer }">
 	                         <label class="form-check-label text-muted" for="${map['Q_CLASS']}_${idx}" >${vo.answer }</label>
-		                    <div class="etc_box">
-		                    	<c:if test="${field.name == 'FIELD3'}">checked="checked"</c:if>
-		                    </div>
+		                     <div class="etc_box">
+		                     	<input class="form-control" type="text" name="${map['Q_CLASS']}" title="직접입력인 경우">
+		                     </div>
 	                       </div>
-	                       <!-- <script type="text/javascript">
-							$(function(){    
-							    var checkArea = $('.chk');
-							    console.log(${idx});
-							    $(checkArea).each(function(i , item){            
-							        $(item).find('.etc').on('click' , function(){
-							        	
-							            var check = true,
-							                inputArea = $(this).siblings('.etc_box');    
-							
-							            if($(this).is(':checked') == check && $(i==${idx})){
-							            	$('.form-check').css('background','black');
-							                $(inputArea).html("<input type='text' name='${map['Q_CLASS']}' value='' class='etc_box form-control' placeholder='기타입력'>");
-							            } else {
-							                $(inputArea).find('.etc_box').remove();
-							            }
-							        });
-							    });
-							}); -->
-							</script>
                          </c:when>
                          <c:otherwise>
 	                       <div class="form-check" id="${map['Q_CLASS']}">

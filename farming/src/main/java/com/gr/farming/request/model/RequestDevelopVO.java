@@ -14,6 +14,15 @@ public class RequestDevelopVO {
 	private String WORKTYPE;
 	private String LOCATION1;
 	private String LOCATION2;
+	private Timestamp regdate;
+	
+	
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
 	public int getREQUEST_DEVELOP_NO() {
 		return REQUEST_DEVELOP_NO;
 	}
@@ -78,7 +87,8 @@ public class RequestDevelopVO {
 	public String toString() {
 		return "RequestDevelopVO [REQUEST_DEVELOP_NO=" + REQUEST_DEVELOP_NO + ", PLATFORM=" + PLATFORM + ", TYPE="
 				+ TYPE + ", CAREER=" + CAREER + ", STEP=" + STEP + ", REFERENCE=" + REFERENCE + ", DEADLINE=" + DEADLINE
-				+ ", WORKTYPE=" + WORKTYPE + ", LOCATION1=" + LOCATION1 + ", LOCATION2=" + LOCATION2 + "]";
+				+ ", WORKTYPE=" + WORKTYPE + ", LOCATION1=" + LOCATION1 + ", LOCATION2=" + LOCATION2 + ", regdate="
+				+ regdate + "]";
 	}
 	
 	
