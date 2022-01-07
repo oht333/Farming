@@ -1,10 +1,12 @@
 package com.gr.farming.community.controller;
 
-import lombok.RequiredArgsConstructor;
-import com.gr.farming.community.model.ChatMessageDTO;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+
+import com.gr.farming.community.model.ChatMessageDTO;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
