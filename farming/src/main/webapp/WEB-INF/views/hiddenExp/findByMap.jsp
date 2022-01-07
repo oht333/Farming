@@ -30,7 +30,7 @@ $(function(){
 			$.ajax({
 				url:'<c:url value="/hiddenExp/hiddenExpList"/>',
 				type: "GET",
-				data: "keyword="+$(this).text(),
+				data: "keyword=서울",
 				success:function(res){
 					$('#listBox').html(res);
 				},

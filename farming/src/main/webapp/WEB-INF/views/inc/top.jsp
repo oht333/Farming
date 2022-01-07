@@ -97,10 +97,9 @@
 							<div class="dropdown-menu" aria-labelledby="docsDropdownMenuLink">
 								<a class="dropdown-item" href="index.html">파밍소개</a>
 								<a class="dropdown-item" href="index.html">카테고리 검색</a>
-								<a class="dropdown-item" href="index-2.html">인기서비스</a>
+               					<a class="dropdown-item" href="<c:url value='/hiddenExp/findByMap'/>">지도로 파밍<span class="badge badge-info-light ms-1 mt-n1">NEW</span></a>
 								<c:if test="${user eq '사용자' }">
 									<a class="dropdown-item" href="<c:url value='/findExp/findExpList'/>">전문가찾기</a>
-                  					<a class="dropdown-item" href="<c:url value='/hiddenExp/findByMap'/>">지도로 파밍<span class="badge badge-info-light ms-1 mt-n1"></a>
 								</c:if>
 								<c:if test="${user eq '전문가' }">
 									<c:if test="${empty career }">
