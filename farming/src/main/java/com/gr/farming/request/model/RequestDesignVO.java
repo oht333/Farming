@@ -12,7 +12,14 @@ public class RequestDesignVO {
 	private String LOCATION1;
 	private String LOCATION2;
 	private String QUESTION;
+	private Timestamp regdate;
 	
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
 	public int getREQUEST_DESIGN_NO() {
 		return REQUEST_DESIGN_NO;
 	}
@@ -65,7 +72,7 @@ public class RequestDesignVO {
 	public String toString() {
 		return "RequestDesignVO [REQUEST_DESIGN_NO=" + REQUEST_DESIGN_NO + ", TYPE=" + TYPE + ", RANGE=" + RANGE
 				+ ", SCALE=" + SCALE + ", DEADLINE=" + DEADLINE + ", LOCATION1=" + LOCATION1 + ", LOCATION2="
-				+ LOCATION2 + ", QUESTION=" + QUESTION + "]";
+				+ LOCATION2 + ", QUESTION=" + QUESTION + ", regdate=" + regdate + "]";
 	}
 	
 	
