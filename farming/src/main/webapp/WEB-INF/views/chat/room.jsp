@@ -39,12 +39,13 @@
 			<div id="msgArea"></div>
 			
 			
-			<div class='bg-light rounded shadow-sm'>
+			<div class='bg-light rounded shadow-sm' style="margin: 0; padding: 0;">
 				<div class='input-group'>
 	           	 	<textarea class='form-control border-0 p-4 bg-light text-sm' id="msg" placeholder='Type a message' ></textarea>
-	            	<button class='btn btn-link' id="button-send"><i class='fa fa-paper-plane'></i></button>
+	            	<button class='btn btn-link' id="button-send" style="margin: 0;"><i class='fa fa-paper-plane'></i></button>
 	        	</div>
 			</div>
+			
 	 	 </div>
     </div>
   </div>
@@ -93,7 +94,7 @@ $(document).ready(function(){
            var str = '';
            
            if(writer === username){
-        	   str = "<div class='d-flex col-md-9 col-xl-7 ms-auto mb-3'>";
+        	   str = "<div class='d-flex-end col-md-9 col-xl-7 ms-auto mb-3'>";
                str += "<div class='me-3'>";
                str += "<div class='bg-primary rounded p-4 mb-2'>";
                str += "<p class='text-sm mb-0 text-white'>"+content.message+"</p></div>";
