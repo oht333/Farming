@@ -17,9 +17,23 @@
 		values(#{qnaNo}, #{memberNo}, #{title}, #{content})	
 	</insert>
 	
-	<select id="select" parameterType="int" resultType="qnaVo">
-		select * from qna
-		where member_no=#{memberNo} order by qna_no desc
+	<select id="select" parameterType="searchVo" resultType="qnaVo">
+		select * from
+		(
+			select rownum as RNUM, A.*
+				from(
+					select * from qna
+					order by qna_no desc
+				)A
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+			and RNUM<=#{firstRecordIndex}+ #{recordCountPerPage}]]>
+	</select>
+	
+	<select id="selectTotalRecord" parameterType="searchVo" resultType="int">
+		select count(*) from qna
+		<include refid="searchWhere"></include>	
 	</select>
 	
 	<select id="selectByNo" parameterType="int" resultType="qnaVo">

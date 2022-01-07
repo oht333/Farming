@@ -22,7 +22,7 @@ function save(){
 	<input type="hidden" name="qnaNo" value="${param.qnaNo}">
 	
     <fieldset>
-	<legend>글수정</legend>
+	<legend>게시글수정</legend>
         <div class="firstDiv">
             <label for="title">제목</label>
             <input type="text" id="title" name="title" value="${vo.title}" />

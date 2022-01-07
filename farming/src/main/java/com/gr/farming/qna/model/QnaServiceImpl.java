@@ -23,10 +23,10 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDao.insert(vo);
 	}
 
-	@Override
-	public List<QnaVO> select(int no) {
-		return qnaDao.select(no);
-	}
+//	@Override
+//	public List<QnaVO> select(int no) {
+//		return qnaDao.select(no);
+//	}
 
 	@Override
 	public int selectTotalRecord(SearchVO searchVo) {
@@ -59,6 +59,13 @@ public class QnaServiceImpl implements QnaService{
 		int cnt=qnaDao.updateSortNo(vo);
 		cnt=qnaDao.reply(vo);
 		return cnt;
+	}
+
+
+	@Override
+	public List<QnaVO> select(SearchVO searchVo) {
+		// TODO Auto-generated method stub
+		return qnaDao.select(searchVo);
 	}
 
 	
