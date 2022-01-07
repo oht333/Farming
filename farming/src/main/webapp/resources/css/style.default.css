@@ -7145,6 +7145,10 @@ fieldset:disabled .btn {
 .d-flex {
   display: flex !important;
 }
+.d-flex-end {
+  display: flex !important;
+  justify-content: flex-end;
+}
 
 .d-inline-flex {
   display: inline-flex !important;
