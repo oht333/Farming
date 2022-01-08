@@ -33,7 +33,7 @@
                     <use xlink:href="#diary-1"> </use>
                   </svg>
                 </div>
-                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="user-personal.html">파밍 안내</a></h5>
+                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="user-personal.html">파밍 안내 &amp; 공지사항</a></h5>
                 <p class="text-muted card-text text-sm">How to farming and how to use it</p>
               </div>
             </div>
@@ -56,10 +56,10 @@
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
                   <svg class="svg-icon text-primary w-2rem h-2rem">
-                    <use xlink:href="#chat-app-1"> </use>
+                    <use xlink:href="#password-1"> </use>
                   </svg>
                 </div>
-                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="#">공지사항</a></h5>
+                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/member/mypage/out?email=${email }'/>">회원 탈퇴</a></h5>
                 <p class="text-muted card-text text-sm">Check out the farming announcement</p>
               </div>
             </div>
@@ -82,7 +82,7 @@
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
                   <svg class="svg-icon text-primary w-2rem h-2rem">
-                    <use xlink:href="#password-1"> </use>
+                    <use xlink:href="#chat-app-1"> </use>
                   </svg>
                 </div>
                 <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="#">이용후기</a></h5>

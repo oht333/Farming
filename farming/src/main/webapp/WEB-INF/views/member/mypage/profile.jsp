@@ -2,6 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../inc/top.jsp" %>
+<style>
+.btn-outline-mute {
+  color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+
+.btn-outline-mute:hover {
+  color: #fff;
+  background-color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+</style>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -13,6 +25,9 @@
   					$('#pwd').focus();
   					event.preventDefault();
 				}
+			});
+			$('#prev').click(function(){
+				location.href="<c:url value='/member/mypage/main'/>";
 			});
 			$('#searchAddr').click(function(){
   				new daum.Postcode({
@@ -88,13 +103,10 @@
                 <label class="form-label" for="zipcode"> 우편번호</label>
                 <input class="form-control" name="zipcode" id="zipcode" placeholder="${vo.zipCode}" type="text">
               </div>
-         
-              <div class="col-lg-2 d-grid">
-                    <button class="btn btn-primary rounded-pill h-100" type="submit" id="edit">&nbsp;&nbsp;&nbsp;수정&nbsp;&nbsp;&nbsp;</button>
-                    <a style="float:right;" class="btn btn-primary rounded-pill h-100" href="<c:url value='/member/mypage/main'/>">&nbsp;&nbsp;뒤로가기&nbsp;&nbsp;</a>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <a style="margin-left: 40%;" class="btn btn-primary rounded-pill h-100" href="<c:url value='/member/mypage/out'/>">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</a>
-              </div>
+              <div class="row form-block flex-column flex-sm-row">
+            	<div class="col text-center text-sm-start"><input type="button" value="  뒤로가기  " class="btn btn-outline-mute" id="prev"></div>
+            	<div class="col text-center text-sm-end" id="submit"><input type="submit" value="    수정    " class="btn btn-primary px-3"></div>
+	         </div>
             </form>
             </div>
           </div>
