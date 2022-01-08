@@ -6,7 +6,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Directory Theme by Bootstrapious</title>
+
+<title>파밍 - 가장 빠르게 스킬업하는 방법! 프리랜서, 레슨 전문가매칭서비스</title>
+
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -97,10 +99,9 @@
 							<div class="dropdown-menu" aria-labelledby="docsDropdownMenuLink">
 								<a class="dropdown-item" href="index.html">파밍소개</a>
 								<a class="dropdown-item" href="index.html">카테고리 검색</a>
-								<a class="dropdown-item" href="index-2.html">인기서비스</a>
+               					<a class="dropdown-item" href="<c:url value='/hiddenExp/findByMap'/>">지도로 파밍<span class="badge badge-info-light ms-1 mt-n1">NEW</span></a>
 								<c:if test="${user eq '사용자' }">
 									<a class="dropdown-item" href="<c:url value='/findExp/findExpList'/>">전문가찾기</a>
-                  					<a class="dropdown-item" href="<c:url value='/hiddenExp/findByMap'/>">지도로 파밍<span class="badge badge-info-light ms-1 mt-n1"></a>
 								</c:if>
 								<c:if test="${user eq '전문가' }">
 									<c:if test="${empty career }">
@@ -123,7 +124,7 @@
 						<c:if test="${!empty email }">
 							<c:if test="${user eq '사용자' }">
 								<li class="nav-item"><a class="nav-link" href="#">받은견적</a>
-								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/room?name=${name }'/>">채팅</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/rooms'/>">채팅</a>
 								<li class="nav-item dropdown ms-2">
 									<a class="btn btn-primary" id="docsDropdownMenuLink"
 								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${name } 고객님</a>
@@ -142,7 +143,7 @@
 							</c:if>
 							<c:if test="${user eq '전문가' }">
 								<li class="nav-item"><a class="nav-link" href="#">받은요청</a>
-								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/room'/>">채팅</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/rooms'/>">채팅</a>
 								<li class="nav-item dropdown ms-2">
 									<a class="btn btn-primary" id="docsDropdownMenuLink"
 								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${name } 고객님</a>
