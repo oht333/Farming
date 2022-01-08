@@ -62,7 +62,7 @@
                   	</c:if>
                 </div>
                 <p class="text-sm text-muted">
-          		작성자 : ${memberVo.no }
+          		작성자 : ${name }
                 </p>
               </div>
               <div class="col-10 ms-auto col-lg-7">

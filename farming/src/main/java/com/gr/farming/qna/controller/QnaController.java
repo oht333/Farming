@@ -24,6 +24,7 @@ import com.gr.farming.common.PaginationInfo;
 import com.gr.farming.common.SearchVO;
 import com.gr.farming.qna.model.QnaService;
 import com.gr.farming.qna.model.QnaVO;
+import com.gr.farming.qna.model.SearchVO2;
 
 @Controller
 @RequestMapping("/qna")
@@ -64,7 +65,7 @@ public class QnaController {
 
 
 	@RequestMapping("/qnaList") 
-	public String qnaList(@ModelAttribute SearchVO searchVo, Model model) {
+	public String qnaList(@ModelAttribute SearchVO2 searchVo, HttpSession session ,Model model) {
 
 		logger.info("글목록, 파라미터 searchVo={}", searchVo);
 
@@ -77,7 +78,9 @@ public class QnaController {
 		// searchvo에 값 넣기 
 		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		searchVo.setMemNo((int)session.getAttribute("memNo"));
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
+		
 
 		List<QnaVO> list = qnaService.select(searchVo);
 		logger.info("전체 조회 결과 list.size={}", list.size());

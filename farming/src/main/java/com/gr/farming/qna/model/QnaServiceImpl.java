@@ -29,7 +29,7 @@ public class QnaServiceImpl implements QnaService{
 //	}
 
 	@Override
-	public int selectTotalRecord(SearchVO searchVo) {
+	public int selectTotalRecord(SearchVO2 searchVo) {
 		return qnaDao.selectTotalRecord(searchVo);
 	}
 
@@ -63,7 +63,7 @@ public class QnaServiceImpl implements QnaService{
 
 
 	@Override
-	public List<QnaVO> select(SearchVO searchVo) {
+	public List<QnaVO> select(SearchVO2 searchVo) {
 		// TODO Auto-generated method stub
 		return qnaDao.select(searchVo);
 	}

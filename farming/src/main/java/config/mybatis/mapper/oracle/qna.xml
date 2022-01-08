@@ -17,22 +17,25 @@
 		values(#{qnaNo}, #{memberNo}, #{title}, #{content})	
 	</insert>
 	
-	<select id="select" parameterType="searchVo" resultType="qnaVo">
+	<select id="select" parameterType="searchVo2" resultType="qnaVo">
 		select * from
 		(
 			select rownum as RNUM, A.*
 				from(
 					select * from qna
+					where member_no=#{memNo}
 					order by qna_no desc
 				)A
 		)
 		<![CDATA[
 		where RNUM>#{firstRecordIndex} 
 			and RNUM<=#{firstRecordIndex}+ #{recordCountPerPage}]]>
+		
 	</select>
 	
-	<select id="selectTotalRecord" parameterType="searchVo" resultType="int">
+	<select id="selectTotalRecord" parameterType="searchVo2" resultType="int">
 		select count(*) from qna
+		where member_no=#{memNo}
 		<include refid="searchWhere"></include>	
 	</select>
 	
@@ -54,7 +57,7 @@
 	</parameterMap>
 	
 	<delete id="deleteQna" parameterMap="qnaDeleteParam">
-		{call DELETEREBOARD(?,?,?)}
+		{call DELETEQNA(?,?,?)}
 	</delete>
 	
 	<update id="updateSortNo" parameterType="qnaVo">
