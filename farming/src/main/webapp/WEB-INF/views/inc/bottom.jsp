@@ -6,7 +6,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-4 mb-5 mb-lg-0">
-              <div class="fw-bold text-uppercase text-dark mb-3">1588-9780</div>
+              <div class="fw-bold text-uppercase text-dark mb-3"><h6>1588-1818</h6></div>
               <p>평일 10:00 - 18:00 <br>
               		(점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)</p>
               
@@ -40,14 +40,16 @@
               </ul>
             </div>
           </div>
+          <br>
           <div class="row">
           	<div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
-              <a style="font-size: 12px;" href="<c:url value='/member/agreement'/>">이용약관</a>
+              <a style="font-size: 14px;" href="<c:url value='/member/agreement'/>">이용약관</a>
             </div>
              <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-              <a style="font-size: 12px;" href="#">개인정보처리방침</a>
+              <a style="font-size: 14px;" href="#">개인정보처리방침</a>
              </div>
           </div>
+           <br>
           <div class="row">
           	<div class="col-lg-8 col-md-6 mb-5 mb-lg-0" style="margin-bottom: 0; padding-bottom: 0;">
               <p style="font-size: 12px;">(주)파밍은 통신판매중개자로서 통신판매의 당사자가 아니며 개별 판매자가 제공하는 서비스에 대한 이행, 계약사항 등과 관련한 의무와 책임은 거래당사자에게 있습니다.<br>
