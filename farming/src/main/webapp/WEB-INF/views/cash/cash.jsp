@@ -60,12 +60,15 @@ $('#cash').click(function () {
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
           <li class="breadcrumb-item"><a href="<c:url value='/index'/>">Home</a></li>
-          <li class="breadcrumb-item active">파밍캐시 &amp; 페이 </li>
+          <li class="breadcrumb-item"><a href="<c:url value='/member/mypage/main'/>">마이페이지</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/cash/main'/>">파밍캐시 &amp; 페이 </a></li>
+          <li class="breadcrumb-item active">캐시 충전 </li>
         </ol>
         <h1 class="hero-heading mb-0">파밍캐시 &amp; 페이 충전</h1>
         <p class="text-muted mb-5">Manage your account and settings here.</p>
         <input type="hidden" name="memberNo" value="${param.memberNo}">
-       <p style="font-weight: bold">캐시 충전 금액 선택</p>
+       <p style="font-weight: bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;충전할 금액을 선택하세요.</p>
+       <br>
         <!-- <div class="table-responsive">
           <table class="table text-gray-700 table-striped table-hover">
         <tr class="no-hover no-stripe">
@@ -79,9 +82,9 @@ $('#cash').click(function () {
             </tr>
             </table>
         </div> -->
-        <div class="box1" style=" margin-top: 3px; ">
+        <div class="box1" style=" margin-top: 3px; margin-left: 40px;">
 	      <label class="form-label" for="cash1"></label>
-	      <input class="form-control" name="cash1" id="cash" type="checkbox" value="5,000" title="5,000" >
+	      <input class="form-control" name="cash1" id="cash" type="button" value="5,000" title="5,000" >
 	      <label class="form-label" for="cash2"></label>
 	      <input class="form-control" name="cash2" id="cash" type="button" value="10,000" title="10,000">
 	      <label class="form-label" for="cash3"></label>
@@ -93,6 +96,10 @@ $('#cash').click(function () {
 	      <label class="form-label" for="cash6"></label>
 	      <input class="form-control" name="cash6" id="cash" type="button" value="50,000" title="50,000">
 	    </div>
+	     <div class="row form-block flex-column flex-sm-row">
+            <div class="col text-center text-sm-start"><input type="button" value="이전" class="btn btn-primary px-3" id="prev" onclick="location.href='/farming/cash/main?email=${email }'"></div>
+            <div class="col text-center text-sm-end" id="submit"><input type="submit" value="다음" class="btn btn-primary px-3"></div>
+          </div>
       </div>
     </section>
    
