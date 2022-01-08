@@ -38,6 +38,7 @@
 
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
+	
 <script
 	src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
 <!-- Tweaks for older IEs-->
@@ -144,6 +145,7 @@
 							<c:if test="${user eq '전문가' }">
 								<li class="nav-item"><a class="nav-link" href="#">받은요청</a>
 								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/rooms'/>">채팅</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/findexp/expDetailEdit?expertNo=${expNo }'/>">프로필</a>
 								<li class="nav-item dropdown ms-2">
 									<a class="btn btn-primary" id="docsDropdownMenuLink"
 								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${name } 고객님</a>
