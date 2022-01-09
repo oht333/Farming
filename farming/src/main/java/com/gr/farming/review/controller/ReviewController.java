@@ -1,0 +1,39 @@
+package com.gr.farming.review.controller;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.gr.farming.review.model.ReviewService;
+import com.gr.farming.review.model.ReviewVO;
+
+@Controller
+public class ReviewController {
+
+	public static final Logger logger
+		= LoggerFactory.getLogger(ReviewController.class);
+	
+	private final ReviewService reviewService;
+
+	@Autowired
+	public ReviewController(ReviewService reviewService) {
+		this.reviewService = reviewService;
+	}
+	
+	@RequestMapping("/reviewList")
+	public String reviewList(@RequestParam int expertNo,
+			Model model) {
+		
+		List<ReviewVO> reviewList=reviewService.selectReview(expertNo);
+		
+		model.addAttribute("reviewList", reviewList);
+		
+		return "review/reviewList";
+	}
+}

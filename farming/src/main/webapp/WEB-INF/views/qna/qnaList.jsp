@@ -10,7 +10,8 @@
 </script>
 
 <body style="padding-top: 72px;">
-
+	<form id="frmPage" method="post" action="<c:url value='/qna/qnaList'/>">
+	</form>
     
     <!-- Hero Section-->
     <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('img/photo/restaurant-1515164783716-8e6920f3e77c.jpg');">

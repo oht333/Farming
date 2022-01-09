@@ -24,16 +24,15 @@ import com.gr.farming.common.PaginationInfo;
 import com.gr.farming.common.SearchVO;
 import com.gr.farming.qna.model.QnaService;
 import com.gr.farming.qna.model.QnaVO;
+import com.gr.farming.qna.model.SearchVO2;
 
 @Controller
 @RequestMapping("/qna")
 public class QnaController {
-	private static final Logger logger
-	=LoggerFactory.getLogger(QnaController.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
+
 	private final QnaService qnaService;
-	
-	
+
 	@Autowired
 	public QnaController(QnaService qnaService) {
 		this.qnaService = qnaService;
@@ -44,207 +43,207 @@ public class QnaController {
 	public String qnaMain() {
 		return "qna/qnaMain";
 	}
-	
+
 	@RequestMapping("/qnaGuest")
 	public String qnaGuest() {
 		return "qna/qnaGuest";
 	}
-	
+
 	@RequestMapping("/qnaDeveloper")
 	public String qnaDeveloper() {
 		return "qna/qnaDeveloper";
 	}
-	
-	@RequestMapping("/qnaList")
-	public String qnaList(HttpSession session, Model model) {
+
+	//	@RequestMapping("/qnaList")
+	//	public String qnaList(HttpSession session, Model model) {
+
+	//		List<QnaVO> list = qnaService.select((int) session.getAttribute("memNo"));
+	//		List<QnaVO> list = qnaService.select(memberNo);
+	//		model.addAttribute("list", list);
+	//		return "qna/qnaList";
+	//	}
+
+
+	@RequestMapping("/qnaList") 
+	public String qnaList(@ModelAttribute SearchVO2 searchVo, HttpSession session ,Model model) {
+
+		logger.info("글목록, 파라미터 searchVo={}", searchVo);
+
+		// 페이지네이션인포 객체 생성 : 계산목적 
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+
+		// searchvo에 값 넣기 
+		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		searchVo.setMemNo((int)session.getAttribute("memNo"));
+		logger.info("값 셋팅 후 searchVo={}", searchVo);
 		
-		List<QnaVO> list = qnaService.select((int)session.getAttribute("userNo"));
-//		List<QnaVO> list = qnaService.select(memberNo);
-		model.addAttribute("list", list);
+
+
+		List<QnaVO> list = qnaService.select(searchVo);
+		logger.info("전체 조회 결과 list.size={}", list.size());
+
+		// totalrecord 구하기
+
+		int totalRecord=qnaService.selectTotalRecord(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+
+		// model에 저장
+
+		model.addAttribute("list", list); 
+		model.addAttribute("pagingInfo", pagingInfo);
+
+		//뷰페이지로 리턴 
 		return "qna/qnaList";
+
 	}
-	
-	/*
-	 * @RequestMapping("/qnaList") public String qnaList(@ModelAttribute SearchVO
-	 * searchVo, Model model) {
-	 * 
-	 * logger.info("글목록, 파라미터 searchVo={}", searchVo);
-	 * 
-	 * // 페이지네이션인포 객체 생성 : 계산목적 PaginationInfo pagingInfo = new PaginationInfo();
-	 * pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
-	 * pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
-	 * pagingInfo.setCurrentPage(searchVo.getCurrentPage());
-	 * 
-	 * // searchvo에 값 넣기 searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
-	 * searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-	 * logger.info("값 셋팅 후 searchVo={}", searchVo);
-	 * 
-	 * List<QnaVO> list = qnaService.selectAll(searchVo);
-	 * logger.info("전체 조회 결과 list.size={}", list.size());
-	 * 
-	 * // totalrecord 구하기
-	 * 
-	 * int totalRecord=qnaService.selectTotalRecord(searchVo);
-	 * pagingInfo.setTotalRecord(totalRecord);
-	 * 
-	 * // model에 저장
-	 * 
-	 * model.addAttribute("list", list); model.addAttribute("pagingInfo",
-	 * pagingInfo);
-	 * 
-	 * // 뷰페이지로 리턴 return "qna/qnaList"; }
-	 */
-	
-	@RequestMapping(value="/qnaWrite",method = RequestMethod.GET)
+
+
+	@RequestMapping(value = "/qnaWrite", method = RequestMethod.GET)
 	public String write_get() {
 		logger.info("글쓰기 화면");
-		
+
 		return "qna/qnaWrite";
 	}
-	
-	@RequestMapping(value="/qnaWrite", method = RequestMethod.POST)
-	public String write_post(@ModelAttribute QnaVO vo,
-			Model model) {
-		
-		logger.info("글쓰기처리, 파라미터 vo={}",vo);
-		
-		int cnt=qnaService.insert(vo);
+
+	@RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
+	public String write_post(@ModelAttribute QnaVO vo, Model model) {
+
+		logger.info("글쓰기처리, 파라미터 vo={}", vo);
+
+		int cnt = qnaService.insert(vo);
 		String msg = "글쓰기 실패", url = "/qna/qnaWrite";
-		if(cnt > 0) {
+		if (cnt > 0) {
 			msg = "성공";
 			url = "/qna/qnaList";
 		}
 		model.addAttribute("url", url);
 		model.addAttribute("msg", msg);
 		return "common/message";
-		
+
 	}
-	
+
 	@GetMapping("/qnaEdit")
-	public String edit_get(@RequestParam(defaultValue="0") int qnaNo,
-			HttpServletRequest request, Model model) {
-		logger.info("수정화면 파라미터 no={}",qnaNo);
-		if(qnaNo==0) {
-			model.addAttribute("msg","잘못된 url 입니다.");
-			model.addAttribute("url","/qna/qnaList");
-			
+	public String edit_get(@RequestParam(defaultValue = "0") int qnaNo, HttpServletRequest request, Model model) {
+		logger.info("수정화면 파라미터 no={}", qnaNo);
+		if (qnaNo == 0) {
+			model.addAttribute("msg", "잘못된 url 입니다.");
+			model.addAttribute("url", "/qna/qnaList");
+
 			return "common/message";
 		}
-		
-		QnaVO vo=qnaService.selectByNo(qnaNo);
-		logger.info("수정화면, 조회결과 vo={}",vo);
-		
-		model.addAttribute("vo",vo);
-		
+
+		QnaVO vo = qnaService.selectByNo(qnaNo);
+		logger.info("수정화면, 조회결과 vo={}", vo);
+
+		model.addAttribute("vo", vo);
+
 		return "qna/qnaEdit";
 	}
-	
-	@PostMapping(value="/qnaEdit")
-	public String edit_post(@ModelAttribute QnaVO vo,
-			HttpServletRequest request, Model model) {
-		
-		logger.info("글수정 처리, 파라미터 vo={}",vo);
-		
-		String msg="글수정 실패", url="/qna/qnaEdit?qnaNo="+vo.getQnaNo();
+
+	@PostMapping(value = "/qnaEdit")
+	public String edit_post(@ModelAttribute QnaVO vo, HttpServletRequest request, Model model) {
+
+		logger.info("글수정 처리, 파라미터 vo={}", vo);
+
+		String msg = "글수정 실패", url = "/qna/qnaEdit?qnaNo=" + vo.getQnaNo();
 		int cnt = qnaService.updateQna(vo);
-		if(cnt>0) {
-			msg="게시글이 수정 되었습니다.";
-			url="/qna/qnaDetail?no="+vo.getQnaNo();
+		if (cnt > 0) {
+			msg = "게시글이 수정 되었습니다.";
+			url = "/qna/qnaDetail?no=" + vo.getQnaNo();
 		}
-		
-		model.addAttribute("msg",msg);
-		model.addAttribute("url",url);
-		
-		
+
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+
 		return "common/message";
-		
+
 	}
-	
+
 	@RequestMapping("/qnaDetail")
-	public String detail(@RequestParam(defaultValue="0") int qnaNo,
-			HttpServletRequest request, Model model) {
+	public String detail(@RequestParam(defaultValue = "0") int qnaNo, HttpServletRequest request, Model model) {
 		logger.info("글 상세보기 파라미터 no={}", qnaNo);
-		
-		if(qnaNo==0) {
-			model.addAttribute("msg","잘못된 url입니다.");
-			model.addAttribute("url","/qna/qnaList");
-			
+
+		if (qnaNo == 0) {
+			model.addAttribute("msg", "잘못된 url입니다.");
+			model.addAttribute("url", "/qna/qnaList");
+
 			return "common/message";
 		}
-		
+
 		QnaVO vo = qnaService.selectByNo(qnaNo);
-		logger.info("상세보기 결과 vo={}",vo);
-		
-		model.addAttribute("vo",vo);
-		
+		logger.info("상세보기 결과 vo={}", vo);
+
+		model.addAttribute("vo", vo);
+
 		return "qna/qnaDetail";
 	}
-	
-	@RequestMapping(value="qnaDelete", method = RequestMethod.GET)
-	public String delete_get(@RequestParam(defaultValue="0") int qnaNo,
-			Model model) {
-		logger.info("글 삭제 화면, 파라미터 no={}",qnaNo);
-		if(qnaNo==0) {
-			model.addAttribute("msg","잘못된 url 입니다.");
-			model.addAttribute("url","/qna/qnaList");
+
+	@RequestMapping(value = "qnaDelete", method = RequestMethod.GET)
+	public String delete_get(@RequestParam(defaultValue = "0") int qnaNo, Model model) {
+		logger.info("글 삭제 화면, 파라미터 no={}", qnaNo);
+		if (qnaNo == 0) {
+			model.addAttribute("msg", "잘못된 url 입니다.");
+			model.addAttribute("url", "/qna/qnaList");
 			return "common/message";
 		}
-		
+
 		return "qna/qnaDelete";
 	}
-	
-	@RequestMapping(value="qnaDelete", method = RequestMethod.POST)
-	public String delete_post(@ModelAttribute QnaVO vo,
-			HttpServletRequest request, Model model) {
-		logger.info("글 삭제 처리, 파라미터 vo={}",vo);
-		
-		String msg="글삭제 실패", url="qna/qnaDelte?no"+vo.getQnaNo()+"&step="+vo.getStep()
-			+"&groupNo="+vo.getGroupNo();
-		
+
+	@RequestMapping(value = "qnaDelete", method = RequestMethod.POST)
+	public String delete_post(@ModelAttribute QnaVO vo, HttpServletRequest request, Model model) {
+		logger.info("글 삭제 처리, 파라미터 vo={}", vo);
+
+		String msg = "글삭제 실패",
+				url = "qna/qnaDelte?no" + vo.getQnaNo() + "&step=" + vo.getStep() + "&groupNo=" + vo.getGroupNo();
+
 		Map<String, String> map = new HashMap<>();
-		map.put("step", vo.getStep()+"");
-		map.put("qnaNo", vo.getQnaNo()+"");
-		map.put("groupNo", vo.getGroupNo()+"");
-		
+		map.put("step", vo.getStep() + "");
+		map.put("qnaNo", vo.getQnaNo() + "");
+		map.put("groupNo", vo.getGroupNo() + "");
+
 		qnaService.deleteQna(map);
-		msg="게시글이 삭제되었습니다.";
-		url="/qna/qnaList";
-		
-		model.addAttribute("msg",msg);
-		model.addAttribute("url",url);
-		
+		msg = "게시글이 삭제되었습니다.";
+		url = "/qna/qnaList";
+
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+
 		return "common/message";
 	}
-	
+
 	@GetMapping("/qnaReply")
-	public String reply_get(@RequestParam(defaultValue="0") int qnaNo,
-			Model model) {
-		logger.info("답변화면 , 파라미터 no={}",qnaNo);
-		
-		if(qnaNo==0) {
-			model.addAttribute("msg","잘못된 url 입니다.");
-			model.addAttribute("url","/qna/qnaList");
-			
+	public String reply_get(@RequestParam(defaultValue = "0") int qnaNo, Model model) {
+		logger.info("답변화면 , 파라미터 no={}", qnaNo);
+
+		if (qnaNo == 0) {
+			model.addAttribute("msg", "잘못된 url 입니다.");
+			model.addAttribute("url", "/qna/qnaList");
+
 			return "common/message";
 		}
-		
+
 		QnaVO vo = qnaService.selectByNo(qnaNo);
-		logger.info("답변화면 조회결과 vo={}",vo);
-		
-		model.addAttribute("vo",vo);
-		
+		logger.info("답변화면 조회결과 vo={}", vo);
+
+		model.addAttribute("vo", vo);
+
 		return "qna/qnaReply";
-		
+
 	}
-	
+
 	@PostMapping("/qnaReply")
 	public String reply_post(@ModelAttribute QnaVO vo) {
-		logger.info("답변하기, 파라미터 vo={}",vo);
-		
-		int cnt=qnaService.reply(vo);
-		logger.info("답변하기 결과 cnt={}",cnt);
-		
+		logger.info("답변하기, 파라미터 vo={}", vo);
+
+		int cnt = qnaService.reply(vo);
+		logger.info("답변하기 결과 cnt={}", cnt);
+
 		return "redirect:/qna/qnaList";
 	}
-	
+
 }
