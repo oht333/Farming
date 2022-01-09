@@ -17,7 +17,7 @@ public interface ConstUtil {
 	//관리자 페이지 - 상품 등록시 상품 이미지 저장 경로
 	String IMAGE_FILE_UPLOAD_PATH="pd_images";
 	String IMAGE_FILE_UPLOAD_PATH_TEST="";
-
+	
 	
 	//자료실 업로드인지, 상품 등록시 업로드인지 구분값
 	int UPLOAD_FILE_FLAG=1; //자료실 업로드
