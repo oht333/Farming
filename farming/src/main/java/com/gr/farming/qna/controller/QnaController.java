@@ -82,6 +82,7 @@ public class QnaController {
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
 		
 
+
 		List<QnaVO> list = qnaService.select(searchVo);
 		logger.info("전체 조회 결과 list.size={}", list.size());
 

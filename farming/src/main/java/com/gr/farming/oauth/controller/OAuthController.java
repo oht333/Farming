@@ -73,7 +73,8 @@ public class OAuthController {
 				url = "/member/addInfo";
 			}
 		}
-		session.setAttribute("memNo", vo.getMemberNo());
+//		session.setAttribute("memNo", vo.getMemberNo());
+		session.setAttribute("userNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());	
@@ -118,7 +119,8 @@ public class OAuthController {
 				url = "/member/addInfo";
 			}
 		}
-		session.setAttribute("memNo", vo.getMemberNo());
+//		session.setAttribute("memNo", vo.getMemberNo());
+		session.setAttribute("userNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("userImg", vo.getFileName());
@@ -173,7 +175,8 @@ public class OAuthController {
 		} else {
 			System.out.println("추가정보x");
 		}
-		session.setAttribute("expNo", vo.getExpertNo());
+//		session.setAttribute("expNo", vo.getExpertNo());
+		session.setAttribute("userNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("userImg", vo.getFileName());
@@ -228,7 +231,8 @@ public class OAuthController {
 			System.out.println("추가정보x");
 		}
 		
-		session.setAttribute("expNo", vo.getExpertNo());
+//		session.setAttribute("expNo", vo.getExpertNo());
+		session.setAttribute("userNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("userImg", vo.getFileName());
@@ -249,7 +253,7 @@ public class OAuthController {
 
         if(access_Token != null && !"".equals(access_Token)){
             service.kakaoLogout(access_Token);
-            session.removeAttribute("expNo");
+            session.removeAttribute("userNo");
             session.removeAttribute("name");
             session.removeAttribute("email");
             session.removeAttribute("userImg");
