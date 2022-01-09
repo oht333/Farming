@@ -22,4 +22,5 @@ public interface MemberService {
 	public List<MemberVO> selectAll();
 	public boolean checkPwd(MemberVO vo);
 	public int updatePwd(String email, String pwd);
+	public MemberVO selectByNo(int memberNo);
 }

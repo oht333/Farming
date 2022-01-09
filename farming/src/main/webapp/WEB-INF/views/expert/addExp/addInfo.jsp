@@ -6,6 +6,21 @@
 <script type="text/javascript">
 	var contextPath = "/farming";
 		$(function(){
+			
+			$('#upfile').change(function(){
+			    setImageFromFile(this, '#userImg');
+			});
+
+			function setImageFromFile(input, expression) {
+			    if (input.files && input.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (e) {
+			            $(expression).attr('src', e.target.result);
+			        }
+			        reader.readAsDataURL(input.files[0]);
+			    }
+			}
+			
 			$('#submit').click(function(){
 				if($('#pwd').val().length<1){
   					alert('비밀번호를 입력하세요');
@@ -51,10 +66,11 @@
         <div>
           <div class="col-lg-7 mb-5" style="padding: 0; margin: 0 auto;"> 
             <div class="text-block"> 
-            <form name="frmEdit" method="post" action="<c:url value='/expert/addExp/post'/>" >
+            <form name="frmEdit" method="post" enctype="multipart/form-data"
+					action="<c:url value='/expert/addExp/post'/>" >
 			<div class="d-flex mb-4" style="margin-left:42%">
-					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${img }">
-					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>
+				<label for="upfile"><img id="userImg" class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/userImg/${userImg}"></label>
+				<input type ="file" name="upfile" id="upfile" style="display: none;">
 			</div>
               <div class="mb-4">
                 <label class="form-label" for="name"> 이름</label>

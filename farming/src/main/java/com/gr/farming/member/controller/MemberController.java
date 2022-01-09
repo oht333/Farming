@@ -1,5 +1,9 @@
 package com.gr.farming.member.controller;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gr.farming.common.ConstUtil;
+import com.gr.farming.common.FileUploadUtil;
 import com.gr.farming.member.model.MemberService;
 import com.gr.farming.member.model.MemberVO;
 import com.gr.farming.oauth.model.OAuthService;
@@ -30,14 +36,15 @@ public class MemberController {
 
 	private final MemberService service;
 	private final OAuthService oservice;
-
+	private final FileUploadUtil file;
 	@Autowired
 	private PasswordEncoder pwdEncoder;
 
 	@Autowired
-	public MemberController(MemberService service, OAuthService oservice) {
+	public MemberController(MemberService service, OAuthService oservice, FileUploadUtil file) {
 		this.service = service;
 		this.oservice = oservice;
+		this.file = file;
 	}
 
 	@RequestMapping("/agreement")
@@ -113,20 +120,45 @@ public class MemberController {
 	}
 
 	@PostMapping("/mypage/profile")
-	public String edit_post(@ModelAttribute MemberVO vo, HttpSession session, Model model) {
+	public String edit_post(@ModelAttribute MemberVO vo, HttpSession session, HttpServletRequest request, Model model) {
 		vo.setEmail((String) session.getAttribute("email"));
 		vo.setName((String) session.getAttribute("name"));
 		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
 		logger.info("회원수정 처리, 파라미터 vo={}", vo);
-
+		
+		//파일 업로드 처리
+		String fileName="", originName="";
+		long fileSize=0;
+		int pathFlag=ConstUtil.UPLOAD_IMAGE_FLAG;
+		try {
+			List<Map<String, Object>> fileList = file.fileUpload(request, pathFlag);
+			for(int i=0;i<fileList.size();i++) {
+				 Map<String, Object> map=fileList.get(i);
+				 
+				 fileName=(String) map.get("fileName");
+				 originName=(String) map.get("originalFileName");
+				 fileSize=(long) map.get("fileSize");				 
+			}
+			
+			logger.info("파일 업로드 성공, fileName={}", fileName);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		vo.setFileName(fileName);
+		vo.setFileSize(fileSize);
+		vo.setOriginalFileName(originName);
+				
 		String msg = "", url = "/mypage/profile";
 
 		int cnt = service.updateMember(vo);
 		logger.info("회원수정 결과, cnt={}", cnt);
 
 		if (cnt > 0) {
-			msg = "회원정보 수정되었습니다.";
-			url = "/member/mypage/main";
+			msg = "수정되었습니다. 다시 로그인 해주세요.";
+			url = "/login/logout";
 		} else {
 			msg = "회원정보 수정 실패!";
 		}

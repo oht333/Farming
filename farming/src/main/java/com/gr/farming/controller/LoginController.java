@@ -89,7 +89,9 @@ public class LoginController {
 			session.setAttribute("name", memVo.getName());
 			session.setAttribute("pwd", memVo.getPwd());
 			session.setAttribute("memNo", memVo.getMemberNo());
+			session.setAttribute("userImg", memVo.getFileName());
 			session.setAttribute("user", "사용자");
+			session.setAttribute("test", "test@test");
 
 			//[2] 쿠키에 저장 - 아이디저장하기 체크된 경우만
 			Cookie ck = new Cookie("mCk_email", memVo.getEmail());
@@ -142,6 +144,7 @@ public class LoginController {
 			session.setAttribute("name", expVo.getName());
 			session.setAttribute("pwd", expVo.getPwd());
 			session.setAttribute("expNo", expVo.getExpertNo());
+			session.setAttribute("userImg", expVo.getFileName());
 			session.setAttribute("user", "전문가");
 			session.setAttribute("main", main);
 			
