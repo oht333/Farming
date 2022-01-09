@@ -60,15 +60,15 @@
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">분류</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="개발/디자인"
-                                                class="form-control ps-0 form-control-line" id="main">
+                                            <input type="text" id="main" name="main" placeholder="개발/디자인"
+                                                class="form-control ps-0 form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="example-email" class="col-md-12">분야</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="웹"
-                                                class="form-control ps-0 form-control-line" id="detail">
+                                            <input type="text" id="detail" name="detail" placeholder="웹"
+                                                class="form-control ps-0 form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
