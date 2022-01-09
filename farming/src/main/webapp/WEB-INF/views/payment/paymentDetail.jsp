@@ -9,9 +9,9 @@
           <div class="col-lg-6">
             <!-- Breadcrumbs -->
             <ol class="breadcrumb ps-0  justify-content-start">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="index.html">서비스이름</a></li>
               <li class="breadcrumb-item"><a href="user-account.html">Account</a></li>
-              <li class="breadcrumb-item active">Invoice 202009001   </li>
+              <li class="breadcrumb-item active">현재날짜   </li>
             </ol>
           </div>
           <div class="col-lg-6 text-lg-end">
@@ -137,7 +137,7 @@ function iamport(){
 	    pg : 'html5_inicis',
 	    pay_method : 'card',
 	    merchant_uid : '13',
-	    name : '상품1' , //결제창에서 보여질 이름
+	    name : '상품이름' , //결제창에서 보여질 이름
 	    amount : 10, //실제 결제되는 가격
 	    buyer_email : 'iamport@siot.do',
 	    buyer_name : '구매자이름',
