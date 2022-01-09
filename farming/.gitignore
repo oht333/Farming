@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### Java Ignore ###
-src/main/java/com/gr/farming/common/
+src/main/**/common/
 
 ### IntelliJ IDEA ###
 .idea
