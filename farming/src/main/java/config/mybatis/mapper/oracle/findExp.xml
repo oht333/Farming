@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gr.farming.findExp.model.FindExpDAO">
+	<select id="selectExpInfo" parameterType="int" resultType="expertInfoVo">
+		select * from EXPERT_INFO
+		where expert_no=#{expertNo}
+	</select>
+	
+	<select id="selectByExperNo" parameterType="int" resultType="expertVo">
+		select * from expert
+		where expert_no=#{expertNo}
+	</select>
+	
+	<select id="selectField" parameterType="int" resultType="map">
+		select f.*, c.main, c.detail
+		from field f join category c
+		on f.category_no=c.category_no
+		where expert_no=#{expertNo}
+	</select>
+	
+	<insert id="insertExpInfo" parameterType="expertInfoVo">
+		<selectKey keyProperty="expertInfoCode" resultType="int" order="BEFORE">
+			select EXPERT_INFO_SEQ.nextval from dual
+		</selectKey>
+		insert into EXPERT_INFO(EXPERT_INFO_CODE, category_no, expert_no, intro, DETAIL_INFO, career, LICENSE, staff)
+		values(#{expertInfoCode},#{categoryNo},#{expertNo},#{intro},#{detailInfo},#{career},#{license},#{staff})
+	</insert>
+
+	<update id="updateIntro" parameterType="expertInfoVo">
+		update EXPERT_INFO
+		set intro=#{intro}
+		where expert_no=#{expertNo}
+	</update>
+	
+	<update id="updateDetailInfo" parameterType="expertInfoVo">
+		update EXPERT_INFO
+		set detail_info=#{detailInfo}
+		where expert_no=#{expertNo}
+	</update>
+	<update id="updateExpInfo" parameterType="expertInfoVo">
+		update EXPERT_INFO
+		set 
+		<if test="intro!=null and intro!=''">
+			intro=#{intro}
+		</if>
+		<if test="detailInfo!=null and detailInfo!=''">
+			detail_info=#{detailInfo}
+		</if>
+		<if test="career!=null and career!=''">
+			career=#{career}
+		</if>
+		<if test="staff!=null and staff!=''">
+			staff=#{staff}
+		</if>
+		<if test="contactTime!=null and contactTime!=''">
+			contact_time=#{contactTime}
+		</if>
+		<if test="payMethod!=null and payMethod!=''">
+			pay_method=#{payMethod}
+		</if>
+		<if test="businessLicense!=null and businessLicense!=''">
+			business_license=#{businessLicense}
+		</if>
+		<if test="license!=null and license!=''">
+			license=#{license}
+		</if>
+		<if test="taxInvoice!=null and taxInvoice!=''">
+			tax_invoice=#{taxInvoice}
+		</if>
+		where expert_no=#{expertNo}
+	</update>
+</mapper>
