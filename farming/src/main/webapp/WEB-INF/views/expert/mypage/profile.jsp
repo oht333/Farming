@@ -76,9 +76,8 @@
         <div class="row" style="margin-left:340px;">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
-            <form name="frmEdit" method="post" 
+            <form name="frmEdit" method="post" enctype="multipart/form-data"
 					action="<c:url value='/expert/mypage/profile'/>" >
-			<%-- <input type="hidden" name="email" value="${param.email}"> --%>
 			<div class="d-flex mb-4" style="margin-left:42%">
 				<label for="upfile"><img id="userImg" class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/userImg/${userImg}"></label>
 				<input type ="file" name="upfile" id="upfile" style="display: none;">

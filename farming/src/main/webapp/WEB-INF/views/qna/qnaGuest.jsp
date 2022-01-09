@@ -7,7 +7,7 @@
       <div class="container position-relative">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../index">Home</a></li>
           <li class="breadcrumb-item"><a href="<c:url value='/qna/qnaMain'/>">메인</a></li>
           <li class="breadcrumb-item active">파밍의 첫걸음</li>
         </ol>
@@ -35,14 +35,14 @@
                 <li>KakaoTalk , FaceBook 계정으로도 간편하게 가입할 수 있습니다.</li>
               </ol>
               <blockquote class="blockquote blockquote-primary bg-gray-100 p-4">
-              파밍은 고객님의 빠르고 신속한 이용을 위해 <code>간편회원가입</code> 시스템을 도입하였습니다.<br><br>
+              파밍은 고객님의 빠르고 신속한 이용을 위해 <a href="<c:url value='../login/loginType'/>">간편회원가입</a> 시스템을 도입하였습니다.<br><br>
               고객님의 본인명의와 이메일만으로 가입하고 원하는 IT전문가를 지금 바로 찾아보세요.<br><br>
               해당 메인페이지의 전문가찾기 검색기능을 사용하시면 각 지역별 / 분야별 전문가를 한눈에 볼수있습니다.
               
               </blockquote>
               <h3>2.&nbsp; 파밍캐시 충전하기</h3>
               <blockquote class="blockquote blockquote-primary bg-gray-100 p-4">
-              원하시는 분야의 전문가에게 견적 요청서를 보낼때에는 <code>파밍캐시</code>가 필요합니다.<br><br>
+              원하시는 분야의 전문가에게 견적 요청서를 보낼때에는 <a href="<c:url value='../cash/main'/>">파밍캐시</a>가 필요합니다.<br><br>
               또한 전문가에게 견적서 회신을 받은후 해당 사안을 진행하고 싶으시다면 파밍캐시 / 카드결제가 가능합니다.<br><br>
               고객님께서 보낸 견적 요청서를 해당 전문가가 48시간 동안 확인하지 않으면 사용한 파밍캐시를 보너스캐시로 돌려드리니
               걱정하지 마시고 이용하세요.

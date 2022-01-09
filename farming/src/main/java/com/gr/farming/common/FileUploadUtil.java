@@ -27,8 +27,7 @@ public class FileUploadUtil {
 	//파일 업로드 처리
 	public List<Map<String, Object>> fileUpload(HttpServletRequest request, int pathFlag) throws IllegalStateException, IOException {
 		
-		MultipartHttpServletRequest multiRequest 
-			= (MultipartHttpServletRequest) request;
+		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 		
 		Map<String, MultipartFile> fileMap=multiRequest.getFileMap();
 	

@@ -21,30 +21,34 @@
             <div class='text-block pb-3'>
               <div class='d-flex align-items-center justify-content-between'>
                 <div>
-                  <h6> <a class='text-reset' href='detail-rooms.html'>Modern Apt - Vibrant Neighborhood</a></h6>
-                  <p class='text-muted text-sm mb-0'>Entire home in New York</p>
-                  <div class='mt-n1'><i class='fa fa-xs fa-star text-primary'></i><i class='fa fa-xs fa-star text-primary'></i><i class='fa fa-xs fa-star text-primary'></i><i class='fa fa-xs fa-star text-primary'></i><i class='fa fa-xs fa-star text-gray-200'></i>
-                  </div>
-                </div><a href='detail-rooms.html'><img class='ms-3 rounded flex-shrink-0' src='img/photo/photo-1512917774080-9991f1c4c750.jpg' alt='' width='100'></a>
+                  <h6> <a class='text-reset' href='detail-rooms.html'>견적서</a></h6>
+                  <p class='text-muted text-sm mb-0'>내용</p>
+                  <div class='mt-n1'>상세내용</div>
+                </div><a href='detail-rooms.html'><img class='ms-3 rounded flex-shrink-0' src='<c:url value='/resources/img/'/>' alt='홍보사진' width='100'></a>
               </div>
             </div>
             <div class='text-block pt-3 pb-0'>
               <ul class='list-unstyled text-sm mb-0'>
-                <li class='mb-3'><i class='fas fa-users fa-fw text-muted me-2'></i>3 guests</li>
-                <li class='mb-0'><i class='far fa-calendar fa-fw text-muted me-2'></i>Apr 17, 2019 <i class='fas fa-arrow-right fa-fw text-muted mx-3'></i>Apr 18, 2019</li>
+                <li class='mb-3'><i class='fas fa-users fa-fw text-muted me-2'></i>직원 수</li>
+                <li class='mb-3'><i class='far fa-calendar-check fa-fw text-muted me-2'></i>의뢰기간</li>
+                <li class='mb-0'><i class='far fa-calendar fa-fw text-muted me-2'></i>현재날짜<i class='fas fa-arrow-right fa-fw text-muted mx-3'></i>의뢰기간+현재날짜</li>
+                <c:if test="${user eq '전문가' }">
+                	<li><input class="btn btn-primary" type="button" value="결제요청" style="float: right;" id="request"></li>
+              	</c:if>
+              	<c:if test="${user eq '사용자' }">
+                	<li><a href="<c:url value='/payment/paymentDetail'/>" class="btn btn-primary" style="float: right;" id="credit">&nbsp;&nbsp;&nbsp;결제&nbsp;&nbsp;&nbsp;</a></li>
+              	</c:if>
               </ul>
             </div>
           </div>
         </div>
         
-        <c:if test="${user eq '사용자' }">
-        	<input type="hidden" value="${memNo }" name="userNo" id="userNo">
-        </c:if>
-        <c:if test="${user eq '전문가' }">
-        	<input type="hidden" value="${expNo }" name="userNo" id="userNo">
-        </c:if>
+        
+        <input type="hidden" value="${userNo }" name="userNo" id="userNo">
+      
         <input type="hidden" value="${param.roomNo }" name="roomNo" id="roomNo">
         
+        <input type="hidden" value="견적서 내용" id="requestText">
         
       <div class='px-4 py-5'>
           <div class='row'>
@@ -53,22 +57,22 @@
 				<c:if test="${!empty dtoList }">
 					<c:forEach var="dto" items="${dtoList }">
 						<c:if test="${dto.writer eq name }">
-							<div class='d-flex-end col-md-9 col-xl-7 ms-auto mb-3'>
+							<div class="d-flex-end col-md-9 col-xl-7 ms-auto mb-3">
 					          <div class='me-3'>
-					            <div class='bg-primary rounded p-4 mb-2'>
-					              <p class='text-sm mb-0 text-white'>${dto.message }</p>
+					            <div class="bg-primary rounded p-4 mb-2">
+					              <p class="text-sm mb-0 text-white">${dto.message }</p>
 					            </div>
-					            <p class='small text-muted ms-3'><fmt:formatDate value="${dto.time }" pattern="yyyy-MM-dd HH:ss"/></p>
-					          </div><img class='avatar avatar-border-white flex-shrink-0' src='img/avatar/avatar-10.jpg' alt='user'>
+					            <p class="small text-muted ms-3"><fmt:formatDate value="${dto.time }" pattern="yyyy-MM-dd HH:ss"/></p>
+					          </div><img class="avatar avatar-border-white flex-shrink-0" src="<c:url value='/resources/userImg/${userImg }'/>" alt="user">
 					        </div>
 					    </c:if>
 					    <c:if test="${dto.writer ne name }">
-					    	<div class='d-flex col-md-9 col-xl-7 mb-3'><img class='avatar avatar-border-white flex-shrink-0' src='img/avatar/avatar-1.jpg' alt='user'>
-				              <div class='ms-3'>
-				                <div class='bg-gray-200 rounded p-4 mb-2'>
-				                  <p class='text-sm mb-0'>${dto.message }</p>
+					    	<div class="d-flex col-md-9 col-xl-7 mb-3"><img class="avatar avatar-border-white flex-shrink-0" src="<c:url value='/resources/userImg/${userImg }'/>" alt="user">
+				              <div class="ms-3">
+				                <div class="bg-gray-200 rounded p-4 mb-2">
+				                  <p class="text-sm mb-0">${dto.message }</p>				                  
 				                </div>
-				                <p class='small text-muted ms-3'><fmt:formatDate value="${dto.time }" pattern="yyyy-MM-dd HH:ss"/></p>
+				                <p class="small text-muted ms-3"><fmt:formatDate value="${dto.time }" pattern="yyyy-MM-dd HH:ss"/></p>
 				              </div>
 				            </div>
 					    </c:if>
@@ -76,10 +80,10 @@
 				</c:if>
 			</div>
 			
-			<div class='bg-light rounded shadow-sm' style="margin: 0; padding: 0;">
-				<div class='input-group'>
-	           	 	<textarea class='form-control border-0 p-4 bg-light text-sm' id="msg" placeholder='Type a message' ></textarea>
-	            	<button class='btn btn-link' id="button-send" style="margin: 0;"><i class='fa fa-paper-plane'></i></button>
+			<div class="bg-light rounded shadow-sm" style="margin: 0; padding: 0;">
+				<div class="input-group">
+	           	 	<textarea class="form-control border-0 p-4 bg-light text-sm" id="msg" placeholder="Type a message" ></textarea>
+	            	<button class="btn btn-link" id="button-send" style="margin: 0;"><i class="fa fa-paper-plane"></i></button>
 	        	</div>
 			</div>
 			<div id="div1"></div>
@@ -141,11 +145,11 @@ $(document).ready(function(){
                str += "<div class='bg-primary rounded p-4 mb-2'>";
                str += "<p class='text-sm mb-0 text-white'>"+content.message+"</p></div>";
                str += "<p class='small text-muted ms-3'>"+dateString+"</p>";
-               str += "</div><img class='avatar avatar-border-white flex-shrink-0' src='img/avatar/avatar-10.jpg' alt='user'>";
+               str += "</div><img class='avatar avatar-border-white flex-shrink-0' src='<c:url value='/resources/userImg/${userImg }'/>' alt='user'>";
                str += "</div>";
                $("#msgArea").append(str);
            }else{
-        	   str = "<div class='d-flex col-md-9 col-xl-7 mb-3'><img class='avatar avatar-border-white flex-shrink-0' src='img/avatar/avatar-1.jpg' alt='user'>";
+        	   str = "<div class='d-flex col-md-9 col-xl-7 mb-3'><img class='avatar avatar-border-white flex-shrink-0' src='<c:url value='/resources/userImg/${userImg }'/>' alt='user'>";
                str +="<div class='ms-3'>";
                str +="<div class='bg-gray-200 rounded p-4 mb-2'>";
                str +="<p class='text-sm mb-0'>"+content.message+"</p></div>";
@@ -153,7 +157,6 @@ $(document).ready(function(){
                str += "</div>";
                str +="</div>";
                $("#msgArea").append(str);
-               
            }
        });
 
@@ -178,6 +181,16 @@ $(document).ready(function(){
        			console.log("code : "+request.status+"\n"+"message : "+request.responseText);
        		}
         });
+        
+        console.log(username + ":" + msg.value);
+        console.log(userNo);
+        stomp.send('/pub/chat/message', {}, JSON.stringify({roomNo: roomNo, message: msg.value, writer: username}));
+        msg.value = '';
+        
+    });
+    
+    $("#request").on("click", function(e){
+    	var msg = document.getElementById("requestText");
         
         console.log(username + ":" + msg.value);
         console.log(userNo);

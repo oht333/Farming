@@ -40,7 +40,7 @@ input[type=radio]:checked+label {
 			Inroduce <span class="text-muted float-end">Step 1</span>
 		</h1>
 		<form action="<c:url value='/expert/addExp/addExpPost'/>" method="post">
-			<input type="hidden" name="expertNo" value="${expNo }">
+			<input type="hidden" name="expertNo" value="${userNo }">
 			<div class="row form-block">
 				<div class="col-lg-4">
 					<h4>간편 소개</h4>
@@ -61,7 +61,7 @@ input[type=radio]:checked+label {
 				<div class="col-lg-7 ms-auto">
 					<div class="mb-4">
 		                <label class="form-label" for="intro">서비스 상세소개</label>
-		                <input class="form-control" name="detailIntro" id="detailIntro" placeholder="서비스상세소개" type="text">
+		                <input class="form-control" name="detailInfo" id="detailInfo" placeholder="서비스상세소개" type="text">
 		            </div>
 				</div>
 			</div>
@@ -73,7 +73,7 @@ input[type=radio]:checked+label {
 				<div class="col-lg-7 ms-auto">
 					<div class="mb-4">
 		                <label class="form-label" for="intro">하나의 자격증을 입력하세요</label>
-		                <input class="form-control" name="certificate" id="certificate" placeholder="자격증(선택)" type="text">
+		                <input class="form-control" name="license" id="license" placeholder="자격증(선택)" type="text">
 		            </div>
 				</div>
 			</div>
