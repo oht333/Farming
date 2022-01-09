@@ -168,8 +168,34 @@ public class ExpertController {
 	}
 	
 	@RequestMapping("/addExp/post")
-	public String update_addExp(@ModelAttribute ExpertVO vo) {
+	public String update_addExp(@ModelAttribute ExpertVO vo, HttpServletRequest request) {
 		logger.info("주소, 비밀번호 업데이트 처리페이지 vo = {}",vo);
+		
+		//파일 업로드 처리
+		String fileName="", originName="";
+		long fileSize=0;
+		int pathFlag=ConstUtil.UPLOAD_IMAGE_FLAG;
+		try {
+			List<Map<String, Object>> fileList = file.fileUpload(request, pathFlag);
+			for(int i=0;i<fileList.size();i++) {
+				 Map<String, Object> map=fileList.get(i);
+				 
+				 fileName=(String) map.get("fileName");
+				 originName=(String) map.get("originalFileName");
+				 fileSize=(long) map.get("fileSize");				 
+			}
+					
+			logger.info("파일 업로드 성공, fileName={}", fileName);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		vo.setFileName(fileName);
+		vo.setFileSize(fileSize);
+		vo.setOriginalFileName(originName);
+		
 		int cnt = service.updateExpert(vo);
 		if(cnt > 0) {
 			logger.info("업데이트 성공");
