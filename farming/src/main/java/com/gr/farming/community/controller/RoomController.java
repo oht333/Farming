@@ -31,6 +31,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 @RequestMapping(value = "/chat")
 @Log4j2
+
 public class RoomController {
 
     private final ChatRoomRepository repository;
