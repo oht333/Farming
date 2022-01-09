@@ -19,7 +19,7 @@ function save(){
 <div class="divForm">
 <form name="frmWrite" method="post" enctype="multipart/form-data"
 	action="<c:url value='/qna/qnaWrite'/>" >
-	<input type="hidden" name="memberNo" id="memberNo" value="${memNo }">
+	<input type="hidden" name="memberNo" id="memberNo" value="${userNo }">
 	<input type="hidden" id="name" name="name" class="infobox" value="${name }" readonly="readonly"/>
  <fieldset>
  	<section>
