@@ -12,7 +12,28 @@ public class ExpertVO {
 	private String zipCode;
 	private Timestamp regDate;
 	private int resumeCode;
+	private String fileName;
+	private long fileSize;
+	private String originalFileName;
 	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public long getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
 	public int getExpertNo() {
 		return expertNo;
 	}
@@ -72,6 +93,7 @@ public class ExpertVO {
 	public String toString() {
 		return "ExpertVO [expertNo=" + expertNo + ", name=" + name + ", email=" + email + ", pwd=" + pwd + ", address1="
 				+ address1 + ", address2=" + address2 + ", zipCode=" + zipCode + ", regDate=" + regDate
-				+ ", resumeCode=" + resumeCode + "]";
+				+ ", resumeCode=" + resumeCode + ", fileName=" + fileName + ", fileSize=" + fileSize
+				+ ", originalFileName=" + originalFileName + "]";
 	}
 }
