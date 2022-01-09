@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
+
 <style>
 .btEdit + input{display:none}
 #btEdit1 + input{display:none}
@@ -10,6 +11,8 @@
 #btEdit5 + .select_box{display:none}
 #btEdit6 + .select_box{display:none}
 #btEdit7 ~ div.imgBox{display:none}
+#btEdit8 ~ div.imgBox{display:none}
+#btEdit9 + .radio_box{display:none}
 
 .thumb {
 	width:5rem;
@@ -19,6 +22,22 @@
     cursor: pointer;
     background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGcgZmlsbD0iI0I1QjVCNSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNOSAwaDJ2MjBIOXoiLz48cGF0aCBkPSJNMCAxMVY5aDIwdjJ6Ii8+PC9nPjwvc3ZnPg==) no-repeat 50%,#f2f2f2;
 }
+
+.select_box{
+ 	position:relative;
+}
+.select_box::after{
+	content:'';
+	display:block;
+	position:absolute;
+	right:20px;
+	top:50%;
+	transform:translateY(-50%);
+	width:18px;
+	height:13px;
+     	background: url(${pageContext.request.contextPath }/resources/img/arrow-down-sign-to-navigate.png) 96% center no-repeat;
+	background-size: 10px;    		
+}    
 </style>
 
 <section>
@@ -133,16 +152,34 @@
             		>수정</a>
             	<div id="demo-basic" class="col-md-8">
             		<p>
-		                <input type='time' class='timepicker' id='demo-custom-intervals-1' required min='08:30' max='15:30' step='5400'>
-		                <label for='demo-basic-1'>부터</label> 
-		                <input type='time' class='timepicker' id='demo-custom-formats-1' required min='08:30' max='15:30' step='5400'>
-		                <label for='demo-basic-1'>까지</label> 
+		                <input type='time' class='timepicker' id='demo-custom-intervals-1' min='00:00' max='24:00' step='1800' required >
+		                <label for='demo-custom-intervals-1'>부터</label> 
+		                <input type='time' class='timepicker' id='demo-custom-formats-1' min='12:00' max='24:00' step='1800' required >
+		                <label for='demo-custom-formats-1'>까지</label> 
 		            </p>
 				</div>
-            	<%-- <input class="form-control mb-sm-4" type="text" name="contactTime" value="${infoVo.contactTime }"> --%>
-	            <p id="infoBox3" class="text-muted fw-light">${infoVo.contactTime}</p>
+           		<c:if test="${infoVo.contactTime=='N'}">
+           			<p class="text-muted fw-light">등록되지 않음</p>
+           		</c:if>
+           		<c:if test="${infoVo.contactTime!='N'}">
+           			<p id="infoBox3" class="text-muted fw-light">${infoVo.contactTime}</p>
+           		</c:if>
 	          </div>
-	          
+	          <script>
+	          	$(function(){
+	          		$('.timepicker').timepicker({
+	          		    timeFormat: 'h:mm p',
+	          		    interval: 60,
+	          		    minTime: '10',
+	          		    maxTime: '6:00pm',
+	          		    defaultTime: '11',
+	          		    startTime: '10:00',
+	          		    dynamic: false,
+	          		    dropdown: true,
+	          		    scrollbar: true
+	          		});
+	          	});
+	          </script>
 	          <!-- 4. 결제수단 -->
 	          <div class="text-block row">
 	            <h4 class="mb-4 col-md-8">결제 수단</h4>
@@ -178,8 +215,8 @@
 	            <h4 class="mb-4 col-md-8">경력</h4>
             	<a id="btEdit5" class="mb-4 btEdit text-primary col-md-4 d-md-flex align-items-center justify-content-end"
             		>수정</a>
-            	<div class="select_box">
-            		<select class="test_select form-control" name="career" id="career" data-style="btn-selectpicker">
+            	<div class="select_box col-2">
+            		<select class="test_select form-control  " name="career" id="career" data-style="btn-selectpicker">
             			<option value="신입">신입</option>
             			<option value="1년 이상">1년 이상</option>
             			<option value="3년 이상">3년 이상</option>
@@ -195,7 +232,7 @@
 	            <h4 class="mb-4 col-md-8">직원수</h4>
             	<a id="btEdit6" class="mb-4 btEdit text-primary col-md-4 d-md-flex align-items-center justify-content-end"
             		>수정</a>
-            	<div class="select_box">
+            	<div class="select_box col-2">
             		<select class="test_select form-control" name="staff" id="staff" data-style="btn-selectpicker">
             			<option value="1명 이상">1명 이상</option>
             			<option value="5명 이상">5명 이상</option>
@@ -204,53 +241,59 @@
             			<option value="30명 이상">30명 이상</option>
             		</select>
             	</div>
-	            <p id="infoBox6" class="text-body">${infoVo.staff}</p>
+	            <p id="infoBox6" class="text-muted fw-light">${infoVo.staff}</p>
 	          </div>
 	          
 	          <!-- 7. 사업자 등록증 -->
 	          <div class="text-block row">
-	            <h4 class="mb-1 col-md-8">사업자등록증</h4>
-            	<a id="btEdit7" class="mb-1 btEdit text-primary col-md-4 d-md-flex align-items-center justify-content-end"
+	            <h4 class="mb-2 col-md-8">사업자등록증</h4>
+            	<a id="btEdit7" class="mb-2 btEdit text-primary col-md-4 d-md-flex align-items-center justify-content-end"
             		>수정</a>
-		            <p class="text-muted fw-light small">허위정보에 대한 모든 책임은 본인에게 있습니다</p>
+		            <p class="text-body small">허위정보에 대한 모든 책임은 본인에게 있습니다</p>
             		<div class="imgBox">
-	            		<div class="thumb"></div>
+	            		<!-- <div class="thumb"></div> -->
+	            		<div>
+		            		<input type="file" name="businessLicense" id="businessLicense">
+	            		</div>
 			        </div>
-	            	<c:if test="${infoVo.taxInvoice!='N'}">
+	            	<c:if test="${infoVo.businessLicense!='N'}">
 			            <p id="infoBox7" class="btEdit text-muted fw-light">${infoVo.businessLicense}</p>
-			        </c:if>
-	            	<c:if test="${infoVo.taxInvoice=='N'}">
-			            <p id="infoBox7" class="btEdit text-muted fw-light">등록되지않음</p>
+			            <img src="<c:url value='/resources/pd_images/${infoVo.businessLicense }'/>"
+		 				border="0" width="150">
 			        </c:if>
 	          </div>
 	          
 	          <!-- 8. 자격증 -->
 	          <div class="text-block row">
-	            <h4 class="mb-4 col-md-8">자격증 및 기타 서류</h4>
-            	<a id="btEdit8" class="mb-4 btEdit text-primary col-md-4 d-md-flex align-items-center justify-content-end"
+	            <h4 class="mb-2 col-md-8">자격증 및 기타 서류</h4>
+            	<a id="btEdit8" class="mb-2 text-primary col-md-4 d-md-flex align-items-center justify-content-end"
             		>수정</a>
+            	<p class="text-body small">허위정보에 대한 모든 책임은 본인에게 있습니다</p>
+            	<div class="imgBox">
+            		<div class="thumb"></div>
+		        </div>
             	<c:if test="${!empty infoVo.license}">	
 	            	<input class="form-control mb-sm-4" type="text" name="license" value="${infoVo.license }">
 		            <p id="infoBox8" class="text-muted fw-light">${infoVo.license}</p>
-	            </c:if>
-            	<c:if test="${empty infoVo.license}">	
-	            	<input class="form-control mb-sm-4" type="text" name="license">
-		            <p id="infoBox8" class="text-muted fw-light">등록되지않음</p>
 	            </c:if>
 	          </div>
 	          
 	          <!-- 9. 세금계산서 발행 -->
 	          <div class="text-block row">
 	            <h4 class="mb-4 col-md-8">세금계산서 발행</h4>
-            	<a id="btEdit9" class="mb-4 btEdit text-primary col-md-4 d-md-flex align-items-center justify-content-end"
+            	<a id="btEdit9" class="btEdit mb-4 text-primary col-md-4 d-md-flex align-items-center justify-content-end"
             		>수정</a>
-            	<c:if test="${infoVo.taxInvoice!='N'}">
-	            	<input class="form-control mb-sm-4" type="text" name="taxInvoice" value="${infoVo.taxInvoice }">
-	            	<p id="infoBox9" class="text-muted fw-light">${infoVo.taxInvoice}</p>
+            	<div class="radio_box">
+           			<input type="radio" name="taxInvoice" id="taxInvoice1" value="Y">
+           			<label for="taxInvoice1" class="form-check-inline ">네, 가능합니다</label>
+           			<input type="radio" name="taxInvoice" id="taxInvoice2" value="N" >
+           			<label for="taxInvoice2">아니요, 불가합니다</label>
+            	</div>
+            	<c:if test="${infoVo.taxInvoice=='Y'}">
+	            	<p id="infoBox9" class="text-muted fw-light">네, 가능합니다</p>
 	            </c:if>
 	            <c:if test="${infoVo.taxInvoice=='N'}">
-	            	<input class="form-control mb-sm-4" type="text" name="taxInvoice" >
-	            	<p id="infoBox9" class="text-muted fw-light">발행 불가</p>
+	            	<p id="infoBox9" class="text-muted fw-light">아니요, 불가합니다</p>
 	            </c:if>
 	          </div>
 	          
@@ -269,7 +312,8 @@
 	          </div>
 	          
 	          <!-- 11. 이용후기 -->
-	          <div class="text-block" id="review">
+	          <c:import url="/review/reviewList?expertNo=${expVo.expertNo }"/>
+	          <%-- <div class="text-block" id="review">
 	            <p class="subtitle text-sm text-primary">Reviews    </p>
 	            <h5 class="mb-4">서비스 후기</h5>
 	            <div class="d-flex d-block d-sm-flex review">
@@ -280,21 +324,22 @@
 	                </div>
 	                <p class="text-muted text-sm">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections     </p>
 	              </div>
-            </div>
-            
-          </div>
+	            </div>
+	          </div> --%>
         </div>
         <div class="col-lg-4">
           <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 100px;">
           	<h5 class="mb-3 col-md-8">프로필 완성도 </h5>
-            <p class="text-muted">${expVo.name } 전문가에게 원하는 서비스의 견적을 받아보세요 </p>
+            <p class="text-muted">프로필의 완성도를 높히면 전문가님을 선택할 확률이 높아집니다 </p>
             <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
              <div class="mb-4">
+             <!-- 프로세스바 넣기 -->
               </div>
+              <hr class="my-4">
+	            <p class="text-muted text-sm text-center">단골손님에세 링크를 보내 리뷰를 모으세요! 파밍고객님이 아니여도 후기를 남길 수 있습니다.</p>
               <div class="d-grid mb-4">
-                <button class="btn btn-primary btn-lg" type="submit">견적요청하기</button>
+                <button class="btn btn-primary btn-lg" type="submit">링크 복사하기</button>
               </div>
-	            <p class="text-muted text-sm text-center">견적요청서는 1분만에 간단하게 작성가능합니다.</p>
             </form>
             <hr class="my-4">
             <div class="text-center">
@@ -369,7 +414,7 @@
 						url:'<c:url value="/findexp/editExpInfo"/>',
 						type:"GET",
 						data:{
-							contactTime : $('input[name=contactTime]').val(),
+							contactTime : $('#demo-custom-intervals-1').val()+"  -  "+$('#demo-custom-formats-1').val(),
 							expertNo : $('input[name=expertNo]').val()
 						},success: function(res){
 							$('#infoBox3').text(res.contactTime);
@@ -478,8 +523,8 @@
 					});
 				})
 			}
-			$(this).next('div.imgBox').toggle();
-			$(this).siblings('p').toggle();
+			$(this).siblings('div.imgBox').toggle();
+			//$(this).siblings('p').toggle();
 		});
 		$('#btEdit8').click(function(){
 			if(textchange){
@@ -501,9 +546,10 @@
 					});
 				})
 			}
-			$(this).next('input').toggle();
-			$(this).siblings('p').toggle();
+			$(this).siblings('div.imgBox').toggle();
+			//$(this).siblings('p').toggle();
 		});
+		
 		$('#btEdit9').click(function(){
 			if(textchange){
 				textchange=false;
@@ -516,15 +562,19 @@
 						url:'<c:url value="/findexp/editExpInfo"/>',
 						type:"GET",
 						data:{
-							taxInvoice : $('input[name=taxInvoice]').val(),
+							taxInvoice : $('input[name=taxInvoice]:checked').val(),
 							expertNo : $('input[name=expertNo]').val()
 						},success: function(res){
-							$('#infoBox9').text(res.taxInvoice);
+							if(res.taxInvoice=='Y'){
+								$('#infoBox9').text('네, 가능합니다');
+							}else{
+								$('#infoBox9').text('아니요, 불가합니다');
+							}
 						}
 					});
 				})
 			}
-			$(this).next('input').toggle();
+			$(this).next('.radio_box').toggle();
 			$(this).siblings('p').toggle();
 		});
 		
@@ -532,8 +582,6 @@
 	});
 </script>
 <script src='https://code.jquery.com/jquery-3.6.0.slim.min.js' integrity='sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=' crossorigin='anonymous'></script>
-<script type="text/javascript" 
-	src="<c:url value='/resources/js/timepicker.js'/>"></script>
-<script type="text/javascript" 
-	src="<c:url value='/resources/js/qcTimepicker.min.js'/>"></script>    
+<script src="${pageContext.request.contextPath }/resources/js/qcTimepicker.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/timepicker.js"></script>  
 <%@ include file="../inc/bottom.jsp" %>

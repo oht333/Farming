@@ -1,9 +1,10 @@
 package com.gr.farming.findExp.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.gr.farming.common.ConstUtil;
+import com.gr.farming.common.FileUploadUtil;
 import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.findExp.model.ExpertInfoVO;
 import com.gr.farming.findExp.model.FindExpService;
@@ -29,10 +32,12 @@ public class FindExpController {
 	=LoggerFactory.getLogger(FindExpController.class);
 	
 	private final FindExpService findExpService;
+	private final FileUploadUtil fileUploadUtil;
 
 	@Autowired
-	public FindExpController(FindExpService findExpService) {
+	public FindExpController(FindExpService findExpService, FileUploadUtil fileUploadUtil) {
 		this.findExpService = findExpService;
+		this.fileUploadUtil = fileUploadUtil;
 	}
 
 	@RequestMapping(value="/findexpWrite", method = RequestMethod.GET)
@@ -95,52 +100,34 @@ public class FindExpController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/editIntro")
-	public ExpertInfoVO editIntro(@ModelAttribute ExpertInfoVO vo) {
-		
-		logger.info("전문가 상세페이지 - 한줄소개 수정, 파라미터 vo={}", vo);
-		
-		int cnt=findExpService.updateIntro(vo);
-		logger.info("한줄 소개 수정 결과 cnt={}", cnt);
-		if(cnt>0) {
-			logger.info("한줄 소개 수정 완료");
-		}else {
-			logger.info("수정 실패");
-		}
-		
-		ExpertInfoVO infoVo=findExpService.selectExpInfo(vo.getExpertNo());
-		logger.info("수정된 vo={}",infoVo);
-		
-	
-		return infoVo;
-	}
-	
-	@ResponseBody
-	@RequestMapping("/editDetailInfo")
-	public ExpertInfoVO editDetailInfo(@ModelAttribute ExpertInfoVO vo) {
-		
-		logger.info("전문가 상세페이지 - 상세설명 수정, 파라미터 vo={}", vo);
-		
-		int cnt=findExpService.updateDetailInfo(vo);
-		logger.info("상세설명 수정 결과 cnt={}", cnt);
-		if(cnt>0) {
-			logger.info("상세설명 수정 완료");
-		}else {
-			logger.info("수정 실패");
-		}
-		
-		ExpertInfoVO infoVo=findExpService.selectExpInfo(vo.getExpertNo());
-		logger.info("수정된 vo={}",infoVo);
-		
-		
-		return infoVo;
-	}
-	
-	@ResponseBody
 	@RequestMapping("/editExpInfo")
-	public ExpertInfoVO editExpInfo(@ModelAttribute ExpertInfoVO vo) {
+	public ExpertInfoVO editExpInfo(@ModelAttribute ExpertInfoVO vo,
+			HttpServletRequest request) {
 		
 		logger.info("전문가 상세페이지 수정, 파라미터 vo={}", vo);
+		
+		///업로드 처리
+		/*String imageUrl="";
+		try {
+			List<Map<String, Object>> list 
+				=fileUploadUtil.fileUpload(request, ConstUtil.UPLOAD_FILE_FLAG);
+			
+			for(Map<String, Object> map : list) {
+				imageUrl=(String) map.get("fileName");
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		if(vo.getBusinessLicense()!="N") {
+			vo.setBusinessLicense(imageUrl);
+		}else if(vo.getLicense()!="N") {
+			vo.setLicense(imageUrl);
+		}else if(vo.getImageVideo()!="N") {
+			vo.setImageVideo(imageUrl);
+		}*/
 		
 		int cnt=findExpService.updateExpInfo(vo);
 		logger.info("수정 결과, cnt={}", cnt);

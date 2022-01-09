@@ -171,6 +171,7 @@
 	          </div>
 	          </div>
 	          <div class="text-block" id="review">
+	          	<!-- include 해야함 -->
 	            <p class="subtitle text-sm text-primary">Reviews    </p>
 	            <h5 class="mb-4">서비스 후기</h5>
 	            <div class="d-flex d-block d-sm-flex review">
