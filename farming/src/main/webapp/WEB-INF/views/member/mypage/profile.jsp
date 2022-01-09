@@ -19,6 +19,21 @@
 <script type="text/javascript">
 	var contextPath = "/farming";
 		$(function(){
+			
+			$('#upfile').change(function(){
+			    setImageFromFile(this, '#userImg');
+			});
+
+			function setImageFromFile(input, expression) {
+			    if (input.files && input.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (e) {
+			            $(expression).attr('src', e.target.result);
+			        }
+			        reader.readAsDataURL(input.files[0]);
+			    }
+			}
+			
 			$('#edit').click(function(){
 				if($('#pwd').val().length<1){
   					alert('비밀번호를 입력하세요');
@@ -40,7 +55,7 @@
   		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
   		                    addr = data.jibunAddress;
   		                }
-  		                document.getElementById('zipcode').value = data.zonecode;
+  		                document.getElementById('zipCode').value = data.zonecode;
   		                document.getElementById("address1").value = addr;
   		                // 커서를 상세주소 필드로 이동한다.
   		                document.getElementById("address2").focus();
@@ -64,12 +79,11 @@
         <div class="row" style="margin-left: 340px;">
           <div class="col-lg-7 mb-5 mb-lg-0"> 
             <div class="text-block"> 
-            <form name="frmEdit" method="post" 
+            <form name="frmEdit" method="post" enctype="multipart/form-data"
 					action="<c:url value='/member/mypage/profile'/>" >
-			<input type="hidden" name="email" value="${email}">
 			<div class="d-flex mb-4" style="margin-left:42%">
-					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
-					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>
+				<label for="upfile"><img id="userImg" class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/userImg/${userImg}"></label>
+				<input type ="file" name="upfile" id="upfile" style="display: none;">
 			</div>
               <div class="mb-4">
                 <label class="form-label" for="name"> 이름</label>
@@ -100,8 +114,8 @@
                 <input class="form-control" name="address2" id="address2" placeholder="${vo.address2}" type="text">
               </div>
               <div class="mb-4" style="clear: both;">
-                <label class="form-label" for="zipcode"> 우편번호</label>
-                <input class="form-control" name="zipcode" id="zipcode" placeholder="${vo.zipCode}" type="text">
+                <label class="form-label" for="zipCode"> 우편번호</label>
+                <input class="form-control" name="zipCode" id="zipCode" placeholder="${vo.zipCode}" type="text">
               </div>
               <div class="row form-block flex-column flex-sm-row">
             	<div class="col text-center text-sm-start"><input type="button" value="  뒤로가기  " class="btn btn-outline-mute" id="prev"></div>
@@ -111,7 +125,7 @@
             </div>
           </div>
         </div>
-      </div>	
+      </div>
     </section>
 
 <%@ include file="../../inc/bottom.jsp" %>

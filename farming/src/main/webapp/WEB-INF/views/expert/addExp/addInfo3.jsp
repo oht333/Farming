@@ -58,7 +58,7 @@
 	                	<c:forEach var="vo" items="${clist }">
 		            		<div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;" id="div">
 								<input type="checkbox" value="${vo.detail }" name="detail" id="detail[${idx }]" style="display: none">
-		            			<label for="detail[${idx }]" style="height: 40px;">${vo.detail }</label> 
+		            			<label for="detail[${idx }]" class="form-control">${vo.detail }</label> 
 		            		</div>
 		            		<c:set var="idx" value="${idx+1 }"/>
 	            		</c:forEach>
@@ -68,7 +68,7 @@
 	                	<c:forEach var="vo" items="${clist }">
 		            		<div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;" id="div">
 								<input type="checkbox" value="${vo.detail }" name="detail" id="detail[${idx }]" style="display: none">
-		            			<label for="detail[${idx }]" style="height: 40px;">${vo.detail }</label> 
+		            			<label for="detail[${idx }]" class="form-control">${vo.detail }</label> 
 		            		</div>
 		            		<c:set var="idx" value="${idx+1 }"/>
 	            		</c:forEach>
