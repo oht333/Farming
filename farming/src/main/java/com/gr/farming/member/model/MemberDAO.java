@@ -15,4 +15,5 @@ public interface MemberDAO {
 	public int withdrawMember(String email);
 	public List<MemberVO> selectAll();
 	public int updatePwd(String email, String pwd);
+	public MemberVO selectByNo(int memberNo);
 }

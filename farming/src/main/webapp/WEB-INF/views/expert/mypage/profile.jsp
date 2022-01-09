@@ -2,11 +2,38 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../inc/top.jsp" %>
+<style>
+.btn-outline-mute {
+  color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+
+.btn-outline-mute:hover {
+  color: #fff;
+  background-color: #2CCE8D;
+  border-color: #2CCE8D;
+}
+</style>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 	var contextPath = "/farming";
 		$(function(){
+			
+			$('#upfile').change(function(){
+			    setImageFromFile(this, '#userImg');
+			});
+
+			function setImageFromFile(input, expression) {
+			    if (input.files && input.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (e) {
+			            $(expression).attr('src', e.target.result);
+			        }
+			        reader.readAsDataURL(input.files[0]);
+			    }
+			}
+			
 			$('#edit').click(function(){
 				if($('#pwd').val().length<1){
   					alert('비밀번호를 입력하세요');
@@ -53,8 +80,8 @@
 					action="<c:url value='/expert/mypage/profile'/>" >
 			<%-- <input type="hidden" name="email" value="${param.email}"> --%>
 			<div class="d-flex mb-4" style="margin-left:42%">
-					<img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
-					<input type ="file" name="imageUpload" id="imageUpload" style="display: none;" multiple>
+				<label for="upfile"><img id="userImg" class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/userImg/${userImg}"></label>
+				<input type ="file" name="upfile" id="upfile" style="display: none;">
 			</div>
               <div class="mb-4">
                 <label class="form-label" for="name"> 이름</label>
@@ -89,12 +116,10 @@
                 <input class="form-control" name="zipCode" id="zipCode" placeholder="${vo.zipCode}" type="text">
               </div>
               
-              <div class="mb-4">
-                    <button class="btn btn-outline-success" type="submit" id="edit">&nbsp;&nbsp;&nbsp;수정&nbsp;&nbsp;&nbsp;</button>
-                    <a style="float:right;" class="btn btn-outline-success" href="<c:url value='/expert/mypage/main'/>">&nbsp;&nbsp;뒤로가기&nbsp;&nbsp;</a>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <a style="margin-left: 40%;" class="btn btn-outline-success" href="<c:url value='/expert/mypage/out'/>">&nbsp;&nbsp;&nbsp;탈퇴&nbsp;&nbsp;&nbsp;</a>
-              </div>
+              <div class="row form-block flex-column flex-sm-row">
+            	<div class="col text-center text-sm-start"><input type="button" value="  뒤로가기  " class="btn btn-outline-mute" id="prev"></div>
+            	<div class="col text-center text-sm-end" id="submit"><input type="submit" value="    수정    " class="btn btn-primary px-3"></div>
+	         </div>
             </form>
             </div>
           </div>

@@ -11,7 +11,29 @@ public class MemberVO {
 	private String address1;
 	private String address2;
 	private String zipCode;
+	private String fileName;
+	private long fileSize;
+	private String originalFileName;
 	
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public long getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -57,13 +79,14 @@ public class MemberVO {
 	public String getZipCode() {
 		return zipCode;
 	}
-	public void setZipcode(String zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 	@Override
 	public String toString() {
 		return "MemberVO [memberNo=" + memberNo + ", name=" + name + ", email=" + email + ", pwd=" + pwd + ", regDate="
-				+ regDate + ", address1=" + address1 + ", address2=" + address2 + ", zipCode=" + zipCode + "]";
+				+ regDate + ", address1=" + address1 + ", address2=" + address2 + ", zipCode=" + zipCode + ", fileName="
+				+ fileName + ", fileSize=" + fileSize + ", originalFileName=" + originalFileName + "]";
 	}
 	
 }

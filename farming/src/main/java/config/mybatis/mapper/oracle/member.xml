@@ -32,7 +32,8 @@
 	
 	<update id="updateMember" parameterType="memberVo">
 		update member
-		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zipCode=#{zipCode}
+		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zipCode=#{zipCode}, 
+		fileName=#{fileName}, fileSize=#{fileSize}, originalFileName=#{originalFileName}
 		where email=#{email}
 	</update>
 	
@@ -47,6 +48,11 @@
 		set pwd=#{pwd}
 		where email=#{email}
 	</update>
+	
+	<select id="selectByNo" parameterType="int" resultType="memberVo">
+		select * from member
+		where member_no=#{memberNo}
+	</select>
 </mapper>
 
 
