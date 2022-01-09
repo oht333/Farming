@@ -56,7 +56,7 @@ public class CashController {
 	
 	@PostMapping("/cash")
 	public String cash_post(@ModelAttribute CashVO vo, HttpSession session) {
-		vo.setMemberNo((int) session.getAttribute("memNo"));
+		vo.setMemberNo((int) session.getAttribute("userNo"));
 		logger.info("캐시 충전 처리 파라미터 vo={}",vo);
 		int cnt = service.insert(vo);
 		logger.info("캐시 충전 처리결과 cnt={}",cnt);

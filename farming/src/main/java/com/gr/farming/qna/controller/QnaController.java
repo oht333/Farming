@@ -58,7 +58,7 @@ public class QnaController {
 	@RequestMapping("/qnaList")
 	public String qnaList(HttpSession session, Model model) {
 		
-		List<QnaVO> list = qnaService.select((int)session.getAttribute("memNo"));
+		List<QnaVO> list = qnaService.select((int)session.getAttribute("userNo"));
 //		List<QnaVO> list = qnaService.select(memberNo);
 		model.addAttribute("list", list);
 		return "qna/qnaList";
