@@ -88,7 +88,8 @@ public class LoginController {
 			session.setAttribute("email", memVo.getEmail());
 			session.setAttribute("name", memVo.getName());
 			session.setAttribute("pwd", memVo.getPwd());
-			session.setAttribute("memNo", memVo.getMemberNo());
+//			session.setAttribute("memNo", memVo.getMemberNo());
+			session.setAttribute("userNo", memVo.getMemberNo());
 			session.setAttribute("userImg", memVo.getFileName());
 			session.setAttribute("user", "사용자");
 			session.setAttribute("test", "test@test");
@@ -143,7 +144,8 @@ public class LoginController {
 			session.setAttribute("email", expVo.getEmail());
 			session.setAttribute("name", expVo.getName());
 			session.setAttribute("pwd", expVo.getPwd());
-			session.setAttribute("expNo", expVo.getExpertNo());
+//			session.setAttribute("expNo", expVo.getExpertNo());
+			session.setAttribute("userNo", expVo.getExpertNo());
 			session.setAttribute("userImg", expVo.getFileName());
 			session.setAttribute("user", "전문가");
 			session.setAttribute("main", main);

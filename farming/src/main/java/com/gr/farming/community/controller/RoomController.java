@@ -62,10 +62,10 @@ public class RoomController {
     	log.info("해당 사용자의 채팅방 조회");
     	List<Map<String, Object>> joinList = null;
     	if(session.getAttribute("user").equals("사용자")) {
-    		int memNo = (int) session.getAttribute("memNo");
+    		int memNo = (int) session.getAttribute("userNo");
     		joinList = service.selectRoomByMember(memNo);
     	} else if(session.getAttribute("user").equals("전문가")) {
-    		int expNo = (int) session.getAttribute("expNo");
+    		int expNo = (int) session.getAttribute("userNo");
     		joinList = service.selectRoomByExpert(expNo);
     	}
     	log.info("joinList = {}",joinList);
@@ -90,7 +90,7 @@ public class RoomController {
     public String createRoom(@RequestParam(value="expertEmail", required=false) String expertEmail, HttpSession session, Model model) {
     	log.info("채팅방 만들기 (상담전문가email)expertEmail = {}", expertEmail);
     	
-    	int memNo = (int) session.getAttribute("memNo");
+    	int memNo = (int) session.getAttribute("userNo");
     	ExpertVO eVo = e_service.selectByEmail(expertEmail);
     	String expName = eVo.getName();
     	
