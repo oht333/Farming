@@ -228,7 +228,7 @@ public class ExpertController {
 	
 	@RequestMapping("addExp/post2")
 	public String addInfo3_post(HttpSession session, @RequestParam String main, String[] detail, Model model) {
-		int expNo = (int) session.getAttribute("expNo");
+		int expNo = (int) session.getAttribute("userNo");
 		logger.info("전문가 추가정보 등록처리 페이지 expNo = {}",expNo);
 		
 		int[] arr = new int[detail.length];
@@ -435,7 +435,7 @@ public class ExpertController {
 	//전문가 홍보를 위한 추가정보 입력페이지
 	@RequestMapping("/addExp/addExp")
 	public String addExp1(HttpSession session) {
-		int expNo = (int) session.getAttribute("expNo");
+		int expNo = (int) session.getAttribute("userNo");
 		logger.info("추가정보입력페이지 expNo={}",expNo);
 		
 		String main = service.selectMain(expNo);
