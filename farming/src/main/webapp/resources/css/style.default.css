@@ -8891,6 +8891,10 @@ fieldset:disabled .btn {
   letter-spacing: 0.5em !important;
 }
 
+.w-0rem {
+  width: 0.5rem !important;
+}
+
 .w-1rem {
   width: 1rem !important;
 }
