@@ -57,7 +57,7 @@ public class ExpertController {
 
 	@Autowired
 	public ExpertController(ExpertService service, CategoryService c_service, OAuthService o_service, 
-      FieldService f_service, ResumeService r_service, FileUploadUtil file, FindExpService fe_service)) {
+      FieldService f_service, ResumeService r_service, FileUploadUtil file, FindExpService fe_service) {
 		this.service = service;
 		this.c_service = c_service;
 		this.o_service = o_service;
