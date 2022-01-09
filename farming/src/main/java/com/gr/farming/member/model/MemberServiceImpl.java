@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService{
 	public int insert(MemberVO vo) {
 		vo.setAddress1("");
 		vo.setAddress2("");
-		vo.setZipcode("");
+		vo.setZipCode("");
 		
 		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
 		
@@ -97,5 +97,8 @@ public class MemberServiceImpl implements MemberService{
 		pwd = pwdEncoder.encode(pwd);
 		return memberDao.updatePwd(email, pwd);
 	}
-
+	
+	public MemberVO selectByNo(int memberNo) {
+		return memberDao.selectByNo(memberNo);
+	}
 }

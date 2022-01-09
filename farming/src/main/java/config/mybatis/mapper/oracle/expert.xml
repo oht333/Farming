@@ -37,7 +37,8 @@
 	
 	<update id="updateExpert" parameterType="expertVo">
 		update expert
-		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zip_code=#{zipCode}
+		set name=#{name}, pwd=#{pwd}, address1=#{address1}, address2=#{address2}, zip_code=#{zipCode},
+		fileName=#{fileName}, fileSize=#{fileSize}, originalFileName=#{originalFileName}
 		where email=#{email}
 	</update>
 	
@@ -64,7 +65,7 @@
 		on f.expert_no = e.expert_no
 		<![CDATA[where e.expert_no=#{expertNo} and rownum <= 1]]>
 	</select>
-	   
+	
 </mapper>
 
 
