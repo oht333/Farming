@@ -13,7 +13,7 @@ target/
 .springBeans
 .sts4-cache
 
-ConstUtil.java
+src/main/java/com/gr/farming/common/ConstUtil.java
 
 ### IntelliJ IDEA ###
 .idea

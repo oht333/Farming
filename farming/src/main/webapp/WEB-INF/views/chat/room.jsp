@@ -53,22 +53,22 @@
 				<c:if test="${!empty dtoList }">
 					<c:forEach var="dto" items="${dtoList }">
 						<c:if test="${dto.writer eq name }">
-							<div class='d-flex-end col-md-9 col-xl-7 ms-auto mb-3'>
+							<div class="d-flex-end col-md-9 col-xl-7 ms-auto mb-3">
 					          <div class='me-3'>
-					            <div class='bg-primary rounded p-4 mb-2'>
-					              <p class='text-sm mb-0 text-white'>${dto.message }</p>
+					            <div class="bg-primary rounded p-4 mb-2">
+					              <p class="text-sm mb-0 text-white">${dto.message }</p>
 					            </div>
-					            <p class='small text-muted ms-3'><fmt:formatDate value="${dto.time }" pattern="yyyy-MM-dd HH:ss"/></p>
-					          </div><img class='avatar avatar-border-white flex-shrink-0' src='img/avatar/avatar-10.jpg' alt='user'>
+					            <p class="small text-muted ms-3"><fmt:formatDate value="${dto.time }" pattern="yyyy-MM-dd HH:ss"/></p>
+					          </div><img class="avatar avatar-border-white flex-shrink-0" src="<c:url value='/resources/userImg/${userImg }'/>" alt="user">
 					        </div>
 					    </c:if>
 					    <c:if test="${dto.writer ne name }">
-					    	<div class='d-flex col-md-9 col-xl-7 mb-3'><img class='avatar avatar-border-white flex-shrink-0' src='img/avatar/avatar-1.jpg' alt='user'>
-				              <div class='ms-3'>
-				                <div class='bg-gray-200 rounded p-4 mb-2'>
-				                  <p class='text-sm mb-0'>${dto.message }</p>
+					    	<div class="d-flex col-md-9 col-xl-7 mb-3"><img class="avatar avatar-border-white flex-shrink-0" src="<c:url value='/resources/userImg/${userImg }'/>" alt="user">
+				              <div class="ms-3">
+				                <div class="bg-gray-200 rounded p-4 mb-2">
+				                  <p class="text-sm mb-0">${dto.message }</p>				                  
 				                </div>
-				                <p class='small text-muted ms-3'><fmt:formatDate value="${dto.time }" pattern="yyyy-MM-dd HH:ss"/></p>
+				                <p class="small text-muted ms-3"><fmt:formatDate value="${dto.time }" pattern="yyyy-MM-dd HH:ss"/></p>
 				              </div>
 				            </div>
 					    </c:if>
@@ -76,10 +76,10 @@
 				</c:if>
 			</div>
 			
-			<div class='bg-light rounded shadow-sm' style="margin: 0; padding: 0;">
-				<div class='input-group'>
-	           	 	<textarea class='form-control border-0 p-4 bg-light text-sm' id="msg" placeholder='Type a message' ></textarea>
-	            	<button class='btn btn-link' id="button-send" style="margin: 0;"><i class='fa fa-paper-plane'></i></button>
+			<div class="bg-light rounded shadow-sm" style="margin: 0; padding: 0;">
+				<div class="input-group">
+	           	 	<textarea class="form-control border-0 p-4 bg-light text-sm" id="msg" placeholder="Type a message" ></textarea>
+	            	<button class="btn btn-link" id="button-send" style="margin: 0;"><i class="fa fa-paper-plane"></i></button>
 	        	</div>
 			</div>
 			<div id="div1"></div>
@@ -141,11 +141,11 @@ $(document).ready(function(){
                str += "<div class='bg-primary rounded p-4 mb-2'>";
                str += "<p class='text-sm mb-0 text-white'>"+content.message+"</p></div>";
                str += "<p class='small text-muted ms-3'>"+dateString+"</p>";
-               str += "</div><img class='avatar avatar-border-white flex-shrink-0' src='img/avatar/avatar-10.jpg' alt='user'>";
+               str += "</div><img class='avatar avatar-border-white flex-shrink-0' src='<c:url value='/resources/userImg/${userImg }'/>' alt='user'>";
                str += "</div>";
                $("#msgArea").append(str);
            }else{
-        	   str = "<div class='d-flex col-md-9 col-xl-7 mb-3'><img class='avatar avatar-border-white flex-shrink-0' src='img/avatar/avatar-1.jpg' alt='user'>";
+        	   str = "<div class='d-flex col-md-9 col-xl-7 mb-3'><img class='avatar avatar-border-white flex-shrink-0' src='<c:url value='/resources/userImg/${userImg }'/>' alt='user'>";
                str +="<div class='ms-3'>";
                str +="<div class='bg-gray-200 rounded p-4 mb-2'>";
                str +="<p class='text-sm mb-0'>"+content.message+"</p></div>";
