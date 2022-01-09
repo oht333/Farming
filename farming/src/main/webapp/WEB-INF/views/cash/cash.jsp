@@ -81,7 +81,7 @@ $('#cash').click(function () {
         </div> -->
         <div class="box1" style=" margin-top: 3px; ">
 	      <label class="form-label" for="cash1"></label>
-	      <input class="form-control" name="cash1" id="cash" type="button" value="5,000" title="5,000" >
+	      <input class="form-control" name="cash1" id="cash" type="checkbox" value="5,000" title="5,000" >
 	      <label class="form-label" for="cash2"></label>
 	      <input class="form-control" name="cash2" id="cash" type="button" value="10,000" title="10,000">
 	      <label class="form-label" for="cash3"></label>
