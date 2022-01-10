@@ -1,9 +1,11 @@
 package com.gr.farming.expert.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -22,13 +24,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
+import com.gr.farming.common.ConstUtil;
+import com.gr.farming.common.FileUploadUtil;
 import com.gr.farming.expert.model.ExpertService;
 import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.field.model.FieldService;
 import com.gr.farming.field.model.FieldVO;
+import com.gr.farming.findExp.model.ExpertInfoVO;
+import com.gr.farming.findExp.model.FindExpService;
 import com.gr.farming.oauth.model.OAuthService;
 import com.gr.farming.resume.model.ResumeService;
-import com.gr.farming.resume.model.ResumeVO;
 
 @Controller
 @RequestMapping("/expert")
@@ -39,6 +44,9 @@ public class ExpertController {
 	private final OAuthService o_service;
 	private final FieldService f_service;
 	private final ResumeService r_service;
+	private final FindExpService fe_service;
+	
+	private final FileUploadUtil file;
 	
 	
 	@Autowired
@@ -48,14 +56,17 @@ public class ExpertController {
 	=LoggerFactory.getLogger(ExpertController.class);
 
 	@Autowired
-	public ExpertController(ExpertService service, CategoryService c_service, OAuthService o_service, FieldService f_service, ResumeService r_service) {
+	public ExpertController(ExpertService service, CategoryService c_service, OAuthService o_service, 
+      FieldService f_service, ResumeService r_service, FileUploadUtil file, FindExpService fe_service) {
 		this.service = service;
 		this.c_service = c_service;
 		this.o_service = o_service;
 		this.f_service = f_service;
 		this.r_service = r_service;
-	}
-	
+		this.file = file;
+		this.fe_service = fe_service;
+  }
+
 	@RequestMapping("/agreement")
 	public String agreement() {
 		logger.info("약관페이지");
@@ -161,8 +172,34 @@ public class ExpertController {
 	}
 	
 	@RequestMapping("/addExp/post")
-	public String update_addExp(@ModelAttribute ExpertVO vo) {
+	public String update_addExp(@ModelAttribute ExpertVO vo, HttpServletRequest request) {
 		logger.info("주소, 비밀번호 업데이트 처리페이지 vo = {}",vo);
+		
+		//파일 업로드 처리
+		String fileName="", originName="";
+		long fileSize=0;
+		int pathFlag=ConstUtil.UPLOAD_IMAGE_FLAG;
+		try {
+			List<Map<String, Object>> fileList = file.fileUpload(request, pathFlag);
+			for(int i=0;i<fileList.size();i++) {
+				 Map<String, Object> map=fileList.get(i);
+				 
+				 fileName=(String) map.get("fileName");
+				 originName=(String) map.get("originalFileName");
+				 fileSize=(long) map.get("fileSize");				 
+			}
+					
+			logger.info("파일 업로드 성공, fileName={}", fileName);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		vo.setFileName(fileName);
+		vo.setFileSize(fileSize);
+		vo.setOriginalFileName(originName);
+		
 		int cnt = service.updateExpert(vo);
 		if(cnt > 0) {
 			logger.info("업데이트 성공");
@@ -191,7 +228,7 @@ public class ExpertController {
 	
 	@RequestMapping("addExp/post2")
 	public String addInfo3_post(HttpSession session, @RequestParam String main, String[] detail, Model model) {
-		int expNo = (int) session.getAttribute("expNo");
+		int expNo = (int) session.getAttribute("userNo");
 		logger.info("전문가 추가정보 등록처리 페이지 expNo = {}",expNo);
 		
 		int[] arr = new int[detail.length];
@@ -262,7 +299,7 @@ public class ExpertController {
 		return "common/message";
 	}
 
-//  회원 정보 수정
+//  전문가 정보 수정
 	@GetMapping("/mypage/profile")
 	public String edit_get(HttpSession session, Model model) {
 		String email=(String) session.getAttribute("email");
@@ -276,13 +313,37 @@ public class ExpertController {
 	}
 	
 	@PostMapping("/mypage/profile")
-	public String edit_post(@ModelAttribute ExpertVO vo,
-			HttpSession session, Model model) {
+	public String edit_post(@ModelAttribute ExpertVO vo, HttpSession session, HttpServletRequest request, Model model) {
 		vo.setEmail((String) session.getAttribute("email"));
 		vo.setName((String) session.getAttribute("name"));
 		vo.setPwd(pwdEncoder.encode(vo.getPwd()));
 		
 		logger.info("회원수정 처리, 파라미터 vo={}", vo);
+		
+		//파일 업로드 처리
+		String fileName="", originName="";
+		long fileSize=0;
+		int pathFlag=ConstUtil.UPLOAD_IMAGE_FLAG;
+		try {
+			List<Map<String, Object>> fileList = file.fileUpload(request, pathFlag);
+			for(int i=0;i<fileList.size();i++) {
+				 Map<String, Object> map=fileList.get(i);
+				 
+				 fileName=(String) map.get("fileName");
+				 originName=(String) map.get("originalFileName");
+				 fileSize=(long) map.get("fileSize");				 
+			}
+			
+			logger.info("파일 업로드 성공, fileName={}", fileName);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		vo.setFileName(fileName);
+		vo.setFileSize(fileSize);
+		vo.setOriginalFileName(originName);
 		
 		String msg="", url="/mypage/profile";
 		
@@ -290,8 +351,8 @@ public class ExpertController {
 		logger.info("회원수정 결과, cnt={}", cnt);
 		
 		if(cnt>0) {
-			msg="회원정보 수정되었습니다.";
-			url="/expert/mypage/main";
+			msg="수정되었습니다. 다시 로그인 해주세요.";
+			url="/login/logout";
 		}else {
 			msg="회원정보 수정 실패!";
 		}		
@@ -374,7 +435,7 @@ public class ExpertController {
 	//전문가 홍보를 위한 추가정보 입력페이지
 	@RequestMapping("/addExp/addExp")
 	public String addExp1(HttpSession session) {
-		int expNo = (int) session.getAttribute("expNo");
+		int expNo = (int) session.getAttribute("userNo");
 		logger.info("추가정보입력페이지 expNo={}",expNo);
 		
 		String main = service.selectMain(expNo);
@@ -385,21 +446,21 @@ public class ExpertController {
 	}
 	
 	@RequestMapping("/addExp/addExpPost")
-	public String addExp2(@ModelAttribute ResumeVO rVo, Model model, HttpSession session) {
-		if(rVo.getCertificate() == null && rVo.getCertificate().isEmpty()) {
-			rVo.setCertificate("0");
+	public String addExp2(@ModelAttribute ExpertInfoVO infoVo, Model model, HttpSession session) {
+		if(infoVo.getLicense() == null && infoVo.getLicense().isEmpty()) {
+			infoVo.setLicense("0");
 		}
-		int categoryNo = service.selectCategory(rVo.getExpertNo());
-		rVo.setCategoryNo(categoryNo);
-		logger.info("추가정보입력처리페이지 rVo = {}",rVo);			
-		int cnt = r_service.insert(rVo);
+		int categoryNo = service.selectCategory(infoVo.getExpertNo());
+		infoVo.setCategoryNo(categoryNo);
+		logger.info("추가정보입력처리페이지 rVo = {}",infoVo);			
+		int cnt = fe_service.insertExpInfo(infoVo);
 		String msg = "추가정보 등록 실패", url = "/expert/addExp/addExp";
 		if(cnt > 0) {
 			msg = "추가정보 등록";
 			url = "/index";
 		}
 		
-		session.setAttribute("career", rVo.getCareer());
+		session.setAttribute("career", infoVo.getCareer());
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		

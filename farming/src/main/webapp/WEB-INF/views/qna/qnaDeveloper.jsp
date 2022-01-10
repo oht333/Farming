@@ -7,7 +7,7 @@
       <div class="container position-relative">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../index">Home</a></li>
           <li class="breadcrumb-item"><a href="<c:url value='/qna/qnaMain'/>">메인</a></li>
           <li class="breadcrumb-item active">IT 전문가 가이드</li>
         </ol>

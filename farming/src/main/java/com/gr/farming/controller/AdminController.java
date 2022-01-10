@@ -40,35 +40,35 @@ public class AdminController {
 		
 		return "admin/main";
 	}
-	@RequestMapping("/chart")
-	public String chart() {
+	@RequestMapping("/error")
+	public String error() {
 		
-		return "admin/chart";
+		return "admin/error";
 	}
-	@RequestMapping("/morrisChart")
-	public String morris_chart() {
+	@RequestMapping("/iconFontawesome")
+	public String iconFontawesome() {
 		
-		return "admin/morrisChart";
+		return "admin/iconFontawesome";
 	}
-	@RequestMapping("/uiElements")
-	public String uiElements() {
+	@RequestMapping("/mapGoogle")
+	public String mapGoogle() {
 		
-		return "admin/uiElements";
+		return "admin/mapGoogle";
 	}
-	@RequestMapping("/form")
-	public String form() {
+	@RequestMapping("/pagesBlank")
+	public String pagesBlank() {
 		
-		return "admin/form";
+		return "admin/pagesBlank";
 	}
-	@RequestMapping("/table")
-	public String table() {
+	@RequestMapping("/pagesProfile")
+	public String pagesProfile() {
 		
-		return "admin/table";
+		return "admin/pagesProfile";
 	}
-	@RequestMapping("/tabPanel")
-	public String tabPanel() {
+	@RequestMapping("/tableBasic")
+	public String tableBasic() {
 		
-		return "admin/tabPanel";
+		return "admin/tableBasic";
 	}
 	
 	@RequestMapping("/manage/mem_list")

@@ -13,6 +13,9 @@ target/
 .springBeans
 .sts4-cache
 
+### Java Ignore ###
+**/src/main/**/common/
+
 ### IntelliJ IDEA ###
 .idea
 *.iws

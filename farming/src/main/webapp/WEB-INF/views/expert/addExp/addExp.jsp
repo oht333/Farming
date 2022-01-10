@@ -40,7 +40,7 @@ input[type=radio]:checked+label {
 			Inroduce <span class="text-muted float-end">Step 1</span>
 		</h1>
 		<form action="<c:url value='/expert/addExp/addExpPost'/>" method="post">
-			<input type="hidden" name="expertNo" value="${expNo }">
+			<input type="hidden" name="expertNo" value="${userNo }">
 			<div class="row form-block">
 				<div class="col-lg-4">
 					<h4>간편 소개</h4>
@@ -61,7 +61,7 @@ input[type=radio]:checked+label {
 				<div class="col-lg-7 ms-auto">
 					<div class="mb-4">
 		                <label class="form-label" for="intro">서비스 상세소개</label>
-		                <input class="form-control" name="detailIntro" id="detailIntro" placeholder="서비스상세소개" type="text">
+		                <input class="form-control" name="detailInfo" id="detailInfo" placeholder="서비스상세소개" type="text">
 		            </div>
 				</div>
 			</div>
@@ -73,7 +73,7 @@ input[type=radio]:checked+label {
 				<div class="col-lg-7 ms-auto">
 					<div class="mb-4">
 		                <label class="form-label" for="intro">하나의 자격증을 입력하세요</label>
-		                <input class="form-control" name="certificate" id="certificate" placeholder="자격증(선택)" type="text">
+		                <input class="form-control" name="license" id="license" placeholder="자격증(선택)" type="text">
 		            </div>
 				</div>
 			</div>
@@ -86,23 +86,23 @@ input[type=radio]:checked+label {
 		               <p>함께 일하는 동료들의 수를 선택하세요</p>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="1명이상" name="staff" id="staff1" style="display: none"> 
-		                  <label for="staff1" style="height: 40px; text-align: center;">1명이상(본인포함)</label>
+		                  <label for="staff1" class="form-control">1명이상(본인포함)</label>
 		               </div>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="3명이상" name="staff" id="staff2" style="display: none"> 
-		                  <label for="staff2" style="height: 40px; text-align: center;">3명이상</label>
+		                  <label for="staff2" class="form-control">3명이상</label>
 		               </div>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="5명이상" name="staff" id="staff3" style="display: none"> 
-		                  <label for="staff3" style="height: 40px; text-align: center;">5명이상</label>
+		                  <label for="staff3" class="form-control">5명이상</label>
 		               </div>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="7명이상" name="staff" id="staff4" style="display: none"> 
-		                  <label for="staff4" style="height: 40px; text-align: center;">7명이상</label>
+		                  <label for="staff4" class="form-control">7명이상</label>
 		               </div>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="10명이상" name="staff" id="staff5" style="display: none"> 
-		                  <label for="staff5" style="height: 40px; text-align: center;">10명이상</label>
+		                  <label for="staff5" class="form-control">10명이상</label>
 		               </div>
 	            	</div>
 			</div>
@@ -115,23 +115,23 @@ input[type=radio]:checked+label {
 		               <p>경력을 선택하세요.</p>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="신입" name="career" id="career1" style="display: none"> 
-		                  <label for="career1" style="height: 40px; text-align: center;">신입</label>
+		                  <label for="career1" class="form-control">신입</label>
 		               </div>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="1년이상" name="career" id="career2" style="display: none"> 
-		                  <label for="career2" style="height: 40px; text-align: center;">1년이상</label>
+		                  <label for="career2" class="form-control">1년이상</label>
 		               </div>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="3년이상" name="career" id="career3" style="display: none"> 
-		                  <label for="career3" style="height: 40px; text-align: center;">3년이상</label>
+		                  <label for="career3" class="form-control">3년이상</label>
 		               </div>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="5년이상" name="career" id="career4" style="display: none"> 
-		                  <label for="career4" style="height: 40px; text-align: center;">5년이상</label>
+		                  <label for="career4" class="form-control">5년이상</label>
 		               </div>
 		               <div class="col-lg-4 d-grid" style="float: left; border: 1px solid #dddddd; margin: 5px; border-radius: 10px; text-align: center;">
 		                  <input type="radio" value="7년이상" name="career" id="career5" style="display: none"> 
-		                  <label for="career5" style="height: 40px; text-align: center;">7년이상</label>
+		                  <label for="career5" class="form-control">7년이상</label>
 		               </div>
 	            	</div>
 			</div>

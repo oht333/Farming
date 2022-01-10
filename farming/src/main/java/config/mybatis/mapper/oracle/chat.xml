@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gr.farming.community.model.ChatDAO">	
+	<!-- 채팅방 만들기 -->
+	<insert id="createRoom" parameterType="chatRoomDto">
+		<selectKey keyProperty="roomNo" resultType="int" order="BEFORE">
+			select chatRoom_seq.nextval from dual
+		</selectKey>
+		insert into chatRoom(room_no, room_name) values(#{roomNo}, #{roomName})
+	</insert>
+	
+	<!-- 방에 입장 사용자, 전문가 -->
+	<insert id="joinRoom" parameterType="chatRoomJoinVo">
+		<selectKey keyProperty="joinNo" resultType="int" order="BEFORE">
+			select chatRoomJoin_seq.nextval from dual
+		</selectKey>
+		insert into chatRoomJoin(join_no, room_no, member_no, expert_no)
+		values(#{joinNo}, #{roomNo}, #{memberNo}, #{expertNo})
+	</insert>
+	
+	<!-- 채팅 -->
+	<insert id="saveMessage" parameterType="chatMessageDto">
+		<selectKey keyProperty="messageNo" resultType="int" order="BEFORE">
+			select chatMessage_seq.nextval from dual
+		</selectKey>
+		insert into chatMessage(message_no, message, user_no, room_no, writer)
+		values(#{messageNo}, #{message}, #{userNo}, #{roomNo}, #{writer})
+	</insert>
+	
+	<select id="selectRoomByMember" parameterType="int" resultType="map">
+		select j.room_no, r.room_name 
+		from chatRoomJoin j join chatRoom r
+		on j.room_no=r.room_no
+		where j.member_no=#{memberNo} 
+	</select>
+	<select id="selectRoomByExpert" parameterType="int" resultType="map">
+		select j.room_no, r.room_name 
+		from chatRoomJoin j join chatRoom r
+		on j.room_no=r.room_no
+		where expert_no=#{expertNo} 
+	</select>
+	<select id="selectRoomNo" parameterType="int" resultType="chatRoomDto">
+		select * from chatRoom
+		where room_no=#{roomNo}
+	</select>
+	
+	<select id="selectMessageDTO" parameterType="int" resultType="chatMessageDto">
+		select * from chatMessage
+		where room_no=#{roomNo}
+		order by time 
+	</select>
+	
+</mapper>
+
+

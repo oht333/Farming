@@ -1,42 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top_admin.jsp" %>
-<style>
-.btn-primary {
-  color: #fff;
-  background-color: #2CCE8D;
-  border-color: #2CCE8D;
-}
-.rounded-pill {
-  border-radius: 50rem !important;
-}
-.h-100 {
-  height: 100% !important;
-}
-.btn-primary:hover {
-  color: #fff;
-  background-color: #00b66d;
-  border-color: #00b66d;
-}
-</style>
-        <div id="page-wrapper">
-		  <div class="header"> 
-                        <h1 class="page-header">
-                            
-                        </h1>
-						<%-- <ol class="breadcrumb"">
-					  		<li><a href="<c:url value='/admin/empty'/>">입력</a></li>
-					  	
-					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-success">success</a>
-					  		
-					  		
-					   </ol> --%>
-					
-		</div>
-		<div class="panel panel-default">
-                        <form name="frmDelete" method="post" action="<c:url value='/admin/category/delete'/>" >
-						<input type="hidden" name="categoryNo" value="${param.categoryNo}">
-                        <div class="row">
+
+       <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="page-title mb-0 p-0">카테고리 삭제</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">카테고리 삭제</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+<form name="frmDelete" method="post" action="<c:url value='/admin/category/delete'/>" style="margin-left: 23%; width: 80%;  height: 400px;">
+<input type="hidden" name="categoryNo" value="${param.categoryNo}">
+                        <%-- <div class="row">
                         <div class="col-xs-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -53,7 +41,30 @@
                     </div>
              
              <!-- /. PAGE INNER  -->
-             </div>
+             </div> --%>
+             <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2">
+                                    <div class="form-group">
+                                        <span class="sp" style="font-weight: bold; font-size:large;">${param.categoryNo }번 글을 삭제하시겠습니까?</span>
+                                    </div>
+                                    
+                                    <%-- <div class="form-group">
+                                        <div class="col-sm-12 d-flex">
+                          
+                                    		<input type = "Button" id="btList" class="btn btn-success mx-auto mx-md-0 text-white" value="&nbsp;&nbsp;글목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/category/list"/>'" />
+                                        	<input type = "submit" id="submit" value="&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;" style="margin-left:45%; " class="btn btn-success mx-auto mx-md-0 text-white"/>
+                                        </div>
+                                    </div> --%>
+                                    <div class="col-lg-2 d-grid" style="width:100px">
+                                    		<input type = "Button" id="btList" class="btn btn-primary rounded-pill h-100" value="&nbsp;&nbsp;글목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/category/list"/>'" />
+						                    <input type = "submit" class="btn btn-primary rounded-pill h-100" id="submit" value="&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;">
+						              </div>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>

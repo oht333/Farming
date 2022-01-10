@@ -25,21 +25,18 @@ public class FileUploadUtil {
 		=LoggerFactory.getLogger(FileUploadUtil.class);
 	
 	//파일 업로드 처리
-	public List<Map<String, Object>> fileUpload(HttpServletRequest request, 
-			int pathFlag) throws IllegalStateException, IOException {
+	public List<Map<String, Object>> fileUpload(HttpServletRequest request, int pathFlag) throws IllegalStateException, IOException {
 		
-		MultipartHttpServletRequest multiRequest 
-			= (MultipartHttpServletRequest) request;
+		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 		
 		Map<String, MultipartFile> fileMap=multiRequest.getFileMap();
-		//List<MultipartFile> fileList=multiRequest.getFiles("upfile");
 	
 		List<Map<String, Object>> list = new ArrayList<>();
 		
 		Iterator<String> iter=fileMap.keySet().iterator();
 		while(iter.hasNext()) {
 			String key=iter.next();
-			MultipartFile tempFile =fileMap.get(key);
+			MultipartFile tempFile = fileMap.get(key);
 			//=> 업로드된 파일을 임시파일 형태로 제공
 			if(!tempFile.isEmpty()) {  //업로드 한 경우
 				Map<String, Object> map = new HashMap<>();
@@ -72,16 +69,16 @@ public class FileUploadUtil {
 		String path="";
 		
 		if(ConstUtil.FILE_UPLOAD_TYPE.equals("test")) {
-			if(pathFlag==ConstUtil.UPLOAD_FILE_FLAG) {  //자료실
+			if(pathFlag==ConstUtil.UPLOAD_FILE_FLAG) {
 				path=ConstUtil.FILE_UPLOAD_PATH_TEST;
-			}else if(pathFlag==ConstUtil.UPLOAD_IMAGE_FLAG) { //상품등록
+			}else if(pathFlag==ConstUtil.UPLOAD_IMAGE_FLAG) {
 				path=ConstUtil.IMAGE_FILE_UPLOAD_PATH_TEST;
 			}
 			logger.info("type={}", ConstUtil.FILE_UPLOAD_TYPE);
 		}else {  //deploy
-			if(pathFlag==ConstUtil.UPLOAD_FILE_FLAG) {  //자료실
+			if(pathFlag==ConstUtil.UPLOAD_FILE_FLAG) {
 				path=ConstUtil.FILE_UPLOAD_PATH;
-			}else if(pathFlag==ConstUtil.UPLOAD_IMAGE_FLAG) { //상품등록
+			}else if(pathFlag==ConstUtil.UPLOAD_IMAGE_FLAG) {
 				path=ConstUtil.IMAGE_FILE_UPLOAD_PATH;
 			}
 			logger.info("type={}", ConstUtil.FILE_UPLOAD_TYPE);
