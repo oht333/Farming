@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,7 +49,9 @@ public class FindExpController {
 	
 	@RequestMapping("/expDetail")
 	public String findexpDetail(@RequestParam(defaultValue="0") int expertNo,
-			Model model) {
+			HttpSession session, Model model) {
+		
+		String userNo=(String) session.getAttribute("memNo");
 		
 		logger.info("전문가 상세페이지, 파라미터 expertNo={}", expertNo);
 		

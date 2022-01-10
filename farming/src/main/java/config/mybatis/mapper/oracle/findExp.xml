@@ -3,16 +3,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gr.farming.findExp.model.FindExpDAO">
+	
+	<!-- 전문가회원 추가정보/프로필 조회 -->
 	<select id="selectExpInfo" parameterType="int" resultType="expertInfoVo">
 		select * from EXPERT_INFO
 		where expert_no=#{expertNo}
 	</select>
 	
+	<!-- 전문가회원 정보 조회 -->
 	<select id="selectByExperNo" parameterType="int" resultType="expertVo">
 		select * from expert
 		where expert_no=#{expertNo}
 	</select>
 	
+	<!-- 전문가회원 - 서비스분야 디테일값 조회 -->
 	<select id="selectField" parameterType="int" resultType="map">
 		select f.*, c.main, c.detail
 		from field f join category c
@@ -20,6 +24,7 @@
 		where expert_no=#{expertNo}
 	</select>
 	
+	<!-- 전문가회원 - 추가정보 입력 -->
 	<insert id="insertExpInfo" parameterType="expertInfoVo">
 		<selectKey keyProperty="expertInfoCode" resultType="int" order="BEFORE">
 			select EXPERT_INFO_SEQ.nextval from dual
@@ -27,18 +32,8 @@
 		insert into EXPERT_INFO(EXPERT_INFO_CODE, category_no, expert_no, intro, DETAIL_INFO, career, LICENSE, staff)
 		values(#{expertInfoCode},#{categoryNo},#{expertNo},#{intro},#{detailInfo},#{career},#{license},#{staff})
 	</insert>
-
-	<update id="updateIntro" parameterType="expertInfoVo">
-		update EXPERT_INFO
-		set intro=#{intro}
-		where expert_no=#{expertNo}
-	</update>
 	
-	<update id="updateDetailInfo" parameterType="expertInfoVo">
-		update EXPERT_INFO
-		set detail_info=#{detailInfo}
-		where expert_no=#{expertNo}
-	</update>
+	<!-- 전문가회원 - 프로필 각각 수정 -->
 	<update id="updateExpInfo" parameterType="expertInfoVo">
 		update EXPERT_INFO
 		set 

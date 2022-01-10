@@ -34,10 +34,15 @@
         <p class="subtitle text-primary">Let's Farming</p>
         <h1 class="h2 mb-5">웹 디자인 <span class="text-muted float-end">Step 1</span></h1>
         <c:if test="${main eq '디자인' }">
-        	<form name="frm1" method="post" action="<c:url value='/request/requestWrite/design'/>">
+        	<form name="frm1" method="post" action="<c:url value='/request/requestWrite/design?categoryNo=${categoryNo }'/>">
         </c:if>
         <c:if test="${main eq '개발' }">
-        	<form name="frm1" method="post" action="<c:url value='/request/requestWrite/develop'/>">
+        	<form name="frm1" method="post" action="<c:url value='/request/requestWrite/develop?categoryNo=${categoryNo }'/>">
+        </c:if>
+        <input type="hidden" name="categoryNo" value="${categoryNo}">
+        <input type="hidden" name="memberNo" value="${memNo}">
+        <c:if test="${!empty expertNo }">
+	        <input type="hidden" name="expertNo" value="${expertNo}">
         </c:if>
 	     <c:forEach var="map" items="${qList }">
           <div class="row form-block">

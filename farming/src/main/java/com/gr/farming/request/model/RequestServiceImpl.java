@@ -16,6 +16,11 @@ public class RequestServiceImpl implements RequestService{
 		this.requestDao = requestDao;
 	}
 
+	@Override
+	public int insertRequest(RequestVO vo) {
+		return requestDao.insertRequest(vo);
+	}
+	
 	public int insertRequestDevelop(RequestDevelopVO vo) {
 		return requestDao.insertRequestDevelop(vo);
 	}
@@ -38,6 +43,18 @@ public class RequestServiceImpl implements RequestService{
 	public List<RequestQnaVO> selectRequestQna(int categoryNo) {
 	return requestDao.selectRequestQna(categoryNo);
 }
+
+	@Override
+	public List<Map<String, Object>> selectReceivedRequest(int expertNo) {
+		return requestDao.selectReceivedRequest(expertNo);
+	}
+
+	@Override
+	public Map<String, Object> selectRequestDetail(int detailNo) {
+		return requestDao.selectRequestDetail(detailNo);
+	}
+
+	
 
 
 

@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../inc/top.jsp" %>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/expDetail.css">
 <section>
       <!-- Slider main container-->
       <div class="swiper-container detail-slider slider-gallery">
@@ -174,50 +176,39 @@
 	          	<!-- include 해야함 -->
 	            <p class="subtitle text-sm text-primary">Reviews    </p>
 	            <h5 class="mb-4">서비스 후기</h5>
-	            <div class="d-flex d-block d-sm-flex review">
-	              <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${pageContext.request.contextPath }/resources/img/avatar/avatar-8.jpg" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-	              <div>
-	                <h6 class="mt-2 mb-1">Padmé Amidala</h6>
-	                <div class="mb-2"><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i><i class="fa fa-xs fa-star text-primary"></i>
-	                </div>
-	                <p class="text-muted text-sm">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections     </p>
-	              </div>
-            </div>
+	            <c:import url="/reviewList?expertNo=${expVo.expertNo }"/>
             
             <div class="py-5">
-              <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">서비스 후기 남기기</button>
               <div class="collapse mt-4" id="leaveReview">
-                <h5 class="mb-4">서비스 후기 남기기</h5>
-                <form class="form" id="contact-form" method="get" action="#">
+                <h5 class="mb-4">서비스 후기 작성</h5>
+                <form class="form" id="contact-form" method="post" action="<c:url value='/reviewWrite'/>">
+	                <input type="hidden" name="memberNo" value="${expNo }">
+	                <input type="hidden" name="name" value="${name }">
+					<input type="hidden" name="expertNo" value="${expVo.expertNo }">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="mb-4">
-                        <label class="form-label" for="name">이름 *</label>
-                        <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="rating">후기 점수 *</label>
-                        <select class="form-select focus-shadow-0" name="rating" id="rating">
-                          <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
-                          <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
-                          <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
-                          <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5)</option>
-                          <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5)</option>
-                        </select>
+                        <label class="form-label" for="rating">후기 점수</label>
+                        <div class="chk_list">
+						    <input type="radio" name="rate" value="5" id="rate1"><label for="rate1"></label>
+						    <input type="radio" name="rate" value="4" id="rate2"><label for="rate2"></label>
+						    <input type="radio" name="rate" value="3" id="rate3"><label for="rate3"></label>
+						    <input type="radio" name="rate" value="2" id="rate4"><label for="rate4"></label>
+						    <input type="radio" name="rate" value="1" id="rate5"><label for="rate5"></label>
+						</div>
                       </div>
                     </div>
                   </div>
                   <div class="mb-4">
-                    <label class="form-label" for="email">이메일 *</label>
-                    <input class="form-control" type="email" name="email" id="email" placeholder="Enter your  email" required="required">
+                    <label class="form-label" for="review">후기 내용</label>
+                    <textarea class="form-control" rows="4" name="content" id="content" placeholder="서비스 이용 후기를 작성해주세요." required="required"></textarea>
                   </div>
-                  <div class="mb-4">
-                    <label class="form-label" for="review">후기 내용 *</label>
-                    <textarea class="form-control" rows="4" name="review" id="review" placeholder="Enter your review" required="required"></textarea>
-                  </div>
-                  <button class="btn btn-primary" type="submit">리뷰 작성</button>
+                  <div class="mb-3">
+					  <label for="formFile" class="form-label">이미지 업로드</label>
+					  <input class="form-control" type="file" id="formFile" name="fileName" >
+					</div>
+                  <button class="btn btn-primary" type="submit">후기 작성</button>
                 </form>
               </div>
             </div>
@@ -226,7 +217,7 @@
         <div class="col-lg-4">
           <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 100px;">
             <p class="text-muted">${expVo.name } 전문가에게 원하는 서비스의 견적을 받아보세요 </p>
-            <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
+            <form class="form" id="requestForm" method="get" action="<c:url value='/request/requestWrite?categoryNo=${infoVo.categoryNo }&expertNo=${expVo.expertNo }'/>">
              <div class="mb-4">
               </div>
               <!-- <div class="mb-4">
@@ -240,7 +231,7 @@
                 </select> 
               </div> -->
               <div class="d-grid mb-4">
-                <button class="btn btn-primary btn-lg" type="submit">견적요청하기</button>
+                <button class="btn btn-primary btn-lg" >견적요청하기</button>
               </div>
 	            <p class="text-muted text-sm text-center">견적요청서는 1분만에 간단하게 작성가능합니다.</p>
             </form>
@@ -293,10 +284,6 @@
               </div>
             </div>
             <!--  -->
-            
-            
-            
-           
           </div>
           <!-- If we need pagination-->
           <div class="swiper-pagination"></div>

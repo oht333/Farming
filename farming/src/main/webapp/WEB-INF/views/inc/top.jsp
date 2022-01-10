@@ -124,7 +124,7 @@
 						</c:if>
 						<c:if test="${!empty email }">
 							<c:if test="${user eq '사용자' }">
-								<li class="nav-item"><a class="nav-link" href="#">받은견적</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/request/requestByExpert'/>">받은견적</a>
 								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/rooms'/>">채팅</a>
 								<li class="nav-item dropdown ms-2">
 									<a class="btn btn-primary" id="docsDropdownMenuLink"
@@ -132,7 +132,7 @@
 								<!-- 프로필 이미지로 변경예정 -->
 								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
 									<h6 class="dropdown-header fw-normal">${name } 고객님</h6>
-									<a class="dropdown-item" href="docs/docs-directory-structure.html">받은견적</a>
+									<a class="dropdown-item" href="<c:url value='/request/requestByExpert'/>">받은견적</a>
 									<a class="dropdown-item" href="docs/docs-introduction.html">파밍페이</a>
 									<a class="dropdown-item" href="<c:url value='/member/mypage/main?email=${email }'/>l">마이페이지</a>
 									<div class="dropdown-divider"></div>
@@ -143,7 +143,7 @@
 								</div>
 							</c:if>
 							<c:if test="${user eq '전문가' }">
-								<li class="nav-item"><a class="nav-link" href="#">받은요청</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/request/requestByClient'/>">받은요청</a>
 								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/rooms'/>">채팅</a>
 								<li class="nav-item"><a class="nav-link" href="<c:url value='/findexp/expDetailEdit?expertNo=${expNo }'/>">프로필</a>
 								<li class="nav-item dropdown ms-2">
@@ -152,7 +152,7 @@
 								<!-- 프로필 이미지로 변경예정 -->
 									<div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
 										<h6 class="dropdown-header fw-normal">${name } 고객님</h6>
-											<a class="dropdown-item" href="docs/docs-directory-structure.html">받은요청</a>
+											<a class="dropdown-item" href="<c:url value='/request/requestByClient'/>">받은요청</a>
 											<a class="dropdown-item" href="docs/docs-introduction.html">파밍페이</a>
 											<a class="dropdown-item" href="<c:url value='/expert/mypage/main?email=${email }'/>l">마이페이지</a>
 											<div class="dropdown-divider"></div>
