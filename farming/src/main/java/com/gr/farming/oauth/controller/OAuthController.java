@@ -52,8 +52,6 @@ public class OAuthController {
 		vo.setName((String)userInfo.get("nickname"));
 		vo.setEmail((String)userInfo.get("email"));
 		
-		String img = (String) userInfo.get("img");
-		
 		System.out.println("vo = "+vo);
 		
 		String msg = "로그인 실패", url = "/login/login";
@@ -73,14 +71,14 @@ public class OAuthController {
 				url = "/member/addInfo";
 			}
 		}
-		session.setAttribute("memNo", vo.getMemberNo());
+//		session.setAttribute("memNo", vo.getMemberNo());
+		session.setAttribute("userNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("pwd", vo.getPwd());	
 		session.setAttribute("userImg", vo.getFileName());	
 		session.setAttribute("user", "사용자");
 		session.setAttribute("ktoken", access_Token);
-		session.setAttribute("img", img);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
@@ -118,7 +116,8 @@ public class OAuthController {
 				url = "/member/addInfo";
 			}
 		}
-		session.setAttribute("memNo", vo.getMemberNo());
+//		session.setAttribute("memNo", vo.getMemberNo());
+		session.setAttribute("userNo", vo.getMemberNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("userImg", vo.getFileName());
@@ -173,7 +172,8 @@ public class OAuthController {
 		} else {
 			System.out.println("추가정보x");
 		}
-		session.setAttribute("expNo", vo.getExpertNo());
+//		session.setAttribute("expNo", vo.getExpertNo());
+		session.setAttribute("userNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("userImg", vo.getFileName());
@@ -228,7 +228,8 @@ public class OAuthController {
 			System.out.println("추가정보x");
 		}
 		
-		session.setAttribute("expNo", vo.getExpertNo());
+//		session.setAttribute("expNo", vo.getExpertNo());
+		session.setAttribute("userNo", vo.getExpertNo());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("email", vo.getEmail());
 		session.setAttribute("userImg", vo.getFileName());
@@ -249,7 +250,7 @@ public class OAuthController {
 
         if(access_Token != null && !"".equals(access_Token)){
             service.kakaoLogout(access_Token);
-            session.removeAttribute("expNo");
+            session.removeAttribute("userNo");
             session.removeAttribute("name");
             session.removeAttribute("email");
             session.removeAttribute("userImg");

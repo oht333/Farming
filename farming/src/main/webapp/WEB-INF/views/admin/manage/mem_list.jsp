@@ -1,31 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top_admin.jsp" %>
-        <div id="page-wrapper">
-		  <div class="header"> 
-                        <h1 class="page-header">
-                            회원 목록
-                        </h1>
-					
-		</div>
-		<div class="panel panel-default">
-                        <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
-                            
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="page-title mb-0 p-0">회원 목록</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">회원 목록</li>
+                                </ol>
+                            </nav>
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                     <thead>
-                                        <tr>
-                                            <th>MEMBER_NO</th>
-                                            <th>NAME</th>
-                                            <th>EMAIL</th>
-                                            <th>ADDRESS1</th>
-                                            <th>ADDRESS2</th>
-                                            <th>ZIPCODE</th>
-                                            <th>REGDATE</th>
-                                        </tr>
-                                    </thead>
+                    </div>
+                    
+                </div>
+            </div>
+		<div class="container-fluid">
+               <div class="row">
+                    <!-- column -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table user-table no-wrap">
+                                        <thead>
+                                             <tr>
+	                                            <th>MEMBER_NO</th>
+	                                            <th>NAME</th>
+	                                            <th>EMAIL</th>
+	                                            <th>ADDRESS1</th>
+	                                            <th>ADDRESS2</th>
+	                                            <th>ZIPCODE</th>
+	                                            <th>REGDATE</th>
+                                       		 </tr>
+
+                                        </thead>
                                     <tbody>
                                     	<c:forEach var="vo" items="${mem_list}">
 	                                        <tr>
@@ -82,7 +97,7 @@
                     </div>
             
              <!-- /. PAGE INNER  -->
-             
+             </div>
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>

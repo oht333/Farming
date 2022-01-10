@@ -3,377 +3,195 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
-<html>
+<html dir="ltr" lang="en">
+
 <head>
-   <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <meta content="" name="description" />
-    <meta content="webthemez" name="author" />
-    <title>BRILLIANT Free Bootstrap Admin Template - WebThemez</title>
-    <!-- Bootstrap Styles-->
-    <link href="${pageContext.request.contextPath }/resources/admin_css/bootstrap.css" rel="stylesheet" >
-    <!-- FontAwesome Styles-->
-    <link href="${pageContext.request.contextPath }/resources/admin_css/font-awesome.css" rel="stylesheet" >
-    <!-- Morris Chart Styles-->
-    <link href="${pageContext.request.contextPath }/resources/admin_js/morris/morris-0.4.3.min.css" rel="stylesheet">
-    <!-- Custom Styles-->
-    <link href="${pageContext.request.contextPath }/resources/admin_css/custom-styles.css" rel="stylesheet">
-    <!-- Google Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/admin_js/Lightweight-Chart/cssCharts.css">
-    <!-- favicon -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
-      <script src="<c:url value='/resources/admin_js/jquery-1.10.2.js'/>"></script>
-    <!-- Bootstrap Js -->
-    <script src="<c:url value='/resources/admin_js/bootstrap.min.js'/>"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Metis Menu Js -->
-    <script src="<c:url value='/resources/admin_js/jquery.metisMenu.js'/>"></script>
-    <!-- Morris Chart Js -->
-    <script src="<c:url value='/resources/admin_js/morris/raphael-2.1.0.min.js'/>"></script>
-    <script src="<c:url value='/resources/admin_js/morris/morris.js'/>"></script>
-   
-   
-   <script src="<c:url value='/resources/admin_js/easypiechart.js'/>"></script>
-   <script src="<c:url value='/resources/admin_js/easypiechart-data.js'/>"></script>
-   
-    <script src="<c:url value='/resources/admin_js/Lightweight-Chart/jquery.chart.js'/>"></script>
-   
-    <!-- Custom Js -->
-    <script src="<c:url value='/resources/admin_js/custom-scripts.js'/>"></script>
-
-      
-    <!-- Chart Js -->
-    <script type="text/javascript" src="<c:url value='/resources/admin_js/chart.min.js'/>"></script>  
-    <script type="text/javascript">
-		$('.dr').hide();
-	</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Monsterlite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Monster admin lite design, Monster admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Monster Lite Template by WrapPixel</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath }/resources/admin_img/favicon.png">
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath }/resources/admin_plugins/chartist/dist/chartist.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath }/resources/admin_css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/style.default.css"
+	id="theme-stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
+<!-- ============================================================== -->
+    <script src="<c:url value='/resources/admin_plugins/jquery/dist/jquery.min.js'/>"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="<c:url value='/resources/admin_plugins/bootstrap/dist/js/bootstrap.bundle.min.js'/>"></script>
+    <script src="<c:url value='/resources/admin_js/app-style-switcher.js'/>"></script>
+    <!--Wave Effects -->
+    <script src="<c:url value='/resources/admin_js/waves.js'/>"></script>
+    <!--Menu sidebar -->
+    <script src="<c:url value='/resources/admin_js/sidebarmenu.js'/>"></script>
+    <!--Custom JavaScript -->
+    <script src="<c:url value='/resources/admin_js/custom.js'/>"></script>
+    <!--This page JavaScript -->
+    <!--flot chart-->
+    <script src="<c:url value='/resources/admin_plugins/flot/jquery.flot.js'/>"></script>
+    <script src="<c:url value='/resources/admin_plugins/flot.tooltip/js/jquery.flot.tooltip.min.js'/>"></script>
+    <script src="<c:url value='/resources/admin_js/pages/dashboards/dashboard1.js'/>"></script>
+	<!-- google maps api -->
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="${pageContext.request.contextPath }/resources/admin_plugins/gmaps/gmaps.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/admin_plugins/gmaps/jquery.gmaps.js"></script>
+    <!--Custom JavaScript -->
+    <script src="${pageContext.request.contextPath }/resources/admin_js/custom.js"></script>
+    
 <body>
-    <div id="wrapper">
-        <nav class="navbar navbar-default top-navbar" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="<c:url value='/admin/main'/>">
-                <img src="${pageContext.request.contextPath }/resources/img/farming-logo-w.png"
-               alt="Directory logo" style="width: 120px; padding: 2px; display:inline-block;">
-               <span style="font-size:16px;font-weight:400;padding-left:4px;">관리자모드</span>
-                </a>
-            <div id="sideNav" href="#">
-      <i class="fa fa-bars icon"></i> 
-      </div>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <a class="navbar-brand" href="<c:url value='/admin/main'/>" style="background:#2CCE8D">
+                        <%-- <!-- Logo icon --> --%>
+                        <img src="${pageContext.request.contextPath }/resources/img/farming-logo-w.png"
+			               alt="Directory logo" style="width: 120px; padding: 2px; display:inline-block;">
+			               <span style="font-size:16px;font-weight:400;padding-left:4px;color: white; font-weight: bold;">관리자모드</span>
+                    </a>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="background:#FCFCFC">
+                    
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav me-auto mt-md-0 ">
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+
+                        <li class="nav-item hidden-sm-down">
+                            <form class="app-search ps-3">
+                                <input type="text" class="form-control" placeholder="Search for..."> <a
+                                    class="srh-btn"><i class="ti-search"></i></a>
+                            </form>
+                        </li>
+                    </ul>
+
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active fas fa-user" href="#" id="docsDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false" style="color:#2CCE8D">
+							<div class="dropdown-menu" aria-labelledby="docsDropdownMenuLink">
+								<a class="dropdown-item" href="<c:url value='admin/category/list'/>">카테고리</a>
+                               
+                             </div>
+                            </a>
+                            <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- User Profile-->
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/main'/>" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
+                                    aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item drop"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/pagesProfile'/>" aria-expanded="false">
+                                <i class="me-3 fa fa-user" aria-hidden="true"></i><span
+                                    class="hide-menu">회원조회</span></a>
+                                    
+                                    <ul>
+                                    	<li></li>
+                                    </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/category/list'/>" aria-expanded="false"><i class="me-3 fa fa-table"
+                                    aria-hidden="true"></i><span class="hide-menu">카테고리</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/error'/>" aria-expanded="false"><i class="me-3 fa fa-info-circle"
+                                    aria-hidden="true"></i><span class="hide-menu">Q&A</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/pagesBlank'/>" aria-expanded="false"><i class="me-3 fa fa-columns"
+                                    aria-hidden="true"></i><span class="hide-menu">견적서 관리</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/iconFontawesome'/>" aria-expanded="false"><i class="me-3 fa fa-font"
+                                    aria-hidden="true"></i><span class="hide-menu">Icon</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/mapGoogle'/>" aria-expanded="false"><i class="me-3 fa fa-globe"
+                                    aria-hidden="true"></i><span class="hide-menu">Google Map</span></a></li>
+                        
+                        
+                       
+                    </ul>
+
+                </nav>
+                <!-- End Sidebar navigation -->
             </div>
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Doe</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Today</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
-                
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-tasks fa-fw"></i> 카테고리</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-comment fa-fw"></i> Q&A</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-envelope fa-fw"></i> 견적서 관리</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-tasks -->
-                </li>
-                <!-- /.dropdown -->
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> 회원 관리</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-        </nav>
-        <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-
-                    <li>
-                        <a href="<c:url value='/admin/main'/>"><i class="fa fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="<c:url value='/admin/uiElements'/>"><i class="fa fa-desktop"></i> UI Elements</a>
-                    </li>
-                
-                <li>
-                        <a href="#" class="active-menu"><i class="fa fa-sitemap"></i> Charts<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<c:url value='/admin/chart'/>">Charts JS</a>
-                            </li>
-                            <li>
-                                <a href="<c:url value='/admin/morrisChart'/>">Morris Chart</a>
-                            </li>
-                     </ul>
-                  </li>   
-                    <li>
-                        <a href="<c:url value='/admin/tab-panel'/>"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
-                    </li>
-                    
-                    <li>
-                        <a href="<c:url value='/admin/table'/>"><i class="fa fa-table"></i> Responsive Tables</a>
-                    </li>
-                    <li>
-                        <a href="<c:url value='/admin/form'/>"><i class="fa fa-edit"></i> Forms </a>
-                    </li>
-
-
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-            </div>
-
-        </nav>
-        <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-
-                   <%--  <li class="dropdown">
-                        <a href="#"><i class="fa fa-sitemap"></i>회원관리</a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<c:url value='/admin/manage/mem_list'/>">일반회원</a>
-                            </li>
-                            <li>
-                                <a href="<c:url value='/admin/manage/dev_list'/>">전문가회원</a>
-                            </li>
-                  </ul>
-                    </li>  --%>
-                    
-                    
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> 회원관리<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level dr">
-                            <li>
-                               <a href="<c:url value='/admin/manage/mem_list'/>">일반회원</a>
-                            </li>
-                            <li>
-                               <a href="<c:url value='/admin/manage/dev_list'/>">전문가회원</a>
-                            </li>
-                     </ul>
-                  </li> 
-                    
-                    <li>
-                        <a href="<c:url value='/admin/category/list'/>"><i class="fa fa-desktop"></i>카테고리</a>
-                    </li> 
-                    <li>
-                        <a href="<c:url value='/admin/uiElements'/>"><i class="fa fa-desktop"></i>Q&A</a>
-                    </li> 
-                    <li>
-                        <a href="<c:url value='/admin/uiElements'/>"><i class="fa fa-desktop"></i>견적서관리</a>
-                    </li> 
-                    <li>
-                        <a href="<c:url value='/admin/uiElements'/>"><i class="fa fa-desktop"></i> UI Elements</a>
-                    </li> 
-                
-                <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Charts<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<c:url value='chart'/>">Charts JS</a>
-                            </li>
-                            <li>
-                                <a href="<c:url value='morris_chart'/>">Morris Chart</a>
-                            </li>
-                     </ul>
-                  </li>   
-                     
-                    <li>
-                        <a href="<c:url value='/admin/tabPanel'/>"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
-                    </li>
-                    
-                    <li>
-                        <a href="<c:url value='/admin/table'/>"><i class="fa fa-table"></i> Responsive Tables</a>
-                    </li>
-                    <li>
-                        <a href="<c:url value='/admin/form'/>"><i class="fa fa-edit"></i> Forms </a>
-                    </li>
-
-
-                    <%-- <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="<c:url value='/admin/emptyPage'/>"><i class="fa fa-fw fa-file"></i> Empty Page</a>
-                    </li> --%>
-                </ul>
-
-            </div>
-
-        </nav>
-        <!-- /. NAV SIDE  -->
-        
-   
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->  

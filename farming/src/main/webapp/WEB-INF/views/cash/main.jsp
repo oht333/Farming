@@ -7,6 +7,7 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0  justify-content-start">
           <li class="breadcrumb-item"><a href="<c:url value='/index'/>">Home</a></li>
+          <li class="breadcrumb-item"><a href="<c:url value='/member/mypage/main'/>">마이페이지</a></li>
           <li class="breadcrumb-item active">파밍캐시 &amp; 페이 </li>
         </ol>
         <h1 class="hero-heading mb-0">파밍캐시 &amp; 페이</h1>
@@ -16,7 +17,7 @@
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-secondary w-2rem h-2rem">
+                  <svg class="svg-icon text-primary w-2rem h-2rem">
                     <use xlink:href="#identity-1"> </use>
                   </svg>
                 </div>
@@ -29,7 +30,7 @@
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-secondary w-2rem h-2rem">
+                  <svg class="svg-icon text-primary w-2rem h-2rem">
                     <use xlink:href="#diary-1"> </use>
                   </svg>
                 </div>

@@ -82,6 +82,7 @@ public class QnaController {
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
 		
 
+
 		List<QnaVO> list = qnaService.select(searchVo);
 		logger.info("전체 조회 결과 list.size={}", list.size());
 
@@ -198,7 +199,8 @@ public class QnaController {
 		logger.info("글 삭제 처리, 파라미터 vo={}", vo);
 
 		String msg = "글삭제 실패",
-				url = "qna/qnaDelte?no" + vo.getQnaNo() + "&step=" + vo.getStep() + "&groupNo=" + vo.getGroupNo();
+			url = "qna/qnaDelte?no" + vo.getQnaNo() + "&step=" 
+					+ vo.getStep() + "&groupNo=" + vo.getGroupNo();
 
 		Map<String, String> map = new HashMap<>();
 		map.put("step", vo.getStep() + "");

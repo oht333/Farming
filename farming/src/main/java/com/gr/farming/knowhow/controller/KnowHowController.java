@@ -63,7 +63,7 @@ public class KnowHowController {
 			Model model) {
 		
 		logger.info("글쓰기처리, 파라미터 vo={}",vo);
-		vo.setExpertNo((int)session.getAttribute("expNo"));
+		vo.setExpertNo((int)session.getAttribute("userNo"));
 		
 		int cnt=knowhowService.insertKnowhow(vo);
 		String msg = "글쓰기 실패", url = "/knowhow/write";

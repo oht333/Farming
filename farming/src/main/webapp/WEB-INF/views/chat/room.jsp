@@ -21,30 +21,34 @@
             <div class='text-block pb-3'>
               <div class='d-flex align-items-center justify-content-between'>
                 <div>
-                  <h6> <a class='text-reset' href='detail-rooms.html'>Modern Apt - Vibrant Neighborhood</a></h6>
-                  <p class='text-muted text-sm mb-0'>Entire home in New York</p>
-                  <div class='mt-n1'><i class='fa fa-xs fa-star text-primary'></i><i class='fa fa-xs fa-star text-primary'></i><i class='fa fa-xs fa-star text-primary'></i><i class='fa fa-xs fa-star text-primary'></i><i class='fa fa-xs fa-star text-gray-200'></i>
-                  </div>
-                </div><a href='detail-rooms.html'><img class='ms-3 rounded flex-shrink-0' src='img/photo/photo-1512917774080-9991f1c4c750.jpg' alt='' width='100'></a>
+                  <h6> <a class='text-reset' href='detail-rooms.html'>견적서</a></h6>
+                  <p class='text-muted text-sm mb-0'>내용</p>
+                  <div class='mt-n1'>상세내용</div>
+                </div><a href='detail-rooms.html'><img class='ms-3 rounded flex-shrink-0' src='<c:url value='/resources/img/'/>' alt='홍보사진' width='100'></a>
               </div>
             </div>
             <div class='text-block pt-3 pb-0'>
               <ul class='list-unstyled text-sm mb-0'>
-                <li class='mb-3'><i class='fas fa-users fa-fw text-muted me-2'></i>3 guests</li>
-                <li class='mb-0'><i class='far fa-calendar fa-fw text-muted me-2'></i>Apr 17, 2019 <i class='fas fa-arrow-right fa-fw text-muted mx-3'></i>Apr 18, 2019</li>
+                <li class='mb-3'><i class='fas fa-users fa-fw text-muted me-2'></i>직원 수</li>
+                <li class='mb-3'><i class='far fa-calendar-check fa-fw text-muted me-2'></i>의뢰기간</li>
+                <li class='mb-0'><i class='far fa-calendar fa-fw text-muted me-2'></i>현재날짜<i class='fas fa-arrow-right fa-fw text-muted mx-3'></i>의뢰기간+현재날짜</li>
+                <c:if test="${user eq '전문가' }">
+                	<li><input class="btn btn-primary" type="button" value="결제요청" style="float: right;" id="request"></li>
+              	</c:if>
+              	<c:if test="${user eq '사용자' }">
+                	<li><button class="btn btn-primary" style="float: right;" id="credit">&nbsp;&nbsp;&nbsp;결제&nbsp;&nbsp;&nbsp;</button></li>
+              	</c:if>
               </ul>
             </div>
           </div>
         </div>
         
-        <c:if test="${user eq '사용자' }">
-        	<input type="hidden" value="${memNo }" name="userNo" id="userNo">
-        </c:if>
-        <c:if test="${user eq '전문가' }">
-        	<input type="hidden" value="${expNo }" name="userNo" id="userNo">
-        </c:if>
+        
+        <input type="hidden" value="${userNo }" name="userNo" id="userNo">
+      
         <input type="hidden" value="${param.roomNo }" name="roomNo" id="roomNo">
         
+        <input type="hidden" value="견적서 내용" id="requestText">
         
       <div class='px-4 py-5'>
           <div class='row'>
@@ -92,6 +96,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	var userNo = $('#userNo').val();
+	$('#credit').click(function(){
+		window.open("<c:url value='/payment/paymentDetail'/>", "서비스결제", "height=" + screen.height + ",width=" + screen.width + "fullscreen=yes");
+	});
 	
 	$('textarea').on('keydown', function(event) {
 	    if (event.keyCode == 13){
@@ -153,7 +160,6 @@ $(document).ready(function(){
                str += "</div>";
                str +="</div>";
                $("#msgArea").append(str);
-               
            }
        });
 
@@ -178,6 +184,16 @@ $(document).ready(function(){
        			console.log("code : "+request.status+"\n"+"message : "+request.responseText);
        		}
         });
+        
+        console.log(username + ":" + msg.value);
+        console.log(userNo);
+        stomp.send('/pub/chat/message', {}, JSON.stringify({roomNo: roomNo, message: msg.value, writer: username}));
+        msg.value = '';
+        
+    });
+    
+    $("#request").on("click", function(e){
+    	var msg = document.getElementById("requestText");
         
         console.log(username + ":" + msg.value);
         console.log(userNo);
