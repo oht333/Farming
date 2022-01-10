@@ -199,7 +199,8 @@ public class QnaController {
 		logger.info("글 삭제 처리, 파라미터 vo={}", vo);
 
 		String msg = "글삭제 실패",
-				url = "qna/qnaDelte?no" + vo.getQnaNo() + "&step=" + vo.getStep() + "&groupNo=" + vo.getGroupNo();
+			url = "qna/qnaDelte?no" + vo.getQnaNo() + "&step=" 
+					+ vo.getStep() + "&groupNo=" + vo.getGroupNo();
 
 		Map<String, String> map = new HashMap<>();
 		map.put("step", vo.getStep() + "");
