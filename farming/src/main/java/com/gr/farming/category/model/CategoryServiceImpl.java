@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.gr.farming.common.SearchVO;
+
 @Service
 public class CategoryServiceImpl implements CategoryService{
 	private CategoryDAO dao;
@@ -18,8 +20,8 @@ public class CategoryServiceImpl implements CategoryService{
 	public int insert(CategoryVO vo) {
 		return dao.insert(vo);
 	}
-	public List<CategoryVO> select(){
-		return dao.select();
+	public List<CategoryVO> select(SearchVO4 searchVo){
+		return dao.select(searchVo);
 	}
 	public CategoryVO selectByNo(int categoryNo) {
 		return dao.selectByNo(categoryNo);
@@ -37,6 +39,10 @@ public class CategoryServiceImpl implements CategoryService{
 	
 	public int selectByDetail(String detail) {
 		return dao.selectByDetail(detail);
+	}
+
+	public int selectTotalRecord(SearchVO4 searchVo) {
+		return dao.selectTotalRecord(searchVo);
 	}
 	
 }

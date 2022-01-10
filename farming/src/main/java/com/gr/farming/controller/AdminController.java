@@ -10,13 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
+import com.gr.farming.common.ConstUtil;
+import com.gr.farming.common.PaginationInfo;
 import com.gr.farming.expert.model.ExpertService;
 import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.member.model.MemberService;
 import com.gr.farming.member.model.MemberVO;
+import com.gr.farming.member.model.SearchVO5;
 
 @Controller
 @RequestMapping("/admin")
@@ -36,7 +40,22 @@ public class AdminController {
 	=LoggerFactory.getLogger(AdminController.class);
 	
 	@RequestMapping("/main")
-	public String main() {
+	public String main(@ModelAttribute SearchVO5 searchVo, Model model) {
+		// 페이지네이션인포 객체 생성 : 계산목적 
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+						
+		// searchvo에 값 넣기 
+		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		logger.info("값 셋팅 후 searchVo={}", searchVo);
+						
+		int totalRecord=mem_service.totalMember(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		logger.info("값 셋팅 후 totalRecord={}", totalRecord);
 		
 		return "admin/main";
 	}
@@ -72,10 +91,24 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/manage/mem_list")
-	public String mem_list(Model model) {
+	public String mem_list(@ModelAttribute SearchVO5 searchVo, Model model) {
 		logger.info("회원 목록 페이지");
 		
-		List<MemberVO> mem_list = mem_service.selectAll();
+		// 페이지네이션인포 객체 생성 : 계산목적 
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+				
+		// searchvo에 값 넣기 
+		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		logger.info("값 셋팅 후 searchVo={}", searchVo);
+				
+		int totalRecord=mem_service.totalMember(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		List<MemberVO> mem_list = mem_service.selectAll(searchVo);
 		logger.info("회원 목록 페이지 mem_list.size={}", mem_list.size());
 		
 		model.addAttribute("mem_list", mem_list);
@@ -91,6 +124,43 @@ public class AdminController {
 		
 		model.addAttribute("dev_list", dev_list);
 		return "admin/manage/dev_list";
+	}
+	
+	@RequestMapping("/manage/mem_detail")
+	public String mem_detail(@RequestParam(defaultValue = "0") int memberNo, Model model) {
+		logger.info("글 상세보기 파라미터 no={}", memberNo);
+		
+		MemberVO vo = mem_service.selectByNo(memberNo);
+		logger.info("상세보기 결과 vo={}", vo);
+		
+		model.addAttribute("vo", vo);
+		
+		return "admin/manage/mem_detail";
+	}
+	
+	@RequestMapping(value="/manage/mem_del", method = RequestMethod.GET)
+	public String del_get(@RequestParam(defaultValue = "0") int memberNo, Model model) {
+		logger.info("글 삭제 화면, 파라미터 no={}", memberNo);
+		
+		return "admin/manage/mem_del";
+	}
+	
+	@RequestMapping(value="/manage/mem_del", method = RequestMethod.POST)
+	public String del_post(@ModelAttribute MemberVO vo, Model model) {
+		logger.info("글삭제 처리, 파라미터 vo={}", vo);
+		String msg="", url="";
+		
+		int cnt=mem_service.delete(vo);
+		
+		if(cnt>0) {
+			msg="글삭제되었습니다.";
+			url="/admin/mem_list/list";
+		}
+		 
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+				
+		return "common/message";
 	}
 	
 }

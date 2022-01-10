@@ -19,8 +19,9 @@ public interface MemberService {
 	public MemberVO selectByEmail(String email);
 	public int updateMember(MemberVO vo);
 	public int withdrawMember(String email);
-	public List<MemberVO> selectAll();
+	public List<MemberVO> selectAll(SearchVO5 searchVo);
 	public boolean checkPwd(MemberVO vo);
 	public int updatePwd(String email, String pwd);
 	public MemberVO selectByNo(int memberNo);
+	int totalMember(SearchVO5 searchVo);
 }
