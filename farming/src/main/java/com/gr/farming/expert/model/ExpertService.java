@@ -22,8 +22,8 @@ public interface ExpertService {
 	public List<ExpertVO> selectAll();
 	public int updateExpert(ExpertVO vo);
 	public boolean checkPwd(ExpertVO vo);
-	
+	public ExpertVO selectByNo(int expertNo);
 	public String selectMain(int expertNo);
 	public int selectCategory(int expNo);
-
+	public int deleteExpert(int expertNo);
 }

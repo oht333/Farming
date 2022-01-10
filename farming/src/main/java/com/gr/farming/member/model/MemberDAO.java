@@ -19,4 +19,5 @@ public interface MemberDAO {
 	public int updatePwd(String email, String pwd);
 	public MemberVO selectByNo(int memberNo);
 	int totalMember(SearchVO5 searchVo);
+	public int deleteMember(int memberNo); 
 }

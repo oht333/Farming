@@ -41,21 +41,21 @@ public class AdminController {
 	
 	@RequestMapping("/main")
 	public String main(@ModelAttribute SearchVO5 searchVo, Model model) {
-		// 페이지네이션인포 객체 생성 : 계산목적 
-		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
-		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
-		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
-						
-		// searchvo에 값 넣기 
-		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
-		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		logger.info("값 셋팅 후 searchVo={}", searchVo);
-						
-		int totalRecord=mem_service.totalMember(searchVo);
-		pagingInfo.setTotalRecord(totalRecord);
-		
-		logger.info("값 셋팅 후 totalRecord={}", totalRecord);
+		/*
+		 * // 페이지네이션인포 객체 생성 : 계산목적 PaginationInfo pagingInfo = new PaginationInfo();
+		 * pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
+		 * pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		 * pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		 * 
+		 * // searchvo에 값 넣기 searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		 * searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		 * logger.info("값 셋팅 후 searchVo={}", searchVo);
+		 * 
+		 * int totalRecord=mem_service.totalMember(searchVo);
+		 * pagingInfo.setTotalRecord(totalRecord);
+		 * 
+		 * logger.info("값 셋팅 후 totalRecord={}", totalRecord);
+		 */
 		
 		return "admin/main";
 	}
@@ -128,7 +128,7 @@ public class AdminController {
 	
 	@RequestMapping("/manage/mem_detail")
 	public String mem_detail(@RequestParam(defaultValue = "0") int memberNo, Model model) {
-		logger.info("글 상세보기 파라미터 no={}", memberNo);
+		logger.info("회원 상세보기 파라미터 no={}", memberNo);
 		
 		MemberVO vo = mem_service.selectByNo(memberNo);
 		logger.info("상세보기 결과 vo={}", vo);
@@ -140,21 +140,58 @@ public class AdminController {
 	
 	@RequestMapping(value="/manage/mem_del", method = RequestMethod.GET)
 	public String del_get(@RequestParam(defaultValue = "0") int memberNo, Model model) {
-		logger.info("글 삭제 화면, 파라미터 no={}", memberNo);
+		logger.info("회원 삭제 화면, 파라미터 no={}", memberNo);
 		
 		return "admin/manage/mem_del";
 	}
 	
 	@RequestMapping(value="/manage/mem_del", method = RequestMethod.POST)
-	public String del_post(@ModelAttribute MemberVO vo, Model model) {
-		logger.info("글삭제 처리, 파라미터 vo={}", vo);
+	public String mdel_post(@ModelAttribute MemberVO vo, Model model) {
+		logger.info("회원 삭제 처리, 파라미터 vo={}", vo);
 		String msg="", url="";
 		
-		int cnt=mem_service.delete(vo);
+		int cnt=mem_service.deleteMember(vo.getMemberNo());
 		
 		if(cnt>0) {
-			msg="글삭제되었습니다.";
-			url="/admin/mem_list/list";
+			msg="회원이 삭제되었습니다.";
+			url="/admin/manage/mem_list";
+		}
+		 
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+				
+		return "common/message";
+	}
+	
+	@RequestMapping("/manage/dev_detail")
+	public String mdev_detail(@RequestParam(defaultValue = "0") int expertNo, Model model) {
+		logger.info("전문가 상세보기 파라미터 no={}", expertNo);
+		
+		ExpertVO vo = exp_service.selectByNo(expertNo);
+		logger.info("상세보기 결과 vo={}", vo);
+		
+		model.addAttribute("vo", vo);
+		
+		return "admin/manage/dev_detail";
+	}
+	
+	@RequestMapping(value="/manage/dev_del", method = RequestMethod.GET)
+	public String ddel_get(@RequestParam(defaultValue = "0") int expertNo, Model model) {
+		logger.info("전문가 삭제 화면, 파라미터 no={}", expertNo);
+		
+		return "admin/manage/dev_del";
+	}
+	
+	@RequestMapping(value="/manage/dev_del", method = RequestMethod.POST)
+	public String ddel_post(@ModelAttribute ExpertVO vo, Model model) {
+		logger.info("전문가 삭제 처리, 파라미터 vo={}", vo);
+		String msg="", url="";
+		
+		int cnt=exp_service.deleteExpert(vo.getExpertNo());
+		
+		if(cnt>0) {
+			msg="전문가가 삭제되었습니다.";
+			url="/admin/manage/dev_list";
 		}
 		 
 		model.addAttribute("msg", msg);

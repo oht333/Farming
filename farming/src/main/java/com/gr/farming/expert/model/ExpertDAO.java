@@ -18,8 +18,8 @@ public interface ExpertDAO {
 	public int totalExpert(ExpertVO vo);
 	public List<ExpertVO> selectAll();
 	public int updateExpert(ExpertVO vo);
-	
+	public ExpertVO selectByNo(int expertNo);
 	public String selectMain(int expertNo);
 	public int selectCategory(int expNo);
-
+	public int deleteExpert(int expertNo);
 }

@@ -75,6 +75,10 @@
       <include refid="searchWhere"></include>
    </select>
    
+   <delete id="deleteMember" parameterType="int"> 
+		delete member where member_no=#{memberNo}
+	</delete>
+   
 </mapper>
 
 
