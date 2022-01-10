@@ -36,11 +36,9 @@
 	href="${pageContext.request.contextPath }/resources/css/custom.css">
 <!-- Favicon-->
 
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
 	
-<script
-	src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
 <!-- Tweaks for older IEs-->
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
