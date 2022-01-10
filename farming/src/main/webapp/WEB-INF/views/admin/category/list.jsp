@@ -2,52 +2,47 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="../../inc/top_admin.jsp" %>
-<style>
-.btn-primary {
-  color: #fff;
-  background-color: #2CCE8D;
-  border-color: #2CCE8D;
-}
-.rounded-pill {
-  border-radius: 50rem !important;
-}
-.h-100 {
-  height: 100% !important;
-}
-.btn-primary:hover {
-  color: #fff;
-  background-color: #00b66d;
-  border-color: #00b66d;
-}
-</style>
-        <div id="page-wrapper">
-		  <div class="header"> 
-                        <h2 class="page-header">
-                            카테고리 목록
-                        </h2>
-						<ol class="breadcrumb"">
-					  		<%-- <li><a href="<c:url value='/admin/empty'/>">입력</a></li> --%>
-					  	
-					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-primary rounded-pill h-100">&nbsp;&nbsp;등록&nbsp;&nbsp;</a>
-					  		<!-- btn btn-primary rounded-pill h-100 -->
-					  		
-					   </ol>
-					
-		</div>
-		<div class="panel panel-default">
-                        <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
-                            
+
+         <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="page-title mb-0 p-0">카테고리 목록</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">카테고리 목록</li>
+                                </ol>
+                            </nav>
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                     <thead>
-                                        <tr>
-                                            <th>NO</th>
-                                            <th>MAIN</th>
-                                            <th>DETAIL</th>
-                                        </tr>
-                                    </thead>
+                    </div>
+              
+                </div> 
+                <div class="col-lg-2 d-grid" style="float:right; width:100px">
+                    <a href='<c:url value="/admin/category/write"/>' class="btn btn-primary rounded-pill h-100" id="submit" value="submit">등록 </a>
+              </div>
+            </div>
+            
+		<div class="container-fluid">
+               <div class="row">
+                    <!-- column -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table user-table no-wrap">
+                                        <thead>
+                                             <tr>
+	                                            <th>NO</th>
+	                                            <th>MAIN</th>
+	                                            <th>DETAIL</th>
+                                       		 </tr>
+
+                                        </thead>
                                     <tbody>
                                     	<c:forEach var="vo" items="${list }">
 	                                        <tr>
