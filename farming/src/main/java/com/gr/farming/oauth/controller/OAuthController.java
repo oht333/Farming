@@ -52,8 +52,6 @@ public class OAuthController {
 		vo.setName((String)userInfo.get("nickname"));
 		vo.setEmail((String)userInfo.get("email"));
 		
-		String img = (String) userInfo.get("img");
-		
 		System.out.println("vo = "+vo);
 		
 		String msg = "로그인 실패", url = "/login/login";
@@ -81,7 +79,6 @@ public class OAuthController {
 		session.setAttribute("userImg", vo.getFileName());	
 		session.setAttribute("user", "사용자");
 		session.setAttribute("ktoken", access_Token);
-		session.setAttribute("img", img);
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);

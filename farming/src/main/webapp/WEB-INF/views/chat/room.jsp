@@ -36,7 +36,7 @@
                 	<li><input class="btn btn-primary" type="button" value="결제요청" style="float: right;" id="request"></li>
               	</c:if>
               	<c:if test="${user eq '사용자' }">
-                	<li><a href="<c:url value='/payment/paymentDetail'/>" class="btn btn-primary" style="float: right;" id="credit">&nbsp;&nbsp;&nbsp;결제&nbsp;&nbsp;&nbsp;</a></li>
+                	<li><button class="btn btn-primary" style="float: right;" id="credit">&nbsp;&nbsp;&nbsp;결제&nbsp;&nbsp;&nbsp;</button></li>
               	</c:if>
               </ul>
             </div>
@@ -96,6 +96,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	var userNo = $('#userNo').val();
+	$('#credit').click(function(){
+		window.open("<c:url value='/payment/paymentDetail'/>", "서비스결제", "height=" + screen.height + ",width=" + screen.width + "fullscreen=yes");
+	});
 	
 	$('textarea').on('keydown', function(event) {
 	    if (event.keyCode == 13){
