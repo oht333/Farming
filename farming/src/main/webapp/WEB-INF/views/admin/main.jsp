@@ -1,343 +1,255 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top_admin.jsp"%>
-      
-		<div id="page-wrapper">
-		  <div class="header"> 
-                        <h1 class="page-header">
-                            Dashboard <small>Welcome John Doe</small>
-                        </h1>
-						<ol class="breadcrumb">
-					  <li><a href="#">Home</a></li>
-					  <li><a href="#">Dashboard</a></li>
-					  <li class="active">Data</li>
-					</ol> 
-									
-		</div>
-            <div id="page-inner">
-
-                <!-- /. ROW  -->
-	
-                <div class="row">
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-					<div class="board">
-                        <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>44,023</h3>
-								<small>Daily Visits</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-eye fa-5x red"></i>
-						</div>
-		 
+<%@ include file="../inc/top_admin.jsp" %>
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="page-title mb-0 p-0">Dashboard</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                </ol>
+                            </nav>
                         </div>
-						</div>
                     </div>
-					
-					       <div class="col-md-3 col-sm-12 col-xs-12">
-					<div class="board">
-                        <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>32,850</h3>
-								<small>Sales</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-shopping-cart fa-5x blue"></i>
-						</div>
-		 
-                        </div>
-						</div>
-                    </div>
-					
-					       <div class="col-md-3 col-sm-12 col-xs-12">
-					<div class="board">
-                        <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>56,150</h3>
-								<small>Comments</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-comments fa-5x green"></i>
-						</div>
-		 
-                        </div>
-						</div>
-                    </div>
-					
-					       <div class="col-md-3 col-sm-12 col-xs-12">
-					<div class="board">
-                        <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>89,645</h3>
-								<small>Daily Profits</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-user fa-5x yellow"></i>
-						</div>
-		 
-                        </div>
-						</div>
-                    </div>
-				   
                 </div>
-				     <div class="row">
-                        <div class="col-sm-6 col-xs-12">  
-                            <div class="panel panel-default chartJs">
-                                <div class="panel-heading">
-                                    <div class="card-title">
-                                        <div class="title">Line Chart</div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Daily Sales</h4>
+                                <div class="text-end">
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> $120</h2>
+                                    <span class="text-muted">Todays Income</span>
+                                </div>
+                                <span class="text-success">80%</span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 80%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Weekly Sales</h4>
+                                <div class="text-end">
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-info"></i> $5,000</h2>
+                                    <span class="text-muted">Todays Income</span>
+                                </div>
+                                <span class="text-info">30%</span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar"
+                                        style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Revenue Statistics</h4>
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content " id="flot-line-chart"
+                                        style="padding: 0px; position: relative;">
+                                        <canvas class="flot-base w-100" height="400"></canvas>
                                     </div>
                                 </div>
-                                <div class="panel-body">
-                                    <canvas id="line-chart" class="chart"></canvas>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="panel panel-default chartJs">
-                                <div class="panel-heading">
-                                    <div class="card-title">
-                                        <div class="title">Bar Chart</div>
+                    </div>
+                    <!-- column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Table -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex">
+                                    <h4 class="card-title col-md-10 mb-md-0 mb-3 align-self-center">Projects of the Month</h4>
+                                    <div class="col-md-2 ms-auto">
+                                        <select class="form-select shadow-none col-md-2 ml-auto">
+                                            <option selected>January</option>
+                                            <option value="1">February</option>
+                                            <option value="2">March</option>
+                                            <option value="3">April</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="panel-body">
-                                    <canvas id="bar-chart" class="chart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-				
-		<div class="row">
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Profit</h4>
-						<div class="easypiechart" id="easypiechart-blue" data-percent="82" ><span class="percent">82%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Sales</h4>
-						<div class="easypiechart" id="easypiechart-orange" data-percent="55" ><span class="percent">55%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Customers</h4>
-						<div class="easypiechart" id="easypiechart-teal" data-percent="84" ><span class="percent">84%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>No. of Visits</h4>
-						<div class="easypiechart" id="easypiechart-red" data-percent="46" ><span class="percent">46%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/.row-->
-			
-		
-				<div class="row">
-				<div class="col-md-5">
-						<div class="panel panel-default">
-						<div class="panel-heading">
-							Line Chart
-						</div>
-						<div class="panel-body">
-							<div id="morris-line-chart"></div>
-						</div>						
-					</div>   
-					</div>		
-					
-						<div class="col-md-7">
-					<div class="panel panel-default">
-					<div class="panel-heading">
-                                Bar Chart Example
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-bar-chart"></div>
-                            </div>
-						
-					</div>  
-					</div>
-					
-				</div> 
-			 
-				
-				
-                <div class="row">
-                    <div class="col-md-9 col-sm-12 col-xs-12">
-                        <div class="panel panel-default">                            
-							<div class="panel-heading">
-							Area Chart
-						</div>
-						<div class="panel-body">
-							<div id="morris-area-chart"></div>
-						</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Donut Chart Example
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-donut-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-				<div class="row">
-				<div class="col-md-12">
-				
-					</div>		
-				</div> 	
-                <!-- /. ROW  -->
-
-	   
-				
-				
-				
-                <div class="row">
-                    <div class="col-md-4 col-sm-12 col-xs-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Tasks Panel
-                            </div>
-                            <div class="panel-body">
-                                <div class="list-group">
-
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">7 minutes ago</span>
-                                        <i class="fa fa-fw fa-comment"></i> Commented on a post
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">16 minutes ago</span>
-                                        <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">36 minutes ago</span>
-                                        <i class="fa fa-fw fa-globe"></i> Invoice 653 has paid
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has been added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1.23 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">yesterday</span>
-                                        <i class="fa fa-fw fa-globe"></i> Saved the world
-                                    </a>
-                                </div>
-                                <div class="text-right">
-                                    <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-8 col-sm-12 col-xs-12">
-
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Responsive Table Example
-                            </div> 
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover">
+                                <div class="table-responsive mt-5">
+                                    <table class="table stylish-table no-wrap">
                                         <thead>
                                             <tr>
-                                                <th>S No.</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>User Name</th>
-                                                <th>Email ID.</th>
+                                                <th class="border-top-0" colspan="2">Assigned</th>
+                                                <th class="border-top-0">Name</th>
+                                                <th class="border-top-0">Budget</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td>John</td>
-                                                <td>Doe</td>
-                                                <td>John15482</td>
-                                                <td>name@site.com</td>
+                                                <td style="width:50px;"><span class="round">S</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small>
+                                                </td>
+                                                <td class="align-middle">Elite Admin</td>
+                                                <td class="align-middle">$3.9K</td>
+                                            </tr>
+                                            <tr class="active">
+                                                <td><span class="round"><img src="<c:url value='/resources/admin_img/users/2.jpg'/>"
+                                                            alt="user" width="50"></span></td>
+                                                <td class="align-middle">
+                                                    <h6>Andrew</h6><small class="text-muted">Project Manager</small>
+                                                </td>
+                                                <td class="align-middle">Real Homes</td>
+                                                <td class="align-middle">$23.9K</td>
                                             </tr>
                                             <tr>
-                                                <td>2</td>
-                                                <td>Kimsila</td>
-                                                <td>Marriye</td>
-                                                <td>Kim1425</td>
-                                                <td>name@site.com</td>
+                                                <td><span class="round round-success">B</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Bhavesh patel</h6><small class="text-muted">Developer</small>
+                                                </td>
+                                                <td class="align-middle">MedicalPro Theme</td>
+                                                <td class="align-middle">$12.9K</td>
                                             </tr>
                                             <tr>
-                                                <td>3</td>
-                                                <td>Rossye</td>
-                                                <td>Nermal</td>
-                                                <td>Rossy1245</td>
-                                                <td>name@site.com</td>
+                                                <td><span class="round round-primary">N</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Nirav Joshi</h6><small class="text-muted">Frontend Eng</small>
+                                                </td>
+                                                <td class="align-middle">Elite Admin</td>
+                                                <td class="align-middle">$10.9K</td>
                                             </tr>
                                             <tr>
-                                                <td>4</td>
-                                                <td>Richard</td>
-                                                <td>Orieal</td>
-                                                <td>Rich5685</td>
-                                                <td>name@site.com</td>
+                                                <td><span class="round round-warning">M</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Micheal Doe</h6><small class="text-muted">Content Writer</small>
+                                                </td>
+                                                <td class="align-middle">Helping Hands</td>
+                                                <td class="align-middle">$12.9K</td>
                                             </tr>
                                             <tr>
-                                                <td>5</td>
-                                                <td>Jacob</td>
-                                                <td>Hielsar</td>
-                                                <td>Jac4587</td>
-                                                <td>name@site.com</td>
+                                                <td><span class="round round-danger">N</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Johnathan</h6><small class="text-muted">Graphic</small>
+                                                </td>
+                                                <td class="align-middle">Digital Agency</td>
+                                                <td class="align-middle">$2.6K</td>
                                             </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Wrapel</td>
-                                                <td>Dere</td>
-                                                <td>Wrap4585</td>
-                                                <td>name@site.com</td>
-                                            </tr>
-
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <!-- /. ROW  -->
-			
-		
-				<footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p>
-				
-        
-				</footer>
+                <!-- ============================================================== -->
+                <!-- Table -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Recent blogss -->
+                <!-- ============================================================== -->
+                <div class="row justify-content-center">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img class="card-img-top img-responsive" src="<c:url value='/resources/admin_img/big/img1.jpg'/>" alt="Card">
+                            <div class="card-body">
+                                <ul class="list-inline d-flex align-items-center">
+                                    <li class="ps-0">20 May 2021</li>
+                                    <li class="ms-auto"><a href="javascript:void(0)" class="link">3 Comment</a></li>
+                                </ul>
+                                <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img class="card-img-top img-responsive" src="<c:url value='/resources/admin_img/big/img2.jpg'/>" alt="Card">
+                            <div class="card-body">
+                                <ul class="list-inline d-flex align-items-center">
+                                    <li class="ps-0">20 May 2021</li>
+                                    <li class="ms-auto"><a href="javascript:void(0)" class="link">3 Comment</a></li>
+                                </ul>
+                                <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img class="card-img-top img-responsive" src="<c:url value='/resources/admin_img/big/img4.jpg'/>" alt="Card">
+                            <div class="card-body">
+                                <ul class="list-inline d-flex align-items-center">
+                                    <li class="ps-0">20 May 2021</li>
+                                    <li class="ms-auto"><a href="javascript:void(0)" class="link">3 Comment</a></li>
+                                </ul>
+                                <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Recent blogss -->
+                <!-- ============================================================== -->
             </div>
-            <!-- /. PAGE INNER  -->
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center">
+                © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
         </div>
-        <!-- /. PAGE WRAPPER  -->
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
     </div>
- 
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+
+</body>
+
+</html>

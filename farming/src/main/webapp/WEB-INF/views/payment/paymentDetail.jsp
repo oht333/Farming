@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript">
 
+</script>
     <section class="py-5 p-print-0">
       <div class="container">
         <div class="row mb-4 d-print-none">
@@ -118,7 +120,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <div style="text-align: right;"><button class="btn btn-primary" onclick="iamport()"><i class="far fa-credit-card"></i> 결제하기</button></div>
+                <div style="text-align: right;"><button class="btn btn-primary" onclick="iamport()" id="complete"><i class="far fa-credit-card"></i> 결제하기</button></div>
               </div>
             </div>
           </div>
@@ -136,43 +138,42 @@ function iamport(){
 	IMP.request_pay({
 	    pg : 'html5_inicis',
 	    pay_method : 'card',
-	    merchant_uid : '13',
+	    merchant_uid : 'merchant'+new Date().getTime(),
 	    name : '상품이름' , //결제창에서 보여질 이름
-	    amount : 10, //실제 결제되는 가격
-	    buyer_email : 'iamport@siot.do',
-	    buyer_name : '구매자이름',
-	    buyer_tel : '010-1234-5678',
-	    buyer_addr : '서울 강남구 도곡동',
-	    buyer_postcode : '123-456'
-	}, async function(rsp) {
-		console.log(rsp);
-	    if ( rsp.success ) {
-	    	var msg = '결제가 완료되었습니다.';
-	        msg += '고유ID : ' + rsp.imp_uid;
-	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-	        msg += '결제 금액 : ' + rsp.paid_amount;
-	        msg += '카드 승인번호 : ' + rsp.apply_num;
-	    	alert("결제가 완료되었습니다.");
-	    	console.log(rsp);
-	    	let response = await fetch("/payment/done",{
-	    		method:"psot",
-	    		body:JSON.stringify(rsp),
-	    		headers:{
-	    			"Content-Type":"application/json; charset=utf-8"
-	    		}
-	    	});
-	    	
-	    	let parseResponse = await response.text();
-	    	console.log(parseResponse);
-	    	if(parseResponse === "ok"){
-	    		location.href="<c:url value='/index'/>";
-	    	}
-	    } else {
-	    	 var msg = '결제에 실패하였습니다.';
-	         msg += '에러내용 : ' + rsp.error_msg;
-	    }
-	    alert(msg);
-	});
+	    amount : 100, //실제 결제되는 가격
+	    buyer_email : '${mVo.email}',
+	    buyer_name : '${mVo.name}',
+	    buyer_addr : '${mVo.address1}',
+	    buyer_postcode : ${mVo.zipCode}
+	}, function(rsp){
+		if(rsp.success){//결제 성공시
+			$.ajax({
+				url : "<c:url value='/payment/complete'/>",
+		        type :'POST',
+		        data : {"merchantUid" : rsp.merchant_uid,
+		        		"memberName" : '${mVo.name}',
+		        		"price" : rsp.paid_amount,
+		        		"state" : "결제완료"},
+		        success: function(res){
+		        	if(res > 0){
+						alert("추가성공");			           
+		        	}else{
+		            	alert("Insert Fail!!!");
+		        	}
+		        },
+		        error : function( request, status, error) {
+	       			console.log("code : "+request.status+"\n"+"message : "+request.responseText);
+	       		}
+			})
+		}
+		else{//결제 실패시
+			var msg = '결제에 실패했습니다';
+			msg += '에러 : ' + rsp.error_msg
+		}
+		console.log(msg);
+		$(opener.document).find('#credit').text('결제완료');
+		//self.close();
+	});//pay
 }
 </script>
 <%@ include file="../inc/bottom.jsp" %>
