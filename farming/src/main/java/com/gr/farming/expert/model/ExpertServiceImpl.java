@@ -99,4 +99,16 @@ public class ExpertServiceImpl implements ExpertService{
 	public int selectCategory(int expertNo) {
 		return dao.selectCategory(expertNo);
 	}
+
+	public int selectTotalRecord() {
+		return dao.selectTotalRecord();
+	}
+
+	public ExpertVO selectByNo(int expertNo) {
+		return dao.selectByNo(expertNo);
+	}
+
+	public int deleteExpert(int expertNo) {
+		return dao.deleteExpert(expertNo);
+	}
 }

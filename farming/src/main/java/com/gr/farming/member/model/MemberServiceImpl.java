@@ -7,6 +7,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.gr.farming.common.SearchVO;
+
 @Service
 public class MemberServiceImpl implements MemberService{		
 	private final MemberDAO memberDao;
@@ -74,8 +76,8 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.withdrawMember(email);
 	}
 
-	public List<MemberVO> selectAll() {
-		return memberDao.selectAll();
+	public List<MemberVO> selectAll(SearchVO searchVo) {
+		return memberDao.selectAll(searchVo);
 	}
 
 	@Override
@@ -101,4 +103,18 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO selectByNo(int memberNo) {
 		return memberDao.selectByNo(memberNo);
 	}
+
+
+	public int totalMember() {
+		return memberDao.totalMember();
+	}
+
+
+	public int deleteMember(int memberNo) {
+		return memberDao.deleteMember(memberNo);
+	}
+	public int selectTotalRecord(SearchVO vo) {
+		return memberDao.selectTotalRecord(vo);
+	}
+
 }

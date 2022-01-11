@@ -8,12 +8,10 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Dashboard</h3>
+                        <h3 class="page-title mb-0 p-0">메인</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
                             </nav>
                         </div>
@@ -35,10 +33,10 @@
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Daily Sales</h4>
+                                <h4 class="card-title">회원 수</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> $120</h2>
-                                    <span class="text-muted">Todays Income</span>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i>${memCount}</h2>
+                                    <!-- <span class="text-muted">Todays Income</span> -->
                                 </div>
                                 <span class="text-success">80%</span>
                                 <div class="progress">
@@ -54,10 +52,10 @@
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Weekly Sales</h4>
+                                <h4 class="card-title">전문가 수</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-info"></i> $5,000</h2>
-                                    <span class="text-muted">Todays Income</span>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-info"></i>${expCount }</h2>
+                                    <!-- <span class="text-muted">Todays Income</span> -->
                                 </div>
                                 <span class="text-info">30%</span>
                                 <div class="progress">
