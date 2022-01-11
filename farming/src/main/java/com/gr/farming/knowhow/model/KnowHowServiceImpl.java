@@ -22,8 +22,8 @@ public class KnowHowServiceImpl implements KnowHowService {
 	}
 
 	@Override
-	public List<KnowHowVO> selectKnowhowAll() {
-		return knowhowDao.selectKnowhowAll();
+	public List<KnowHowVO> selectKnowhowAll(SearchVO3 searchVo) {
+		return knowhowDao.selectKnowhowAll(searchVo);
 	}
 
 	public int insertKnowhow(KnowHowVO vo) {
@@ -36,8 +36,13 @@ public class KnowHowServiceImpl implements KnowHowService {
 	}
 
 	@Override
-	public int selectTotalRecord(SearchVO searchVo) {
+	public int selectTotalRecord(SearchVO3 searchVo) {
 		return knowhowDao.selectTotalRecord(searchVo);
+	}
+	
+	@Override
+	public int updateReadCount(int no) {
+		return knowhowDao.updateReadCount(no);
 	}
 
 	@Override
@@ -46,8 +51,18 @@ public class KnowHowServiceImpl implements KnowHowService {
 	}
 
 	@Override
-	public void deleteKnowhow(Map<String, String> map) {
-		knowhowDao.deleteKnowhow(map);		
+	public int deleteKnowhow(int knowhowNo) {
+		return knowhowDao.deleteKnowhow(knowhowNo);		
 	}
+	
+	@Transactional
+	@Override
+	public int reply(KnowHowVO vo) {
+		int cnt=knowhowDao.updateSortNo(vo);
+		cnt=knowhowDao.reply(vo);
+		return cnt;
+	}
+
+
 
 }

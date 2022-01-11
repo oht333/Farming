@@ -1,0 +1,6 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Barlow:400,700|Open+Sans:300,400,600&display=swap");
+
+.divPage.t_center {
+	text-align: center;
+}
