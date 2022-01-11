@@ -15,7 +15,7 @@ public interface ExpertDAO {
 	public ExpertVO selectByEmail(String email);
 	public int delete(ExpertVO vo);
 	public int updatePwd(String email, String pwd);
-	public int totalExpert(ExpertVO vo);
+	public int selectTotalRecord();
 	public List<ExpertVO> selectAll();
 	public int updateExpert(ExpertVO vo);
 	public ExpertVO selectByNo(int expertNo);
