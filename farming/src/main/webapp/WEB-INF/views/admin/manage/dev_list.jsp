@@ -46,10 +46,10 @@
                                     	<c:forEach var="vo" items="${dev_list }">
 	                                        <tr>
 	                                            <td>
-	                                            <%-- <a href="<c:url value='/admin/manage/detail?expertNo=${vo.expertNo }'/>">
-	                                            	
-	                                            </a> --%>
+	                                            <a href="<c:url value='/admin/manage/dev_detail?expertNo=${vo.expertNo }'/>">
 	                                            	${vo.expertNo }
+	                                            </a>
+	                                            	
 	                                            </td>
 	                                            <td>${vo.name }</td>
 	                                            <td>${vo.email }</td>
