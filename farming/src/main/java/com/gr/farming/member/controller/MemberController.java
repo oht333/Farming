@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.FileUploadUtil;
@@ -339,5 +340,17 @@ public class MemberController {
 		String name = (String) session.getAttribute("neme");
 		String img = (String) session.getAttribute("img");
 		return "member/addInfo";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/ajaxChkPwd")
+	public boolean ajaxChkPwd(@RequestParam String pwd, @RequestParam String pwd2) {
+		boolean res = false;
+		if(pwd.equals(pwd2)) {
+			res = true;
+		} else {
+			res = false;
+		}
+		return res;
 	}
 }
