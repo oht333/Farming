@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top_admin.jsp" %>
+<script type="text/javascript">
+	function pageFunc(curPage){
+		$('#frmPage input[name=currentPage]').val(curPage);
+		$('#frmPage').submit();
+	}
+</script>
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
