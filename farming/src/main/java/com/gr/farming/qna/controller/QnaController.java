@@ -78,9 +78,9 @@ public class QnaController {
 		// searchvo에 값 넣기 
 		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-		searchVo.setMemNo((int)session.getAttribute("memNo"));
+		searchVo.setMemNo((int)session.getAttribute("userNo"));
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
-		
+
 
 
 		List<QnaVO> list = qnaService.select(searchVo);
@@ -199,11 +199,12 @@ public class QnaController {
 		logger.info("글 삭제 처리, 파라미터 vo={}", vo);
 
 		String msg = "글삭제 실패",
-				url = "qna/qnaDelte?no" + vo.getQnaNo() + "&step=" + vo.getStep() + "&groupNo=" + vo.getGroupNo();
+				url = "qna/qnaDelte?qnaNo=" + vo.getQnaNo() + "&step=" 
+						+ vo.getStep() + "&groupNo=" + vo.getGroupNo();
 
 		Map<String, String> map = new HashMap<>();
-		map.put("step", vo.getStep() + "");
 		map.put("qnaNo", vo.getQnaNo() + "");
+		map.put("step", vo.getStep() + "");
 		map.put("groupNo", vo.getGroupNo() + "");
 
 		qnaService.deleteQna(map);

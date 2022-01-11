@@ -6,10 +6,25 @@
   	var contextPath = "/farming";
   		$(function(){
   			$('#pwd2').keyup(function(){
+  				var pwd = $('#pwd').val();
+  	  			var pwd2 = $('#pwd2').val();
   				$.ajax({
   					url:"<c:url value='/member/ajaxChkPwd'/>",
   					type:"post",
-  					data:""
+  					data:{"pwd" : pwd, "pwd2" : pwd2},
+  					success:function(res){
+						var str="";
+						if(res){
+							str="패스뭐드가 일치합니다.";
+							$('#checkPwd').text(str);
+						}else{
+							str="패스워드가 일치하지 않습니다.";
+							$('#checkPwd').text(str);
+						}
+					},
+					error:function(xhr, status, error){
+						alert("error : "+ error);
+					}
   				});
   			});
   			
@@ -124,6 +139,7 @@
               <div class="mb-4">
                 <label class="form-label" for="pwd2"> 비밀번호확인</label>
                 <input class="form-control" name="pwd2" id="pwd2" placeholder="비밀번호확인" type="password">
+                <small><span id="checkPwd" style="color: red;"></span></small>
               </div>
               <p id="chkpwd"></p>
               <div class="mb-4">
