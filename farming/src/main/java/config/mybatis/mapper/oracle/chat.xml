@@ -52,6 +52,10 @@
 		order by time 
 	</select>
 	
+	<select id="chatRoomInfo" parameterType="int" resultType="chatRoomJoinVo">
+		select * from chatRoomJoin
+		where room_no=#{roomNo}
+	</select>
 </mapper>
 
 

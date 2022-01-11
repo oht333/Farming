@@ -7,16 +7,21 @@
 		<selectKey keyProperty="cashNo" resultType="int" order="BEFORE">
 			select cash_seq.nextval from dual
 		</selectKey>
-		insert into cash(cash_no, merchant_uid, member_id, charge)
-		values(#{cashNo}, #{merchantUid}, #{memberId}, #{charge})
+		insert into cash(cash_no, merchant_uid, member_No, charge)
+		values(#{cashNo}, #{merchantUid}, #{memberNo}, #{charge})
 	</insert>
 	
-	<update id="plusBal" parameterType="cashVo">
+	<update id="plusBal" parameterType="int">
 		update cash
-		set balance = balance + ${charge}
-		where member_id=#{memberId}
+		set balance = (select sum(charge) from cash
+		where member_No=#{memberNo})
+		where member_No=#{memberNo}
 	</update>
 	
+	<select id="selectByMemNo" parameterType="int" resultType="cashVo">
+		select * from cash
+		<![CDATA[where member_no=#{memberNo} and rownum <= 1]]>
+	</select>
 	
 </mapper>
 

@@ -20,6 +20,7 @@ import com.gr.farming.expert.model.ExpertService;
 import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.member.model.MemberService;
 import com.gr.farming.member.model.MemberVO;
+import com.gr.farming.member.model.SearchVO5;
 import com.gr.farming.common.SearchVO;
 
 @Controller
@@ -64,15 +65,26 @@ public class AdminController {
 
 		//[3] totalRecord 구하기
 		int memtotalRecord=mem_service.selectTotalRecord(searchVo);
-		int exptotalRecord=exp_service.selectTotalRecord();
+		int exptotalRecord=exp_service.selectTotalRecord(searchVo);
 		pagingInfo.setTotalRecord(memtotalRecord);
+		pagingInfo.setTotalRecord(exptotalRecord);
 		
 		//3. model에 결과 저장
 		model.addAttribute("list", list);
 		model.addAttribute("pagingInfo", pagingInfo);
 		model.addAttribute("memCount", memtotalRecord);
 		model.addAttribute("expCount", exptotalRecord);
+		
+		List<MemberVO> mem_list = mem_service.selectAll(searchVo);
+		logger.info("회원 목록 페이지 mem_list.size={}", mem_list.size());
 
+		model.addAttribute("mem_list", mem_list);
+		
+		List<ExpertVO> dev_list = exp_service.selectAll(searchVo);
+		logger.info("전문가 목록 페이지 dev_list.size={}", dev_list.size());
+
+		model.addAttribute("dev_list", dev_list);
+		
 		return "admin/main";
 	}
 	@RequestMapping("/error")
@@ -121,24 +133,42 @@ public class AdminController {
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		logger.info("값 셋팅 후 searchVo={}", searchVo);
 
-		int totalRecord=mem_service.totalMember();
-		pagingInfo.setTotalRecord(totalRecord);
+		int memtotalRecord=mem_service.selectTotalRecord(searchVo);
+		pagingInfo.setTotalRecord(memtotalRecord);
 
 		List<MemberVO> mem_list = mem_service.selectAll(searchVo);
 		logger.info("회원 목록 페이지 mem_list.size={}", mem_list.size());
 
 		model.addAttribute("mem_list", mem_list);
+		model.addAttribute("pagingInfo", pagingInfo);
+		
 		return "admin/manage/mem_list";
 	}
 
 	@RequestMapping("/manage/dev_list")
-	public String dev_list(Model model) {
+	public String dev_list(@ModelAttribute SearchVO searchVo, Model model) {
 		logger.info("전문가 목록 페이지");
+		
+		// 페이지네이션인포 객체 생성 : 계산목적 
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		List<ExpertVO> dev_list = exp_service.selectAll();
+		// searchvo에 값 넣기 
+		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		logger.info("값 셋팅 후 searchVo={}", searchVo);
+
+		int exptotalRecord=exp_service.selectTotalRecord(searchVo);
+		pagingInfo.setTotalRecord(exptotalRecord);
+		
+		List<ExpertVO> dev_list = exp_service.selectAll(searchVo);
 		logger.info("전문가 목록 페이지 dev_list.size={}", dev_list.size());
 
 		model.addAttribute("dev_list", dev_list);
+		model.addAttribute("pagingInfo", pagingInfo);
+		
 		return "admin/manage/dev_list";
 	}
 

@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
+<style>
+	input[type=checkbox]:checked + label { 
+		background: #2CCE8D;
+		color: white;
+		border: 1px solid #dddddd;
+		border-radius: 10px;
+	}
+</style>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
 
@@ -91,14 +99,6 @@
                     <td class="text-center">1</td>
                     <td class="text-end">$958.00</td>
                   </tr>
-                  <tr>
-                    <td class="text-center">2</td>
-                    <td class="fw-bold">Premium Listing</td>
-                    <td>London</td>
-                    <td class="text-end">$100.00</td>
-                    <td class="text-center">1</td>
-                    <td class="text-end">$100.00</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -107,16 +107,30 @@
                 <table class="table">
                   <tbody>
                     <tr class="text-sm">
-                      <td class="fw-bold">Subtotal</td>
+                      <td class="fw-bold">상품가격</td>
                       <td class="text-end">$1,058</td>
                     </tr>
                     <tr class="text-sm">
-                      <td class="fw-bold">VAT (21%)</td>
-                      <td class="text-end">$222.18</td>
+                      <td class="fw-bold">파밍페이</td>
+                      <td class="text-end">
+                      	<input style="text-align: right;" type="text" value="${cVo.balance }" id="pay">원
+                      </td>
+                    </tr>
+                    <tr class="text-sm">
+                    	<td>
+                    		<div class="col-lg-4 d-grid" style="margin: 0 auto; width:60px; border: 1px solid #dddddd; border-radius: 10px; text-align: center;">
+	                    		<input type="checkbox" value="Y" name="chk" id="chk" style=" display: none ">
+	                    		<label for="chk" style="font-size: 12px;" class="form-control">적용</label>
+                    		</div>
+                    	</td>
+                    	<td class="text-end"><span id="str" style="color: red; font-size: 12px;">사용가능합니다.</span></td>
                     </tr>
                     <tr>
                       <td class="text-uppercase fw-bold">Total</td>
-                      <td class="text-end fw-bold">$1,280.18</td>
+                      <td class="text-end fw-bold" id="price">
+                      	<input type="hidden" value="8000" name="total" id="total">
+                      </td>
+                     
                     </tr>
                   </tbody>
                 </table>
@@ -140,7 +154,7 @@ function iamport(){
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_'+new Date().getTime(),
 	    name : '상품이름' , //결제창에서 보여질 이름
-	    amount : 100, //실제 결제되는 가격
+	    amount : $('#price').text(), //실제 결제되는 가격
 	    buyer_email : '${mVo.email}',
 	    buyer_name : '${mVo.name}',
 	    buyer_addr : '${mVo.address1}',
@@ -154,7 +168,9 @@ function iamport(){
 		        		"memberNo" : ${mVo.memberNo},
 		        		"memberName" : '${mVo.name}',
 		        		"price" : rsp.paid_amount,
-		        		"state" : "결제완료"},
+		        		"state" : "결제완료",
+		        		"chk" : $('#chk').val(),
+		        		"pay" : $('#pay').val()},
 		        success: function(res){
 		        	if(res > 0){
 						alert("추가성공");			           
@@ -173,8 +189,51 @@ function iamport(){
 		}
 		console.log(msg);
 		$(opener.document).find('#credit').text('결제완료');
-		self.close();
+		//self.close();
 	});//pay
 }
+$(function(){
+	$('#pay').keyup(function(){
+		var pay = $('#pay').val();
+		$.ajax({
+			url:"<c:url value='/payment/checkPay'/>",
+			type:"post",
+			data:{"pay" : pay, "memNo" : ${mVo.memberNo}},
+			success:function(data){
+				var str = "";
+				if(data){
+					str="사용가능합니다.";
+					$('#str').text(str);
+				} else{
+					str="잔여 파밍페이를 초과하였습니다.";
+					$('#str').text(str);
+				}
+			}
+		})
+	});
+	
+	$('#chk').click(function(){
+		var chk = $('#chk').val();
+		var total = $('#total').val();
+		var pay = $('#pay').val();
+		$.ajax({
+			url:"<c:url value='/payment/chk'/>",
+			type:"post",
+			data:{"chk" : chk, "total" : total, "pay" : pay},
+			success:function(data){
+				var str = 0;
+				if(data){
+					str=total-pay;
+					$('#total').val(str);
+					$('#price').text(str);
+				} else{
+					str=total;
+					$('#total').val(str);
+					$('#price').text(str);
+				}
+			}
+		})
+	})
+})
 </script>
 <%@ include file="../inc/bottom.jsp" %>

@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gr.farming.community.model.ChatMessageDTO;
+import com.gr.farming.community.model.ChatRoomJoinVO;
 import com.gr.farming.community.model.ChatService;
+import com.gr.farming.expert.model.ExpertService;
+import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.member.model.MemberService;
+import com.gr.farming.member.model.MemberVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,7 +31,10 @@ public class StompChatController {
 	private final SimpMessagingTemplate template; //특정 Broker로 메세지를 전달
 	@Autowired
 	private ChatService service;
+	@Autowired
 	private MemberService mservice;
+	@Autowired
+	private ExpertService eservice;
 	
 	//Client가 SEND할 수 있는 경로
 	//stompConfig에서 설정한 applicationDestinationPrefixes와 @MessageMapping 경로가 병합됨
@@ -65,5 +72,22 @@ public class StompChatController {
 		}
 		
 		return "chat/room";
+	}
+	
+	//전문가가 사용자한테 견적서 보내는 거 userNo = 전문가번호 
+	@ResponseBody
+	@PostMapping("/chat/request")
+	public String request(@RequestParam("message") String message,@RequestParam("userNo") int userNo,@RequestParam(
+			"roomNo") int roomNo, @RequestParam("username") String username) {
+		ChatRoomJoinVO vo = service.chatRoomInfo(roomNo);
+		int memNo = vo.getMemberNo();
+		//멤버번호로 상대방 정보 가져오기
+		MemberVO mVo = mservice.selectByNo(memNo);
+		ExpertVO eVo = eservice.selectByNo(userNo);
+		
+		message = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[서비스 구매자 : "+mVo.getName()+"], [서비스 판매자 : "+eVo.getName()+"] 결제를 요청합니다. &nbsp;&nbsp;&nbsp;";
+		message += " 오른쪽 상단 위 결제 버튼으로 결제를 진행해주세요";
+		
+		return message;
 	}
 }
