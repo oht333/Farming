@@ -138,7 +138,7 @@ function iamport(){
 	IMP.request_pay({
 	    pg : 'html5_inicis',
 	    pay_method : 'card',
-	    merchant_uid : 'merchant'+new Date().getTime(),
+	    merchant_uid : 'merchant_'+new Date().getTime(),
 	    name : '상품이름' , //결제창에서 보여질 이름
 	    amount : 100, //실제 결제되는 가격
 	    buyer_email : '${mVo.email}',
@@ -151,6 +151,7 @@ function iamport(){
 				url : "<c:url value='/payment/complete'/>",
 		        type :'POST',
 		        data : {"merchantUid" : rsp.merchant_uid,
+		        		"memberNo" : ${mVo.memberNo},
 		        		"memberName" : '${mVo.name}',
 		        		"price" : rsp.paid_amount,
 		        		"state" : "결제완료"},
@@ -172,7 +173,7 @@ function iamport(){
 		}
 		console.log(msg);
 		$(opener.document).find('#credit').text('결제완료');
-		//self.close();
+		self.close();
 	});//pay
 }
 </script>

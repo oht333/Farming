@@ -10,35 +10,33 @@
           <li class="breadcrumb-item"><a href="<c:url value='/member/mypage/main'/>">마이페이지</a></li>
           <li class="breadcrumb-item active">파밍캐시 &amp; 페이 </li>
         </ol>
-        <h1 class="hero-heading mb-0">파밍캐시 &amp; 페이</h1>
+        <h1 class="hero-heading mb-0">파밍페이 &amp; 거래내역</h1>
         <p class="text-muted mb-5">Manage your account and settings here.</p>
         <div class="row">
-          <div class="col-6 col-md-4 mb-30px">
+         <div class="col-6 col-md-6 mb-30px" style="text-align: center;">
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-primary w-2rem h-2rem">
-                    <use xlink:href="#identity-1"> </use>
-                  </svg>
+                  <i class="fas fa-user-alt fa-2x"></i>
                 </div>
-                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/cash/cash?email=${email }'/>">캐시 충전</a></h5>
+                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/cash/cash'/>">페이충전</a></h5>
                 <p class="text-muted card-text text-sm">Update your personal information</p>
               </div>
             </div>
-          </div>
-          <div class="col-6 col-md-4 mb-30px">
+          </div>	
+          <div class="col-6 col-md-6 mb-30px" style="text-align: center; height: 500px;">
             <div class="card h-100 border-0 shadow hover-animate">
               <div class="card-body">
                 <div class="icon-rounded bg-secondary-light mb-3">
-                  <svg class="svg-icon text-primary w-2rem h-2rem">
-                    <use xlink:href="#diary-1"> </use>
-                  </svg>
+                  <i class="fas fa-chalkboard-teacher fa-2x"></i>
                 </div>
-                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/cash/list?email=${email }'/>">충전 내역 확인</a></h5>
+                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/cash/list'/>">거래내역</a></h5>
                 <p class="text-muted card-text text-sm">How to farming and how to use it</p>
               </div>
             </div>
           </div>
+         </div>
+        </div>
    
     </section>
     <!-- JavaScript files-->
