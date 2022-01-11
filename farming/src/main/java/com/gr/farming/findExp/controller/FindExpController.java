@@ -1,6 +1,5 @@
 package com.gr.farming.findExp.controller;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -18,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.FileUploadUtil;
 import com.gr.farming.expert.model.ExpertVO;
+import com.gr.farming.field.model.FieldDetailVO;
 import com.gr.farming.findExp.model.ExpertInfoVO;
 import com.gr.farming.findExp.model.FindExpService;
 
@@ -49,15 +48,13 @@ public class FindExpController {
 	
 	@RequestMapping("/expDetail")
 	public String findexpDetail(@RequestParam(defaultValue="0") int expertNo,
-			HttpSession session, Model model) {
-		
-		String userNo=(String) session.getAttribute("memNo");
+			Model model) {
 		
 		logger.info("전문가 상세페이지, 파라미터 expertNo={}", expertNo);
 		
 		ExpertInfoVO expInfoVo=findExpService.selectExpInfo(expertNo);
 		ExpertVO expVo=findExpService.selectByExperNo(expertNo);
-		List<Map<String, Object>> fieldList=findExpService.selectField(expertNo);
+		List<FieldDetailVO> fieldList=findExpService.selectFieldDetail(expertNo);
 		logger.info("전문가 expVo={}", expVo);
 		logger.info("전문가 expInfoVo={}", expInfoVo);
 		logger.info("전문가 fieldList={}", fieldList);
@@ -90,7 +87,7 @@ public class FindExpController {
 		
 		ExpertInfoVO expInfoVo=findExpService.selectExpInfo(expertNo);
 		ExpertVO expVo=findExpService.selectByExperNo(expertNo);
-		List<Map<String, Object>> fieldList=findExpService.selectField(expertNo);
+		List<FieldDetailVO> fieldList=findExpService.selectFieldDetail(expertNo);
 		logger.info("전문가 expVo={}", expVo);
 		logger.info("전문가 expInfoVo={}", expInfoVo);
 		logger.info("전문가 fieldList={}", fieldList);

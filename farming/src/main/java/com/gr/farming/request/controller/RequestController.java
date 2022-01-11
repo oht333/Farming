@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
-import com.gr.farming.field.model.FieldVO;
+import com.gr.farming.field.model.FieldDetailVO;
 import com.gr.farming.findExp.model.FindExpService;
 import com.gr.farming.member.model.MemberService;
 import com.gr.farming.request.model.RequestDesignVO;
@@ -61,7 +61,7 @@ public class RequestController {
 		
 	}
 	
-	@RequestMapping("/requestWrite")
+	@GetMapping("/requestWrite")
 	public String request_get(@RequestParam int categoryNo,
 			@RequestParam(defaultValue="0") int expertNo, Model model) {
 		
@@ -69,6 +69,8 @@ public class RequestController {
 		CategoryVO categoryVo=categoryService.selectByNo(categoryNo);
 
 		String main=categoryVo.getMain();
+		String detail=categoryVo.getDetail();
+		logger.info("detail={}",detail);
 		
 		List<Map<String, Object>> qList=requestService.selectQuestion(categoryNo);
 		logger.info("견적서 질문 조회 결과, qList.size={}", qList.size());
@@ -80,29 +82,9 @@ public class RequestController {
 		model.addAttribute("categoryNo",categoryNo);
 		model.addAttribute("main", main);
 		model.addAttribute("expertNo", expertNo);
+		model.addAttribute("detail", detail);
 		
 		return "request/request_1";
-	}
-	
-	@GetMapping("/requestWrite/develop")
-	public String requestDevelop(@RequestParam int categoryNo, Model model) {
-		
-		logger.info("견적서 작성 페이지 - 개발");
-		
-		model.addAttribute("categoryNo",categoryNo);
-
-		return "request/request_develop";
-		
-	}
-	
-	@GetMapping("/requestWrite/design")
-	public String requestDesign(@RequestParam int categoryNo, Model model) {
-		
-		logger.info("견적서 작성 페이지 - 디자인");	
-		
-		model.addAttribute("categoryNo",categoryNo);
-		
-		return "request/request_design";
 	}
 	
 	@PostMapping("/requestWrite/develop")
@@ -110,12 +92,15 @@ public class RequestController {
 			@ModelAttribute RequestVO requestVo, Model model) {
 		
 		logger.info("견적서 작성 내용입력 처리");
+		logger.info("견적서 처리 파라미터 vo={}", vo);
 		
 		int cnt=requestService.insertRequestDevelop(vo);
 		logger.info("견적서 처리 결과 cnt={}", cnt);
 		
 		requestVo.setRequestDevelopNo(vo.getRequestdevelopNo());
+		cnt=requestService.insertRequest(requestVo);
 		logger.info("견적서 처리 requestVo={}", requestVo);
+		logger.info("견적서요청 처리 결과 cnt={}", cnt);
 		
 		String msg="견적서 보내기 실패", url="request/request_develop";
 		if(cnt>0) {
@@ -166,10 +151,10 @@ public class RequestController {
 		int expertNo=(int) session.getAttribute("expNo");
 		logger.info("받은 요청 페이지 - 로그인된 전문가회원 expertNo={}", expertNo);
 		
-		List<Map<String, Object>> fieldList=findExpService.selectField(expertNo);
+		List<FieldDetailVO> fieldList=findExpService.selectFieldDetail(expertNo);
 		logger.info("받은 요청 페이지 - 로그인된 전문가 분야 목록 조회 fieldList={}", fieldList);
 		
-		List<Map<String, Object>> list=requestService.selectReceivedRequest(expertNo);
+		List<Map<String, Object>> list=requestService.selectRequestDetail(expertNo);
 		logger.info("받은 요청 목록 조회 list.size={}", list.size());
 		
 		model.addAttribute("list", list);

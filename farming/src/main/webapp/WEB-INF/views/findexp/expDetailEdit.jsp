@@ -85,8 +85,8 @@
 	        <div class="text-block ">
 	          <h4 class="mb-4">제공 서비스</h4>
 	          <ul class="list-inline">
-	          	<c:forEach var="map" items="${fieldList }">
-	             <li class="list-inline-item mb-2"><span class="badge rounded-pill bg-light p-3 text-muted fw-normal">${map['DETAIL'] }</span></li>
+	          	<c:forEach var="vo" items="${fieldList }">
+	             <li class="list-inline-item mb-2"><span class="badge rounded-pill bg-light p-3 text-muted fw-normal">${vo.detail }</span></li>
 	          	</c:forEach>
 	          </ul>
 	        </div>

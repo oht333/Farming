@@ -12,7 +12,12 @@
 			$('#starimg').css('width','${avg}'*20+'%');
 		})
 	</script>
-	<h1 class="fw-normal d-inline-block">${avg }</h1>
+	<c:if test="${empty avg }">
+		<h1 class="fw-normal d-inline-block">0.0</h1>
+	</c:if>
+	<c:if test="${!empty avg }">
+		<h1 class="fw-normal d-inline-block">${avg }</h1>
+	</c:if>
 	<div class="d-inline-block ms-2">
 		<div id="starwrap">
 			<div id="star"></div>
@@ -24,7 +29,7 @@
 </div>
 <c:if test="${empty reviewList }">
 	<div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-		<p class="text-muted">등록된 리뷰가 없습니다.</p>
+		<p class="text-muted p-5">등록된 리뷰가 없습니다.</p>
 	</div>
 </c:if>
 <c:if test="${!empty reviewList }">

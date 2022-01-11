@@ -5,6 +5,11 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.gr.farming.expert.model.ExpertVO;
+import com.gr.farming.field.model.FieldDetailVO;
+import com.gr.farming.field.model.FieldVO;
+import com.gr.farming.findExp.model.ExpertInfoVO;
+
 @Mapper
 public interface RequestDAO {
 	
@@ -15,5 +20,6 @@ public interface RequestDAO {
 	public List<Map<String, Object>> selectQuestion(int categoryNo);
 	public List<Map<String, Object>> selectAnswer(int qNo);
 	List<Map<String, Object>> selectReceivedRequest(int expertNo);
-	Map<String, Object> selectRequestDetail(int detailNo);
+	List<Map<String, Object>> selectRequestDetail(int expertNo);
+	
 }

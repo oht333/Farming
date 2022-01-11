@@ -108,8 +108,8 @@
           <div class="text-block">
             <h4 class="mb-4">제공 서비스</h4>
             <ul class="list-inline">
-            	<c:forEach var="map" items="${fieldList }">
-	              <li class="list-inline-item mb-2"><span class="badge rounded-pill bg-light p-3 text-muted fw-normal">${map['DETAIL'] }</span></li>
+            	<c:forEach var="fieldVo" items="${fieldList }">
+	              <li class="list-inline-item mb-2"><span class="badge rounded-pill bg-light p-3 text-muted fw-normal">${fieldVo.detail }</span></li>
             	</c:forEach>
             </ul>
           </div>
@@ -217,7 +217,10 @@
         <div class="col-lg-4">
           <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 100px;">
             <p class="text-muted">${expVo.name } 전문가에게 원하는 서비스의 견적을 받아보세요 </p>
-            <form class="form" id="requestForm" method="get" action="<c:url value='/request/requestWrite?categoryNo=${infoVo.categoryNo }&expertNo=${expVo.expertNo }'/>">
+            <form class="form" id="requestForm" method="get" action="<c:url value='/request/requestWrite'/>">
+            <input type="hidden" name="categoryNo" value="${infoVo.categoryNo }" >
+            <input type="hidden" name="expertNo" value="${expVo.expertNo }" >
+            
              <div class="mb-4">
               </div>
               <!-- <div class="mb-4">
@@ -231,7 +234,7 @@
                 </select> 
               </div> -->
               <div class="d-grid mb-4">
-                <button class="btn btn-primary btn-lg" >견적요청하기</button>
+                <button type="submit" class="btn btn-primary btn-lg" >견적요청하기</button>
               </div>
 	            <p class="text-muted text-sm text-center">견적요청서는 1분만에 간단하게 작성가능합니다.</p>
             </form>

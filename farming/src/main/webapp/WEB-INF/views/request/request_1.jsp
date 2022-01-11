@@ -32,7 +32,7 @@
     <section class="py-5">
       <div class="container">
         <p class="subtitle text-primary">Let's Farming</p>
-        <h1 class="h2 mb-5">웹 디자인 <span class="text-muted float-end">Step 1</span></h1>
+        <h1 class="h2 mb-5">${detail} <span class="text-muted float-end">Step 1</span></h1>
         <c:if test="${main eq '디자인' }">
         	<form name="frm1" method="post" action="<c:url value='/request/requestWrite/design?categoryNo=${categoryNo }'/>">
         </c:if>
@@ -41,6 +41,8 @@
         </c:if>
         <input type="hidden" name="categoryNo" value="${categoryNo}">
         <input type="hidden" name="memberNo" value="${memNo}">
+        <input type="hidden" name="name" value="${name}">
+        <input type="hidden" name="filename" value="${userImg}">
         <c:if test="${!empty expertNo }">
 	        <input type="hidden" name="expertNo" value="${expertNo}">
         </c:if>
@@ -98,7 +100,7 @@
                      </c:if>
                      <c:if test="${vo.type=='textarea' }">
                      	<div class="mb-5" id="${map['Q_CLASS']}">
-			                <textarea class="form-control" name="QUESTION" id="form_availability" rows="3" aria-describedby="availabilityHelp"></textarea>
+			                <textarea class="form-control" name="${map['Q_CLASS']}" id="form_availability" rows="3" aria-describedby="availabilityHelp"></textarea>
 			              </div>
                      </c:if>
                     </c:if>
@@ -148,7 +150,7 @@ $(function(){
 			event.preventDefault();
 		}
 	});
-	function invalidItem1(){
+	/* function invalidItem1(){
 		var cnt1 = $('#RANGE input[type=radio]:checked').length;
 		var cnt2 = $('#SCALE input[type=radio]:checked').length;
 		var cnt3 = $('#DEADLINE input[type=radio]:checked').length;
@@ -166,7 +168,7 @@ $(function(){
 			$('#DEADLINE input[type=radio]').first().focus();
 			event.preventDefault();
 		}
-	}
+	} */
 	
 	function invalidItem2(){
 		if($('#LOCATION select').val()==''){

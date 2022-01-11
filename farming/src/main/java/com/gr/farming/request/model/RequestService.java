@@ -3,6 +3,8 @@ package com.gr.farming.request.model;
 import java.util.List;
 import java.util.Map;
 
+import com.gr.farming.field.model.FieldDetailVO;
+
 public interface RequestService {
 
 	public int insertRequest(RequestVO vo);
@@ -12,5 +14,5 @@ public interface RequestService {
 	public List<Map<String, Object>> selectQuestion(int categoryNo);
 	public List<Map<String, Object>> selectAnswer(int qNo);
 	List<Map<String, Object>> selectReceivedRequest(int expertNo);
-	Map<String, Object> selectRequestDetail(int detailNo);
+	List<Map<String, Object>> selectRequestDetail(int expertNo);
 }

@@ -9,10 +9,10 @@
 		<selectKey keyProperty="requestNo" resultType="int" order="BEFORE">
 			select request_seq.nextval from dual
 		</selectKey>
-		insert into request(REQUEST_NO, CATEGORY_NO, MEMBER_NO, EXPERT_NO
-			, REQUEST_DESIGN_NO, REQUEST_DEVELOP_NO)
-		values(#{requestNo}, #{categoryNo}, #{memberNo}, #{expertNo}
-			, #{requestDesignNo}, #{requestDevelopNo})
+		insert into request(REQUEST_NO, CATEGORY_NO, MEMBER_NO, NAME, FILENAME,
+		 EXPERT_NO, REQUEST_DESIGN_NO, REQUEST_DEVELOP_NO)
+		values(#{requestNo}, #{categoryNo}, #{memberNo}, #{name}, #{filename},
+		#{expertNo}, #{requestDesignNo}, #{requestDevelopNo})
 	</insert>
 
 	<insert id="insertRequestDevelop" parameterType="requestDevelopVo">
@@ -52,24 +52,19 @@
 	
 	<!-- 전문가회원 - 받은 요청서 목록 조회 -->
 	<select id="selectReceivedRequest" parameterType="int" resultType="map">
-		select * from requestMember
+		select * from request
 		where expert_no=#{expertNo}
 	</select>
 	
 	<!-- 전문가회원 - 받은 요청서 각 문답 조회 -->
 	<select id="selectRequestDetail" parameterType="int" resultType="map">
-		select rm.request_no, rm.category_no, rm.member_no, rm.name, rm.address1,
-    		rm.filename, rm.expert_no, rm.send_time, rm.match, d.*
-		<if test="requestDesignNo!=null and requestDesignNo!=''">
-			from requestmember rm join request_design d
-			on rm.request_design_no=d.request_design_no
-			where expert_no=#{}
-		</if>
-		<if test="requestDevelopNo!=null and requestDevelopNo!=''">
-			from request r join request_develop d
-			on r.request_develop_no=d.request_develop_no
-			where d.request_develop_no=#{requestDevelopNo}
-		</if>
+		select f.*, r.expert_no,r.request_no, r.member_no, r.name, r.filename,
+		    r.request_design_no, r.request_develop_no, r.send_time, r.match, rd.*
+		from field_detail f join request r
+		on f.category_no=r.category_no
+		join request_develop rd
+		on r.request_develop_no=rd.request_develop_no
+		where f.expert_no=#{expertNo} and (f.expert_no=r.expert_no or r.expert_no=0)
 	</select>
 	
 </mapper>

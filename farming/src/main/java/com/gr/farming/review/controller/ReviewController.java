@@ -35,8 +35,12 @@ public class ReviewController {
 		
 		List<ReviewVO> reviewList=reviewService.selectReview(expertNo);
 		logger.info("후기 조회 결과, list.size={}", reviewList.size());
-		float avg=reviewService.selectReviewAvg(expertNo);
-		logger.info("후기 별점 평균, avg={}", avg);
+		
+		float avg=0.0f;
+		if(reviewList.size()!=0) {
+			avg=reviewService.selectReviewAvg(expertNo);
+			logger.info("후기 별점 평균, avg={}", avg);
+		}
 		
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("avg", avg);

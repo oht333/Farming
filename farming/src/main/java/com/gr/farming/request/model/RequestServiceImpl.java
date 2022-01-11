@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gr.farming.field.model.FieldDetailVO;
+
 @Service
 public class RequestServiceImpl implements RequestService{
 	
@@ -50,9 +52,11 @@ public class RequestServiceImpl implements RequestService{
 	}
 
 	@Override
-	public Map<String, Object> selectRequestDetail(int detailNo) {
-		return requestDao.selectRequestDetail(detailNo);
+	public List<Map<String, Object>> selectRequestDetail(int expertNo) {
+		return requestDao.selectRequestDetail(expertNo);
 	}
+
+
 
 	
 

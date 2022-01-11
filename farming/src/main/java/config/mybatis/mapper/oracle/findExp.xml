@@ -17,10 +17,8 @@
 	</select>
 	
 	<!-- 전문가회원 - 서비스분야 디테일값 조회 -->
-	<select id="selectField" parameterType="int" resultType="map">
-		select f.*, c.main, c.detail
-		from field f join category c
-		on f.category_no=c.category_no
+	<select id="selectFieldDetail" parameterType="int" resultType="fieldDetailVo">
+		select * from field_detail
 		where expert_no=#{expertNo}
 	</select>
 	

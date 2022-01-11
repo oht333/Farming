@@ -21,6 +21,9 @@ public class MvcConfiguration implements WebMvcConfigurer {
 		 
 		 registry.addInterceptor(new ExpLoginInterceptor())
 		 .addPathPatterns("/expert/mypage/*", "/expert/addExp/*");
+		 
+		 registry.addInterceptor(new ExpLoginInterceptor())
+		 .addPathPatterns("/request/requestByClient", "/request/requestByExpert*");
 		
 //		registry.addInterceptor(new AdminLoginInterceptor())
 //		.excludePathPatterns("/admin/login/adminLogin.do")
