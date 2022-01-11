@@ -53,6 +53,20 @@
 		<div class="lastDiv">	
 			<label for="exampleFormControlInput1" class="form-label">[문의 내용]</label>		
 			<p class="content">${fn:replace(vo.content, newLine, "<br>")}</p>
+		</div><br>
+		
+		<div class="divForm">
+		<form name="write" method="post" enctype="multipart/form-data"
+			action="<c:url value='/qna/qnaDetail?qnaNo=${param.qnaNo }'/>" >
+			<input type="hidden" name="memberNo" id="memberNo" value="${userNo }">
+			<input type="hidden" id="name" name="name" class="infobox" value="${name }" readonly="readonly"/>
+		 <fieldset>
+			<legend>글쓰기</legend>
+		        <div class="form-floating mb-3">
+				  <input type="text" class="form-control" id="floatingInput" name="content" placeholder="내용입력">
+				  <label for="content">댓글입력</label>
+				</div>
+			</fieldset>
 		</div>
 	</div><br>
 		<div class="center">
