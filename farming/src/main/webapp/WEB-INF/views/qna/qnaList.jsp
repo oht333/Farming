@@ -94,7 +94,7 @@
 	<!-- [1][2][3][4][5][6][7][8][9][10] -->
 	<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage }">
 		<c:if test="${i==pagingInfo.currentPage }">
-			<span style="color:blue;font-weight: bold;font-size: 3em">
+			<span style="color:#2CCE8D;font-weight: bold;font-size: 20px">
 				${i}</span>			
 		</c:if>	
 		<c:if test="${i!=pagingInfo.currentPage }">	
