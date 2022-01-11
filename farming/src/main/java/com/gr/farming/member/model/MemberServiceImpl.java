@@ -74,8 +74,8 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.withdrawMember(email);
 	}
 
-	public List<MemberVO> selectAll() {
-		return memberDao.selectAll();
+	public List<MemberVO> selectAll(SearchVO5 searchVo) {
+		return memberDao.selectAll(searchVo);
 	}
 
 	@Override
@@ -101,4 +101,16 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO selectByNo(int memberNo) {
 		return memberDao.selectByNo(memberNo);
 	}
+
+
+	public int totalMember(SearchVO5 searchVo) {
+		return memberDao.totalMember(searchVo);
+	}
+
+
+	public int deleteMember(int memberNo) {
+		return memberDao.deleteMember(memberNo);
+	}
+
+
 }

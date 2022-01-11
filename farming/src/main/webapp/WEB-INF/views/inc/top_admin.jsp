@@ -17,10 +17,10 @@
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Monster Lite Template by WrapPixel</title>
+    <title>Farming Admin</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath }/resources/admin_img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath }/resources/admin_plugins/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -129,7 +129,7 @@
                             <a class="nav-link dropdown-toggle active fas fa-user" href="#" id="docsDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false" style="color:#2CCE8D">
 							<div class="dropdown-menu" aria-labelledby="docsDropdownMenuLink">
-								<a class="dropdown-item" href="<c:url value='admin/category/list'/>">카테고리</a>
+								<a class="dropdown-item" href="<c:url value='category/list'/>">카테고리</a>
                                
                              </div>
                             </a>
@@ -154,8 +154,8 @@
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="<c:url value='/admin/main'/>" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
-                                    aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item drop"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    aria-hidden="true"></i><span class="hide-menu">메인</span></a></li>
+                        <%-- <li class="sidebar-item drop"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="<c:url value='/admin/pagesProfile'/>" aria-expanded="false">
                                 <i class="me-3 fa fa-user" aria-hidden="true"></i><span
                                     class="hide-menu">회원조회</span></a>
@@ -163,6 +163,16 @@
                                     <ul>
                                     	<li></li>
                                     </ul>
+                        </li> --%>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/manage/mem_list'/>" aria-expanded="false">
+                                <i class="me-3 fa fa-user" aria-hidden="true"></i><span
+                                    class="hide-menu">회원조회</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<c:url value='/admin/manage/dev_list'/>" aria-expanded="false">
+                                <i class="me-3 fa fa-user-md" aria-hidden="true"></i><span
+                                    class="hide-menu">전문가조회</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="<c:url value='/admin/category/list'/>" aria-expanded="false"><i class="me-3 fa fa-table"

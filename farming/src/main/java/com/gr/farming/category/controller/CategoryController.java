@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
+import com.gr.farming.category.model.SearchVO4;
+import com.gr.farming.common.ConstUtil;
+import com.gr.farming.common.PaginationInfo;
+import com.gr.farming.common.SearchVO;
+import com.gr.farming.qna.model.SearchVO2;
 
 @Controller
 @RequestMapping("/admin/category")
@@ -43,13 +48,29 @@ public class CategoryController {
 	}
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
+	public String list(@ModelAttribute SearchVO4 searchVo, Model model) {
 		logger.info("목록 페이지");
 		
-		List<CategoryVO> list = service.select();
+		// 페이지네이션인포 객체 생성 : 계산목적 
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		// searchvo에 값 넣기 
+		searchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		logger.info("값 셋팅 후 searchVo={}", searchVo);
+		
+		int totalRecord=service.selectTotalRecord(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		List<CategoryVO> list = service.select(searchVo);
 		logger.info("목록 페이지 list.size={}",list.size());
 		
-		model.addAttribute("list", list);
+		model.addAttribute("list", list); 
+		model.addAttribute("pagingInfo", pagingInfo);
+		
 		return "admin/category/list";
 	}
 	

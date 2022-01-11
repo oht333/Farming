@@ -66,6 +66,19 @@
 		<![CDATA[where e.expert_no=#{expertNo} and rownum <= 1]]>
 	</select>
 	
+	<select id="totalExpert" resultType="int">
+      select count(*) from expert
+   </select>
+   
+   <select id="selectByNo" parameterType="int" resultType="expertVo">
+		select * from expert
+		where expert_no=#{expertNo}
+	</select>
+	
+	<delete id="deleteExpert" parameterType="int"> 
+		delete expert where expert_no=#{expertNo}
+	</delete>
+	
 </mapper>
 
 
