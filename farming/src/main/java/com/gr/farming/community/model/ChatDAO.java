@@ -21,4 +21,6 @@ public interface ChatDAO {
 	public ChatRoomDTO selectRoomNo(int roomNo);
 	
 	public List<ChatMessageDTO> selectMessageDTO(int roomNo);
+	
+	public ChatRoomJoinVO chatRoomInfo(int roomNo);
 }

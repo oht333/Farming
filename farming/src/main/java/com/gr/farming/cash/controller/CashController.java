@@ -70,11 +70,11 @@ public class CashController {
 		int res = oservice.insert(vo);
 		if(res > 0) {
 			cVo.setCharge(vo.getPrice());
-			cVo.setMemberId(vo.getMemberNo());
+			cVo.setMemberNo(vo.getMemberNo());
 			cVo.setMerchantUid(vo.getMerchantUid());
 			res = sservice.insert(cVo);
 			if(res > 0) {
-				sservice.plusBal(cVo);
+				sservice.plusBal(cVo.getMemberNo());
 				logger.info("성공");
 			} else {
 				logger.info("실패");
