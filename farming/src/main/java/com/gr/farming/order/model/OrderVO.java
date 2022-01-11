@@ -11,7 +11,9 @@ import lombok.ToString;
 @ToString
 public class OrderVO {
 	private String merchantUid;
+	private int memberNo;
 	private String memberName;
+	private int expertNo;
 	private String expertName;
 	private int serviceNo;
 	private String serviceName;

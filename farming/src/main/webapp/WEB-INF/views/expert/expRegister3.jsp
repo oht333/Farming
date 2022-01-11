@@ -5,6 +5,29 @@
   	<script type="text/javascript">
   	var contextPath = "/farming";
   		$(function(){
+  			$('#pwd2').keyup(function(){
+  				var pwd = $('#pwd').val();
+  	  			var pwd2 = $('#pwd2').val();
+  				$.ajax({
+  					url:"<c:url value='/expert/ajaxChkPwd'/>",
+  					type:"post",
+  					data:{"pwd" : pwd, "pwd2" : pwd2},
+  					success:function(res){
+						var str="";
+						if(res){
+							str="패스뭐드가 일치합니다.";
+							$('#checkPwd').text(str);
+						}else{
+							str="패스워드가 일치하지 않습니다.";
+							$('#checkPwd').text(str);
+						}
+					},
+					error:function(xhr, status, error){
+						alert("error : "+ error);
+					}
+  				});
+  			});
+  			
   			$('#signup').click(function(){
   				if($('#name').val().length<1){
   					alert('이름을 입력하세요');
@@ -122,6 +145,7 @@
               <div class="mb-4">
                 <label class="form-label" for="pwd2"> 비밀번호확인</label>
                 <input class="form-control" name="pwd2" id="pwd2" placeholder="비밀번호확인" type="password">
+                <small><span id="checkPwd" style="color: red;"></span></small>
               </div>
               <div class="mb-4">
 	              <div class="col-lg-7 d-grid" style="float: left;">
