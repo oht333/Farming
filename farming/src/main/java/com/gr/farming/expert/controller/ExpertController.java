@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
@@ -465,5 +466,17 @@ public class ExpertController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/ajaxChkPwd")
+	public boolean ajaxChkPwd(@RequestParam String pwd, @RequestParam String pwd2) {
+		boolean res = false;
+		if(pwd.equals(pwd2)) {
+			res = true;
+		} else {
+			res = false;
+		}
+		return res;
 	}
 }

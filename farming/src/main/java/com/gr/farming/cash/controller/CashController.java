@@ -1,5 +1,6 @@
 package com.gr.farming.cash.controller;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,19 +13,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gr.farming.cash.model.CashService;
 import com.gr.farming.cash.model.CashVO;
 import com.gr.farming.category.controller.CategoryController;
+import com.gr.farming.member.model.MemberService;
+import com.gr.farming.member.model.MemberVO;
+import com.gr.farming.order.model.OrderService;
+import com.gr.farming.order.model.OrderVO;
 
 @Controller
 @RequestMapping("/cash")
 public class CashController {
-	private final CashService service;
+	private final MemberService mservice;
+	private final OrderService oservice;
+	private final CashService sservice;
 	
 	@Autowired
-	public CashController(CashService service) {
-		this.service = service;
+	public CashController(MemberService mservice, OrderService oservice, CashService sservice) {
+		this.mservice = mservice;
+		this.oservice = oservice;
+		this.sservice = sservice;
 	}
 	private static final Logger logger
 	=LoggerFactory.getLogger(CategoryController.class);
@@ -36,30 +47,53 @@ public class CashController {
 		return "cash/main";
 	}
 	
-	@RequestMapping("/list")
-	public String list(Model model) {
-		logger.info("목록 페이지");
-		
-		List<CashVO> list = service.selectAll();
-		logger.info("목록 페이지 list.size={}",list.size());
-		
-		model.addAttribute("list", list);
-		return "cash/list";
-		
-	}
 	
 	@GetMapping("/cash")
-	public String cash_get() {
+	public String cash_get(HttpSession session, Model model) {
 		logger.info("캐시 충전");
+		String email = (String) session.getAttribute("email");
+		MemberVO mVo = mservice.selectByEmail(email);
+		model.addAttribute("mVo", mVo);
 		return "cash/cash";
 	}
 	
-	@PostMapping("/cash")
-	public String cash_post(@ModelAttribute CashVO vo, HttpSession session) {
-		vo.setMemberNo((int) session.getAttribute("userNo"));
-		logger.info("캐시 충전 처리 파라미터 vo={}",vo);
-		int cnt = service.insert(vo);
-		logger.info("캐시 충전 처리결과 cnt={}",cnt);
-		return "redirect:/cash/list";
+	@ResponseBody
+	@RequestMapping("/complete")
+	public int complete(@ModelAttribute OrderVO vo) {
+		//파밍페이 서비스번호 1, 판매자 = 파밍, 서비스이름 = 파밍페이
+		logger.info("결제처리 vo = {}",vo);
+		CashVO cVo = new CashVO();
+		vo.setExpertNo(0);
+		vo.setExpertName("파밍");
+		vo.setServiceName("파밍페이충전");
+		vo.setServiceNo(1);
+		int res = oservice.insert(vo);
+		if(res > 0) {
+			cVo.setCharge(vo.getPrice());
+			cVo.setMemberId(vo.getMemberNo());
+			cVo.setMerchantUid(vo.getMerchantUid());
+			res = sservice.insert(cVo);
+			if(res > 0) {
+				sservice.plusBal(cVo);
+				logger.info("성공");
+			} else {
+				logger.info("실패");
+			}
+		}
+		return res;
+	}
+	
+	@RequestMapping("/list")
+	public String list(HttpSession session, Model model) {
+		String email = (String) session.getAttribute("email");
+		MemberVO mVo = mservice.selectByEmail(email);
+		model.addAttribute("mVo", mVo);
+		
+		List<Map<String, Object>> pList = oservice.selectByPay(mVo.getMemberNo());
+		List<OrderVO> list = oservice.select(mVo.getMemberNo());
+		model.addAttribute("list", list);
+		model.addAttribute("pList", pList);
+		
+		return "cash/list";
 	}
 }

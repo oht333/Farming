@@ -45,6 +45,7 @@ public class PaymentController {
 	@RequestMapping("/complete")
 	public int complete(@ModelAttribute OrderVO vo) {
 		logger.info("결제처리 vo = {}",vo);
+		vo.setExpertNo(0);
 		vo.setExpertName("");
 		vo.setServiceName("");
 		vo.setServiceNo(0);
