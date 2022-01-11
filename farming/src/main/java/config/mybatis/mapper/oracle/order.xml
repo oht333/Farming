@@ -16,10 +16,10 @@
 	
 	<!-- 페이거래내역만 -->
 	<select id="selectByPay" parameterType="int" resultType="map">
-		select o.merchant_uid, o.expert_name, o.service_name, o.price, o.state, c.balance
+		select o.merchant_uid, o.expert_name, o.service_name, o.state, c.charge, c.balance
 		from orders o join cash c
 		on o.merchant_uid = c.merchant_uid
-		and o.member_no=#{memberNo}
+		<![CDATA[and o.member_no=#{memberNo} and (c.charge > 0 or c.charge < 0)]]>
 		order by o.time asc
 	</select>
 </mapper>
