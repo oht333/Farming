@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.gr.farming.expert.model.ExpertVO;
+import com.gr.farming.common.SearchVO;
+
 
 @Mapper
 public interface MemberDAO {
@@ -15,9 +16,10 @@ public interface MemberDAO {
 	public MemberVO selectByEmail(String email);
 	public int updateMember(MemberVO vo);
 	public int withdrawMember(String email);
-	public List<MemberVO> selectAll(SearchVO5 searchVo);
+	public List<MemberVO> selectAll(SearchVO searchVo);
 	public int updatePwd(String email, String pwd);
 	public MemberVO selectByNo(int memberNo);
-	int totalMember(SearchVO5 searchVo);
+	public int totalMember();
 	public int deleteMember(int memberNo); 
+	public int selectTotalRecord(SearchVO vo);
 }

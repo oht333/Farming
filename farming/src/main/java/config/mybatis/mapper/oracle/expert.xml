@@ -66,7 +66,7 @@
 		<![CDATA[where e.expert_no=#{expertNo} and rownum <= 1]]>
 	</select>
 	
-	<select id="totalExpert" resultType="int">
+	<select id="selectTotalRecord" resultType="int">
       select count(*) from expert
    </select>
    

@@ -70,14 +70,14 @@
 		where member_no=#{memberNo}
 	</select>
 	
-	<select id="totalMember" parameterType="searchVo5" resultType="int">
-      select count(*) from member
-      <include refid="searchWhere"></include>
-   </select>
-   
    <delete id="deleteMember" parameterType="int"> 
 		delete member where member_no=#{memberNo}
 	</delete>
+	
+	<select id="selectTotalRecord" parameterType="searchVo" resultType="int">
+		select count(*) from member
+		<!-- <include refid="searchWhere"></include>	 -->
+	</select>
    
 </mapper>
 
