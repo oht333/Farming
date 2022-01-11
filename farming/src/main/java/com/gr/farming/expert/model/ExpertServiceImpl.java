@@ -100,8 +100,8 @@ public class ExpertServiceImpl implements ExpertService{
 		return dao.selectCategory(expertNo);
 	}
 
-	public int totalExpert(ExpertVO vo) {
-		return dao.totalExpert(vo);
+	public int selectTotalRecord() {
+		return dao.selectTotalRecord();
 	}
 
 	public ExpertVO selectByNo(int expertNo) {

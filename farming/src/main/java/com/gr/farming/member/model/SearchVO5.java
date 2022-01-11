@@ -114,10 +114,6 @@ public class SearchVO5 {
 	public void setRecordCountPerPage(int recordCountPerPage) {
 		this.recordCountPerPage = recordCountPerPage;
 	}
-	
-
-	
-
 	public int getMemberNo() {
 		return memberNo;
 	}

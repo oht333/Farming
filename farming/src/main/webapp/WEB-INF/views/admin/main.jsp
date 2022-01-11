@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">회원 수</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i>${searchVo.totalMember}</h2>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i>${memCount}</h2>
                                     <!-- <span class="text-muted">Todays Income</span> -->
                                 </div>
                                 <span class="text-success">80%</span>
@@ -54,7 +54,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">전문가 수</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-info"></i> $5,000</h2>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-info"></i>${expCount }</h2>
                                     <!-- <span class="text-muted">Todays Income</span> -->
                                 </div>
                                 <span class="text-info">30%</span>
