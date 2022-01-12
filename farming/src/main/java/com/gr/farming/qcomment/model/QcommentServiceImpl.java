@@ -1,6 +1,7 @@
 package com.gr.farming.qcomment.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class QcommentServiceImpl implements QcommentService{
 	}
 
 	@Override
-	public List<QcommentVO> list(int qnaNo) {
+	public List<Map<String, Object>> list(int qnaNo) {
 		// TODO Auto-generated method stub
 		return qcommentDao.list(qnaNo);
 	}
