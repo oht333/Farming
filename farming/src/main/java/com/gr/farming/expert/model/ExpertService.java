@@ -3,6 +3,8 @@ package com.gr.farming.expert.model;
 import java.util.List;
 import java.util.Map;
 
+import com.gr.farming.common.SearchVO;
+
 public interface ExpertService {
 	public static final int EXIST_ID=1;  //해당 아이디가 이미 존재함
 	public static final int NON_EXIST_ID=2;  //해당 아이디가 존재하지 않음-사용가능
@@ -18,12 +20,13 @@ public interface ExpertService {
 	public ExpertVO selectByEmail(String email);
 	public int delete(ExpertVO vo);
 	public int updatePwd(String email, String pwd);
-
-	public List<ExpertVO> selectAll();
+	public int selectTotalRecord();
+	public List<ExpertVO> selectAll(SearchVO searchVo);
 	public int updateExpert(ExpertVO vo);
 	public boolean checkPwd(ExpertVO vo);
-	
+	public ExpertVO selectByNo(int expertNo);
 	public String selectMain(int expertNo);
 	public int selectCategory(int expNo);
-
+	public int deleteExpert(int expertNo);
+	public int selectTotalRecord(SearchVO vo);
 }

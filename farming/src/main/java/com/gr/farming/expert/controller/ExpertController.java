@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
@@ -228,7 +229,7 @@ public class ExpertController {
 	
 	@RequestMapping("addExp/post2")
 	public String addInfo3_post(HttpSession session, @RequestParam String main, String[] detail, Model model) {
-		int expNo = (int) session.getAttribute("expNo");
+		int expNo = (int) session.getAttribute("userNo");
 		logger.info("전문가 추가정보 등록처리 페이지 expNo = {}",expNo);
 		
 		int[] arr = new int[detail.length];
@@ -435,7 +436,7 @@ public class ExpertController {
 	//전문가 홍보를 위한 추가정보 입력페이지
 	@RequestMapping("/addExp/addExp")
 	public String addExp1(HttpSession session) {
-		int expNo = (int) session.getAttribute("expNo");
+		int expNo = (int) session.getAttribute("userNo");
 		logger.info("추가정보입력페이지 expNo={}",expNo);
 		
 		String main = service.selectMain(expNo);
@@ -465,5 +466,17 @@ public class ExpertController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/ajaxChkPwd")
+	public boolean ajaxChkPwd(@RequestParam String pwd, @RequestParam String pwd2) {
+		boolean res = false;
+		if(pwd.equals(pwd2)) {
+			res = true;
+		} else {
+			res = false;
+		}
+		return res;
 	}
 }

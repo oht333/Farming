@@ -1,16 +1,11 @@
 package com.gr.farming.cash.model;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CashServiceImpl implements CashService{
-	
 	private CashDAO dao;
 	
-	@Autowired
 	public CashServiceImpl(CashDAO dao) {
 		this.dao = dao;
 	}
@@ -18,9 +13,10 @@ public class CashServiceImpl implements CashService{
 	public int insert(CashVO vo) {
 		return dao.insert(vo);
 	}
-
-	public List<CashVO> selectAll() {
-		return dao.selectAll();
+	public int plusBal(int memberNo) {
+		return dao.plusBal(memberNo);
 	}
-	
+	public CashVO selectByMemNo(int memberNo) {
+		return dao.selectByMemNo(memberNo);
+	}
 }

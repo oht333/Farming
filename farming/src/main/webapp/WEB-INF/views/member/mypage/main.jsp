@@ -46,7 +46,7 @@
                     <use xlink:href="#pay-by-card-1"> </use>
                   </svg>
                 </div>
-                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/cash/main?email=${email }'/>">파밍캐시 &amp; 페이</a></h5>
+                <h5 class="card-title mb-3"><a class="text-decoration-none text-dark stretched-link" href="<c:url value='/cash/main?email=${email }'/>">파밍페이 &amp; 거래내역</a></h5>
                 <p class="text-muted card-text text-sm">Charge your cash and check it out</p>
               </div>
             </div>

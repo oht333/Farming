@@ -3,6 +3,12 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gr.farming.expert.model.ExpertDAO">	
+
+	<sql id="searchWhere">
+	      <if test="searchKeyword!=null and searchKeyword!=''">
+	         where ${searchCondition} like '%' || #{searchKeyword} || '%'
+	      </if>
+	 </sql>
 	<insert id="insert" parameterType="expertVo">
 		<selectKey keyProperty="expertNo" resultType="int" order="BEFORE">
 			select expert_seq.nextval from dual
@@ -32,7 +38,17 @@
 	</update>
 
 	<select id="selectAll" resultType="expertVo">
-		select * from expert order by expert_no desc
+		select * from
+		(
+			select rownum as RNUM, A.*
+				from(
+					select * from expert
+					order by expert_no asc
+				)A
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+			and RNUM<=#{firstRecordIndex}+ #{recordCountPerPage}]]>
 	</select>
 	
 	<update id="updateExpert" parameterType="expertVo">
@@ -65,6 +81,20 @@
 		on f.expert_no = e.expert_no
 		<![CDATA[where e.expert_no=#{expertNo} and rownum <= 1]]>
 	</select>
+	
+	<select id="selectTotalRecord" parameterType="searchVo" resultType="int">
+      select count(*) from expert
+   </select>
+   
+   <select id="selectByNo" parameterType="int" resultType="expertVo">
+		select * from expert
+		where expert_no=#{expertNo}
+	</select>
+	
+	<delete id="deleteExpert" parameterType="int"> 
+		delete expert where expert_no=#{expertNo}
+	</delete>
+	
 	
 </mapper>
 

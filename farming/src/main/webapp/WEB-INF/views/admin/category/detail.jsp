@@ -1,58 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top_admin.jsp" %>
-<style>
-.btn-primary {
-  color: #fff;
-  background-color: #2CCE8D;
-  border-color: #2CCE8D;
-}
-.rounded-pill {
-  border-radius: 50rem !important;
-}
-.h-100 {
-  height: 100% !important;
-}
-.btn-primary:hover {
-  color: #fff;
-  background-color: #00b66d;
-  border-color: #00b66d;
-}
-</style>
-        <div id="page-wrapper">
-		  <div class="header"> 
-                        <h1 class="page-header">
-                        </h1><%-- 
-						<ol class="breadcrumb"">
-					  		<li><a href="<c:url value='/admin/empty'/>">입력</a></li>
-					  	
-					  			<a href="<c:url value='/admin/category/write'/>" class="btn btn-success">success</a>
-					  		
-					  		
-					   </ol> --%>
-					
-		</div>
-		<%-- <div class="panel panel-default">
-                        <div class="panel-heading" style="text-align:center; font-weight: bold; font-size: x-large;">
-                            
+
+<div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="page-title mb-0 p-0">카테고리 상세</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">카테고리 상세</li>
+                                </ol>
+                            </nav>
                         </div>
-                        <!-- 수정시 no가 필요하므로 히든 필드에 담아서 넘겨준다 -->
-						<input type="hidden" name="categoryNo" value="${vo.categoryNo}">
-						<div> 
-							<span class="sp1">MAIN</span> <span>${vo.main }</span>
-						</div>
-						<div>
-							<span class="sp1">DETAIL</span> <span>${vo.detail }</span>
-						</div>
-                        <div class="center">
-							<a href='<c:url value="/admin/category/cateUpdate?categoryNo=${vo.categoryNo }"/>'>수정</a> |
-				        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>'>삭제</a> |
-				        	<a href='<c:url value="/admin/category/list"/>'>목록</a>			
-						</div>
-                    </div> --%>
-            
-            
-            <div class="row">
+                    </div>
+                    
+                </div>
+            </div>
+           <%--  <div class="row">
                         <div class="col-xs-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -83,6 +53,36 @@
                                         </div>
                                     </form>
                                 </div>
+                            </div>
+                        </div>
+                    </div> --%>
+                    <div class="col-lg-8 col-xlg-9 col-md-7" style="margin-left: 23%; width: 80%;  height: 400px;">
+                        <div class="card" style="width:65%">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2">
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">분류</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="main" placeholder="${vo.main }"
+                                                class="form-control ps-0 form-control-line" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">분야</label>
+                                        <div class="col-md-12">
+                                            <input type="text"
+                                                class="form-control ps-0 form-control-line" id="detail" placeholder="${vo.detail }" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12 d-flex">
+                                        		<input type = "Button" id="btList" class="btn btn-success mx-auto mx-md-0 text-white" value="&nbsp;&nbsp;글목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/category/list"/>'" /> | 
+                          						<a href='<c:url value="/admin/category/cateUpdate?categoryNo=${vo.categoryNo }"/>' class="btn btn-success mx-auto mx-md-0 text-white">&nbsp;&nbsp;수정&nbsp;&nbsp;</a> |
+									        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>' class="btn btn-success mx-auto mx-md-0 text-white">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
+									        	
+                                        </div>
+                                    </div>
+                                    </form>
                             </div>
                         </div>
                     </div>

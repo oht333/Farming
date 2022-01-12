@@ -40,7 +40,7 @@ input[type=radio]:checked+label {
 			Inroduce <span class="text-muted float-end">Step 1</span>
 		</h1>
 		<form action="<c:url value='/expert/addExp/addExpPost'/>" method="post">
-			<input type="hidden" name="expertNo" value="${expNo }">
+			<input type="hidden" name="expertNo" value="${userNo }">
 			<div class="row form-block">
 				<div class="col-lg-4">
 					<h4>간편 소개</h4>

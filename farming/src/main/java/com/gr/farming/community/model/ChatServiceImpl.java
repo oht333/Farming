@@ -43,5 +43,7 @@ public class ChatServiceImpl implements ChatService{
 	public List<ChatMessageDTO> selectMessageDTO(int roomNo){
 		return dao.selectMessageDTO(roomNo);
 	}
-	
+	public ChatRoomJoinVO chatRoomInfo(int roomNo) {
+		return dao.chatRoomInfo(roomNo);
+	}
 }

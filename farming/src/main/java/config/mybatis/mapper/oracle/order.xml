@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gr.farming.order.model.OrderDAO">	
+	<!-- 주문등록 --> 
+	<insert id="insert" parameterType="orderVo">
+		insert into orders(merchant_uid, member_no, member_name, expert_no, expert_name, service_no, service_name, price, state)
+		values(#{merchantUid}, #{memberNo}, #{memberName}, #{expertNo}, #{expertName}, #{serviceNo}, #{serviceName}, #{price}, #{state})
+	</insert>
+	<select id="select" parameterType="int" resultType="orderVo">
+		select merchant_uid, expert_name, service_name, price, state, time
+		from orders where member_no=#{memberNo}
+		order by time asc
+	</select>
+	
+	<!-- 페이거래내역만 -->
+	<select id="selectByPay" parameterType="int" resultType="map">
+		select o.merchant_uid, o.expert_name, o.service_name, o.state, c.charge, c.balance
+		from orders o join cash c
+		on o.merchant_uid = c.merchant_uid
+		<![CDATA[and o.member_no=#{memberNo} and (c.charge > 0 or c.charge < 0)]]>
+		order by o.time asc
+	</select>
+</mapper>
+
+
