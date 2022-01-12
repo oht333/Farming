@@ -25,7 +25,7 @@
 	
 	<select id="totalRecord" parameterType="int" resultType="int">
 		select count(*) from cash
-		where member_no=#{memberNo}
+		where member_no=#{memNo}
 	</select>
 	
 </mapper>

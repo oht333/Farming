@@ -21,11 +21,11 @@ import com.gr.farming.cash.model.CashVO;
 import com.gr.farming.category.controller.CategoryController;
 import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.PaginationInfo;
+import com.gr.farming.common.SearchVO2;
 import com.gr.farming.member.model.MemberService;
 import com.gr.farming.member.model.MemberVO;
 import com.gr.farming.order.model.OrderService;
 import com.gr.farming.order.model.OrderVO;
-import com.gr.farming.order.model.SearchVO3;
 
 @Controller
 @RequestMapping("/cash")
@@ -87,14 +87,14 @@ public class CashController {
 	}
 	
 	@RequestMapping("/payList")
-	public String payList(HttpSession session, Model model, SearchVO3 sVo) {
+	public String payList(HttpSession session, Model model, SearchVO2 sVo) {
 		logger.info("글목록, 파라미터 searchVo={}", sVo);
 		
 		String email = (String) session.getAttribute("email");
 		MemberVO mVo = mservice.selectByEmail(email);
 		model.addAttribute("mVo", mVo);
 		
-		sVo.setMemberNo(mVo.getMemberNo());
+		sVo.setMemNo(mVo.getMemberNo());
 		//2
 		//searchVo에 firstRecordIndex, recordCountPerPage 값을 넣어줘야 함
 		//=> PaginationInfo를 이용하여 firstRecordIndex값을 미리 구한다
@@ -114,7 +114,7 @@ public class CashController {
 		logger.info("전체조회 결과 list.size={}", pList.size());
 		
 		//[3] totalRecord 구하기
-		int totalRecord=sservice.totalRecord(sVo.getMemberNo());
+		int totalRecord=sservice.totalRecord(sVo.getMemNo());
 		pagingInfo.setTotalRecord(totalRecord);
 		
 		model.addAttribute("pagingInfo", pagingInfo);
@@ -124,14 +124,14 @@ public class CashController {
 	}
 	
 	@RequestMapping("/list")
-	public String list(HttpSession session, Model model, SearchVO3 sVo) {
+	public String list(HttpSession session, Model model, SearchVO2 sVo) {
 		logger.info("글목록, 파라미터 searchVo={}", sVo);
 		
 		String email = (String) session.getAttribute("email");
 		MemberVO mVo = mservice.selectByEmail(email);
 		model.addAttribute("mVo", mVo);
 		
-		sVo.setMemberNo(mVo.getMemberNo());
+		sVo.setMemNo(mVo.getMemberNo());
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
@@ -145,7 +145,7 @@ public class CashController {
 		
 		
 		//[3] totalRecord 구하기
-		int totalRecord=oservice.totalRecord(sVo.getMemberNo());
+		int totalRecord=oservice.totalRecord(sVo.getMemNo());
 		pagingInfo.setTotalRecord(totalRecord);
 		
 		List<OrderVO> list = oservice.select(sVo);
