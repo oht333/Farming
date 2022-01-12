@@ -56,6 +56,19 @@ caption{
 	width:700px;
 }
 
+
+.btn-primary2 {
+  color: #fff;
+  background-color: #d5f7e9;
+  border-color: #d5f7e9;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #00b66d;
+  border-color: #00b66d;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   padding: 0;
@@ -95,6 +108,7 @@ input:hover, input:focus {
 /* table */
 
 .t_center {
+	margin-top: 40px;
 	text-align: center;
 }
 
@@ -222,11 +236,6 @@ a:hover {
   transition: 0.5s;
 }
 
-/* line 74, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_common.scss */
-h1, h2, h3, h4, h5, h6 {
-  color: #0c3e72;
-  font-family: "Open Sans", sans-serif;
-}
 
 /* line 78, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_common.scss */
 p {
@@ -242,7 +251,7 @@ p {
 h2 {
   font-size: 36px;
   line-height: 28px;
-  color: #0c3e72;
+  color: #2f2f2f;
   font-weight: 600;
   line-height: 1.222;
 }
@@ -296,4 +305,77 @@ a:focus, .button:focus, button:focus, .btn:focus {
   transition: 1s;
 }
 
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ /*# sourceMappingURL=bootstrap.min.css.map */
 
+/* line 18, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_common.scss */
+.section_padding {
+  padding: 80px 0px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  /* line 18, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_common.scss */
+  .section_padding {
+    padding: 80px 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* line 18, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_common.scss */
+  .section_padding {
+    padding: 70px 0px;
+  }
+}
+
+@media (max-width: 575px) {
+  /* line 18, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_common.scss */
+  .section_padding {
+    padding: 70px 0px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  /* line 18, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_common.scss */
+  .section_padding {
+    padding: 70px 0px;
+  }
+}
+
+
+
+
+
+
+.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+.container{max-width:720px}
+
+@media only screen and (min-width: 1200px) and (max-width: 3640px) {
+  /* line 242, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_common.scss */
+  .container {
+    max-width: 1170px;
+  }
+}
+
+
+
+
+
+/*상세페이지 (게시판)*/
+.divForm{width: 100%; border-top: 1px solid #01cb9d; border-bottom: 1px solid #01cb9d;}
+.divForm ul{width:100%;}
+.divForm ul li{padding:15px 5px; border-bottom:1px solid #01cb9d;display:flex;}
+.divForm ul li:last-child{border-bottom:0;}
+.divForm ul li .sp1{width:28%; display:inline-block; display:inline-flex; align-content:space-around; align-items:stretch; flex-direction:column; flex-wrap:nowrap; justify-content:center;}
+.divForm ul li .sp2{width:68%; display:inline-block;}
+.c_mint{color:#aac3c3;}  
+
+
+
+
+
+
+.mb50{margin-bottom:50px;} 
