@@ -51,7 +51,7 @@
 	</update>
 	
 	
-	<delete id="deleteQna" parameterMap="int">
+	<delete id="deleteQna" parameterType="int">
 		delete from qna 
 		where qna_no=#{qnaNo}
 	</delete>

@@ -37,7 +37,7 @@
     </section><br>
     <article>
 		<div class="container" role="main">
-    		<h2>1 : 1 질문 내역</h2><br>
+    		<h2>${name}님의 1 : 1 질문 내역</h2><br>
 		
 			<div class="bg-white rounded shadow-sm">
 				<label for="exampleFormControlInput1" class="form-label">[문의글 제목] : </label>
@@ -60,13 +60,16 @@
 			action="<c:url value='/qna/qnaDetail?qnaNo=${param.qnaNo }'/>" >
 			<input type="hidden" name="memberNo" id="memberNo" value="${userNo }">
 			<input type="hidden" id="name" name="name" class="infobox" value="${name }" readonly="readonly"/>
+		 
 		 <fieldset>
-			<legend>글쓰기</legend>
+		 	<label for="exampleFormControlInput1" class="form-label">[댓글 입력]</label>
+		          <label for="name">작성자&nbsp;&nbsp;</label><input type="text" id="name" name="name" value="${name }" readonly="readonly" /><br>
 		        <div class="form-floating mb-3">
 				  <input type="text" class="form-control" id="floatingInput" name="content" placeholder="내용입력">
-				  <label for="content">댓글입력</label>
+				  <label for="content">댓글 입력</label>
+				  <input type = "submit" value="등록하기"/>
 				</div>
-			</fieldset>
+		</fieldset>
 		</div>
 	</div><br>
 		<div class="center">

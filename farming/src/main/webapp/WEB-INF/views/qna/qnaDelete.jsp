@@ -46,8 +46,6 @@
 <form name="frmDelete" method="post" 
 	action="<c:url value='/qna/qnaDelete'/>" >
 	<input type="hidden" name="qnaNo" value="${param.qnaNo}">
-	<input type="hidden" name="step" value="${param.step}">
-	<input type="hidden" name="groupNo" value="${param.groupNo}">
 	
 		<fieldset>
 		<legend>게시글 삭제</legend>

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.PaginationInfo;
 import com.gr.farming.qcomment.model.QcommentService;
+import com.gr.farming.qcomment.model.QcommentVO;
 import com.gr.farming.qna.model.QnaService;
 import com.gr.farming.qna.model.QnaVO;
 import com.gr.farming.qna.model.SearchVO2;
@@ -218,6 +219,64 @@ public class QnaController {
 
 		return "common/message";
 	}
+	
+	//댓글작성
+		@PostMapping("/qnaDetail")
+		public String write_post(@ModelAttribute QcommentVO vo, Model model) {
+			logger.info("댓글작성 처리, 파라미터 vo={}",vo);
+			
+			int cnt=qcommentService.write(vo);
+			String msg="댓글작성 실패", url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			if(cnt>0) {
+				msg="성공";
+				url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			}
+			
+			model.addAttribute("url",url);
+			model.addAttribute("msg",msg);
+			
+			return "common/message";
+			
+		}
+		
+		//댓글수정
+		@PostMapping(value="/qnaDetail")
+		public String update_post(@ModelAttribute QcommentVO vo, HttpServletRequest request,
+				Model model) {
+			logger.info("댓글 수정 처리, 파라미터vo={}",vo);
+			
+			String msg="댓글 수정 실패",url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			int cnt=qcommentService.update(vo);
+			if(cnt>0) {
+				msg="댓글 수정 완료";
+				url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			}
+			
+			model.addAttribute("msg",msg);
+			model.addAttribute("url",url);
+			
+			return "common/message";
+		}
+		
+		//댓글삭제
+		@RequestMapping(value="qnaDetail")
+		public String delete_post(@ModelAttribute QcommentVO vo,
+				HttpServletRequest request, Model model) {
+			logger.info("댓글 삭제처리, 파라미터 vo={}",vo);
+			
+			String msg="댓글 삭제 실패", url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			int cnt=qcommentService.delete(vo.getQcommnetNo());
+			if(cnt>0) {
+				msg="댓글 삭제 성공";
+				url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			}
+			
+			model.addAttribute("msg",msg);
+			model.addAttribute("url",url);
+			
+			return "common/message";
+		}
+
 
 
 }
