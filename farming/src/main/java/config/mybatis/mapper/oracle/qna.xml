@@ -50,30 +50,11 @@
 		where qna_no=#{qnaNo}
 	</update>
 	
-	<parameterMap type="map" id="qnaDeleteParam">
-		<parameter property="qnaNo" javaType="string" jdbcType="VARCHAR" mode="IN"/>
-		<parameter property="step" javaType="string" jdbcType="VARCHAR" mode="IN"/>
-		<parameter property="groupNo" javaType="string" jdbcType="VARCHAR" mode="IN"/>
-	</parameterMap>
 	
-	<delete id="deleteQna" parameterMap="qnaDeleteParam">
-		{call DELETEQNA(?,?,?)}
+	<delete id="deleteQna" parameterType="int">
+		delete from qna 
+		where qna_no=#{qnaNo}
 	</delete>
 	
-	<update id="updateSortNo" parameterType="qnaVo">
- 		update qna
-		set sortNo=sortNo+1
-		where groupNo=#{groupNo} and sortno>#{sortNo}
- 	</update>
- 	
- 	<insert id="reply" parameterType="qnaVo">
- 		<selectKey keyProperty="qnaNo" resultType="int" order="BEFORE">
-			select qna_seq.nextval from dual
-		</selectKey>
-		insert into qna(qna_no, name, title, content, 
-				groupNo,sortNo, step)
-		values(#{qnaNo}, #{name}, #{title}, #{content},
-				#{groupNo}, #{sortNo}+1, #{step}+1)
- 	</insert>
 	
 </mapper>

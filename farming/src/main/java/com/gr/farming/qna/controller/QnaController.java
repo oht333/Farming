@@ -1,8 +1,6 @@
 package com.gr.farming.qna.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,8 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.PaginationInfo;
+
+import com.gr.farming.qcomment.model.QcommentService;
+import com.gr.farming.qcomment.model.QcommentVO;
+
 import com.gr.farming.common.SearchVO;
 import com.gr.farming.common.SearchVO2;
+
 import com.gr.farming.qna.model.QnaService;
 import com.gr.farming.qna.model.QnaVO;
 
@@ -32,10 +35,16 @@ public class QnaController {
 	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
 
 	private final QnaService qnaService;
+	
+	private final QcommentService qcommentService;
+	
+	
 
 	@Autowired
-	public QnaController(QnaService qnaService) {
+	public QnaController(QnaService qnaService,QcommentService qcommentService) {
 		this.qnaService = qnaService;
+		this.qcommentService = qcommentService;
+		
 		logger.info("생성자 주입");
 	}
 
@@ -153,7 +162,7 @@ public class QnaController {
 		int cnt = qnaService.updateQna(vo);
 		if (cnt > 0) {
 			msg = "게시글이 수정 되었습니다.";
-			url = "/qna/qnaDetail?no=" + vo.getQnaNo();
+			url = "/qna/qnaDetail?qnaNo=" + vo.getQnaNo();
 		}
 
 		model.addAttribute("msg", msg);
@@ -195,56 +204,83 @@ public class QnaController {
 	}
 
 	@RequestMapping(value = "qnaDelete", method = RequestMethod.POST)
-	public String delete_post(@ModelAttribute QnaVO vo, HttpServletRequest request, Model model) {
+	public String delete_post(@ModelAttribute QnaVO vo, Model model) {
 		logger.info("글 삭제 처리, 파라미터 vo={}", vo);
 
 		String msg = "글삭제 실패",
-				url = "qna/qnaDelte?qnaNo=" + vo.getQnaNo() + "&step=" 
-						+ vo.getStep() + "&groupNo=" + vo.getGroupNo();
+				url = "qna/qnaDelte?qnaNo=" + vo.getQnaNo();
 
-		Map<String, String> map = new HashMap<>();
-		map.put("qnaNo", vo.getQnaNo() + "");
-		map.put("step", vo.getStep() + "");
-		map.put("groupNo", vo.getGroupNo() + "");
 
-		qnaService.deleteQna(map);
-		msg = "게시글이 삭제되었습니다.";
-		url = "/qna/qnaList";
+		int cnt=qnaService.deleteQna(vo.getQnaNo());
+		if(cnt > 0) {
+			msg="글 삭제 완료";
+			url="/qna/qnaList";
+		}
+		
 
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 
 		return "common/message";
 	}
-
-	@GetMapping("/qnaReply")
-	public String reply_get(@RequestParam(defaultValue = "0") int qnaNo, Model model) {
-		logger.info("답변화면 , 파라미터 no={}", qnaNo);
-
-		if (qnaNo == 0) {
-			model.addAttribute("msg", "잘못된 url 입니다.");
-			model.addAttribute("url", "/qna/qnaList");
-
+	
+	//댓글작성
+		@PostMapping("/qnaDetail")
+		public String write_post(@ModelAttribute QcommentVO vo, Model model) {
+			logger.info("댓글작성 처리, 파라미터 vo={}",vo);
+			
+			int cnt=qcommentService.write(vo);
+			String msg="댓글작성 실패", url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			if(cnt>0) {
+				msg="성공";
+				url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			}
+			
+			model.addAttribute("url",url);
+			model.addAttribute("msg",msg);
+			
+			return "common/message";
+			
+		}
+		
+		//댓글수정
+		@PostMapping(value="/qnaDetail")
+		public String update_post(@ModelAttribute QcommentVO vo, HttpServletRequest request,
+				Model model) {
+			logger.info("댓글 수정 처리, 파라미터vo={}",vo);
+			
+			String msg="댓글 수정 실패",url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			int cnt=qcommentService.update(vo);
+			if(cnt>0) {
+				msg="댓글 수정 완료";
+				url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			}
+			
+			model.addAttribute("msg",msg);
+			model.addAttribute("url",url);
+			
+			return "common/message";
+		}
+		
+		//댓글삭제
+		@RequestMapping(value="qnaDetail")
+		public String delete_post(@ModelAttribute QcommentVO vo,
+				HttpServletRequest request, Model model) {
+			logger.info("댓글 삭제처리, 파라미터 vo={}",vo);
+			
+			String msg="댓글 삭제 실패", url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			int cnt=qcommentService.delete(vo.getQcommnetNo());
+			if(cnt>0) {
+				msg="댓글 삭제 성공";
+				url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			}
+			
+			model.addAttribute("msg",msg);
+			model.addAttribute("url",url);
+			
 			return "common/message";
 		}
 
-		QnaVO vo = qnaService.selectByNo(qnaNo);
-		logger.info("답변화면 조회결과 vo={}", vo);
 
-		model.addAttribute("vo", vo);
-
-		return "qna/qnaReply";
-
-	}
-
-	@PostMapping("/qnaReply")
-	public String reply_post(@ModelAttribute QnaVO vo) {
-		logger.info("답변하기, 파라미터 vo={}", vo);
-
-		int cnt = qnaService.reply(vo);
-		logger.info("답변하기 결과 cnt={}", cnt);
-
-		return "redirect:/qna/qnaList";
-	}
 
 }

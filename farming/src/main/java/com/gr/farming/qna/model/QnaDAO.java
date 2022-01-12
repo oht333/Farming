@@ -15,7 +15,7 @@ public interface QnaDAO {
 	int selectTotalRecord(SearchVO2 searchVo);
 	public QnaVO selectByNo(int no);
 	public int updateQna(QnaVO vo);
-	public void deleteQna(Map<String, String> map);
+	public int deleteQna(int no);
 	int updateSortNo(QnaVO vo);
 	int reply(QnaVO vo);
 }
