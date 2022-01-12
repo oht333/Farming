@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top_admin.jsp" %>
+<script>
+$(document).ready(function() {
+	var result = $('#list option:selected').val();
+	if (result == 'mem') {
+	      $('#mem_list').show();
+	      $('#dev_list').hide();
+	 }
+	 $('select[name="list"] ').on('change', function()  {
+	    var result = $('#list option:selected').val();
+	    if (result == 'mem') {
+	      $('#mem_list').show();
+	      $('#dev_list').hide();
+	    } else {
+	      $('#mem_list').hide();
+	      $('#dev_list').show();
+	    }
+	  }); 
+	
+	}); 
+</script>
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -8,12 +28,10 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Dashboard</h3>
+                        <h3 class="page-title mb-0 p-0">메인</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
                             </nav>
                         </div>
@@ -35,10 +53,10 @@
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Daily Sales</h4>
+                                <h4 class="card-title">회원 수</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> $120</h2>
-                                    <span class="text-muted">Todays Income</span>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i>${memCount}</h2>
+                                    <!-- <span class="text-muted">Todays Income</span> -->
                                 </div>
                                 <span class="text-success">80%</span>
                                 <div class="progress">
@@ -54,10 +72,10 @@
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Weekly Sales</h4>
+                                <h4 class="card-title">전문가 수</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-info"></i> $5,000</h2>
-                                    <span class="text-muted">Todays Income</span>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-info"></i>${expCount }</h2>
+                                    <!-- <span class="text-muted">Todays Income</span> -->
                                 </div>
                                 <span class="text-info">30%</span>
                                 <div class="progress">
@@ -98,27 +116,30 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-md-flex">
-                                    <h4 class="card-title col-md-10 mb-md-0 mb-3 align-self-center">Projects of the Month</h4>
+                                    <!-- <h4 class="card-title col-md-10 mb-md-0 mb-3 align-self-center">Projects of the Month</h4> -->
                                     <div class="col-md-2 ms-auto">
-                                        <select class="form-select shadow-none col-md-2 ml-auto">
-                                            <option selected>January</option>
-                                            <option value="1">February</option>
-                                            <option value="2">March</option>
-                                            <option value="3">April</option>
+                                        <select class="form-select shadow-none col-md-2 ml-auto" id="list" name="list">
+                                            <option value="mem" selected="selected">회원 목록</option>
+                                            <option value="exp">전문가 목록</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="table-responsive mt-5">
+                                <div class="table-responsive mt-5" id="mem_list">
                                     <table class="table stylish-table no-wrap">
                                         <thead>
                                             <tr>
-                                                <th class="border-top-0" colspan="2">Assigned</th>
+                                                <!-- <th class="border-top-0" colspan="2">Assigned</th>
                                                 <th class="border-top-0">Name</th>
-                                                <th class="border-top-0">Budget</th>
+                                                <th class="border-top-0">Budget</th> -->
+                                                <th class="border-top-0">PROFILE</th>
+	                                            <th class="border-top-0">NAME</th>
+	                                            <th class="border-top-0">EMAIL</th>
+	                                            <th class="border-top-0">ADDRESS1</th>
+	                                            <th class="border-top-0">REGDATE</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <%-- <tr>
                                                 <td style="width:50px;"><span class="round">S</span></td>
                                                 <td class="align-middle">
                                                     <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small>
@@ -166,9 +187,158 @@
                                                 </td>
                                                 <td class="align-middle">Digital Agency</td>
                                                 <td class="align-middle">$2.6K</td>
-                                            </tr>
+                                            </tr> --%>
+                                            <c:forEach var="vo" items="${mem_list}">
+                                            	<tr>
+                                            		<td class="align-middle"><img id="userImg" class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/userImg/${userImg}"></td>
+	                                            	<td class="align-middle">${vo.name }</td>
+		                                            <td class="align-middle">${vo.email }</td>
+		                                            <td class="align-middle">${vo.address1 }</td>
+		                                            <td class="align-middle">${vo.regDate }</td>
+                                            	</tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
+                                    <div class="divPage"; style="text-align:center">
+							<!-- 페이지 번호 추가 -->		
+							<!-- 이전 블럭으로 이동 -->
+							<c:if test="${pagingInfo.firstPage>1 }">
+								<a href
+						="<c:url value='/admin/main?currentPage=${pagingInfo.firstPage-1}'/>">
+									<img src="${pageContext.request.contextPath }/resources/img/first.JPG" alt="이전블럭">
+								</a>	
+							</c:if>		
+												
+							<!-- [1][2][3][4][5][6][7][8][9][10] -->
+							<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage }">
+								<c:if test="${i==pagingInfo.currentPage }">
+									<span style="color:#2CCE8D;font-weight: bold;font-size: 20px">
+										${i}</span>			
+								</c:if>	
+								<c:if test="${i!=pagingInfo.currentPage }">	
+										<a href
+						="<c:url value='/admin/main?currentPage=${i}'/>">
+										[${i }]</a>			
+								</c:if>
+							</c:forEach>
+							
+							<!-- 다음 블럭으로 이동 -->					
+							<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage }">	
+									<a href
+						="<c:url value='/admin/main?currentPage=${pagingInfo.lastPage+1}'/>">
+										<img src="${pageContext.request.contextPath }/resources/img/last.JPG" alt="다음블럭">
+									</a>	
+							</c:if>					
+							<!--  페이지 번호 끝 -->	
+						</div>
+                                </div>
+                                <div class="table-responsive mt-5" id="dev_list">
+                                    <table class="table stylish-table no-wrap">
+                                        <thead>
+                                            <tr>
+                                                <!-- <th class="border-top-0" colspan="2">Assigned</th>
+                                                <th class="border-top-0">Name</th>
+                                                <th class="border-top-0">Budget</th> -->
+                                                <th class="border-top-0">PROFILE</th>
+	                                            <th class="border-top-0">NAME</th>
+	                                            <th class="border-top-0">EMAIL</th>
+	                                            <th class="border-top-0">ADDRESS1</th>
+	                                            <th class="border-top-0">REGDATE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%-- <tr>
+                                                <td style="width:50px;"><span class="round">S</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small>
+                                                </td>
+                                                <td class="align-middle">Elite Admin</td>
+                                                <td class="align-middle">$3.9K</td>
+                                            </tr>
+                                            <tr class="active">
+                                                <td><span class="round"><img src="<c:url value='/resources/admin_img/users/2.jpg'/>"
+                                                            alt="user" width="50"></span></td>
+                                                <td class="align-middle">
+                                                    <h6>Andrew</h6><small class="text-muted">Project Manager</small>
+                                                </td>
+                                                <td class="align-middle">Real Homes</td>
+                                                <td class="align-middle">$23.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-success">B</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Bhavesh patel</h6><small class="text-muted">Developer</small>
+                                                </td>
+                                                <td class="align-middle">MedicalPro Theme</td>
+                                                <td class="align-middle">$12.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-primary">N</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Nirav Joshi</h6><small class="text-muted">Frontend Eng</small>
+                                                </td>
+                                                <td class="align-middle">Elite Admin</td>
+                                                <td class="align-middle">$10.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-warning">M</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Micheal Doe</h6><small class="text-muted">Content Writer</small>
+                                                </td>
+                                                <td class="align-middle">Helping Hands</td>
+                                                <td class="align-middle">$12.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-danger">N</span></td>
+                                                <td class="align-middle">
+                                                    <h6>Johnathan</h6><small class="text-muted">Graphic</small>
+                                                </td>
+                                                <td class="align-middle">Digital Agency</td>
+                                                <td class="align-middle">$2.6K</td>
+                                            </tr> --%>
+                                            <c:forEach var="vo" items="${dev_list}">
+                                            	<tr>
+                                            		<td class="align-middle"><img id="userImg" class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/userImg/${userImg}"></label>
+	                                            	<td class="align-middle">${vo.name }</td>
+		                                            <td class="align-middle">${vo.email }</td>
+		                                            <td class="align-middle">${vo.address1 }</td>
+		                                            <td class="align-middle">${vo.regDate }</td>
+                                            	</tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+                                    <div class="divPage" style="text-align:center">
+								<!-- 페이지 번호 추가 -->		
+								<!-- 이전 블럭으로 이동 -->
+								<c:if test="${pagingInfo.firstPage>1 }">
+									<a href
+							="<c:url value='/admin/main?currentPage=${pagingInfo.firstPage-1}'/>">
+										<img src="<c:url value='/resources/images/first.JPG'/>" alt="이전블럭">
+									</a>	
+								</c:if>		
+													
+								<!-- [1][2][3][4][5][6][7][8][9][10] -->
+								<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage }">
+									<c:if test="${i==pagingInfo.currentPage }">
+										<span style="color:#2CCE8D;font-weight: bold;font-size: 20px">
+											${i}</span>			
+									</c:if>	
+									<c:if test="${i!=pagingInfo.currentPage }">	
+											<a href
+							="<c:url value='/admin/main?currentPage=${i}'/>">
+											[${i }]</a>			
+									</c:if>
+								</c:forEach>
+								
+								<!-- 다음 블럭으로 이동 -->					
+								<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage }">	
+										<a href
+							="<c:url value='/admin/main?currentPage=${pagingInfo.lastPage+1}'/>">
+											<img src="<c:url value='/resources/images/last.JPG'/>" alt="다음블럭">
+										</a>	
+								</c:if>					
+								<!--  페이지 번호 끝 -->	
+							</div>
                                 </div>
                             </div>
                         </div>

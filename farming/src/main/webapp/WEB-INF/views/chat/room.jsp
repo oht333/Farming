@@ -48,7 +48,7 @@
       
         <input type="hidden" value="${param.roomNo }" name="roomNo" id="roomNo">
         
-        <input type="hidden" value="견적서 내용" id="requestText">
+        <input type="hidden" value="[결제요청]" id="requestText" name="requestText">
         
       <div class='px-4 py-5'>
           <div class='row'>
@@ -99,6 +99,10 @@ $(document).ready(function(){
 	$('#credit').click(function(){
 		window.open("<c:url value='/payment/paymentDetail'/>", "서비스결제", "height=" + screen.height + ",width=" + screen.width + "fullscreen=yes");
 	});
+	
+	function pdDetail(){
+		window.open("<c:url value='/payment/paymentDetail'/>", "서비스결제", "height=" + screen.height + ",width=" + screen.width + "fullscreen=yes");
+	}
 	
 	$('textarea').on('keydown', function(event) {
 	    if (event.keyCode == 13){
@@ -192,13 +196,30 @@ $(document).ready(function(){
         
     });
     
-    $("#request").on("click", function(e){
+    $("#request").on("mousedown", function(e){
     	var msg = document.getElementById("requestText");
-        
+    	$.ajax({
+        	url:"<c:url value='/chat/request'/>",
+        	type:'post',
+        	data:{
+        		message:msg.value,
+        		userNo:userNo,
+        		roomNo:roomNo,
+        		username:'${name}'
+        	},
+        	success : function(data) {
+        		console.log('data : '+data);
+        		stomp.send('/pub/chat/message', {}, JSON.stringify({roomNo: roomNo, message: data, writer: username}));
+                msg.value = '';
+        	},
+       		error : function( request, status, error) {
+       			console.log("code : "+request.status+"\n"+"message : "+request.responseText);
+       		}
+        	
+        });
+    	
         console.log(username + ":" + msg.value);
         console.log(userNo);
-        stomp.send('/pub/chat/message', {}, JSON.stringify({roomNo: roomNo, message: msg.value, writer: username}));
-        msg.value = '';
         
     });
     

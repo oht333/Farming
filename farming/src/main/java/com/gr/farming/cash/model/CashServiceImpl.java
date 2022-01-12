@@ -13,7 +13,10 @@ public class CashServiceImpl implements CashService{
 	public int insert(CashVO vo) {
 		return dao.insert(vo);
 	}
-	public int plusBal(CashVO vo) {
-		return dao.plusBal(vo);
+	public int plusBal(int memberNo) {
+		return dao.plusBal(memberNo);
+	}
+	public CashVO selectByMemNo(int memberNo) {
+		return dao.selectByMemNo(memberNo);
 	}
 }

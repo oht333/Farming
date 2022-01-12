@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.gr.farming.common.SearchVO;
+
 
 
 @Mapper
@@ -15,11 +17,12 @@ public interface ExpertDAO {
 	public ExpertVO selectByEmail(String email);
 	public int delete(ExpertVO vo);
 	public int updatePwd(String email, String pwd);
-
-	public List<ExpertVO> selectAll();
+	public int selectTotalRecord();
+	public List<ExpertVO> selectAll(SearchVO searchVo);
 	public int updateExpert(ExpertVO vo);
-	
+	public ExpertVO selectByNo(int expertNo);
 	public String selectMain(int expertNo);
 	public int selectCategory(int expNo);
-
+	public int deleteExpert(int expertNo);
+	public int selectTotalRecord(SearchVO vo);
 }

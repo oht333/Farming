@@ -14,4 +14,5 @@ public interface ChatService {
 	public List<Map<String, Object>> selectRoomByExpert(int expertNo);
 	public ChatRoomDTO selectRoomNo(int roomNo);
 	public List<ChatMessageDTO> selectMessageDTO(int roomNo);
+	public ChatRoomJoinVO chatRoomInfo(int roomNo);
 }

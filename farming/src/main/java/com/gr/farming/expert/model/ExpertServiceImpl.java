@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.gr.farming.common.SearchVO;
+
 @Service
 public class ExpertServiceImpl implements ExpertService{
 	private ExpertDAO dao;
@@ -69,8 +71,8 @@ public class ExpertServiceImpl implements ExpertService{
 
 	}
 	
-	public List<ExpertVO> selectAll() {
-		return dao.selectAll();
+	public List<ExpertVO> selectAll(SearchVO searchVo) {
+		return dao.selectAll(searchVo);
 	}
 
 	public int updateExpert(ExpertVO vo) {
@@ -98,5 +100,22 @@ public class ExpertServiceImpl implements ExpertService{
 	}
 	public int selectCategory(int expertNo) {
 		return dao.selectCategory(expertNo);
+	}
+
+	public int selectTotalRecord() {
+		return dao.selectTotalRecord();
+	}
+
+	public ExpertVO selectByNo(int expertNo) {
+		return dao.selectByNo(expertNo);
+	}
+
+	public int deleteExpert(int expertNo) {
+		return dao.deleteExpert(expertNo);
+	}
+
+
+	public int selectTotalRecord(SearchVO vo) {
+		return dao.selectTotalRecord(vo);
 	}
 }

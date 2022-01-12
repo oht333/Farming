@@ -12,7 +12,7 @@ import lombok.ToString;
 public class CashVO {
 	private int cashNo;
 	private String merchantUid;
-	private int memberId;
+	private int memberNo;
 	private int charge;
 	private int balance;
 	private Timestamp time;
