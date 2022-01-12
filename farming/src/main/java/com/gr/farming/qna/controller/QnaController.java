@@ -74,7 +74,8 @@ public class QnaController {
 
 
 	@RequestMapping("/qnaList") 
-	public String qnaList(@ModelAttribute SearchVO2 searchVo, HttpSession session ,Model model) {
+	public String qnaList(@ModelAttribute SearchVO2 searchVo, HttpSession session ,Model model
+			) {
 
 		logger.info("글목록, 파라미터 searchVo={}", searchVo);
 
@@ -94,6 +95,7 @@ public class QnaController {
 
 		List<QnaVO> list = qnaService.select(searchVo);
 		logger.info("전체 조회 결과 list.size={}", list.size());
+		
 
 		// totalrecord 구하기
 
@@ -225,7 +227,7 @@ public class QnaController {
 	}
 	
 	//댓글작성
-		@PostMapping("/commentWrite")
+		@PostMapping(value="/commentWrite")
 		public String write_post(@ModelAttribute QcommentVO vo, Model model) {
 			logger.info("댓글작성 처리, 파라미터 vo={}",vo);
 			
