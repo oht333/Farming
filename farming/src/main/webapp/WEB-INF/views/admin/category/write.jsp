@@ -74,8 +74,8 @@
                                     <div class="form-group">
                                         <div class="col-sm-12 d-flex">
                           
-                                    		<input type = "Button" id="btList" class="btn btn-success mx-auto mx-md-0 text-white" value="&nbsp;&nbsp;글목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/category/list"/>'" />
-                                        	<input type = "submit" id="submit" value="&nbsp;&nbsp;&nbsp;등록&nbsp;&nbsp;&nbsp;" style="margin-left:45%; " class="btn btn-success mx-auto mx-md-0 text-white"/>
+                                    		<input type = "Button" id="btList" class="btn btn-primary rounded-pill h-100" value="&nbsp;&nbsp;글목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/category/list"/>'" />
+                                        	<input type = "submit" id="submit" value="&nbsp;&nbsp;&nbsp;등록&nbsp;&nbsp;&nbsp;" style="margin-left:45%; " class="btn btn-primary rounded-pill h-100"/>
                                         </div>
                                     </div>
                                     </form>

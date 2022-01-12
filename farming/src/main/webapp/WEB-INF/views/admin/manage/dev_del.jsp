@@ -57,9 +57,12 @@
                                         	<input type = "submit" id="submit" value="&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;" style="margin-left:45%; " class="btn btn-success mx-auto mx-md-0 text-white"/>
                                         </div>
                                     </div> --%>
-                                    <div class="col-lg-2 d-grid" style="width:100px">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 d-flex">
                                     		<input type = "Button" id="btList" class="btn btn-primary rounded-pill h-100" value="&nbsp;&nbsp;전문가목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/manage/dev_list"/>'" />
+						                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						                    <input type = "submit" class="btn btn-primary rounded-pill h-100" id="submit" value="&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;">
+						              </div>
 						              </div>
                                     </form>
                             </div>
