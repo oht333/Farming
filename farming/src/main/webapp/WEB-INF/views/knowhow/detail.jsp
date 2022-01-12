@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/mainstyle.css'/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/clear.css'/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/formLayout.css'/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/mystyle.css'/>" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/style.knowhow.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/style.knowhows.css">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
 
 <style type="text/css">
@@ -12,19 +12,12 @@
 		padding:5px;
 		margin:5px;
 	 }
-	.divForm {
-		width: 500px;
-		}
 </style>  
 <body style="padding-top: 72px;">
     
     <!-- Hero Section-->
     <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('img/photo/restaurant-1515164783716-8e6920f3e77c.jpg');">
       <div class="container overlay-content">
-      <ol class="breadcrumb ps-0  justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">노하우 게시판</li>
-        </ol>
         <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end">
           <div class="text-white mb-4 mb-lg-0">
             <div class="badge badge-pill badge-transparent px-3 py-2 mb-4">Knowledge</div>
@@ -34,29 +27,33 @@
       </div>
     </section>
     
-    <h2>글 상세보기</h2>
-	<div class="divForm">
-		<div class="firstDiv">
-			<span class="sp1">제목</span> <span>${vo.title}</span>
+<section class="section_padding">
+	<div class="container">
+	<h3><strong>글 상세보기</strong></h3><br>
+		<div class="divForm">
+			<ul class="mb50">
+				<li>
+					<span class="sp1">제목</span> <span class="sp2">${vo.title}</span>
+				</li>
+			<li>
+				<span class="sp1">작성자</span> <span class="sp2">${name }</span>
+			</li>
+			<li>
+				<span class="sp1">등록일</span> <span class="sp2"><fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd hh:mm:ss"/></span>
+			</li>	
+			<li>			
+				<span class="content">${vo.content}</span>
+			</li>
+			</ul>
 		</div>
-		<div>
-			<span class="sp1">작성자</span> <span>${vo.name}</span>
-		</div>
-		<div>
-			<span class="sp1">등록일</span> <span>${vo.regdate}</span>
-		</div>
-		
-		<% pageContext.setAttribute("newLine", "\r\n"); %>
-		
-		<div class="lastDiv">			
-			<p class="content">${fn:replace(vo.content, newLine, "<br>")}</p>
-		</div>
-		
-		<div class="center">
-			<a class="btn btn-primary" href='<c:url value="/qna/qnaEdit?no=${param.no }"/>'>수정</a>
-        	<a class="btn btn-primary" href='<c:url value="/qna/qnaDelete?no=${param.no }"/>'>삭제</a>
-        	<a class="btn btn-primary" href='<c:url value="/qna/qnaList"/>'>목록</a>			
-		</div>
+			<div class="t_center">
+				<a href='/farming/knowhow/edit?knowhowNo=${param.knowhowNo}' class="btn btn-primary">수정</a>
+	        	<a href='/farming/knowhow/delete?knowhowNo=${param.knowhowNo}' class="btn btn-primary2">삭제</a>
+	        	<a href='/farming/knowhow/reply?knowhowNo=${param.knowhowNo}' class="btn btn-primary">답변</a>   	
+	        	<a href='/farming/knowhow/list' class="btn btn-primary2">목록</a>			
+			</div>
 	</div>
+</section>
+
     
 <%@ include file="../inc/bottom.jsp" %>  

@@ -23,6 +23,11 @@
 		<![CDATA[where member_no=#{memberNo} and rownum <= 1]]>
 	</select>
 	
+	<select id="totalRecord" parameterType="int" resultType="int">
+		select count(*) from cash
+		where member_no=#{memNo}
+	</select>
+	
 </mapper>
 
 

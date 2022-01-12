@@ -19,11 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.PaginationInfo;
+
 import com.gr.farming.qcomment.model.QcommentService;
 import com.gr.farming.qcomment.model.QcommentVO;
+
+import com.gr.farming.common.SearchVO;
+import com.gr.farming.common.SearchVO2;
+
 import com.gr.farming.qna.model.QnaService;
 import com.gr.farming.qna.model.QnaVO;
-import com.gr.farming.qna.model.SearchVO2;
 
 @Controller
 @RequestMapping("/qna")
