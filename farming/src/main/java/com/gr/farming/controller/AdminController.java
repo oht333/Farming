@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
@@ -39,7 +40,21 @@ public class AdminController {
 
 	private static final Logger logger
 	=LoggerFactory.getLogger(AdminController.class);
-
+/*
+	@RequestMapping("/main/chk")
+	public String chkType(@RequestParam(value = "chk") String chk, Model model) {
+		String res = "";
+		if(chk.equals("exp")) {
+			res = "exp";
+			List<MemberVO> list = mem_service.
+		} else {
+			res = "mem";
+		}
+		logger.info("res : "+ res);
+		model.addAttribute("res", res);
+		return "admin/main";
+	}
+	*/
 	@RequestMapping("/main")
 	public String main(@ModelAttribute SearchVO searchVo, Model model) {
 		//1
@@ -76,14 +91,14 @@ public class AdminController {
 		model.addAttribute("expCount", exptotalRecord);
 		
 		List<MemberVO> mem_list = mem_service.selectAll(searchVo);
+		model.addAttribute("mem_list", mem_list);
 		logger.info("회원 목록 페이지 mem_list.size={}", mem_list.size());
 
-		model.addAttribute("mem_list", mem_list);
 		
 		List<ExpertVO> dev_list = exp_service.selectAll(searchVo);
+		model.addAttribute("dev_list", dev_list);
 		logger.info("전문가 목록 페이지 dev_list.size={}", dev_list.size());
 
-		model.addAttribute("dev_list", dev_list);
 		
 		return "admin/main";
 	}
@@ -245,5 +260,4 @@ public class AdminController {
 
 		return "common/message";
 	}
-
 }

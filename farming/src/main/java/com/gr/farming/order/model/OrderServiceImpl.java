@@ -18,10 +18,13 @@ public class OrderServiceImpl implements OrderService{
 	public int insert(OrderVO vo) {
 		return dao.insert(vo);
 	}
-	public List<OrderVO> select(int memberNo){
-		return dao.select(memberNo);
+	public List<OrderVO> select(SearchVO3 vo){
+		return dao.select(vo);
 	}
-	public List<Map<String, Object>> selectByPay(int memberNo){
-		return dao.selectByPay(memberNo);
+	public List<Map<String, Object>> selectByPay(SearchVO3 vo){
+		return dao.selectByPay(vo);
+	}
+	public int totalRecord(int memberNo) {
+		return dao.totalRecord(memberNo);
 	}
 }
