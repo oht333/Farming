@@ -2,20 +2,22 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top_admin.jsp" %>
 <script type="text/javascript">
-	function pageFunc(curPage){
-		$('#frmPage input[name=currentPage]').val(curPage);
-		$('#frmPage').submit();
-	}
+	$(function(){
+		$('#excel').click(function(){
+			$('#frm').submit();
+		})
+	});
+	
 </script>
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
+            <div class="page-breadcrumb" style="margin-bottom: 0; padding-bottom: 0;">
                 <div class="row align-items-center">
-                    <div class="col-md-6 col-8 align-self-center">
+                    <div class="row mb-4 d-print-none">
                         <h3 class="page-title mb-0 p-0">회원 목록</h3>
-                        <div class="d-flex align-items-center">
+                        <div class="col-lg-6">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -23,11 +25,14 @@
                                 </ol>
                             </nav>
                         </div>
+                        <div class="col-lg-6 text-lg-end">
+                        	<button class="btn btn-primary me-2" id="excel"><i class="far fa-file-excel me-2"></i> Download EXCEL</button>
+                        </div>
                     </div>
                     
                 </div>
             </div>
-		<div class="container-fluid">
+		<form action="<c:url value='/admin/excel'/>" id="frm" class="container-fluid">
                <div class="row">
                     <!-- column -->
                     <div class="col-sm-12">
@@ -49,6 +54,13 @@
                                         </thead>
                                     <tbody>
                                     	<c:forEach var="vo" items="${mem_list}">
+                                    	<input type="hidden" name="memberNo" value="${vo.memberNo }">
+                                    	<input type="hidden" name="name" value="${vo.name }">
+                                    	<input type="hidden" name="email" value="${vo.email }">
+                                    	<input type="hidden" name="address1" value="${vo.address1 }">
+                                    	<input type="hidden" name="address2" value="${vo.address2 }">
+                                    	<input type="hidden" name="zipCode" value="${vo.zipCode }">
+                                    	<input type="hidden" name="regDate" value="${vo.regDate }">
 	                                        <tr>
 	                                            <td>
 	                                            <a href="<c:url value='/admin/manage/mem_detail?memberNo=${vo.memberNo }'/>">
@@ -106,7 +118,7 @@
              </div>
             </div>
          <!-- /. PAGE WRAPPER  -->
-        </div>
+        </form>
      <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->

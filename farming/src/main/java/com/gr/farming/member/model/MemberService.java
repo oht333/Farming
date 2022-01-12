@@ -29,4 +29,5 @@ public interface MemberService {
 	public int deleteMember(int memberNo);
 	
 	public int selectTotalRecord(SearchVO vo);
+	public List<MemberVO> select();
 }

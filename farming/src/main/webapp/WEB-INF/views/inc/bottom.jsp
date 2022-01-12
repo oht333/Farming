@@ -64,6 +64,11 @@
                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
               </ul>
+              <c:if test="${empty userNo }">
+              <ul class="list-inline">
+              	<li class="list-inline-item"><a class="text-muted text-primary-hover" href="<c:url value='/admin/login'/>" title="admin">관리자로그인</a></li>
+              </ul>
+              </c:if>
             </div>
           </div>
         </div>

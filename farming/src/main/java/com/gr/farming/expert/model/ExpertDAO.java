@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.gr.farming.common.SearchVO;
+import com.gr.farming.member.model.MemberVO;
 
 
 
@@ -25,4 +26,5 @@ public interface ExpertDAO {
 	public int selectCategory(int expNo);
 	public int deleteExpert(int expertNo);
 	public int selectTotalRecord(SearchVO vo);
+	public List<ExpertVO> select();
 }

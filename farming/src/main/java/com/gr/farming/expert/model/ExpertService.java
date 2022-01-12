@@ -29,4 +29,5 @@ public interface ExpertService {
 	public int selectCategory(int expNo);
 	public int deleteExpert(int expertNo);
 	public int selectTotalRecord(SearchVO vo);
+	public List<ExpertVO> select();
 }

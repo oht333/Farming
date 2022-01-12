@@ -22,6 +22,11 @@
 		select count(*) from member where email=#{email}
 	</select>
 	
+	<select id="select" resultType="memberVo">
+		select * from member
+		order by member_no asc
+	</select>
+	
 	<select id="selectPwd" parameterType="string" resultType="string">
 		select pwd from member
 		where email=#{email}

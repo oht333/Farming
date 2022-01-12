@@ -6,6 +6,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.gr.farming.controller.AdminLoginInterceptor;
 import com.gr.farming.controller.ExpLoginInterceptor;
 import com.gr.farming.controller.LoginInterceptor;
 
@@ -21,11 +22,10 @@ public class MvcConfiguration implements WebMvcConfigurer {
 		 
 		 registry.addInterceptor(new ExpLoginInterceptor())
 		 .addPathPatterns("/expert/mypage/*", "/expert/addExp/*");
+		 
+		 registry.addInterceptor(new AdminLoginInterceptor())
+		 .addPathPatterns("/admin/manage/*", "/admin/category/*", "/admin/main/*");
 		
-//		registry.addInterceptor(new AdminLoginInterceptor())
-//		.excludePathPatterns("/admin/login/adminLogin.do")
-//		.addPathPatterns("/admin/*/*", "/admin/*");
-
 	}
 
 	@Bean
