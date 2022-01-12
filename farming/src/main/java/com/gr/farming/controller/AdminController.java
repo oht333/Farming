@@ -1,7 +1,16 @@
 package com.gr.farming.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +20,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
@@ -22,6 +30,8 @@ import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.member.model.MemberService;
 import com.gr.farming.member.model.MemberVO;
 import com.gr.farming.member.model.SearchVO5;
+import com.gr.farming.model.AdminService;
+import com.gr.farming.model.AdminVO;
 import com.gr.farming.common.SearchVO;
 
 @Controller
@@ -30,12 +40,14 @@ public class AdminController {
 	private final CategoryService service;
 	private final MemberService mem_service;
 	private final ExpertService exp_service;
+	private final AdminService a_service;
 
 	@Autowired
-	public AdminController(CategoryService service, MemberService mem_service, ExpertService exp_service) {
+	public AdminController(CategoryService service, MemberService mem_service, ExpertService exp_service, AdminService a_service) {
 		this.service = service;
 		this.mem_service = mem_service;
 		this.exp_service = exp_service;
+		this.a_service = a_service;
 	}
 
 	private static final Logger logger
@@ -55,7 +67,7 @@ public class AdminController {
 		return "admin/main";
 	}
 	*/
-	@RequestMapping("/main")
+	@RequestMapping("/main/main")
 	public String main(@ModelAttribute SearchVO searchVo, Model model) {
 		//1
 		logger.info("글목록, 파라미터 searchVo={}", searchVo);
@@ -100,37 +112,37 @@ public class AdminController {
 		logger.info("전문가 목록 페이지 dev_list.size={}", dev_list.size());
 
 		
-		return "admin/main";
+		return "admin/main/main";
 	}
-	@RequestMapping("/error")
+	@RequestMapping("/main/error")
 	public String error() {
 
-		return "admin/error";
+		return "admin/main/error";
 	}
-	@RequestMapping("/iconFontawesome")
+	@RequestMapping("/main/iconFontawesome")
 	public String iconFontawesome() {
 
-		return "admin/iconFontawesome";
+		return "admin/main/iconFontawesome";
 	}
-	@RequestMapping("/mapGoogle")
+	@RequestMapping("/main/mapGoogle")
 	public String mapGoogle() {
 
-		return "admin/mapGoogle";
+		return "admin/main/mapGoogle";
 	}
-	@RequestMapping("/pagesBlank")
+	@RequestMapping("/main/pagesBlank")
 	public String pagesBlank() {
 
-		return "admin/pagesBlank";
+		return "admin/main/pagesBlank";
 	}
-	@RequestMapping("/pagesProfile")
+	@RequestMapping("/main/pagesProfile")
 	public String pagesProfile() {
 
-		return "admin/pagesProfile";
+		return "admin/main/pagesProfile";
 	}
-	@RequestMapping("/tableBasic")
+	@RequestMapping("/main/tableBasic")
 	public String tableBasic() {
 
-		return "admin/tableBasic";
+		return "admin/main/tableBasic";
 	}
 
 	@RequestMapping("/manage/mem_list")
@@ -260,4 +272,82 @@ public class AdminController {
 
 		return "common/message";
 	}
+	
+	@RequestMapping("/login")
+	public String adminLogin() {
+		logger.info("관리자 로그인");
+		return "admin/login";
+	}
+	//로그인 처리
+	@RequestMapping("/done")
+	public String adminDone(@ModelAttribute AdminVO vo, Model model, HttpSession session) {
+		int result = a_service.loginCheck(vo.getEmail(), vo.getPwd());
+		String msg="로그인 처리 실패!", url="/admin/login";
+		if(result == a_service.USERID_NONE) {
+			msg="회원이 아닙니다.";
+		} else if(result == a_service.LOGIN_OK){
+			AdminVO adminVo = a_service.selectByEmail(vo.getEmail());
+			//[1] 세션에 아이디 저장
+			session.setAttribute("email", adminVo.getEmail());
+			session.setAttribute("name", adminVo.getName());
+			session.setAttribute("user", "관리자");
+
+			//[2] 쿠키에 저장 - 아이디저장하기 체크된 경우만
+			
+			
+			msg=adminVo.getName() + "님 로그인되었습니다.";
+			url="/admin/main/main";
+		} else if(result == a_service.DISAGREE_PWD) {
+			msg = "패스워드를 확인하세요";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping("/excel")
+	public void excelDownload(HttpServletRequest request ,HttpServletResponse response ,HttpSession session) throws Exception {
+        
+        OutputStream out = null;
+        
+        try {
+            XSSFWorkbook workbook = a_service.listExcelDownload();
+            
+            response.reset();
+            response.setHeader("Content-Disposition", "attachment;filename=stbcs_history.xls");
+            response.setContentType("application/vnd.ms-excel");
+            out = new BufferedOutputStream(response.getOutputStream());
+            
+            workbook.write(out);
+            out.flush();
+            
+        } catch (Exception e) {
+            logger.error("exception during downloading excel file : {}", e);
+        } finally {
+            if(out != null) out.close();
+        }    
+    }
+	@RequestMapping("/expExcel")
+	public void expExcelDownload(HttpServletRequest request ,HttpServletResponse response ,HttpSession session) throws Exception {
+        
+        OutputStream out = null;
+        
+        try {
+            XSSFWorkbook workbook = a_service.expListExcelDownload();
+            
+            response.reset();
+            response.setHeader("Content-Disposition", "attachment;filename=stbcs_history.xls");
+            response.setContentType("application/vnd.ms-excel");
+            out = new BufferedOutputStream(response.getOutputStream());
+            
+            workbook.write(out);
+            out.flush();
+            
+        } catch (Exception e) {
+            logger.error("exception during downloading excel file : {}", e);
+        } finally {
+            if(out != null) out.close();
+        }    
+    }
 }

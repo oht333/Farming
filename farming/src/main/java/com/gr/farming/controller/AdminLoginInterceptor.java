@@ -13,10 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Component
-public class ExpLoginInterceptor extends HandlerInterceptorAdapter{
+public class AdminLoginInterceptor extends HandlerInterceptorAdapter{
 //	public class LoginInterceptor implements HandlerInterceptor{
 	private static final Logger logger
-		=LoggerFactory.getLogger(ExpLoginInterceptor.class);
+		=LoggerFactory.getLogger(AdminLoginInterceptor.class);
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -29,8 +29,8 @@ public class ExpLoginInterceptor extends HandlerInterceptorAdapter{
 		logger.info("preHandle() 호출, email={}", email);
 		
 		if(email==null || email.isEmpty()) {
-			request.setAttribute("msg", "전문가 로그인이 필요한 서비스입니다.");
-			request.setAttribute("url", "/login/expLogin");
+			request.setAttribute("msg", "관리자 로그인이 필요한 서비스입니다.");
+			request.setAttribute("url", "/admin/login");
 			
 			RequestDispatcher dispatcher
 			=request.getRequestDispatcher("/WEB-INF/views/common/message.jsp");
