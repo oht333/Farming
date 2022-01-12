@@ -8,20 +8,50 @@
 		insert into orders(merchant_uid, member_no, member_name, expert_no, expert_name, service_no, service_name, price, state)
 		values(#{merchantUid}, #{memberNo}, #{memberName}, #{expertNo}, #{expertName}, #{serviceNo}, #{serviceName}, #{price}, #{state})
 	</insert>
-	<select id="select" parameterType="int" resultType="orderVo">
-		select merchant_uid, expert_name, service_name, price, state, time
-		from orders where member_no=#{memberNo}
-		order by time asc
+	
+	
+	<select id="select" parameterType="searchVo" resultType="orderVo">
+	  select *
+      from
+      (
+          select rownum as RNUM, A.*
+          from
+          (
+              select merchant_uid, expert_name, service_name, price, state, time
+			  from orders where member_no=#{memberNo}
+			  order by time desc
+          )A
+      )
+      <![CDATA[
+      where RNUM>#{firstRecordIndex} 
+         and RNUM<=#{firstRecordIndex}+ #{recordCountPerPage}]]>
+         order by time desc
 	</select>
 	
-	<!-- 페이거래내역만 -->
-	<select id="selectByPay" parameterType="int" resultType="map">
-		select o.merchant_uid, o.expert_name, o.service_name, o.state, c.charge, c.balance
-		from orders o join cash c
-		on o.merchant_uid = c.merchant_uid
-		<![CDATA[and o.member_no=#{memberNo} and (c.charge > 0 or c.charge < 0)]]>
-		order by o.time asc
+	<select id="selectByPay" parameterType="searchVo" resultType="map">
+	  select *
+      from
+      (
+          select rownum as RNUM, A.*
+          from
+          (
+              select o.merchant_uid, o.expert_name, o.service_name, o.state, c.charge, c.balance, o.time
+			  from orders o join cash c
+			  on o.merchant_uid = c.merchant_uid
+			  <![CDATA[and o.member_no=#{memberNo} and (c.charge > 0 or c.charge < 0)]]>
+			  order by o.time desc
+          )A
+      )
+      <![CDATA[
+      where RNUM>#{firstRecordIndex} 
+         and RNUM<=#{firstRecordIndex}+ #{recordCountPerPage}]]>
+         order by time desc
 	</select>
+	<select id="totalRecord" parameterType="int" resultType="int">
+		select count(*) from orders
+		where member_no=#{memberNo}
+	</select>
+	
 </mapper>
 
 

@@ -37,8 +37,9 @@
 <!-- Favicon-->
 
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
-	
-<script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
+<link href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css">
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
 <!-- Tweaks for older IEs-->
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

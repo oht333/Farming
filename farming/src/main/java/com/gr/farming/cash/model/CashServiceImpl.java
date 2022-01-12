@@ -19,4 +19,7 @@ public class CashServiceImpl implements CashService{
 	public CashVO selectByMemNo(int memberNo) {
 		return dao.selectByMemNo(memberNo);
 	}
+	public int totalRecord(int memberNo) {
+		return dao.totalRecord(memberNo);
+	}
 }
