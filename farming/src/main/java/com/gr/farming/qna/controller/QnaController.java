@@ -225,7 +225,7 @@ public class QnaController {
 	}
 	
 	//댓글작성
-		@PostMapping("/qnaDetail")
+		@PostMapping("/commentWrite")
 		public String write_post(@ModelAttribute QcommentVO vo, Model model) {
 			logger.info("댓글작성 처리, 파라미터 vo={}",vo);
 			
@@ -244,7 +244,7 @@ public class QnaController {
 		}
 		
 		//댓글수정
-		@PostMapping(value="/qnaDetail")
+		@PostMapping(value="/commentUpdate")
 		public String update_post(@ModelAttribute QcommentVO vo, HttpServletRequest request,
 				Model model) {
 			logger.info("댓글 수정 처리, 파라미터vo={}",vo);
@@ -263,7 +263,7 @@ public class QnaController {
 		}
 		
 		//댓글삭제
-		@RequestMapping(value="qnaDetail")
+		@RequestMapping(value="commentDelete")
 		public String delete_post(@ModelAttribute QcommentVO vo,
 				HttpServletRequest request, Model model) {
 			logger.info("댓글 삭제처리, 파라미터 vo={}",vo);
