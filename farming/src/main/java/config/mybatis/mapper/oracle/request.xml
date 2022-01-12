@@ -57,14 +57,24 @@
 	</select>
 	
 	<!-- 전문가회원 - 받은 요청서 각 문답 조회 -->
-	<select id="selectRequestDetail" parameterType="int" resultType="map">
-		select f.*, r.expert_no,r.request_no, r.member_no, r.name, r.filename,
-		    r.request_design_no, r.request_develop_no, r.send_time, r.match, rd.*
-		from field_detail f join request r
-		on f.category_no=r.category_no
-		join request_develop rd
-		on r.request_develop_no=rd.request_develop_no
-		where f.expert_no=#{expertNo} and (f.expert_no=r.expert_no or r.expert_no=0)
+	<select id="selectRequestDetail1" parameterType="fieldSearchVo" resultType="map">
+		select * from req_detail_develop
+		where expert_no=#{userNo} and detail like '%' || #{detail} || '%'
+		order by request_no desc
+	</select>
+	<select id="selectRequestDetail12" parameterType="fieldSearchVo" resultType="map">
+		select * from req_detail_design
+		where expert_no=#{userNo} and detail like '%' || #{detail} || '%'
+		order by request_no desc
 	</select>
 	
+	<select id="selectTotalRecord" parameterType="fieldSearchVo" resultType="int">
+		select count(*) from req_detail_develop
+		where expert_no=#{userNo}
+		<if test="detail!=null and detail!=''">
+			and detail=#{detail}
+			<!-- 파라미터 하나인데 타입 string 안됨, 
+			동적sql에서는 string, int 불가, vo, map만 가능 -->
+		</if> 
+	</select>
 </mapper>

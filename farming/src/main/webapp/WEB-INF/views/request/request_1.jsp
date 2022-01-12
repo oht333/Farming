@@ -3,25 +3,6 @@
 <%@ include file="../inc/top.jsp"%>
 <script type="text/javascript" 
 	src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
-<script type="text/javascript">
-	/* $(function(){    
-	    var checkArea = $('.chk');
-	    $(checkArea).each(function(i , item){            
-	        $(item).find('.etc').on('click' , function(){
-	        	
-	            var check = true,
-	                inputArea = $(this).siblings('.etc_box');    
-	
-	            if($(this).is(':checked') == check && $(i==${idx})){
-	                $(inputArea).html("<input type='text' name='${map['Q_CLASS']}' value='' class='etc_box form-control' placeholder='기타입력'>");
-	            } else {
-	                $(inputArea).find('.etc_box').remove();
-	            }
-	        });
-	    });
-	});  */
-
-</script>
 <style type="text/css">
 .chk .etc:checked ~ .etc_box input{display:block}
 .chk .etc_box input{display:none}
@@ -40,7 +21,7 @@
         	<form name="frm1" method="post" action="<c:url value='/request/requestWrite/develop?categoryNo=${categoryNo }'/>">
         </c:if>
         <input type="hidden" name="categoryNo" value="${categoryNo}">
-        <input type="hidden" name="memberNo" value="${memNo}">
+        <input type="hidden" name="memberNo" value="${userNo}">
         <input type="hidden" name="name" value="${name}">
         <input type="hidden" name="filename" value="${userImg}">
         <c:if test="${!empty expertNo }">

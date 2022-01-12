@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.gr.farming.common.FieldSearchVO;
 import com.gr.farming.expert.model.ExpertVO;
 import com.gr.farming.field.model.FieldDetailVO;
 import com.gr.farming.field.model.FieldVO;
@@ -20,6 +21,8 @@ public interface RequestDAO {
 	public List<Map<String, Object>> selectQuestion(int categoryNo);
 	public List<Map<String, Object>> selectAnswer(int qNo);
 	List<Map<String, Object>> selectReceivedRequest(int expertNo);
-	List<Map<String, Object>> selectRequestDetail(int expertNo);
+	List<Map<String, Object>> selectRequestDetail1(FieldSearchVO vo);
+	List<Map<String, Object>> selectRequestDetail2(FieldSearchVO vo);
+	int selectTotalRecord(FieldSearchVO vo);
 	
 }

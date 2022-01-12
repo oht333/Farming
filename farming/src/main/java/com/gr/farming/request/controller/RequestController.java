@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gr.farming.category.model.CategoryService;
 import com.gr.farming.category.model.CategoryVO;
+import com.gr.farming.common.ConstUtil;
+import com.gr.farming.common.FieldSearchVO;
+import com.gr.farming.common.PaginationInfo;
+import com.gr.farming.common.SearchVO;
 import com.gr.farming.field.model.FieldDetailVO;
 import com.gr.farming.findExp.model.FindExpService;
 import com.gr.farming.member.model.MemberService;
@@ -146,21 +150,56 @@ public class RequestController {
 	}
 	
 	@RequestMapping("/requestByClient")
-	public String requestByClient(HttpSession session, Model model) {
+	public String requestByClient(@ModelAttribute FieldSearchVO fieldSearchVo
+			,@ModelAttribute SearchVO searchVo, HttpSession session, Model model) {
 		
-		int expertNo=(int) session.getAttribute("expNo");
-		logger.info("받은 요청 페이지 - 로그인된 전문가회원 expertNo={}", expertNo);
+		int expertNo=(int) session.getAttribute("userNo");
+		fieldSearchVo.setUserNo(expertNo);
+		logger.info("받은 요청 페이지 - 파라미터 fieldSearchVo={}", fieldSearchVo);
+		logger.info("받은 요청 페이지 - 파라미터 currentPage={}", fieldSearchVo.getCurrentPage());
+		
+		String detail=fieldSearchVo.getDetail();
+		if(detail==null || detail.isEmpty()) {
+			fieldSearchVo.setDetail("");
+		}
+		
+		//[1] paginationInfo
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(ConstUtil.BLOCK_SIZE);
+		pagingInfo.setCurrentPage(fieldSearchVo.getCurrentPage());
+		pagingInfo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		
+		//[2] fieldSearchVo에 페이징에 필요한 값 세팅
+		fieldSearchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		fieldSearchVo.setRecordCountPerPage(ConstUtil.RECORD_COUNT);
+		logger.info("값 셋팅 후 fieldSearchVo={}", fieldSearchVo);
 		
 		List<FieldDetailVO> fieldList=findExpService.selectFieldDetail(expertNo);
-		logger.info("받은 요청 페이지 - 로그인된 전문가 분야 목록 조회 fieldList={}", fieldList);
 		
-		List<Map<String, Object>> list=requestService.selectRequestDetail(expertNo);
-		logger.info("받은 요청 목록 조회 list.size={}", list.size());
+		List<Map<String, Object>> list=requestService.selectRequestDetail1(fieldSearchVo);
+		logger.info("받은 요청 목록 조회 detail={}, list.size={}", fieldSearchVo.getDetail(),list.size());
+		
+		int totalRecord=requestService.selectTotalRecord(fieldSearchVo);
+		logger.info("받은 요청 목록 조회 수 - totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+		int curPage=pagingInfo.getCurrentPage();
 		
 		model.addAttribute("list", list);
 		model.addAttribute("fieldList", fieldList);
+		model.addAttribute("pagingInfo", pagingInfo);
+		model.addAttribute("curPage", curPage);
 		
 		return "request/requestByClient";
+	}
+	
+	@RequestMapping("/finalRequest")
+	public String sendFinalRequest() {
+		
+		logger.info("견적 보내기 페이지 ");
+		
+		return "/request/finalRequest";
+		
 	}
 	
 	@RequestMapping("/requestByExpert")
@@ -174,6 +213,8 @@ public class RequestController {
 		
 		return "request/requestByExpert";
 	}
+	
+	
 	
 }
 
