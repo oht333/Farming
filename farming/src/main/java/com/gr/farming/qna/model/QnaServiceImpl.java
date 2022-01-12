@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gr.farming.common.SearchVO;
+import com.gr.farming.common.SearchVO2;
 
 @Service
 public class QnaServiceImpl implements QnaService{

@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gr.farming.common.SearchVO2;
+
 @Service
 public class OrderServiceImpl implements OrderService{
 	private OrderDAO dao;
@@ -18,10 +20,10 @@ public class OrderServiceImpl implements OrderService{
 	public int insert(OrderVO vo) {
 		return dao.insert(vo);
 	}
-	public List<OrderVO> select(SearchVO3 vo){
+	public List<OrderVO> select(SearchVO2 vo){
 		return dao.select(vo);
 	}
-	public List<Map<String, Object>> selectByPay(SearchVO3 vo){
+	public List<Map<String, Object>> selectByPay(SearchVO2 vo){
 		return dao.selectByPay(vo);
 	}
 	public int totalRecord(int memberNo) {

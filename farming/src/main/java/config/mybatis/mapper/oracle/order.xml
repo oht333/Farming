@@ -18,7 +18,7 @@
           from
           (
               select merchant_uid, expert_name, service_name, price, state, time
-			  from orders where member_no=#{memberNo}
+			  from orders where member_no=#{memNo}
 			  order by time desc
           )A
       )
@@ -38,7 +38,7 @@
               select o.merchant_uid, o.expert_name, o.service_name, o.state, c.charge, c.balance, o.time
 			  from orders o join cash c
 			  on o.merchant_uid = c.merchant_uid
-			  <![CDATA[and o.member_no=#{memberNo} and (c.charge > 0 or c.charge < 0)]]>
+			  <![CDATA[and o.member_no=#{memNo} and (c.charge > 0 or c.charge < 0)]]>
 			  order by o.time desc
           )A
       )
@@ -49,7 +49,7 @@
 	</select>
 	<select id="totalRecord" parameterType="int" resultType="int">
 		select count(*) from orders
-		where member_no=#{memberNo}
+		where member_no=#{memNo}
 	</select>
 	
 </mapper>

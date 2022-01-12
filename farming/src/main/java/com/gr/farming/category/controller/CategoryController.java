@@ -19,7 +19,7 @@ import com.gr.farming.category.model.SearchVO4;
 import com.gr.farming.common.ConstUtil;
 import com.gr.farming.common.PaginationInfo;
 import com.gr.farming.common.SearchVO;
-import com.gr.farming.qna.model.SearchVO2;
+import com.gr.farming.common.SearchVO2;
 
 @Controller
 @RequestMapping("/admin/category")

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.gr.farming.common.SearchVO;
+import com.gr.farming.common.SearchVO2;
 
 @Mapper
 public interface QnaDAO {
