@@ -71,29 +71,30 @@
 			<label for="exampleFormControlInput1" class="form-label">[문의 내용]</label>		
 			<p class="content">${fn:replace(vo.content, newLine, "<br>")}</p>
 		</div><br>
+		<c:if test="${!empty list }">
 		
 		<!-- 댓글 -->
 		<div id="qcommentList">
 		  <ol class="list">
-		    <c:forEach items="${list}" var="list">
+		  <c:forEach var="map" items="${list }">
 		      <li>
 		        <p>
-		        작성자 : ${name}<br />
-		        작성 날짜 :  <fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd" />
+		        작성자 : ${map['NAME']}<br />
+		        작성 날짜 :  <fmt:formatDate value="${map['REGDATE']}" pattern="yyyy-MM-dd" />
 		        </p>
 		
-		        <p>${vo.content}</p>
+		        <p>${map['CONTENT']}</p>
 		      </li>
-		    </c:forEach>   
+		      </c:forEach>
 		  </ol>
 		</div><br>
 		
+		</c:if>
 		<div class="divForm">
 		<form name="write" method="post" enctype="multipart/form-data"
-			action="<c:url value='/qna/qnaDetail?qnaNo=${param.qnaNo }'/>" >
+			action="<c:url value='/qna/qnaDetailQComment'/>" >
 			<input type="hidden" name="memberNo" id="memberNo" value="${userNo }">
-			<input type="hidden" id="name" name="name" class="infobox" value="${name }" readonly="readonly"/>
-		 
+		 	<input type="hidden" name="qnaNo" value="${param.qnaNo }">
 		 <fieldset>
 		 	<label for="exampleFormControlInput1" class="form-label">[댓글 입력]</label>
 		          <label for="name">작성자&nbsp;&nbsp;</label><input type="text" id="name" name="name" value="${name }" readonly="readonly" /><br>
@@ -103,6 +104,7 @@
 				  <input type = "submit" class="btn btn-primary" value="등록하기"/>
 				</div>
 		</fieldset>
+		</form>
 		</div>
 	</div><br>
 		<div class="center">

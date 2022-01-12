@@ -1,6 +1,7 @@
 package com.gr.farming.qna.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,7 +26,8 @@ import com.gr.farming.qcomment.model.QcommentVO;
 
 import com.gr.farming.common.SearchVO;
 import com.gr.farming.common.SearchVO2;
-
+import com.gr.farming.member.model.MemberService;
+import com.gr.farming.member.model.MemberVO;
 import com.gr.farming.qna.model.QnaService;
 import com.gr.farming.qna.model.QnaVO;
 
@@ -37,13 +39,15 @@ public class QnaController {
 	private final QnaService qnaService;
 	
 	private final QcommentService qcommentService;
+	private final MemberService mservice;
 	
 	
 
 	@Autowired
-	public QnaController(QnaService qnaService,QcommentService qcommentService) {
+	public QnaController(QnaService qnaService,QcommentService qcommentService, MemberService mservice) {
 		this.qnaService = qnaService;
 		this.qcommentService = qcommentService;
+		this.mservice = mservice;
 		
 		logger.info("생성자 주입");
 	}
@@ -184,11 +188,12 @@ public class QnaController {
 
 			return "common/message";
 		}
-
+		List<Map<String, Object>> commentList = qcommentService.list(qnaNo);
 		QnaVO vo = qnaService.selectByNo(qnaNo);
 		logger.info("상세보기 결과 vo={}", vo);
 
 		model.addAttribute("vo", vo);
+		model.addAttribute("list", commentList);
 
 		return "qna/qnaDetail";
 	}
@@ -227,15 +232,14 @@ public class QnaController {
 	}
 	
 	//댓글작성
-		@PostMapping(value="/commentWrite")
-		public String write_post(@ModelAttribute QcommentVO vo, Model model) {
+		@PostMapping(value="/qnaDetailQComment")
+		public String write_post(@ModelAttribute QcommentVO vo, @RequestParam(defaultValue = "0") int qnaNo, Model model) {
 			logger.info("댓글작성 처리, 파라미터 vo={}",vo);
-			
+			vo.setQnaNo(qnaNo);
 			int cnt=qcommentService.write(vo);
-			String msg="댓글작성 실패", url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
+			String msg="댓글작성 실패", url="/qna/qnaDetail?qnaNo="+qnaNo;
 			if(cnt>0) {
 				msg="성공";
-				url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
 			}
 			
 			model.addAttribute("url",url);
@@ -271,7 +275,7 @@ public class QnaController {
 			logger.info("댓글 삭제처리, 파라미터 vo={}",vo);
 			
 			String msg="댓글 삭제 실패", url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();
-			int cnt=qcommentService.delete(vo.getQcommnetNo());
+			int cnt=qcommentService.delete(vo.getQcommentNo());
 			if(cnt>0) {
 				msg="댓글 삭제 성공";
 				url="/qna/qnaDetail?qnaNo="+vo.getQnaNo();

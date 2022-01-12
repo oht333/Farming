@@ -120,8 +120,8 @@
                                 href="<c:url value='/admin/category/list'/>" aria-expanded="false"><i class="me-3 fa fa-table"
                                     aria-hidden="true"></i><span class="hide-menu">카테고리</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="<c:url value='/admin/error'/>" aria-expanded="false"><i class="me-3 fa fa-info-circle"
-                                    aria-hidden="true"></i><span class="hide-menu">Q&A</span></a></li>
+                                href="<c:url value='/notice/list'/>" aria-expanded="false"><i class="me-3 fa fa-info-circle"
+                                    aria-hidden="true"></i><span class="hide-menu">공지사항</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="<c:url value='/admin/pagesBlank'/>" aria-expanded="false"><i class="me-3 fa fa-columns"
                                     aria-hidden="true"></i><span class="hide-menu">견적서 관리</span></a></li>
