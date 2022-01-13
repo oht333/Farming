@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top_admin.jsp" %>
+<%@ include file="../../inc/top_admin.jsp" %>
 <script>
 $(document).ready(function() {
 	var result = $('#list option:selected').val();
@@ -8,7 +8,7 @@ $(document).ready(function() {
 	      $('#mem_list').show();
 	      $('#dev_list').hide();
 	 }
-	 $('select[name="list"] ').on('change', function()  {
+	$('select[name="list"] ').on('change', function()  {
 	    var result = $('#list option:selected').val();
 	    if (result == 'mem') {
 	      $('#mem_list').show();
@@ -17,14 +17,11 @@ $(document).ready(function() {
 	      $('#mem_list').hide();
 	      $('#dev_list').show();
 	    }
-	  }); 
-	
-	}); 
+	  });
+	 
+}); 
 </script>
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
@@ -38,16 +35,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <!-- Column -->
                     <div class="col-sm-6">
@@ -58,10 +46,10 @@ $(document).ready(function() {
                                     <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i>${memCount}</h2>
                                     <!-- <span class="text-muted">Todays Income</span> -->
                                 </div>
-                                <span class="text-success">80%</span>
+                                <span class="text-success">${memCount }%</span>
                                 <div class="progress">
                                     <div class="progress-bar bg-success" role="progressbar"
-                                        style="width: 80%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
+                                        style="width: ${memCount}%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
                                         aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -77,20 +65,16 @@ $(document).ready(function() {
                                     <h2 class="font-light mb-0"><i class="ti-arrow-up text-info"></i>${expCount }</h2>
                                     <!-- <span class="text-muted">Todays Income</span> -->
                                 </div>
-                                <span class="text-info">30%</span>
+                                <span class="text-info">${expCount }%</span>
                                 <div class="progress">
                                     <div class="progress-bar bg-info" role="progressbar"
-                                        style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
+                                        style="width: ${expCount }%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
                                         aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <!-- column -->
                     <div class="col-sm-12">
@@ -106,11 +90,7 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </div>
-                    <!-- column -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- Table -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card">
@@ -124,6 +104,7 @@ $(document).ready(function() {
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <div class="table-responsive mt-5" id="mem_list">
                                     <table class="table stylish-table no-wrap">
                                         <thead>
@@ -139,55 +120,6 @@ $(document).ready(function() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%-- <tr>
-                                                <td style="width:50px;"><span class="round">S</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small>
-                                                </td>
-                                                <td class="align-middle">Elite Admin</td>
-                                                <td class="align-middle">$3.9K</td>
-                                            </tr>
-                                            <tr class="active">
-                                                <td><span class="round"><img src="<c:url value='/resources/admin_img/users/2.jpg'/>"
-                                                            alt="user" width="50"></span></td>
-                                                <td class="align-middle">
-                                                    <h6>Andrew</h6><small class="text-muted">Project Manager</small>
-                                                </td>
-                                                <td class="align-middle">Real Homes</td>
-                                                <td class="align-middle">$23.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-success">B</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Bhavesh patel</h6><small class="text-muted">Developer</small>
-                                                </td>
-                                                <td class="align-middle">MedicalPro Theme</td>
-                                                <td class="align-middle">$12.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-primary">N</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Nirav Joshi</h6><small class="text-muted">Frontend Eng</small>
-                                                </td>
-                                                <td class="align-middle">Elite Admin</td>
-                                                <td class="align-middle">$10.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-warning">M</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Micheal Doe</h6><small class="text-muted">Content Writer</small>
-                                                </td>
-                                                <td class="align-middle">Helping Hands</td>
-                                                <td class="align-middle">$12.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-danger">N</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Johnathan</h6><small class="text-muted">Graphic</small>
-                                                </td>
-                                                <td class="align-middle">Digital Agency</td>
-                                                <td class="align-middle">$2.6K</td>
-                                            </tr> --%>
                                             <c:forEach var="vo" items="${mem_list}">
                                             	<tr>
                                             		<td class="align-middle"><img id="userImg" class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/userImg/${userImg}"></td>
@@ -232,6 +164,8 @@ $(document).ready(function() {
 							<!--  페이지 번호 끝 -->	
 						</div>
                                 </div>
+                                
+                                <!-- 여기가 전문가? -->
                                 <div class="table-responsive mt-5" id="dev_list">
                                     <table class="table stylish-table no-wrap">
                                         <thead>
@@ -247,55 +181,6 @@ $(document).ready(function() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%-- <tr>
-                                                <td style="width:50px;"><span class="round">S</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small>
-                                                </td>
-                                                <td class="align-middle">Elite Admin</td>
-                                                <td class="align-middle">$3.9K</td>
-                                            </tr>
-                                            <tr class="active">
-                                                <td><span class="round"><img src="<c:url value='/resources/admin_img/users/2.jpg'/>"
-                                                            alt="user" width="50"></span></td>
-                                                <td class="align-middle">
-                                                    <h6>Andrew</h6><small class="text-muted">Project Manager</small>
-                                                </td>
-                                                <td class="align-middle">Real Homes</td>
-                                                <td class="align-middle">$23.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-success">B</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Bhavesh patel</h6><small class="text-muted">Developer</small>
-                                                </td>
-                                                <td class="align-middle">MedicalPro Theme</td>
-                                                <td class="align-middle">$12.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-primary">N</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Nirav Joshi</h6><small class="text-muted">Frontend Eng</small>
-                                                </td>
-                                                <td class="align-middle">Elite Admin</td>
-                                                <td class="align-middle">$10.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-warning">M</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Micheal Doe</h6><small class="text-muted">Content Writer</small>
-                                                </td>
-                                                <td class="align-middle">Helping Hands</td>
-                                                <td class="align-middle">$12.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-danger">N</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Johnathan</h6><small class="text-muted">Graphic</small>
-                                                </td>
-                                                <td class="align-middle">Digital Agency</td>
-                                                <td class="align-middle">$2.6K</td>
-                                            </tr> --%>
                                             <c:forEach var="vo" items="${dev_list}">
                                             	<tr>
                                             		<td class="align-middle"><img id="userImg" class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${pageContext.request.contextPath }/resources/userImg/${userImg}"></label>
@@ -340,16 +225,11 @@ $(document).ready(function() {
 								<!--  페이지 번호 끝 -->	
 							</div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- Table -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Recent blogss -->
-                <!-- ============================================================== -->
                 <div class="row justify-content-center">
                     <!-- Column -->
                     <div class="col-lg-4 col-md-6">
@@ -392,34 +272,12 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- Recent blogss -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
             <footer class="footer text-center">
-                © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
+                © 2021 Monster Admin by <a href="<c:url value='/index'/>">farming.com</a>
             </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-
 </body>
 
 </html>

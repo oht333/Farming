@@ -64,6 +64,11 @@
                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
               </ul>
+              <c:if test="${empty userNo }">
+              <ul class="list-inline">
+              	<li class="list-inline-item"><a class="text-muted text-primary-hover" href="<c:url value='/admin/login'/>" title="admin">관리자로그인</a></li>
+              </ul>
+              </c:if>
             </div>
           </div>
         </div>
@@ -114,7 +119,6 @@
       
     </script>
     <!-- jQuery-->
-    <script src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
     <script src="${pageContext.request.contextPath }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

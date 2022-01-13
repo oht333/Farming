@@ -70,8 +70,10 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12 d-flex">
-                                        		<input type = "Button" id="btList" class="btn btn-success mx-auto mx-md-0 text-white" value="&nbsp;&nbsp;전문가목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/manage/dev_list"/>'" />
-									        	<a href='<c:url value="/admin/manage/dev_del?expertNo=${vo.expertNo }"/>' class="btn btn-success mx-auto mx-md-0 text-white">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
+                                        		&nbsp;&nbsp;<input type = "Button" id="btList" class="btn btn-primary rounded-pill h-100" value="&nbsp;&nbsp;전문가목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/manage/dev_list"/>'" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									        	<a href='<c:url value="/admin/manage/dev_del?expertNo=${vo.expertNo }"/>' class="btn btn-primary rounded-pill h-100">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
 									        	
                                         </div>
                                     </div>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gr.farming.common.SearchVO;
+import com.gr.farming.common.SearchVO2;
 
 @Service
 public class QnaServiceImpl implements QnaService{
@@ -39,11 +40,7 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDao.updateQna(vo);
 	}
 
-	@Override
-	public void deleteQna(Map<String, String> map) {
-		qnaDao.deleteQna(map);
-		
-	}
+
 
 	@Override
 	public QnaVO selectByNo(int no) {
@@ -67,6 +64,16 @@ public class QnaServiceImpl implements QnaService{
 		// TODO Auto-generated method stub
 		return qnaDao.select(searchVo);
 	}
+
+
+	@Override
+	public int deleteQna(int no) {
+		// TODO Auto-generated method stub
+		return qnaDao.deleteQna(no);
+	}
+
+
+	
 
 	
 	

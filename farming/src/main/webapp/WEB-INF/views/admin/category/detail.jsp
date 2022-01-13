@@ -76,9 +76,9 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12 d-flex">
-                                        		<input type = "Button" id="btList" class="btn btn-success mx-auto mx-md-0 text-white" value="&nbsp;&nbsp;글목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/category/list"/>'" /> | 
-                          						<a href='<c:url value="/admin/category/cateUpdate?categoryNo=${vo.categoryNo }"/>' class="btn btn-success mx-auto mx-md-0 text-white">&nbsp;&nbsp;수정&nbsp;&nbsp;</a> |
-									        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>' class="btn btn-success mx-auto mx-md-0 text-white">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
+                                        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "Button" id="btList" class="btn btn-primary rounded-pill h-100" value="&nbsp;&nbsp;글목록&nbsp;&nbsp;" OnClick="location.href='<c:url value="/admin/category/list"/>'" />&nbsp;&nbsp;&nbsp;&nbsp; 
+                          						<a href='<c:url value="/admin/category/cateUpdate?categoryNo=${vo.categoryNo }"/>' class="btn btn-primary rounded-pill h-100">&nbsp;&nbsp;수정&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									        	<a href='<c:url value="/admin/category/delete?categoryNo=${vo.categoryNo }"/>' class="btn btn-primary rounded-pill h-100">&nbsp;&nbsp;삭제&nbsp;&nbsp;</a>
 									        	
                                         </div>
                                     </div>

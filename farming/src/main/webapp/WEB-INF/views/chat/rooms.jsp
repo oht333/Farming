@@ -11,7 +11,7 @@
       <li class="breadcrumb-item active">채팅</li>
     </ol>
     <div class="d-flex justify-content-between align-items-center mb-5">
-      <h1 class="hero-heading mb-0">Inbox</h1><a class="btn btn-link text-muted" href="#">채팅목록</a>
+	   	<h1 class="hero-heading mb-0">채팅목록</h1>
     </div>
     
     <div class="list-group shadow mb-5">
@@ -32,7 +32,7 @@
             </div>
             <div class="col-9 col-lg-4 align-self-center mb-3 mb-lg-0">
               <div class="d-flex align-items-center mb-1 mb-lg-3">
-                <h2 class="h5 mb-0">${map["ROOM_NAME"] }</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="img/avatar/avatar-4.jpg" alt="전문가이미지">
+                <h2 class="h5 mb-0">${map["ROOM_NAME"] }</h2><img class="avatar avatar-sm avatar-border-white ms-3" src="<c:url value='/resources/userImg/defaultUser.jpg'/>" alt="전문가이미지">
               </div>
               <span class="badge badge-pill p-2 badge-secondary-light">전문분야</span><a class="stretched-link" href="<c:url value='/chat/room?roomNo=${map["ROOM_NO"] }'/>"></a>
             </div>

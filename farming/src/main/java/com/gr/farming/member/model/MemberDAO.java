@@ -22,4 +22,5 @@ public interface MemberDAO {
 	public int totalMember();
 	public int deleteMember(int memberNo); 
 	public int selectTotalRecord(SearchVO vo);
+	public List<MemberVO> select();
 }

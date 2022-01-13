@@ -29,7 +29,7 @@ public class ExpLoginInterceptor extends HandlerInterceptorAdapter{
 		logger.info("preHandle() 호출, email={}", email);
 		
 		if(email==null || email.isEmpty()) {
-			request.setAttribute("msg", "로그인이 필요한 서비스입니다.");
+			request.setAttribute("msg", "전문가 로그인이 필요한 서비스입니다.");
 			request.setAttribute("url", "/login/expLogin");
 			
 			RequestDispatcher dispatcher

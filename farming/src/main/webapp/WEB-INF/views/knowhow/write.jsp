@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp"%>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/style.knowhows.css">
 <script type="text/javascript"
 	src="<c:url value='/resources/libs/js/service/HuskyEZCreator.js" charset="utf-8'/>"></script>
 <script type="text/javascript">
@@ -53,7 +55,7 @@ $(function(){
 					<textarea id="content" name="content" rows="10" cols="50"
 						style="width: 50%;"></textarea>
 				</div>
-				<div id="se2_sample" style="margin: 10px 0;">
+				<div id="se2_sample" class="t_center" style="margin: 10px 0;">
 					<button class="btn btn-primary" id="savebutton">submit</button>
 					<a class="btn btn-primary" href="<c:url value='/knowhow/list'/>">돌아가기</a>
 				</div>

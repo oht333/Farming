@@ -17,6 +17,23 @@
 		}
 
 </style>  
+
+<script type="text/javascript">
+	$(function(){
+		$('form[name=write]').submit(function(){
+			$('.infobox').each(function(idx, item){
+				if($(this).val().length<1){
+					alert($(this).prev().html() + "을(를) 입력하세요");
+					$(this).focus();
+					event.preventDefault();
+					return false;  //each 탈출
+				}
+			});
+		});
+	});
+</script>
+
+
 <body style="padding-top: 72px;">
     
     <!-- Hero Section-->
@@ -37,7 +54,7 @@
     </section><br>
     <article>
 		<div class="container" role="main">
-    		<h2>1 : 1 질문 내역</h2><br>
+    		<h2 class="text-shadow verified">${name}회원님 1 : 1 질문 내역</h2><br>
 		
 			<div class="bg-white rounded shadow-sm">
 				<label for="exampleFormControlInput1" class="form-label">[문의글 제목] : </label>
@@ -53,12 +70,46 @@
 		<div class="lastDiv">	
 			<label for="exampleFormControlInput1" class="form-label">[문의 내용]</label>		
 			<p class="content">${fn:replace(vo.content, newLine, "<br>")}</p>
+		</div><br>
+		<c:if test="${!empty list }">
+		
+		<!-- 댓글 -->
+		<div id="qcommentList">
+		  <ol class="list">
+		  <c:forEach var="map" items="${list }">
+		      <li>
+		        <p>
+		        작성자 : ${map['NAME']}<br />
+		        작성 날짜 :  <fmt:formatDate value="${map['REGDATE']}" pattern="yyyy-MM-dd" />
+		        </p>
+		
+		        <p>${map['CONTENT']}</p>
+		      </li>
+		      </c:forEach>
+		  </ol>
+		</div><br>
+		
+		</c:if>
+		<div class="divForm">
+		<form name="write" method="post" enctype="multipart/form-data"
+			action="<c:url value='/qna/qnaDetailQComment'/>" >
+			<input type="hidden" name="memberNo" id="memberNo" value="${userNo }">
+		 	<input type="hidden" name="qnaNo" value="${param.qnaNo }">
+		 <fieldset>
+		 	<label for="exampleFormControlInput1" class="form-label">[댓글 입력]</label>
+		          <label for="name">작성자&nbsp;&nbsp;</label><input type="text" id="name" name="name" value="${name }" readonly="readonly" /><br>
+		        <div class="form-floating mb-3">
+				  <input type="text" class="form-control" id="floatingInput" name="content" placeholder="내용입력">
+				  <label for="content">댓글 입력</label>
+				  <input type = "submit" class="btn btn-primary" value="등록하기"/>
+				</div>
+		</fieldset>
+		</form>
 		</div>
 	</div><br>
 		<div class="center">
 			<a class="btn btn-primary" href='<c:url value="/qna/qnaEdit?qnaNo=${param.qnaNo }"/>'>게시글 수정</a>
         	<a class="btn btn-primary" href='<c:url value="/qna/qnaDelete?qnaNo=${param.qnaNo }"/>'>게시글 삭제</a>
-        	<a class="btn btn-primary" href='<c:url value="/qna/qnaReply?qnaNo=${param.qnaNo }"/>'>답변하기</a>
         	<a class="btn btn-primary" href='<c:url value="/qna/qnaList"/>'>게시글 목록</a>			
 		</div><br>
 	</article>

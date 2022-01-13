@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../inc/top_admin.jsp" %>
+<%@ include file="../../inc/top_admin.jsp" %>
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">

@@ -1,4 +1,4 @@
-package com.gr.farming.qna.model;
+package com.gr.farming.common;
 
 
 /**
@@ -56,8 +56,6 @@ public class SearchVO2 {
 	public int getMemNo() {
 		return memNo;
 	}
-
-
 
 
 	public void setMemNo(int memNo) {

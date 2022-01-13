@@ -26,7 +26,7 @@
 		});
 		
 		$('#btList').click(function(){
-			location.href="<c:url value='/knowledge/list.do'/>";	
+			location.href="<c:url value='/knowhow/list'/>";	
 		});
 		
 	});
@@ -36,7 +36,7 @@
 <body>
 <div class="divForm">
 <form name="frmWrite" method="post" 
-	action="<c:url value='/knowledge/reply.do'/>" >
+	action="<c:url value='/knowhow/reply'/>" >
      <input type="text" name="groupNo" value="${vo.groupNo }" /> 
      <input type="text" name="step" value="${vo.step }" /> 
      <input type="text" name="sortNo" value="${vo.sortNo }" /> 
@@ -47,18 +47,6 @@
             <label for="title">제목</label>
             <input type="text" id="title" name="title" class="infobox" 
             	value="Re : ${vo.title}" />
-        </div>
-        <div>
-            <label for="name">작성자</label>
-            <input type="text" id="name" name="name" class="infobox" />
-        </div>
-        <div>
-            <label for="pwd">비밀번호</label>
-            <input type="password" id="pwd" name="pwd" class="infobox" />
-        </div>
-        <div>
-            <label for="email">이메일</label>
-            <input type="text" id="email" name="email" />
         </div>
         <div>  
         	<label for="content">내용</label>        
