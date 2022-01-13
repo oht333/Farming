@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+/* rate */
+.chk_list {
+	display: flex;
+	position: relative;
+	flex-direction: row-reverse;
+	justify-content: left;
+	margin-top: 6px;
+    margin-bottom: 20px;
+}
+
+.chk_list input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0
+}
+
+.chk_list label {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 4px;
+	width: 16px;
+	height: 16px;
+	background: url(../img/ico_star_rating.png) center no-repeat;
+	background-size: 16px
+}
+
+.chk_list label:first-of-type {
+	margin-left: 0
+}
+
+.chk_list label:last-of-type {
+	margin-left: 0
+}
+
+.chk_list input:checked ~ label {
+	background: url(../img/ico_star_rating_on.png) center no-repeat;
+	background-size: 16px
+}
+
+.chk_list label:hover {
+	background: url(../img/ico_star_rating_on.png) center no-repeat;
+	background-size: 16px
+}
+
+.chk_list label:hover ~ label {
+	background: url(../img/ico_star_rating_on.png) center no-repeat;
+	background-size: 16px
+}
+
+
+#starwrap{
+	width: 60px;
+	height: 10px;
+	position: relative;
+}
+
+div#star {
+    width: 100%;
+    height: 12px;
+    background: url(../img/ico_star5.png) center no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+div#starimg {
+    height: 12px;
+    background: url(../img/ico_star5_on.png) no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+

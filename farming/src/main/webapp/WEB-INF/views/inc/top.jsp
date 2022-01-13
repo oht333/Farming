@@ -36,10 +36,11 @@
 	href="${pageContext.request.contextPath }/resources/css/custom.css">
 <!-- Favicon-->
 
-<link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
-<link href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css">
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath }/resources/img/farming-favicon.png">
+	
+<script
+	src="${pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js"></script>
 <!-- Tweaks for older IEs-->
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -67,8 +68,8 @@
 								class="fa fa-search"></i><span class="sr-only">What are
 									you looking for?</span></label> <input
 								class="form-control form-control-sm border-0 shadow-0 bg-gray-200"
-								id="search_search" placeholder="어떤 서비스가 필요하세요?" aria-label="Search"
-								type="search" style="width: 300px;">
+								id="search_search" placeholder="Search" aria-label="Search"
+								type="search">
 						</div>
 					</form>
 				</div>
@@ -123,7 +124,7 @@
 						</c:if>
 						<c:if test="${!empty email }">
 							<c:if test="${user eq '사용자' }">
-								<li class="nav-item"><a class="nav-link" href="#">받은견적</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/request/requestByExpert'/>">받은견적</a>
 								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/rooms'/>">채팅</a>
 								<li class="nav-item dropdown ms-2">
 									<a class="btn btn-primary" id="docsDropdownMenuLink"
@@ -131,7 +132,7 @@
 								<!-- 프로필 이미지로 변경예정 -->
 								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
 									<h6 class="dropdown-header fw-normal">${name } 고객님</h6>
-									<a class="dropdown-item" href="docs/docs-directory-structure.html">받은견적</a>
+									<a class="dropdown-item" href="<c:url value='/request/requestByExpert'/>">받은견적</a>
 									<a class="dropdown-item" href="docs/docs-introduction.html">파밍페이</a>
 									<a class="dropdown-item" href="<c:url value='/member/mypage/main?email=${email }'/>l">마이페이지</a>
 									<div class="dropdown-divider"></div>
@@ -142,7 +143,7 @@
 								</div>
 							</c:if>
 							<c:if test="${user eq '전문가' }">
-								<li class="nav-item"><a class="nav-link" href="#">받은요청</a>
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/request/requestByClient'/>">받은요청</a>
 								<li class="nav-item"><a class="nav-link" href="<c:url value='/chat/rooms'/>">채팅</a>
 								<li class="nav-item"><a class="nav-link" href="<c:url value='/findexp/expDetailEdit?expertNo=${expNo }'/>">프로필</a>
 								<li class="nav-item dropdown ms-2">
@@ -151,7 +152,7 @@
 								<!-- 프로필 이미지로 변경예정 -->
 									<div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
 										<h6 class="dropdown-header fw-normal">${name } 고객님</h6>
-											<a class="dropdown-item" href="docs/docs-directory-structure.html">받은요청</a>
+											<a class="dropdown-item" href="<c:url value='/request/requestByClient'/>">받은요청</a>
 											<a class="dropdown-item" href="docs/docs-introduction.html">파밍페이</a>
 											<a class="dropdown-item" href="<c:url value='/expert/mypage/main?email=${email }'/>l">마이페이지</a>
 											<div class="dropdown-divider"></div>

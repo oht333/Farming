@@ -3,40 +3,78 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gr.farming.request.model.RequestDAO">	
+
+	<!-- 견적요청서 작성 -->
+	<insert id="insertRequest" parameterType="requestVo">
+		<selectKey keyProperty="requestNo" resultType="int" order="BEFORE">
+			select request_seq.nextval from dual
+		</selectKey>
+		insert into request(REQUEST_NO, CATEGORY_NO, MEMBER_NO, NAME, FILENAME,
+		 EXPERT_NO, REQUEST_DESIGN_NO, REQUEST_DEVELOP_NO)
+		values(#{requestNo}, #{categoryNo}, #{memberNo}, #{name}, #{filename},
+		#{expertNo}, #{requestDesignNo}, #{requestDevelopNo})
+	</insert>
+
 	<insert id="insertRequestDevelop" parameterType="requestDevelopVo">
-		<selectKey keyProperty="REQUEST_DEVELOP_NO" resultType="int" order="BEFORE">
+		<selectKey keyProperty="requestdevelopNo" resultType="int" order="BEFORE">
 			select REQUEST_DEVELOP_SEQ.nextval from dual 
 		</selectKey>
 		insert into request_develop(REQUEST_DEVELOP_NO, PLATFORM, TYPE, CAREER, STEP,
 			REFERENCE, DEADLINE, WORKTYPE, LOCATION1, LOCATION2)
-		values(#{REQUEST_DEVELOP_NO}, #{PLATFORM}, #{TYPE}, #{CAREER}, #{STEP}, 
+		values(#{requestdevelopNo}, #{PLATFORM}, #{TYPE}, #{CAREER}, #{STEP}, 
 			#{REFERENCE}, #{DEADLINE}, #{WORKTYPE}, #{LOCATION1}, #{LOCATION2})
 	</insert>
 	
 	<insert id="insertRequestDesign" parameterType="requestDesignVo">
-		<selectKey keyProperty="REQUEST_DESIGN_NO" resultType="int" order="BEFORE">
+		<selectKey keyProperty="requestDesignNo" resultType="int" order="BEFORE">
 			select REQUEST_DESIGN_SEQ.nextval from dual 
 		</selectKey>
 		insert into request_design(REQUEST_DESIGN_NO, TYPE, RANGE, SCALE,
 			DEADLINE, LOCATION1, LOCATION2, QUESTION)
-		values(#{REQUEST_DESIGN_NO}, #{TYPE}, #{RANGE}, #{SCALE}, 
+		values(#{requestDesignNo}, #{TYPE}, #{RANGE}, #{SCALE}, 
 			#{DEADLINE}, #{LOCATION1}, #{LOCATION2}, #{QUESTION})
 	</insert>
 	
+	<!-- 견적요청서 문답 조회 -->	
 	<select id="selectRequestQna" parameterType="requestQnaVo" resultType="requestQnaVo">
 		select * from request_qna
 		where category_no=#{categoryNo}
 		order by a_no
 	</select>
-	
 	<select id="selectQuestion" parameterType="int" resultType="map">
 		select * from REQUEST_QUESTION
 		where category_no=#{categoryNo}
 	</select>
-	
 	<select id="selectAnswer" parameterType="int" resultType="map">
 		select * from request_answer
 		where q_no=#{qNo}
 	</select>
 	
+	<!-- 전문가회원 - 받은 요청서 목록 조회 -->
+	<select id="selectReceivedRequest" parameterType="int" resultType="map">
+		select * from request
+		where expert_no=#{expertNo}
+	</select>
+	
+	<!-- 전문가회원 - 받은 요청서 각 문답 조회 -->
+	<select id="selectRequestDetail1" parameterType="fieldSearchVo" resultType="map">
+		select * from req_detail_develop
+		where expert_no=#{userNo} and detail like '%' || #{detail} || '%'
+		order by request_no desc
+	</select>
+	<select id="selectRequestDetail12" parameterType="fieldSearchVo" resultType="map">
+		select * from req_detail_design
+		where expert_no=#{userNo} and detail like '%' || #{detail} || '%'
+		order by request_no desc
+	</select>
+	
+	<select id="selectTotalRecord" parameterType="fieldSearchVo" resultType="int">
+		select count(*) from req_detail_develop
+		where expert_no=#{userNo}
+		<if test="detail!=null and detail!=''">
+			and detail=#{detail}
+			<!-- 파라미터 하나인데 타입 string 안됨, 
+			동적sql에서는 string, int 불가, vo, map만 가능 -->
+		</if> 
+	</select>
 </mapper>

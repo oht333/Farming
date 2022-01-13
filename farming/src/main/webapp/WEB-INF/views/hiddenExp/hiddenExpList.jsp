@@ -31,7 +31,7 @@
 	            <div class="card h-100 border-0 shadow">
 	              <div class="card-img-top overflow-hidden dark-overlay bg-cover" 
 	              style="background-image: url(${pageContext.request.contextPath }/resources/img/photo/restaurant-1430931071372-38127bd472b8.jpg); min-height: 200px;">
-	              <a class="tile-link" href="detail.html"></a>
+	              <a class="tile-link" href="<c:url value='/findexp/expDetail?expertNo=${vo.expertNo }'/>"></a>
 	                <div class="card-img-overlay-bottom z-index-20">
 	                  <h4 class="text-white text-shadow">${vo.name }</h4>
 	                  <p class="mb-2 text-xs">

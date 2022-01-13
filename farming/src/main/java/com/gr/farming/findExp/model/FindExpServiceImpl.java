@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.gr.farming.expert.model.ExpertVO;
+import com.gr.farming.field.model.FieldDetailVO;
 import com.gr.farming.field.model.FieldVO;
 
 @Service
@@ -36,18 +37,8 @@ public class FindExpServiceImpl implements FindExpService{
 	}
 
 	@Override
-	public List<Map<String, Object>> selectField(int expertNo) {
-		return findExpDao.selectField(expertNo);
-	}
-
-	@Override
-	public int updateIntro(ExpertInfoVO vo) {
-		return findExpDao.updateIntro(vo);
-	}
-
-	@Override
-	public int updateDetailInfo(ExpertInfoVO vo) {
-		return findExpDao.updateDetailInfo(vo);
+	public List<FieldDetailVO> selectFieldDetail(int expertNo) {
+		return findExpDao.selectFieldDetail(expertNo);
 	}
 
 	@Override
