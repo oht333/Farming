@@ -20,10 +20,22 @@
         </div>
       </div>
     </section>
-    <section class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8">                          
+    <section class="py-6">
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+        <div class="col-lg-2">
+            <div class="sticky-top mb-5" style="top: 120px;">
+              <div class="sidebar-block">
+                <h6 class="sidebar-heading ms-3">거래내역</h6>
+                <nav class="nav nav-pills flex-column">
+	                <a class="nav-link mb-2" href="<c:url value='/qna/qnaGuest'/>">파밍의 첫걸음</a>
+	                <a class="nav-link mb-2 active" href="#">IT 전문가 가이드</a>
+	                <a class="nav-link mb-2" href="<c:url value='/qna/qnaList'/>">1:1 질문게시판</a>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8" style="margin-left: 40px;">                          
             <div class="text-content">
               <p><strong>파밍에 방문해주신 고객님을 환영합니다.</strong>
               파밍에서는 새로운 고객을 만날 수 있는 기회를 창출, 자신의 능력과 조건에 맞는 고객의 요청서를 확인하고
@@ -85,82 +97,6 @@
                     <button type="button" class="btn btn-danger"
                     	onclick="alert('죄송합니다 . 지금 바로 1:1 문의게시판을 이용해보세요 ! ')"><i class="fa fa-thumbs-down me-2"></i>아니요</button>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-           <div class="col-lg-4">
-            <div class="ps-xl-4">
-              <!-- Opening Hours      -->
-              <div class="card border-0 shadow mb-5">
-                <div class="card-header bg-gray-100 py-4 border-0">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                      <p class="subtitle text-sm text-primary">더 궁금하신 점 있으신가요?</p>
-                      <h4 class="mb-0">고객센터 운영시간</h4>
-                    </div>
-                    <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
-                      <use xlink:href="#wall-clock-1"> </use>
-                    </svg>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <table class="table text-sm mb-0">
-                    <tr>
-                      <th class="ps-0 border-0">월요일</th>
-                      <td class="pe-0 text-end border-0">8:00 am - 6:00 pm</td>
-                    </tr>
-                    <tr>
-                      <th class="ps-0">화요일</th>
-                      <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
-                    </tr>
-                    <tr>
-                      <th class="ps-0">수요일</th>
-                      <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
-                    </tr>
-                    <tr>
-                      <th class="ps-0">목요일</th>
-                      <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
-                    </tr>
-                    <tr>
-                      <th class="ps-0">금요일</th>
-                      <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
-                    </tr>
-                    <tr>
-                      <th class="ps-0">토요일</th>
-                      <td class="pe-0 text-end">8:00 am - 1:00 pm</td>
-                    </tr>
-                    <tr>
-                      <th class="ps-0">일요일</th>
-                      <td class="pe-0 text-end">Closed</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              <!-- Contact-->
-              <div class="card border-0 shadow mb-5">
-                <div class="card-header bg-gray-100 py-4 border-0">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                      <p class="subtitle text-sm text-primary">의견을 들려주세요</p>
-                      <h4 class="mb-0">고객센터</h4>
-                    </div>
-                    <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
-                      <use xlink:href="#fountain-pen-1"> </use>
-                    </svg>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <ul class="list-unstyled mb-4">
-                    <li class="mb-2"> <a class="text-gray-00 text-sm text-decoration-none" href="#"><i class="fa fa-phone me-3"></i><span class="text-muted">(020) 123 456 789</span></a></li>
-                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fa fa-envelope me-3"></i><span class="text-muted">info@example.com</span></a></li>
-                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fa fa-globe me-3"></i><span class="text-muted">www.example.com</span></a></li>
-                    <li class="mb-2"> <a class="text-blue text-sm text-decoration-none" href="#"><i class="fab fa-facebook me-3"></i><span class="text-muted">Facebook</span></a></li>
-                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fab fa-twitter me-3"></i><span class="text-muted">Twitter</span></a></li>
-                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fab fa-instagram me-3"></i><span class="text-muted">Instagram</span></a></li>
-                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fab fa-google-plus me-3"></i><span class="text-muted">Google+</span></a></li>
-                  </ul>
-                  <div class="d-grid text-center"><a class="btn btn-outline-primary" href="<c:url value='/qna/qnaList'/>"> <i class="far fa-paper-plane me-2"></i>1:1 문의하기</a></div>
                 </div>
               </div>
             </div>
