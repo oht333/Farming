@@ -14,7 +14,7 @@
 	</form>
     
     <!-- Hero Section-->
-    <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('img/photo/restaurant-1515164783716-8e6920f3e77c.jpg');">
+    <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('<c:url value='/resources/img/photo-1522143049013-2519756a52d4.jpg'/>');">
       <div class="container overlay-content">
       <ol class="breadcrumb ps-0  justify-content-center">
           <li class="breadcrumb-item"><a href="<c:url value='../index'/>">Home</a></li>
@@ -30,9 +30,22 @@
         </div>
       </div>
     </section>
-   
-    <div class="container">
-      <div class="list-group shadow mb-5">
+   <section class="py-6">
+    <div class="container-fluid">
+      <div class="row px-xl-5">
+      <div class="col-lg-2">
+            <div class="sticky-top mb-5" style="top: 120px;">
+              <div class="sidebar-block">
+                <h6 class="sidebar-heading ms-3">거래내역</h6>
+                <nav class="nav nav-pills flex-column">
+	                <a class="nav-link mb-2" href="<c:url value='/qna/qnaGuest'/>">파밍의 첫걸음</a>
+	                <a class="nav-link mb-2" href="<c:url value='/qna/qnaDeveloper'/>">IT 전문가 가이드</a>
+	                <a class="nav-link mb-2 active" href="#">1:1 질문게시판</a>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-10 col-xl-8 docs-content" style="margin-left: 100px;">
       <c:if test="${empty list }">
       		<p>데이터가 없습니다.</p>
       </c:if>
@@ -43,23 +56,7 @@
             <div class="row">
               <div class="col-9 col-lg-4 align-self-center mb-3 mb-lg-0">
                 <div class="d-flex align-items-center mb-1 mb-lg-3">
-                	<!--답변이 있는 원본글이 삭제처리(delFlag='Y')된 경우  
-					제목을 회색으로 보여주고 링크를 걸지 않는다  -->
-					<c:if test="${vo.delFlag=='Y' }">
-						<span style="color: gray">삭제된 글입니다.</span>
-					</c:if>
-					<c:if test="${vo.delFlag !='Y' }">	
-					<!-- 답변인 경우 단계별로 re 이미지 보여주기 -->
-						<c:if test="${vo.step>0 }">
-							<c:forEach var="i" begin="1" end="${vo.step }">
-								&nbsp;
-							</c:forEach>
-							<img src="<c:url value='/resources/img/re.gif/'/>" >
-						</c:if>
-					
                   	<h2 class="h5 mb-0">${vo.title }</h2>
-                  	
-                  	</c:if>
                 </div>
                 <p class="text-sm text-muted">
           		작성자 : ${name }
@@ -79,8 +76,8 @@
           </div>
           </c:forEach>
           </c:if>
- </div>
- </div>
+
+ 
  <div class="divPage"; style="text-align:center">
 	<!-- 페이지 번호 추가 -->		
 	<!-- 이전 블럭으로 이동 -->
@@ -112,8 +109,11 @@
 			</a>	
 	</c:if>					
 	<!--  페이지 번호 끝 -->	
+	</div>
 </div>
- 
+ </div>
+ </div>
+ </section>
    
     
 <%@ include file="../inc/bottom.jsp" %>

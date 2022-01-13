@@ -8,8 +8,6 @@ function save(){
 	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);  
     		//스마트 에디터 값을 텍스트컨텐츠로 전달
 	var content = document.getElementById("smartEditor").value;
-	alert(document.getElementById("content").value); 
-    		// 값을 불러올 땐 document.get으로 받아오기
 	return; 
 }
 
@@ -53,7 +51,7 @@ function save(){
 			</script>
         </div>
         <div class="center">
-            <input type = "submit" class="btn btn-primary" value="수정하기"/>
+            <input type = "submit" class="btn btn-primary" onclick="save()" value="수정하기"/>
             <input type = "Button" class="btn btn-primary" value="글목록" 
             	onclick="location.href	='<c:url value="/qna/qnaList"/>'" />         
         </div>
