@@ -288,6 +288,7 @@ public class AdminController {
 		} else if(result == a_service.LOGIN_OK){
 			AdminVO adminVo = a_service.selectByEmail(vo.getEmail());
 			//[1] 세션에 아이디 저장
+			session.setAttribute("userNo", adminVo.getAdminNo());
 			session.setAttribute("email", adminVo.getEmail());
 			session.setAttribute("name", adminVo.getName());
 			session.setAttribute("user", "관리자");

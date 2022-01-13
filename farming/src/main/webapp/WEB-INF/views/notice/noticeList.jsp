@@ -1,26 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
-<script type="text/javascript">
 
+<script type="text/javascript">
+	function pageFunc(curPage){
+		$('#frmPage input[name=currentPage]').val(curPage);
+		$('#frmPage').submit();
+	}
 </script>
+
+<script type="text/javascript">
+</script>
+<body style="padding-top: 72px;">
         <div class="page-wrapper">
-            <div class="page-breadcrumb" style="margin-bottom: 0; padding-bottom: 0;">
-                <div class="row align-items-center">
-                    <div class="row mb-4 d-print-none">
-                        <h3 class="page-title mb-0 p-0">공지사항</h3>
-                        <div class="col-lg-6">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">공지사항</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-		<form action="<c:url value='/admin/expExcel'/>" id="frm" class="container-fluid">
+            <!-- Hero Section-->
+    <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('img/photo/restaurant-1515164783716-8e6920f3e77c.jpg');">
+      <div class="container overlay-content">
+      <ol class="breadcrumb ps-0  justify-content-center">
+          <li class="breadcrumb-item"><a href="<c:url value='../index'/>">Home</a></li>
+          <li class="breadcrumb-item active">공지사항</li>
+        </ol>
+        <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end">
+          <div class="text-white mb-4 mb-lg-0">
+            <div class="badge badge-pill badge-transparent px-3 py-2 mb-4">FAQ</div>
+            <h1 class="text-shadow verified">공지사항</h1>
+          </div>
+          <c:if test="${user eq '관리자' }">
+          <div class="calltoactions"><a class="btn btn-primary" href="<c:url value='/notice/noticeWrite'/>" >공지글 작성</a></div>
+          </c:if>
+        </div>
+      </div>
+    </section><br>
+		<form action="<c:url value='/notice/noticeDetail'/>" id="frm" class="container-fluid">
                <div class="row">
                     <!-- column -->
                     <div class="col-sm-12">
@@ -30,36 +41,30 @@
                                     <table class="table user-table no-wrap">
                                         <thead>
                                              <tr>
-	                                            <th>EXPERT_NO</th>
-	                                            <th>NAME</th>
-	                                            <th>EMAIL</th>
-	                                            <th>ADDRESS2</th>
-	                                            <th>ZIPCODE</th>
+	                                            <th>공지글 번호</th>
+	                                            <th>관리자</th>
+	                                            <th>내용</th>
                                        		 </tr>
 
                                         </thead>
                                     <tbody>
-                                    	<c:forEach var="vo" items="${dev_list }">
-                                    	<input type="hidden" name="expertNo" value="${vo.expertNo }">
-                                    	<input type="hidden" name="name" value="${vo.name }">
-                                    	<input type="hidden" name="email" value="${vo.email }">
-                                    	<input type="hidden" name="address1" value="${vo.address1 }">
-                                    	<input type="hidden" name="address2" value="${vo.address2 }">
-                                    	<input type="hidden" name="zipCode" value="${vo.zipCode }">
-                                    	<input type="hidden" name="regDate" value="${vo.regDate }">
+                                    	<c:forEach var="vo" items="${list }">
+                                    	<input type="hidden" name="adminNo" value="${vo.adminNo }">
+                                    	<input type="hidden" name="adminName" value="${vo.name }">
 	                                        <tr>
 	                                            <td>
-	                                            <a href="<c:url value='/admin/manage/dev_detail?expertNo=${vo.expertNo }'/>">
-	                                            	${vo.expertNo }
+	                                            <a href="<c:url value='/notice/noticeDetail?noticeNo=${vo.noticeNo }'/>">
+	                                            	${vo.noticeNo }
 	                                            </a>
-	                                            	
 	                                            </td>
-	                                            <td>${vo.name }</td>
-	                                            <td>${vo.email }</td>
-	                                            <td>${vo.address1 }</td>
-	                                            <td>${vo.address2 }</td>
-	                                            <td>${vo.zipCode }</td>
-	                                            <td>${vo.regDate }</td>
+	                                            <td>
+	                                            ${vo.name }
+	                                            </td>
+	                                            
+	                                            <td>
+	                                            ${vo.content }
+	                                            </td>
+	                                           
 	                                        </tr>
 										</c:forEach>
                                     </tbody>
@@ -70,7 +75,7 @@
 								<!-- 이전 블럭으로 이동 -->
 								<c:if test="${pagingInfo.firstPage>1 }">
 									<a href
-							="<c:url value='/admin/manage/dev_list?currentPage=${pagingInfo.firstPage-1}'/>">
+							="<c:url value='/notice/noticeList?currentPage=${pagingInfo.firstPage-1}'/>">
 										<img src="<c:url value='/resources/images/first.JPG'/>" alt="이전블럭">
 									</a>	
 								</c:if>		
@@ -83,7 +88,7 @@
 									</c:if>	
 									<c:if test="${i!=pagingInfo.currentPage }">	
 											<a href
-							="<c:url value='/admin/manage/dev_list?currentPage=${i}'/>">
+							="<c:url value='/notice/noticeList?currentPage=${i}'/>">
 											[${i }]</a>			
 									</c:if>
 								</c:forEach>
@@ -91,7 +96,7 @@
 								<!-- 다음 블럭으로 이동 -->					
 								<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage }">	
 										<a href
-							="<c:url value='/admin/manage/dev_list?currentPage=${pagingInfo.lastPage+1}'/>">
+							="<c:url value='/notice/noticeList?currentPage=${pagingInfo.lastPage+1}'/>">
 											<img src="<c:url value='/resources/images/last.JPG'/>" alt="다음블럭">
 										</a>	
 								</c:if>					
@@ -116,5 +121,5 @@
     <!-- Metis Menu Js -->
     <script src="<c:url value='/resources/admin_js/jquery.metisMenu.js'/>"></script>
       <!-- Custom Js -->
-    <script src="<c:url value='/resources/admin_js/custom-scripts.js'/>"></script>
+    <script src="<c:url value='/resources/admin_js/custom-scripts.js'/>"></script><br>
 <%@ include file="../inc/bottom.jsp" %>
