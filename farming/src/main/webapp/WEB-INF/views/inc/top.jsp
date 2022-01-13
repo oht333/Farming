@@ -67,8 +67,8 @@
 								class="fa fa-search"></i><span class="sr-only">What are
 									you looking for?</span></label> <input
 								class="form-control form-control-sm border-0 shadow-0 bg-gray-200"
-								id="search_search" placeholder="Search" aria-label="Search"
-								type="search">
+								id="search_search" placeholder="어떤 서비스가 필요하세요?" aria-label="Search"
+								type="search" style="width: 300px;">
 						</div>
 					</form>
 				</div>
